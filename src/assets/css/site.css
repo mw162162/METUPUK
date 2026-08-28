@@ -654,10 +654,6 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
     radial-gradient(ellipse at 78% 12%, rgb(236 63 142 / 0.34), transparent 62%),
     linear-gradient(100deg, rgb(28 3 16 / 0.94) 0%, rgb(43 5 25 / 0.86) 42%, rgb(68 7 41 / 0.62) 100%);
 }
-/* No white overlay. Painting white over a dark photograph goes through a grey
-   midpoint, which reads as haze rather than a blend. Masking makes the hero's
-   own pixels transparent instead, so the page colour comes through cleanly —
-   and it works for either theme without knowing what that colour is. */
 .hero--image::after { content: none; }
 
 .hero--image { background: transparent; }
@@ -676,17 +672,27 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
   mask-image: var(--photo-mask);
 }
 .hero--image::before {
-  /* A flat band of plum under the wash, so the bottom is one even colour
-     whatever the photograph is doing behind it. */
+  /* The fade to the page. Measured: dark plum going transparent over a white
+     page has its midpoint at #95828c, chroma 0.027 — the grey haze that kept
+     turning up at this join. Oklab only lifts it to 0.034, so the colour space
+     was never the problem: nothing travels from a dark saturated colour to
+     white without passing through greys.
+
+     So it does not travel there directly. It climbs the brand's own scale on
+     the way out, holding chroma near 0.18 through the middle, and every stop
+     is opaque, so no light colour is ever composited over a dark one. */
   background:
     linear-gradient(to top,
-      var(--plum-900) 0,
-      var(--plum-900) 5rem,
-      rgb(43 5 25 / 0) 11rem),
+      var(--white) 0,
+      #fae0ec 1rem,
+      #dd8bb4 2.2rem,
+      #b03f73 3.6rem,
+      #751841 5.2rem,
+      #3f0a24 7rem,
+      var(--plum-900) 9rem,
+      rgb(43 5 25 / 0) 15rem),
     radial-gradient(ellipse at 78% 12%, rgb(236 63 142 / 0.34), transparent 62%),
     linear-gradient(100deg, rgb(28 3 16 / 0.94) 0%, rgb(43 5 25 / 0.86) 42%, rgb(68 7 41 / 0.62) 100%);
-  -webkit-mask-image: var(--wash-mask);
-  mask-image: var(--wash-mask);
 }
 .hero--image {
   /* Photograph: fully cleared before the colour ramp starts. */
@@ -1214,7 +1220,16 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
 }
 /* Only the list scrolls, so the heading stays put. overscroll-behavior stops
    the page from taking over once the rail reaches its end. */
-.toc ol { overflow-y: auto; overscroll-behavior: contain; }
+/* Scrollable, but with no scrollbar drawn: the rail follows the reader down
+   the page on its own, so a bar to drag is furniture nobody needs and it
+   crowds an already narrow column. */
+.toc ol {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* old Edge */
+}
+.toc ol::-webkit-scrollbar { width: 0; height: 0; }
 .toc h2 { font-size: var(--step--1); text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-faint); margin-bottom: var(--sp-3); }
 .toc ol { position: relative; list-style: none; padding: 0; margin: 0; border-left: 2px solid var(--border); }
 .toc li { margin: 0; }

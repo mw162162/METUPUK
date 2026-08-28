@@ -415,26 +415,23 @@
         if (!entries[0].isIntersecting) return;
         obs.disconnect();
 
-        // Paced from a schedule, not an easing curve. Every curve steep enough
-        // to accelerate at the end also makes its very first step the slowest,
-        // so the figure sat on zero for two seconds before anything moved.
+        // Each number is held for half as long as the one before it, down to a
+        // floor. Halving all the way is not possible: by the eighth number the
+        // step is 12ms and by the twelfth it is under a millisecond, so
+        // two-thirds of the count would never be drawn at all.
         //
-        // Instead: an even beat up to fifteen, then closing gaps to the end.
-        //   1-15   200ms each   a steady, deliberate count
-        //   20     136ms
-        //   25      92ms
-        //   31      58ms        still three frames, still readable
-        // about 4.8 seconds in total.
-        var HOLD = 15;      // counted at an even pace up to here
-        var STEP = 200;     // ms per number during that stretch
-        var LAST = 58;      // ms for the final number
-        var ratio = Math.pow(LAST / STEP, 1 / (target - HOLD));
+        //   1     2    3    4    5    6 onward
+        //   1500  750  375  188  94   80ms
+        //
+        // The opening is a slow, deliberate beat, and the tail settles into a
+        // steady count rather than a blur. About five seconds in total.
+        var FIRST = 1500;   // ms on the first number
+        var FLOOR = 80;     // never quicker than this
 
-        // Cumulative time at which each value should be showing.
         var schedule = [];
         var elapsed = 0;
-        for (var k = 1; k <= target; k++) {
-          elapsed += k <= HOLD ? STEP : STEP * Math.pow(ratio, k - HOLD);
+        for (var k = 0; k < target; k++) {
+          elapsed += Math.max(FLOOR, FIRST * Math.pow(0.5, k));
           schedule.push(elapsed);
         }
 

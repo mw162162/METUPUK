@@ -12,3 +12,7 @@ _scrape/assets/
 
 # Archives and one-off exports
 *.zip
+
+# Screenshot scratch from visual verification
+.shots/
+shot.py
