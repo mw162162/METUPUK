@@ -283,7 +283,15 @@ function clean(html, opts = {}) {
     let variant = '';
     if (AUDIO_HOSTS.test(src)) variant = ' c-embed--audio';
     else if (PANEL_HOSTS.test(src)) variant = ' c-embed--panel';
-    const wrapper = frag(`<div class="c-embed${variant}"></div>`);
+    // An audio player is a fixed-height control and the publisher states the
+    // height their player needs. Honouring it stops the frame being stretched
+    // past the controls, which is what left a band of blank player below them.
+    let style = '';
+    if (variant === ' c-embed--audio') {
+      const h = parseInt(el.getAttribute('height'), 10);
+      if (h >= 60 && h <= 600) style = ` style="height:${h}px"`;
+    }
+    const wrapper = frag(`<div class="c-embed${variant}"${style}></div>`);
     if (replaceWith(el, wrapper)) wrapper.appendChild(el);
   }
 
