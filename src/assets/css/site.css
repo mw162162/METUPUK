@@ -435,7 +435,9 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
 .js-reveal [data-reveal] {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity var(--dur-5) var(--ease), transform var(--dur-5) var(--ease);
+  /* Entering, so it uses the strong ease-out: fast off the mark, settling
+     softly. --ease is the gentler curve kept for hover and colour. */
+  transition: opacity var(--dur-5) var(--ease-out), transform var(--dur-5) var(--ease-out);
   transition-delay: var(--reveal-delay, 0ms);
 }
 .js-reveal [data-reveal].is-visible { opacity: 1; transform: none; }
@@ -551,8 +553,8 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
   transform: translateY(-6px) scale(0.96);
   transform-origin: top left;
   transition:
-    opacity var(--dur-2) var(--ease),
-    transform var(--dur-2) var(--ease),
+    opacity var(--dur-2) var(--ease-out),
+    transform var(--dur-2) var(--ease-out),
     visibility 0s linear var(--dur-2);
 }
 .nav__item[data-open="true"] .nav__panel {
@@ -652,11 +654,35 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
     radial-gradient(ellipse at 78% 12%, rgb(236 63 142 / 0.34), transparent 62%),
     linear-gradient(100deg, rgb(28 3 16 / 0.94) 0%, rgb(43 5 25 / 0.86) 42%, rgb(68 7 41 / 0.62) 100%);
 }
-/* No white overlay. Painting white over a dark photograph goes through a grey
-   midpoint, which reads as haze rather than a blend. Masking makes the hero's
-   own pixels transparent instead, so the page colour comes through cleanly —
-   and it works for either theme without knowing what that colour is. */
-.hero--image::after { content: none; }
+/* The fade to the page, and the fifth attempt at it. Measured, this time.
+   Every previous version ended by making dark plum transparent over a white
+   page, which is the same arithmetic as painting white on top of it. In Oklab
+   the midpoint of that ramp is #95828c at chroma 0.027 — a flat grey-mauve.
+   Interpolating in Oklab instead only lifts it to 0.034. It is not the colour
+   space that is wrong: no ramp from a dark saturated colour straight to white
+   can avoid passing through greys.
+
+   So the ramp does not go straight there. It climbs the brand's own scale on
+   the way out — plum, raspberry, pink, white — which holds chroma near 0.18
+   through the middle instead of 0.027, roughly six times more colour exactly
+   where the muddiness used to be. It reads as the hero brightening into the
+   page rather than dissolving into haze.
+
+   And it is opaque from 40% down, so below that nothing composites over
+   anything: the colours are simply the colours. */
+.hero--image::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 13rem; z-index: -1; pointer-events: none;
+  background: linear-gradient(to bottom,
+    rgb(38 5 22 / 0) 0%,
+    rgb(38 5 22 / 0.86) 24%,
+    rgb(38 5 22) 40%,
+    #4d0c2e 54%,
+    #8e1f52 68%,
+    #c9548c 81%,
+    #f6c2da 92%,
+    var(--white) 100%);
+}
 
 .hero--image { background: transparent; }
 
@@ -683,8 +709,6 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
       rgb(43 5 25 / 0) 11rem),
     radial-gradient(ellipse at 78% 12%, rgb(236 63 142 / 0.34), transparent 62%),
     linear-gradient(100deg, rgb(28 3 16 / 0.94) 0%, rgb(43 5 25 / 0.86) 42%, rgb(68 7 41 / 0.62) 100%);
-  -webkit-mask-image: var(--wash-mask);
-  mask-image: var(--wash-mask);
 }
 .hero--image {
   /* Photograph: fully cleared before the colour ramp starts. */
@@ -845,8 +869,36 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
   display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3);
 }
 .c-disclosure > summary::-webkit-details-marker { display: none; }
-.c-disclosure > summary::after { content: "+"; font-size: 1.4em; line-height: 1; color: var(--accent); flex: 0 0 auto; }
-.c-disclosure[open] > summary::after { content: "−"; }
+/* The marker turns rather than being swapped for a different character: a
+   plus rotated 45 degrees is a close cross, so one glyph covers both states
+   and the change can be seen happening. */
+.c-disclosure > summary::after {
+  content: "+"; font-size: 1.4em; line-height: 1; color: var(--accent); flex: 0 0 auto;
+  transition: transform var(--dur-2) var(--ease);
+}
+.c-disclosure[open] > summary::after { transform: rotate(45deg); }
+
+/* Opening one of these used to put the content on screen instantly, which is
+   the one place on the site where something appeared out of nothing. The
+   answer wipes down from the summary it belongs to. clip-path and opacity are
+   both composited, so this costs no layout.
+
+   Closing stays immediate on purpose: `details` removes its content from the
+   box tree the moment it closes, so there is nothing left to animate out
+   without holding the element open from script. Dismissing also reads as
+   decisive, which is the right feel for putting something away. */
+@media (prefers-reduced-motion: no-preference) {
+  .c-disclosure[open] > .c-disclosure__body {
+    animation: disclosure-open var(--dur-3) var(--ease-out) both;
+  }
+  @keyframes disclosure-open {
+    from { opacity: 0; clip-path: inset(0 0 100% 0); }
+    to   { opacity: 1; clip-path: inset(0 0 0 0); }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .c-disclosure > summary::after { transition: none; }
+}
 .c-disclosure > summary:hover { background: var(--surface-tint); }
 .c-disclosure__body { padding: 0 var(--sp-5) var(--sp-5); }
 .c-disclosure__body > * + * { margin-top: var(--sp-4); }
@@ -1072,7 +1124,6 @@ a.tag:hover { border-color: var(--accent); }
       animation: scrolly-drift linear both;
       animation-timeline: view();
       animation-range: cover 0% cover 100%;
-      will-change: transform;
     }
     @keyframes scrolly-drift {
       from { transform: scale(1.12) translate3d(0, -1.5%, 0); }
@@ -1154,7 +1205,6 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
       animation: panel-track linear both;
       animation-timeline: view();
       animation-range: entry 10% exit 90%;
-      will-change: opacity, transform;
     }
     @keyframes panel-track {
       0%        { opacity: 0; transform: translateY(30px); }
@@ -1173,7 +1223,20 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
 /* --- Table of contents ---------------------------------------------------- */
 .layout-aside { display: grid; gap: var(--sp-7); align-items: start; }
 @media (min-width: 1024px) { .layout-aside { grid-template-columns: minmax(0, 1fr) 16rem; } }
-.toc { position: sticky; top: calc(var(--header-h) + 1.5rem); font-size: var(--step--1); }
+/* A sticky element taller than the viewport pins its top and hangs the rest
+   below the fold, where it can never be reached: on a page with sixty-five
+   headings that hides most of the list and leaves the marker tracking entries
+   the reader cannot see. Capping the height and letting the list scroll keeps
+   the whole rail usable. */
+.toc {
+  position: sticky; top: calc(var(--header-h) + 1.5rem);
+  font-size: var(--step--1);
+  display: flex; flex-direction: column;
+  max-height: calc(100dvh - var(--header-h) - 3rem);
+}
+/* Only the list scrolls, so the heading stays put. overscroll-behavior stops
+   the page from taking over once the rail reaches its end. */
+.toc ol { overflow-y: auto; overscroll-behavior: contain; }
 .toc h2 { font-size: var(--step--1); text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-faint); margin-bottom: var(--sp-3); }
 .toc ol { position: relative; list-style: none; padding: 0; margin: 0; border-left: 2px solid var(--border); }
 .toc li { margin: 0; }
@@ -1291,7 +1354,7 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
 .search-panel {
   width: min(100%, 40rem); margin-top: 8vh; background: var(--bg-raised);
   transform: none;
-  transition: transform var(--dur-2) var(--ease);
+  transition: transform var(--dur-2) var(--ease-out);
   border: 1px solid var(--border); border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg); overflow: hidden;
 }
@@ -1398,7 +1461,27 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
 /* At 1280 the content column stops growing and the gutter is 50px — the
    shrunken rail needs 46px, so this is exactly where it stops fitting. Below
    it the footer icons carry the same links. */
-@media (max-width: 1279px) { .social-rail { display: none; } }
+/* Below 1280 the page gutter is 20-30px and a vertical rail would sit on the
+   text. Rather than dropping the links entirely, the rail unpins from the side
+   and docks into the bottom corner as a short horizontal row, clear of the
+   reading column. */
+@media (max-width: 1279px) {
+  .social-rail {
+    top: auto; bottom: 1rem; right: 1rem;
+    transform: none;
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.35rem;
+    box-shadow: var(--shadow-lg);
+  }
+  .social-rail ul { flex-direction: row; gap: 0.15rem; }
+  .social-rail__icon { width: 2rem; height: 2rem; border: 0; background: none; }
+  .social-rail svg { width: 0.85rem; height: 0.85rem; }
+}
+/* On a phone the footer icons are only a short scroll away, and a floating
+   cluster would cover the content. */
+@media (max-width: 47rem) { .social-rail { display: none; } }
 @media print { .social-rail { display: none; } }
 
 /* --- Footer --------------------------------------------------------------- */
@@ -1406,7 +1489,22 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
 .site-footer a { color: #efdfe7; text-decoration: none; }
 .site-footer a:hover { color: var(--pink-300); text-decoration: underline; }
 .site-footer h2 { font-size: var(--step--1); text-transform: uppercase; letter-spacing: 0.14em; color: var(--pink-300); margin-bottom: var(--sp-4); }
-.footer__grid { display: grid; gap: var(--sp-6); grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); }
+/* Five blocks: the brand and four link columns. auto-fit fitted four of them
+   at this width and dropped the fifth onto a row of its own, leaving three
+   empty cells beside it. Five never divides into four, so the layout is stated
+   rather than inferred, and every step below has a whole number of rows. */
+.footer__grid { display: grid; gap: var(--sp-5) var(--sp-6); grid-template-columns: 1fr; }
+
+/* Brand across the top, then the four link columns as a tidy two by two. */
+@media (min-width: 40rem) {
+  .footer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer__brand { grid-column: 1 / -1; }
+}
+/* Everything on one line, the brand given a little more room for its sentence. */
+@media (min-width: 64rem) {
+  .footer__grid { grid-template-columns: 1.3fr repeat(4, minmax(0, 1fr)); }
+  .footer__brand { grid-column: auto; }
+}
 .footer__links { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--sp-1); font-size: 0.95rem; }
 .footer__links a { display: inline-block; padding-block: 0.45rem; }
 .footer__brand { max-width: 24rem; }

@@ -120,17 +120,23 @@
       return active;
     }
 
+    var activeLink = null;
     function syncToc() {
       var target = currentTarget();
       var activeId = target ? target.id : null;
       var current = null;
       tocLinks.forEach(function (a) {
-        if (activeId && decodeURIComponent(a.hash.slice(1)) === activeId) {
-          a.setAttribute('aria-current', 'true');
-          current = a;
-        } else {
-          a.removeAttribute('aria-current');
-        }
+        if (activeId && decodeURIComponent(a.hash.slice(1)) === activeId) current = a;
+      });
+      // Reading the marker's target position forces the browser to lay the
+      // page out. Doing that on every scrolled frame costs a full layout for an
+      // answer that only changes when the reader crosses a heading, so nothing
+      // below here runs until it actually has.
+      if (current === activeLink) return;
+      activeLink = current;
+      tocLinks.forEach(function (a) {
+        if (a === current) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
       });
       moveMarker(current);
     }
@@ -167,6 +173,19 @@
       marker.style.opacity = a ? '1' : '0';
       marker.style.transform =
         'translateY(' + target.offsetTop + 'px) scaleY(' + target.offsetHeight + ')';
+      // The rail can be taller than its own box, so the current entry has to be
+      // brought into view or the marker travels somewhere the reader cannot
+      // see. Scrolling the list directly, rather than scrollIntoView, keeps the
+      // page itself exactly where the reader put it.
+      var box = list.getBoundingClientRect();
+      var item = target.getBoundingClientRect();
+      if (item.top < box.top || item.bottom > box.bottom) {
+        var to = target.offsetTop - list.clientHeight / 2 + target.offsetHeight / 2;
+        var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (list.scrollTo) list.scrollTo({ top: to, behavior: smooth ? 'smooth' : 'auto' });
+        else list.scrollTop = to;
+      }
+
       if (marker.getAttribute('data-init') === 'false') {
         // Commit the first position, then let later moves animate.
         void marker.offsetHeight;
@@ -319,11 +338,24 @@
     // No injected sentinel element — an extra node at the top of <body> is one
     // more thing that can paint a stray hairline. The scroll position is the
     // only fact needed here.
+    var stuck = null;
     var setStuck = function () {
-      header.classList.toggle('is-stuck', window.scrollY > 4);
+      var now = window.scrollY > 4;
+      if (now === stuck) return;
+      stuck = now;
+      header.classList.toggle('is-stuck', now);
+    };
+    // Coalesced into one frame, like the contents rail below. A scroll can fire
+    // far more often than the screen refreshes; there is no reason to answer
+    // the same question twice between two paints.
+    var stuckQueued = false;
+    var onStuckScroll = function () {
+      if (stuckQueued) return;
+      stuckQueued = true;
+      requestAnimationFrame(function () { stuckQueued = false; setStuck(); });
     };
     setStuck();
-    window.addEventListener('scroll', setStuck, { passive: true });
+    window.addEventListener('scroll', onStuckScroll, { passive: true });
   }
 
   /* --- Sections settle in as they come into view -------------------------- */
@@ -383,28 +415,42 @@
         if (!entries[0].isIntersecting) return;
         obs.disconnect();
 
-        // Ease IN, not out: the count starts slow and accelerates into the
-        // final number. On a figure that means "women who died today" the
-        // build reads as dread rather than decoration.
+        // Paced from a schedule, not an easing curve. Every curve steep enough
+        // to accelerate at the end also makes its very first step the slowest,
+        // so the figure sat on zero for two seconds before anything moved.
         //
-        // t^2 is the usable limit here. Steeper curves stall for a third of a
-        // second on the opening numbers, which looks broken rather than tense;
-        // this holds the longest pause near 180ms and finishes on ~17ms steps.
-        var duration = 1400;
+        // Instead: an even beat up to fifteen, then closing gaps to the end.
+        //   1-15   200ms each   a steady, deliberate count
+        //   20     136ms
+        //   25      92ms
+        //   31      58ms        still three frames, still readable
+        // about 4.8 seconds in total.
+        var HOLD = 15;      // counted at an even pace up to here
+        var STEP = 200;     // ms per number during that stretch
+        var LAST = 58;      // ms for the final number
+        var ratio = Math.pow(LAST / STEP, 1 / (target - HOLD));
+
+        // Cumulative time at which each value should be showing.
+        var schedule = [];
+        var elapsed = 0;
+        for (var k = 1; k <= target; k++) {
+          elapsed += k <= HOLD ? STEP : STEP * Math.pow(ratio, k - HOLD);
+          schedule.push(elapsed);
+        }
+
         var start = null;
-        var shown = null;
+        var shown = 0;
 
         var tick = function (now) {
           if (start === null) start = now;
-          var t = Math.min(1, (now - start) / duration);
-          var eased = t * t;
-          var value = Math.round(target * eased);
+          var t = now - start;
+          var value = shown;
+          while (value < target && t >= schedule[value]) value++;
           if (value !== shown) {
-            counter.textContent = String(value);
             shown = value;
+            counter.textContent = String(value);
           }
-          if (t < 1) requestAnimationFrame(tick);
-          else if (shown !== target) counter.textContent = String(target);
+          if (shown < target) requestAnimationFrame(tick);
         };
 
         counter.textContent = '0';

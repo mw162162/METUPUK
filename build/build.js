@@ -345,6 +345,20 @@ function renderHome(model, exhibition) {
   });
 }
 
+/* A standfirst is worth having when it tells the reader something the page has
+   not said yet. On 269 of these 296 pages it was generated from the opening
+   paragraph, so the page introduced itself and then immediately repeated
+   itself word for word, with a band of empty space between the two. The
+   summary still goes in <meta name="description"> where search results need
+   it; it is only kept off the page when it is an echo. */
+function standfirst(doc) {
+  if (!doc.description) return '';
+  const norm = (s) => (s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  const opening = norm(doc.description).split(' ').slice(0, 12).join(' ');
+  if (opening && norm(doc.text).startsWith(opening)) return '';
+  return `<p class="lede">${esc(doc.description)}</p>`;
+}
+
 function renderPage(doc, model) {
   const html = addHeadingIds(doc.html);
   const toc = tableOfContents(html);
@@ -374,7 +388,7 @@ function renderPage(doc, model) {
   <div class="wrap">
     ${breadcrumb(doc.breadcrumb, doc.title)}
     <h1>${esc(doc.title)}</h1>
-    ${doc.description ? `<p class="lede">${esc(doc.description)}</p>` : ''}
+    ${standfirst(doc)}
   </div>
 </div>
 
