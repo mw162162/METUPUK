@@ -202,6 +202,23 @@
   }
 
 
+  /* --- The strip behind the social marks ---------------------------------- */
+  /* One custom property on the rail, four small backgrounds moved by it, in
+     the same coalesced frame as everything else that reads the scroll. */
+  (function () {
+    var rail = document.querySelector('.social-rail');
+    if (!rail || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var queued = false;
+    function paint() { rail.style.setProperty('--rail-art', Math.round(window.scrollY * 0.35)); }
+    function onScroll() {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () { queued = false; paint(); });
+    }
+    paint();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
   /* --- How far through the page you are ---------------------------------- */
   /* Only on pages long enough for the question to arise. The bar is a scaled
      transform, so it costs no layout, and it reuses the frame the header and
