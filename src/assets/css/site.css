@@ -1210,7 +1210,20 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
   padding-top: var(--sp-3);
   border-top: 1px solid var(--border);
 }
+/* The extra categories used to appear instantly and shove the grid down. The
+   panel wipes open from the bar it belongs to instead: clip-path and opacity
+   are both composited, so the list below still reflows but nothing paints
+   twice for the sake of it. */
 .filters--rest[hidden] { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .filters--rest:not([hidden]) {
+    animation: filters-open var(--dur-3) var(--ease-out) both;
+  }
+  @keyframes filters-open {
+    from { opacity: 0; clip-path: inset(0 0 100% 0); }
+    to   { opacity: 1; clip-path: inset(0 0 0 0); }
+  }
+}
 /* The disclosure is a pill on the same row, so the bar reads as one control. */
 .filters__toggle {
   display: inline-flex; align-items: center; gap: 0.45em;
@@ -1649,4 +1662,24 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   /* Still artwork, just not travelling. */
   .social-rail__icon { background-position: center 0; }
+}
+
+/* --- Press feedback on touch-first controls -------------------------------
+   Hover states do not exist on a phone, so on these the press is the only
+   acknowledgement the interface gives. Kept at the fast end of the budget:
+   these are navigation, not moments. */
+.drawer__list a:active,
+.pagination a:active,
+.c-disclosure > summary:active,
+.card:active {
+  transform: scale(0.985);
+}
+.drawer__list a, .pagination a, .c-disclosure > summary {
+  transition: transform var(--dur-1) var(--ease-out);
+}
+@media (prefers-reduced-motion: reduce) {
+  .drawer__list a:active,
+  .pagination a:active,
+  .c-disclosure > summary:active,
+  .card:active { transform: none; }
 }
