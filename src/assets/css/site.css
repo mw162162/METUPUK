@@ -781,9 +781,15 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
 .prose h2:first-child, .prose h3:first-child { margin-top: 0; }
 .prose ul, .prose ol { padding-left: 1.4em; }
 .prose li + li { margin-top: var(--sp-2); }
-.prose img { border-radius: var(--radius); margin-inline: auto; }
+/* Images line up with the text, not with the column. margin-inline: auto
+   centred every picture inside a container wider than the measure, so an image
+   sat 51px to the right of the paragraph above it: not enough to look
+   deliberate, just enough to look wrong. Flush left is the whole point of a
+   left-aligned measure. */
+.prose img { border-radius: var(--radius); }
+.prose figcaption { max-width: var(--measure); }
 .prose figure { margin-block: var(--sp-6); }
-.prose figcaption { font-size: var(--step--1); color: var(--text-faint); margin-top: var(--sp-2); text-align: center; }
+.prose figcaption { font-size: var(--step--1); color: var(--text-faint); margin-top: var(--sp-2); }
 /* A linked image should feel clickable. */
 .prose a:has(> img) { display: inline-block; border-radius: var(--radius); overflow: hidden; }
 .prose a > img { transition: transform var(--dur-3) var(--ease); }
@@ -1744,8 +1750,25 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
 }
 .prose > p.prose-float img { width: 100%; height: auto; }
 
-/* An image with a source big enough to cover the reading column uses all of
-   it, instead of sitting in the middle of a band of white. */
-.prose > .prose-fill, .prose > img.prose-fill, .prose > a.prose-fill { max-width: var(--measure); }
-.prose > .prose-fill img, .prose > img.prose-fill, .prose > a.prose-fill img { display: block; width: 100%; height: auto; }
-.layout-aside--solo .prose > .prose-fill { max-width: 76ch; }
+/* Pictures are wider than the paragraphs. Text stays at its measure because
+   that is what makes it readable; an image has no such limit, and holding both
+   to the same width was what made these pages feel like a column of grey with
+   occasional grey rectangles in it. Letting the image break past the measure
+   to the full width of its column gives the page a rhythm, and costs nothing:
+   only images with a source large enough to cover that width are marked, so
+   none of them softens.
+
+   The break is one-sided. The image keeps the text's left edge and grows to
+   the right, so the reading margin never moves. */
+.prose > .prose-fill,
+.prose > img.prose-fill,
+.prose > a.prose-fill {
+  max-width: none;
+  width: 100%;
+  margin-top: var(--sp-6);
+  margin-bottom: var(--sp-6);
+}
+.prose > .prose-fill img,
+.prose > img.prose-fill,
+.prose > a.prose-fill img { display: block; width: 100%; height: auto; }
+.prose > .prose-fill + * { margin-top: var(--sp-6); }

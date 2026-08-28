@@ -293,7 +293,7 @@ function upgradeTinyImages(html) {
    image takes it and fills the width. Where it does not, it is left exactly as
    it was: filling the column from a small source would only trade white space
    for a soft picture, and that is a worse trade. */
-function fillColumn(html, { measure = 766 } = {}) {
+function fillColumn(html, { measure = 880 } = {}) {
   if (!html || !html.includes('<img')) return html;
   const root = parse(html);
 
@@ -327,7 +327,7 @@ function fillColumn(html, { measure = 766 } = {}) {
     if (!siblings.length) continue;
     const pick = siblings.find((v) => v.w >= measure * 2)
       || siblings[siblings.length - 1];
-    if (!pick || pick.w < measure * 1.4) continue;
+    if (!pick || pick.w < measure * 1.15) continue;
 
     img.setAttribute('src', pick.file);
     img.setAttribute('width', String(pick.w));
