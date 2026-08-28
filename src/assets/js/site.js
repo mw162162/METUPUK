@@ -201,6 +201,38 @@
     return place;
   }
 
+
+  /* --- How far through the page you are ---------------------------------- */
+  /* Only on pages long enough for the question to arise. The bar is a scaled
+     transform, so it costs no layout, and it reuses the frame the header and
+     the contents rail already share rather than opening a third listener. */
+  (function () {
+    var article = document.querySelector('main .prose');
+    if (!article) return;
+    var doc = document.documentElement;
+    if (doc.scrollHeight < window.innerHeight * 2.5) return;
+
+    var bar = document.createElement('div');
+    bar.className = 'read-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+
+    var queued = false;
+    function paint() {
+      var max = doc.scrollHeight - window.innerHeight;
+      var pct = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+      bar.style.transform = 'scaleX(' + pct.toFixed(4) + ')';
+    }
+    function onScroll() {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () { queued = false; paint(); });
+    }
+    paint();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+  })();
+
   /* --- Site search -------------------------------------------------------- */
   var dialog = document.getElementById('search-dialog');
   var input = document.getElementById('search-input');
@@ -363,9 +395,18 @@
      visible from the start, which is the correct fallback. */
   if ('IntersectionObserver' in window &&
       !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var blocks = document.querySelectorAll(
-      'main .section > .wrap > *, main .hero__copy, main .hero__stat, main .card, main .portrait, main .route'
-    );
+    // The homepage had this and no other page did, which is why every article
+    // read as a static wall. What settles in is the visual events only -- a
+    // picture, an embed, a quotation, a grid. Running text is deliberately left
+    // alone: prose that fades in as you reach it is slower to read, not more
+    // engaging, and this is a site people read while they are unwell.
+    var blocks = document.querySelectorAll([
+      'main .section > .wrap > *', 'main .hero__copy', 'main .hero__stat',
+      'main .card', 'main .portrait', 'main .route',
+      'main .prose > figure', 'main .prose > .c-embed', 'main .prose > blockquote',
+      'main .prose > .prose-grid', 'main .prose > .c-card', 'main .prose > .c-gallery',
+      'main .prose > p:has(> img)', 'main .profile-grid', 'main .tmm_wrap',
+    ].join(', '));
     if (blocks.length) {
       root.classList.add('js-reveal');
       var revealObserver = new IntersectionObserver(function (entries, obs) {
