@@ -168,7 +168,7 @@ function renderHome(model, exhibition) {
   <div class="wrap hero__grid">
     <div class="hero__copy">
       <p class="hero__eyebrow">Metastatic breast cancer · United Kingdom</p>
-      <h1>Another 31 women will die today. <em>And tomorrow. And the next.</em></h1>
+      <h1>Another 31 women will die today.<br><em class="hero__beat">And tomorrow.</em><br><em class="hero__beat hero__beat--last">And the next.</em></h1>
       <p class="hero__lede">METUPUK is the only patient advocacy group in the UK campaigning solely on metastatic (secondary) breast cancer. We are the patients — volunteer-led, unpaid, and #BusyLivingWithMets.</p>
       <div class="hero__actions">
         <a class="btn btn--donate" href="/help-us/#donate">Donate</a>
