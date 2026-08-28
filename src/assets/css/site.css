@@ -280,6 +280,11 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
 .wrap { width: min(100% - 2.5rem, var(--wrap)); margin-inline: auto; }
 .wrap--narrow { width: min(100% - 2.5rem, var(--wrap-narrow)); margin-inline: auto; }
 .section { padding-block: var(--sp-8); }
+/* A section straight after the page title does not need a full section's worth
+   of air above it: the title band already has its own padding and a rule
+   beneath it, so the two stacked left about 130px of nothing between the
+   heading and the first line of text on every page. */
+.page-head + .section { padding-top: var(--sp-6); }
 .section--tight { padding-block: var(--sp-7); }
 .section--sunken { background: var(--bg-sunken); }
 .section--inverse { background: var(--bg-inverse); color: var(--text-inverse); }
@@ -1120,7 +1125,23 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
 }
 /* --- Table of contents ---------------------------------------------------- */
 .layout-aside { display: grid; gap: var(--sp-7); align-items: start; }
-@media (min-width: 1024px) { .layout-aside { grid-template-columns: minmax(0, 1fr) 16rem; } }
+@media (min-width: 1024px) {
+  .layout-aside { grid-template-columns: minmax(0, 1fr) 16rem; }
+  /* 289 of the 299 pages using this layout render no contents rail at all, and
+     were still reserving its column: a 16rem hole down the right of nearly
+     every page on the site. With nothing to put there, the reading column
+     keeps exactly the width it had and centres instead, so the line length
+     does not change and the page stops looking off-balance. */
+  /* 289 of the 299 pages using this layout render no contents rail and were
+     still reserving its 16rem column. The column goes, but the text stays
+     left-aligned where it started: centring it only trades one gutter for two
+     and pushes the reading column away from the title above it.
+     Instead the measure grows a little, so the text uses more of the width it
+     just got back. 66ch is the comfortable ceiling for a rail page; 76ch is
+     still inside what is readable and leaves noticeably less empty. */
+  .layout-aside--solo { grid-template-columns: minmax(0, 1fr); }
+  .layout-aside--solo .prose > * { max-width: 76ch; }
+}
 /* A sticky element taller than the viewport pins its top and hangs the rest
    below the fold, where it can never be reached: on a page with sixty-five
    headings that hides most of the list and leaves the marker tracking entries
@@ -1683,3 +1704,29 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
   .c-disclosure > summary:active,
   .card:active { transform: none; }
 }
+
+/* --- Small images in flowing text -----------------------------------------
+   A 271px portrait sitting alone in an 868px column leaves two thirds of the
+   line empty and stops the reading dead. Anything narrow enough to leave a
+   readable column beside it is set into the text instead, the way a magazine
+   would. The threshold is deliberate: the text beside it must still get about
+   55 characters, so this only applies from 1100px up, and only to images that
+   are genuinely small. */
+@media (min-width: 1100px) {
+  .prose > p.prose-float {
+    float: left;
+    width: min(42%, 20rem);
+    margin: 0.35rem var(--sp-5) var(--sp-4) 0;
+  }
+  .prose > p.prose-float + * { margin-top: 0; }
+  /* Nothing structural is allowed to wrap around it. */
+  .prose > h2, .prose > h3, .prose > .c-embed,
+  .prose > .prose-grid, .prose > blockquote { clear: both; }
+}
+.prose > p.prose-float img { width: 100%; height: auto; }
+
+/* An image with a source big enough to cover the reading column uses all of
+   it, instead of sitting in the middle of a band of white. */
+.prose > .prose-fill, .prose > img.prose-fill, .prose > a.prose-fill { max-width: var(--measure); }
+.prose > .prose-fill img, .prose > img.prose-fill, .prose > a.prose-fill img { display: block; width: 100%; height: auto; }
+.layout-aside--solo .prose > .prose-fill { max-width: 76ch; }

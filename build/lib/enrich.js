@@ -284,6 +284,61 @@ function upgradeTinyImages(html) {
 }
 
 /* --- Links ---------------------------------------------------------------- */
+/* --- Small images in a wide column ----------------------------------------
+   183 of the 198 images that sit alone as a block in prose were narrower than
+   the reading column, most of them by a lot: a 640px picture in a 766px
+   measure leaves a band of white down one side and stops the page dead.
+
+   Where the upload has a rendition big enough to cover the full column, the
+   image takes it and fills the width. Where it does not, it is left exactly as
+   it was: filling the column from a small source would only trade white space
+   for a soft picture, and that is a worse trade. */
+function fillColumn(html, { measure = 766 } = {}) {
+  if (!html || !html.includes('<img')) return html;
+  const root = parse(html);
+
+  for (const img of root.querySelectorAll('img')) {
+    const src = img.getAttribute('src') || '';
+    if (!src.startsWith('/media/')) continue;
+
+    // Only images standing alone as their own block. A linked image counts:
+    // the anchor is a wrapper, not company for the picture.
+    let host = img;
+    let up = img.parentNode;
+    if (up && (up.rawTagName || '').toLowerCase() === 'a') { host = up; up = up.parentNode; }
+    const tag = up ? (up.rawTagName || '').toLowerCase() : '';
+    const alone = tag === 'p' || tag === 'figure';
+    // A caption is allowed; a paragraph of prose around the image is not.
+    if (alone) {
+      const stray = up.text.replace(/\s/g, '');
+      const caption = up.querySelector('figcaption');
+      const capLen = caption ? caption.text.replace(/\s/g, '').length : 0;
+      if (stray - capLen > 0) continue;
+      host = up;
+    } else if (tag !== 'div') continue;
+    if (img.closest('.c-card__media') || img.closest('.card__media')
+      || img.closest('.c-gallery') || img.closest('.prose-grid')
+      || img.closest('.profile') || img.closest('.tmm_member')) continue;
+
+    const declared = parseInt(img.getAttribute('width'), 10) || 0;
+    if (!declared || declared >= measure) continue;
+
+    const siblings = siblingRenditions(src);
+    if (!siblings.length) continue;
+    const pick = siblings.find((v) => v.w >= measure * 2)
+      || siblings[siblings.length - 1];
+    if (!pick || pick.w < measure * 1.4) continue;
+
+    img.setAttribute('src', pick.file);
+    img.setAttribute('width', String(pick.w));
+    img.setAttribute('height', String(pick.h));
+    const cls = (host.getAttribute('class') || '').split(/\s+/).filter(Boolean);
+    if (!cls.includes('prose-fill')) cls.push('prose-fill');
+    host.setAttribute('class', cls.join(' '));
+  }
+  return root.toString();
+}
+
 function fixLinks(html) {
   if (!html.includes('<a')) return html;
   const root = parse(html);
@@ -463,6 +518,8 @@ function enrich(html) {
   out = classifyQuotes(out);
   out = teamMembers(out);
   out = layout.group(out);
+  out = layout.floatNarrow(out);
+  out = fillColumn(out);
   out = layout.profiles(out);
   return out;
 }

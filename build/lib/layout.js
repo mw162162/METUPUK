@@ -138,4 +138,30 @@ function profiles(html, { min = 3 } = {}) {
   return root.innerHTML;
 }
 
-module.exports = { group, profiles };
+// A lone narrow image in a wide column leaves most of the line empty and stops
+// the reading. Where the following block is real prose, mark the image so the
+// text can run beside it. Only genuinely small images qualify: anything wider
+// would leave too little room for a readable line next to it.
+function floatNarrow(html, { narrow = 420, minProse = 180 } = {}) {
+  if (!html || !html.includes('<img')) return html;
+  const root = parse(`<div>${html}</div>`).firstChild;
+  const kids = root.childNodes.filter((n) => n.nodeType === 1);
+  for (let i = 0; i < kids.length; i++) {
+    const el = kids[i];
+    if ((el.rawTagName || '').toLowerCase() !== 'p') continue;
+    const img = imageBlock(el);
+    if (!img) continue;
+    const w = parseInt(img.getAttribute('width'), 10) || 0;
+    if (!w || w > narrow) continue;
+    const next = kids[i + 1];
+    if (!next || (next.rawTagName || '').toLowerCase() !== 'p') continue;
+    if (imageBlock(next)) continue;
+    if (next.text.replace(/\s+/g, ' ').trim().length < minProse) continue;
+    const cls = (el.getAttribute('class') || '').split(/\s+/).filter(Boolean);
+    if (!cls.includes('prose-float')) cls.push('prose-float');
+    el.setAttribute('class', cls.join(' '));
+  }
+  return root.innerHTML;
+}
+
+module.exports = { group, profiles, floatNarrow };

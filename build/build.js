@@ -393,7 +393,7 @@ function renderPage(doc, model) {
 </div>
 
 <div class="section">
-  <div class="wrap layout-aside">
+  <div class="wrap layout-aside${toc ? '' : ' layout-aside--solo'}">
     <div class="prose">
       ${html}
     </div>
@@ -452,7 +452,7 @@ function renderPost(doc, prev, next) {
 </div>
 
 <div class="section">
-  <div class="wrap layout-aside">
+  <div class="wrap layout-aside${toc ? '' : ' layout-aside--solo'}">
     <article class="prose">
       ${doc.image ? (() => {
         // Stretching a 200px upload across a 780px hero is what makes a page
