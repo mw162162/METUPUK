@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Build output. Regenerate with: node build/build.js
+dist/
+
+# Scraped media, ~1.1 GB of images, PDFs and audio.
+# Too large for the repo and fully reproducible: node build/pull.js
+# The JSON manifests and Elementor HTML fallbacks beside it ARE committed,
+# so the site can be rebuilt without going back to the live WordPress API.
+_scrape/assets/
+
+# Archives and one-off exports
+*.zip

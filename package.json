@@ -1,0 +1,24 @@
+{
+  "name": "metupuk-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static rebuild of metupuk.org.uk, migrated from WordPress with no content loss.",
+  "scripts": {
+    "build": "node build/build.js",
+    "optimise": "node build/optimise-images.js",
+    "verify": "node build/verify.js",
+    "audit": "node tools/webaudit dist",
+    "audit:live": "node tools/webaudit https://metupuk.org.uk --max 150",
+    "serve": "npx --yes serve dist -l 4321",
+    "check": "node build/build.js && node build/verify.js && node tools/webaudit dist",
+    "portraits": "node build/make-portraits.js",
+    "renditions": "node build/make-renditions.js",
+    "assets": "node build/make-portraits.js && node build/make-renditions.js",
+    "pull": "node build/pull.js",
+    "publish": "node build/pull.js && node build/make-renditions.js && node build/build.js && node build/verify.js && node tools/webaudit dist"
+  },
+  "dependencies": {
+    "node-html-parser": "^9.0.1",
+    "sharp": "^0.35.4"
+  }
+}

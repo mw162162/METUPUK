@@ -1,0 +1,3 @@
+# Serve the custom 404 for anything that does not resolve.
+# Understood by Netlify and Cloudflare Pages.
+/*  /404.html  404

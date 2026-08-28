@@ -1,0 +1,14 @@
+# Hashed-by-path media never changes, so cache it hard.
+/media/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*
+  Cache-Control: public, max-age=604800
+
+# HTML should always revalidate so edits go live immediately.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# A preview copy of a charity's site should not be indexed under our domain.
+/*
+  X-Robots-Tag: noindex
