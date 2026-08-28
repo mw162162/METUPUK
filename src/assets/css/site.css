@@ -654,35 +654,11 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
     radial-gradient(ellipse at 78% 12%, rgb(236 63 142 / 0.34), transparent 62%),
     linear-gradient(100deg, rgb(28 3 16 / 0.94) 0%, rgb(43 5 25 / 0.86) 42%, rgb(68 7 41 / 0.62) 100%);
 }
-/* The fade to the page, and the fifth attempt at it. Measured, this time.
-   Every previous version ended by making dark plum transparent over a white
-   page, which is the same arithmetic as painting white on top of it. In Oklab
-   the midpoint of that ramp is #95828c at chroma 0.027 — a flat grey-mauve.
-   Interpolating in Oklab instead only lifts it to 0.034. It is not the colour
-   space that is wrong: no ramp from a dark saturated colour straight to white
-   can avoid passing through greys.
-
-   So the ramp does not go straight there. It climbs the brand's own scale on
-   the way out — plum, raspberry, pink, white — which holds chroma near 0.18
-   through the middle instead of 0.027, roughly six times more colour exactly
-   where the muddiness used to be. It reads as the hero brightening into the
-   page rather than dissolving into haze.
-
-   And it is opaque from 40% down, so below that nothing composites over
-   anything: the colours are simply the colours. */
-.hero--image::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
-  height: 13rem; z-index: -1; pointer-events: none;
-  background: linear-gradient(to bottom,
-    rgb(38 5 22 / 0) 0%,
-    rgb(38 5 22 / 0.86) 24%,
-    rgb(38 5 22) 40%,
-    #4d0c2e 54%,
-    #8e1f52 68%,
-    #c9548c 81%,
-    #f6c2da 92%,
-    var(--white) 100%);
-}
+/* No white overlay. Painting white over a dark photograph goes through a grey
+   midpoint, which reads as haze rather than a blend. Masking makes the hero's
+   own pixels transparent instead, so the page colour comes through cleanly —
+   and it works for either theme without knowing what that colour is. */
+.hero--image::after { content: none; }
 
 .hero--image { background: transparent; }
 
@@ -709,6 +685,8 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
       rgb(43 5 25 / 0) 11rem),
     radial-gradient(ellipse at 78% 12%, rgb(236 63 142 / 0.34), transparent 62%),
     linear-gradient(100deg, rgb(28 3 16 / 0.94) 0%, rgb(43 5 25 / 0.86) 42%, rgb(68 7 41 / 0.62) 100%);
+  -webkit-mask-image: var(--wash-mask);
+  mask-image: var(--wash-mask);
 }
 .hero--image {
   /* Photograph: fully cleared before the colour ramp starts. */
@@ -1461,26 +1439,18 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
 /* At 1280 the content column stops growing and the gutter is 50px — the
    shrunken rail needs 46px, so this is exactly where it stops fitting. Below
    it the footer icons carry the same links. */
-/* Below 1280 the page gutter is 20-30px and a vertical rail would sit on the
-   text. Rather than dropping the links entirely, the rail unpins from the side
-   and docks into the bottom corner as a short horizontal row, clear of the
-   reading column. */
+/* Stays vertical all the way down: laid out as a column it reads as part of
+   the page's furniture, where a horizontal cluster in the corner reads as a
+   widget bolted on. Below 1280 the page gutter is only 20-30px, so the marks
+   shrink and tuck against the edge rather than being dropped. */
 @media (max-width: 1279px) {
-  .social-rail {
-    top: auto; bottom: 1rem; right: 1rem;
-    transform: none;
-    background: var(--bg-raised);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 0.35rem;
-    box-shadow: var(--shadow-lg);
-  }
-  .social-rail ul { flex-direction: row; gap: 0.15rem; }
-  .social-rail__icon { width: 2rem; height: 2rem; border: 0; background: none; }
-  .social-rail svg { width: 0.85rem; height: 0.85rem; }
+  .social-rail { right: 0.25rem; }
+  .social-rail ul { gap: 0.3rem; }
+  .social-rail__icon { width: 1.9rem; height: 1.9rem; }
+  .social-rail svg { width: 0.8rem; height: 0.8rem; }
 }
-/* On a phone the footer icons are only a short scroll away, and a floating
-   cluster would cover the content. */
+/* On a phone there is no gutter at all and the footer carries the same links
+   a short scroll away. */
 @media (max-width: 47rem) { .social-rail { display: none; } }
 @media print { .social-rail { display: none; } }
 
