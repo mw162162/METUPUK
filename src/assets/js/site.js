@@ -208,8 +208,26 @@
   (function () {
     var rail = document.querySelector('.social-rail');
     if (!rail || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var icons = Array.prototype.slice.call(rail.querySelectorAll('.social-rail__icon'));
+    if (!icons.length) return;
+
+    // Each mark is a window onto ONE piece of artwork, not four copies of the
+    // same slice. Offsetting every icon by its own position in the rail is what
+    // makes the strip continuous: without it all four showed the same fragment
+    // at the same moment, which reads as a repeated logo rather than as
+    // something you are moving across.
+    var top = icons[0].getBoundingClientRect().top;
+    var offsets = icons.map(function (el) {
+      return Math.round(el.getBoundingClientRect().top - top);
+    });
+
     var queued = false;
-    function paint() { rail.style.setProperty('--rail-art', Math.round(window.scrollY * 0.35)); }
+    function paint() {
+      var y = window.scrollY * 0.35;
+      for (var i = 0; i < icons.length; i++) {
+        icons[i].style.backgroundPosition = 'center ' + (-(y + offsets[i])).toFixed(1) + 'px';
+      }
+    }
     function onScroll() {
       if (queued) return;
       queued = true;
@@ -234,11 +252,17 @@
     bar.setAttribute('aria-hidden', 'true');
     document.body.appendChild(bar);
 
+    // The bar tracks the article, not the document. Measured against the whole
+    // page it was still climbing through the footer, where it read as a stray
+    // rule across the top of it rather than as progress through anything.
+    var footer = document.querySelector('.site-footer');
     var queued = false;
     function paint() {
-      var max = doc.scrollHeight - window.innerHeight;
-      var pct = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+      var end = (footer ? footer.offsetTop : doc.scrollHeight) - window.innerHeight;
+      var pct = end > 0 ? Math.min(1, Math.max(0, window.scrollY / end)) : 0;
       bar.style.transform = 'scaleX(' + pct.toFixed(4) + ')';
+      // Once the reading is behind you, the bar has nothing left to say.
+      bar.style.opacity = pct >= 1 ? '0' : '1';
     }
     function onScroll() {
       if (queued) return;

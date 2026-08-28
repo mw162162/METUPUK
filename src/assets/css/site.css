@@ -1685,7 +1685,9 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
   transform: scaleX(0);
   transform-origin: 0 50%;
   pointer-events: none;
+  transition: opacity var(--dur-2) var(--ease);
 }
+@media (prefers-reduced-motion: reduce) { .read-progress { transition: none; } }
 @media print { .read-progress { display: none; } }
 
 /* --- Artwork behind the social marks --------------------------------------
