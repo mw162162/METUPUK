@@ -34,7 +34,12 @@ const norm = (s) => (s || '').replace(/[\s ]+/g, ' ')
 
 function run() {
   const model = buildModel();
-  const files = walkFiles(OUT).filter((f) => f.endsWith('.html'));
+  // The editor at /admin is an application shell, not a page of the site: it
+  // has no heading and no content, and counting it would put a permanent
+  // false warning in this report.
+  const files = walkFiles(OUT)
+    .filter((f) => f.endsWith('.html'))
+    .filter((f) => !f.replace(/\\/g, '/').includes('/admin/'));
   const problems = { deadLinks: [], missingImages: [], noH1: [], noTitle: [], contentLoss: [], emptyAlt: 0 };
   const linkTargets = new Map();
 

@@ -15,7 +15,9 @@
     "renditions": "node build/make-renditions.js",
     "assets": "node build/make-portraits.js && node build/make-renditions.js",
     "pull": "node build/pull.js",
-    "publish": "node build/pull.js && node build/make-renditions.js && node build/build.js && node build/verify.js && node tools/webaudit dist"
+    "publish": "node build/pull.js && node build/make-renditions.js && node build/build.js && node build/verify.js && node tools/webaudit dist",
+    "export": "node build/export-content.js",
+    "cms": "npx --yes @sveltia/cms-proxy-server"
   },
   "dependencies": {
     "node-html-parser": "^9.0.1",

@@ -33,8 +33,8 @@ function seo(site, add) {
     if (!title) {
       add({ id: 'title-missing', severity: SEV.error, page: url, detail: 'No <title>.', fix: 'Add a unique, descriptive title of roughly 50–60 characters.' });
     } else {
-      if (title.length < 15) add({ id: 'title-short', severity: SEV.warning, page: url, detail: `Title is only ${title.length} characters: "${title}"`, fix: 'Aim for 50–60 characters so the result is informative in search.' });
-      if (title.length > 65) add({ id: 'title-long', severity: SEV.notice, page: url, detail: `Title is ${title.length} characters; Google truncates around 60.`, fix: 'Front-load the distinctive words.' });
+      if (title.length < 15 && !noindex) add({ id: 'title-short', severity: SEV.warning, page: url, detail: `Title is only ${title.length} characters: "${title}"`, fix: 'Aim for 50–60 characters so the result is informative in search.' });
+      if (title.length > 65 && !noindex) add({ id: 'title-long', severity: SEV.notice, page: url, detail: `Title is ${title.length} characters; Google truncates around 60.`, fix: 'Front-load the distinctive words.' });
       if (!noindex) {
         if (!titles.has(title)) titles.set(title, []);
         titles.get(title).push(url);
@@ -42,7 +42,7 @@ function seo(site, add) {
     }
 
     if (!desc) {
-      add({ id: 'description-missing', severity: SEV.warning, page: url, detail: 'No meta description.', fix: 'Write a 120–160 character summary; it is the sales pitch in the search result.' });
+      if (!noindex) add({ id: 'description-missing', severity: SEV.warning, page: url, detail: 'No meta description.', fix: 'Write a 120–160 character summary; it is the sales pitch in the search result.' });
     } else {
       if (desc.length < 70) add({ id: 'description-short', severity: SEV.notice, page: url, detail: `Meta description is only ${desc.length} characters.`, fix: 'Use 120–160 characters to fill the search snippet.' });
       if (desc.length > 170) add({ id: 'description-long', severity: SEV.notice, page: url, detail: `Meta description is ${desc.length} characters and will be cut off.`, fix: 'Trim to about 155 characters.' });
@@ -55,10 +55,16 @@ function seo(site, add) {
     if (!canonical) add({ id: 'canonical-missing', severity: SEV.notice, page: url, detail: 'No canonical link.', fix: 'Add <link rel="canonical"> to consolidate duplicate URLs.' });
 
     const h1s = dom.querySelectorAll('h1');
-    if (h1s.length === 0) add({ id: 'h1-missing', severity: SEV.error, page: url, detail: 'No <h1>.', fix: 'Every page needs exactly one h1 stating what the page is about.' });
+    // Same exemption the title and description checks make: a noindex page is
+    // not part of the public site. Application shells such as a CMS at /admin
+    // legitimately have no heading, and flagging them puts a permanent error
+    // in the report that can never be cleared.
+    if (h1s.length === 0 && !noindex) add({ id: 'h1-missing', severity: SEV.error, page: url, detail: 'No <h1>.', fix: 'Every page needs exactly one h1 stating what the page is about.' });
     if (h1s.length > 1) add({ id: 'h1-multiple', severity: SEV.warning, page: url, detail: `${h1s.length} <h1> elements.`, fix: 'Use one h1; demote the rest to h2.' });
 
-    if (!dom.querySelector('meta[property="og:title"]')) {
+    // Search and social presentation checks do not apply to a page that is
+    // deliberately kept out of the index, such as a CMS at /admin.
+    if (!dom.querySelector('meta[property="og:title"]') && !noindex) {
       add({ id: 'og-missing', severity: SEV.warning, page: url, detail: 'No Open Graph tags.', fix: 'Add og:title, og:description and og:image so shared links show a rich card. This is one of the cheapest wins for social reach.' });
     } else if (!dom.querySelector('meta[property="og:image"]')) {
       add({ id: 'og-image-missing', severity: SEV.warning, page: url, detail: 'Open Graph tags present but no og:image.', fix: 'A shared link without an image gets far fewer clicks.' });
@@ -211,9 +217,17 @@ function links(site, add) {
 
   // Orphan pages get no internal links, so search engines discover them late
   // and users never find them.
+  const noindexed = new Set(
+    site.pages
+      .filter((p) => /noindex/i.test(attr(p.dom.querySelector('meta[name="robots"]'), 'content') || ''))
+      .map((p) => p.url)
+  );
   for (const [url, count] of inbound) {
     if (url === '/' || count > 0) continue;
     if (/(^|\/)(404|offline|thanks?|thank-you)(\.html)?\/?$/i.test(url)) continue;
+    // A page kept out of the index is meant to be reached directly, not linked
+    // to. A CMS at /admin is the usual case.
+    if (noindexed.has(url)) continue;
     add({ id: 'page-orphan', severity: SEV.warning, page: url, detail: 'No internal links point to this page.', fix: 'Link to it from a relevant page or a section index, or it will not be found.' });
   }
 

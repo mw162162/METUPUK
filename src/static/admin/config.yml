@@ -1,0 +1,197 @@
+# Editor configuration.
+#
+# Read by Sveltia CMS (and by Decap, which shares this format) from /admin.
+# Content lives as files in the repo, so an edit is a commit and a commit
+# rebuilds the site. There is no database and no per-seat licence.
+#
+# The component list under `sections` is the part that matters commercially:
+# it is what the client sees when they press "Add section", and it is the same
+# list on every site built from this kit. Add a component here and it appears
+# in the editor; the build renders it.
+
+backend:
+  name: github
+  repo: OWNER/REPO          # set per client
+  branch: main
+  # Sveltia talks to GitHub directly; no OAuth server of your own is needed.
+
+# Lets you run the editor against local files while developing:
+#   npx @sveltia/cms-proxy-server   then open /admin
+local_backend: true
+
+media_folder: "_scrape/assets"
+public_folder: "/media"
+
+# Editors see the site, not the repo.
+site_url: /
+display_url: /
+
+# ---------------------------------------------------------------------------
+# Reusable component definitions.
+#
+# YAML anchors keep one definition per component. A collection references them
+# with `<<: *name`, so a component is described once and behaves identically
+# wherever it is offered.
+# ---------------------------------------------------------------------------
+definitions:
+  prose: &prose
+    label: "Text"
+    name: prose
+    summary: "Text"
+    fields:
+      - { label: "Body", name: body, widget: markdown }
+
+  quote: &quote
+    label: "Pull quote"
+    name: quote
+    summary: "Quote: {{fields.text}}"
+    fields:
+      - { label: "Quote", name: text, widget: text }
+      - { label: "Attribution", name: attribution, widget: string, required: false }
+
+  image: &image
+    label: "Image"
+    name: image
+    summary: "Image: {{fields.alt}}"
+    fields:
+      - { label: "Image", name: src, widget: image }
+      - { label: "Alt text", name: alt, widget: string,
+          hint: "Describe the picture for someone who cannot see it. Leave empty only if it is purely decorative." }
+      - { label: "Caption", name: caption, widget: string, required: false }
+      - { label: "Width", name: width, widget: number, required: false }
+      - { label: "Height", name: height, widget: number, required: false }
+
+  gallery: &gallery
+    label: "Image gallery"
+    name: gallery
+    summary: "Gallery ({{fields.images.length}} images)"
+    fields:
+      - label: "Images"
+        name: images
+        widget: list
+        fields:
+          - { label: "Image", name: src, widget: image }
+          - { label: "Alt text", name: alt, widget: string }
+
+  embed: &embed
+    label: "Embed"
+    name: embed
+    summary: "Embed: {{fields.title}}"
+    fields:
+      - { label: "Kind", name: variant, widget: select, options: [video, audio, panel], default: video }
+      - { label: "Embed URL", name: src, widget: string,
+          hint: "The player URL, e.g. a YouTube or Vimeo embed link." }
+      - { label: "Title", name: title, widget: string,
+          hint: "Announced by screen readers. Say what the embed contains." }
+      - { label: "Fallback", name: fallback, widget: text, required: false,
+          hint: "Shown if the embed cannot load." }
+
+  card: &card
+    label: "Card"
+    name: card
+    summary: "Card: {{fields.heading}}"
+    fields:
+      - { label: "Heading", name: heading, widget: string }
+      - { label: "Image", name: image, widget: image, required: false }
+      - { label: "Alt text", name: imageAlt, widget: string, required: false }
+      - { label: "Link", name: href, widget: string, required: false }
+      - { label: "Body", name: body, widget: markdown, required: false }
+
+  disclosure: &disclosure
+    label: "Expandable section"
+    name: disclosure
+    summary: "Expandable: {{fields.summary}}"
+    fields:
+      - { label: "Heading", name: summary, widget: string }
+      - { label: "Hidden content", name: body, widget: markdown }
+
+  profiles: &profiles
+    label: "People"
+    name: profiles
+    summary: "People ({{fields.people.length}})"
+    fields:
+      - label: "People"
+        name: people
+        widget: list
+        summary: "{{fields.name}}"
+        fields:
+          - { label: "Name", name: name, widget: string }
+          - { label: "Role", name: role, widget: string, required: false }
+          - { label: "About", name: body, widget: markdown, required: false }
+          - { label: "Links", name: links, widget: list, required: false, field: { label: URL, name: url, widget: string } }
+
+  html: &html
+    label: "Custom HTML"
+    name: html
+    summary: "Custom HTML"
+    fields:
+      - { label: "HTML", name: html, widget: code, default_language: html, output_code_only: true,
+          hint: "An escape hatch. Anything here is published exactly as written." }
+
+collections:
+  - name: pages
+    label: "Pages"
+    label_singular: "Page"
+    folder: content/pages
+    create: true
+    slug: "{{fields.slug}}"
+    identifier_field: title
+    summary: "{{title}}"
+    sortable_fields: [title, date]
+    fields:
+      - { label: "Title", name: title, widget: string }
+      - { label: "URL", name: url, widget: string, hint: "The address of this page, e.g. /about-us/our-team/" }
+      - { label: "Date", name: date, widget: datetime }
+      - { label: "Last updated", name: modified, widget: datetime, required: false }
+      - { label: "Parent page", name: parent, widget: string, required: false,
+          hint: "The slug of the page this sits under. Leave empty for a top-level page." }
+      - { label: "Order", name: order, widget: number, required: false }
+      - { label: "Banner image", name: image, widget: image, required: false }
+      - { label: "Banner alt text", name: imageAlt, widget: string, required: false }
+      - label: "Sections"
+        name: sections
+        widget: list
+        label_singular: "Section"
+        types:
+          - *prose
+          - *quote
+          - *image
+          - *gallery
+          - *embed
+          - *card
+          - *disclosure
+          - *profiles
+          - *html
+
+  - name: posts
+    label: "News and blog"
+    label_singular: "Post"
+    folder: content/posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    identifier_field: title
+    summary: "{{title}}"
+    sortable_fields: [date, title]
+    fields:
+      - { label: "Title", name: title, widget: string }
+      - { label: "URL", name: url, widget: string }
+      - { label: "Date", name: date, widget: datetime }
+      - { label: "Last updated", name: modified, widget: datetime, required: false }
+      - { label: "Categories", name: categories, widget: list, required: false,
+          field: { label: Category, name: category, widget: string } }
+      - { label: "Featured image", name: image, widget: image, required: false }
+      - { label: "Featured image alt text", name: imageAlt, widget: string, required: false }
+      - label: "Sections"
+        name: sections
+        widget: list
+        label_singular: "Section"
+        types:
+          - *prose
+          - *quote
+          - *image
+          - *gallery
+          - *embed
+          - *card
+          - *disclosure
+          - *profiles
+          - *html
