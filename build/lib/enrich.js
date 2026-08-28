@@ -339,6 +339,31 @@ function fillColumn(html, { measure = 880 } = {}) {
   return root.toString();
 }
 
+/* --- An opening ------------------------------------------------------------
+   90 of the 188 pages over 400 words contain no heading, no image, no
+   quotation and no rule: they are a wall of paragraphs, and no amount of
+   styling turns that into a structure that is not there.
+
+   What can be done without touching a word is give the page a way in. The
+   first paragraph is set larger, the way a standfirst is, so the eye has
+   somewhere to land and the page has a beginning rather than just a top. */
+function openingParagraph(html, { minWords = 300 } = {}) {
+  if (!html) return html;
+  const root = parse(html);
+  const first = root.childNodes.find((n) => n.nodeType === 1
+    && (n.rawTagName || '').toLowerCase() === 'p'
+    && n.text.trim().length > 40);
+  if (!first) return html;
+  // Only where there is enough page for an opening to be worth having, and
+  // only when the author has not already marked one.
+  if (root.text.trim().split(/\s+/).length < minWords) return html;
+  if (root.querySelector('.lead')) return html;
+  const cls = (first.getAttribute('class') || '').split(/\s+/).filter(Boolean);
+  if (cls.length) return html; // already carries a class of its own
+  first.setAttribute('class', 'lead');
+  return root.toString();
+}
+
 function fixLinks(html) {
   if (!html.includes('<a')) return html;
   const root = parse(html);
@@ -520,6 +545,7 @@ function enrich(html) {
   out = layout.group(out);
   out = layout.floatNarrow(out);
   out = fillColumn(out);
+  out = openingParagraph(out);
   out = layout.profiles(out);
   return out;
 }
