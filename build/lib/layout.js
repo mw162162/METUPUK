@@ -191,7 +191,8 @@ function acts(html, { minBlocks = 8, perAct = 7, max = 6 } = {}) {
   const tagOf = (n) => (isEl(n) ? (n.rawTagName || '').toLowerCase() : '');
   const blocks = nodes.filter((n) => ACT_BLOCK.has(tagOf(n)));
   if (blocks.length < minBlocks) return html;
-  if (root.querySelector('.tmm_wrap') || root.querySelector('.profile-grid')) return html;
+  if (root.querySelector('.tmm_wrap') || root.querySelector('.profile-grid')
+    || root.querySelector('.story-grid')) return html;
 
   // Walk every child, not only the elements. Slicing the element list alone
   // stranded the text nodes between them, which left them sitting before the
@@ -242,4 +243,79 @@ function acts(html, { minBlocks = 8, perAct = 7, max = 6 } = {}) {
   return root.innerHTML;
 }
 
-module.exports = { group, profiles, floatNarrow, acts };
+/* --- Story cards ----------------------------------------------------------
+   Some campaign pages are not articles at all. /bcam24/ is nine people's
+   stories, each a portrait with a headline followed by the account, stacked
+   one after another down a single column: 27,000 pixels, thirty screens of
+   scrolling for 1,300 words.
+
+   Read as what it is, a collection rather than a piece of prose, it becomes a
+   grid: the portrait, the headline it came with, and the story under it. The
+   same content in about a fifth of the scroll.
+
+   The pattern is specific enough to be safe: a paragraph holding exactly one
+   image and a line of text, followed by a paragraph of prose and no image,
+   repeated at least three times. Nothing else matches it by accident. */
+function storyCards(html, { min = 3 } = {}) {
+  if (!html || !html.includes('<img')) return html;
+  const root = parse(`<div>${html}</div>`).firstChild;
+  const kids = root.childNodes.filter((n) => n.nodeType === 1);
+  const tag = (el) => (el.rawTagName || '').toLowerCase();
+
+  const isHead = (el) => tag(el) === 'p'
+    && el.querySelectorAll('img').length === 1
+    && el.text.trim().length >= 25;
+  const isBody = (el) => tag(el) === 'p'
+    && el.querySelectorAll('img').length === 0
+    && el.text.trim().length >= 120;
+
+  // Only runs that are already next to each other. Collecting every pair on the
+  // page and lifting them all to the first one's position moved whatever sat
+  // between them to the end: the content check caught it on /bcam24/, diverging
+  // a third of the way in.
+  const runs = [];
+  let i = 0;
+  while (i < kids.length - 1) {
+    if (!(isHead(kids[i]) && isBody(kids[i + 1]))) { i++; continue; }
+    const run = [];
+    while (i < kids.length - 1 && isHead(kids[i]) && isBody(kids[i + 1])) {
+      run.push([kids[i], kids[i + 1]]);
+      i += 2;
+    }
+    if (run.length >= min) runs.push(run);
+  }
+  if (!runs.length) return html;
+
+  // Applied back to front, since building one shifts the indices after it.
+  for (const run of runs.reverse()) {
+    const first = run[0][0];
+    const parent = first.parentNode;
+    if (!parent) continue;
+    const at = parent.childNodes.indexOf(first);
+    if (at < 0) continue;
+
+    for (const el of run.flat()) {
+      const idx = parent.childNodes.indexOf(el);
+      if (idx >= 0) parent.childNodes.splice(idx, 1);
+    }
+    const grid = parse('<div class="story-grid"></div>').firstChild;
+    parent.childNodes.splice(at, 0, grid);
+    grid.parentNode = parent;
+
+    for (const [head, body] of run) {
+      const card = parse('<article class="story"></article>').firstChild;
+      grid.appendChild(card);
+      const img = head.querySelector('img');
+      const media = parse('<div class="story__media"></div>').firstChild;
+      card.appendChild(media);
+      media.appendChild(img);
+      head.setAttribute('class', 'story__title');
+      card.appendChild(head);
+      body.setAttribute('class', 'story__body');
+      card.appendChild(body);
+    }
+  }
+  return root.innerHTML;
+}
+
+module.exports = { group, profiles, floatNarrow, acts, storyCards };

@@ -566,6 +566,7 @@ function enrich(html) {
   out = restoreAnchors(out);
   out = classifyQuotes(out);
   out = teamMembers(out);
+  out = layout.storyCards(out);
   out = layout.group(out);
   out = layout.floatNarrow(out);
   out = fillColumn(out);
