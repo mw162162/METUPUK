@@ -109,35 +109,56 @@
     // highlighted whenever a section was longer than the band, so the marker
     // blinked out mid-section and reappeared at the next one. There is always
     // exactly one current entry now, so the marker only ever travels.
-    function currentTarget() {
+    // Which entries are being read, plural. The old version picked "the last
+    // heading scrolled past", which is only meaningful in a linear document.
+    // On a page laid out as a grid, three portraits sit side by side at the
+    // same height, so three headings are passed at the same instant and it
+    // highlighted whichever happened to come last in the markup. It looked
+    // simply wrong: a name lit up that was not the one you were looking at.
+    //
+    // So it marks everything actually on screen. On a grid that is the row in
+    // front of you; in an article it is usually one section.
+    function visibleTargets() {
       var header = document.querySelector('.site-header');
-      var line = (header ? header.offsetHeight : 0) + 120;
-      var active = targets[0];
+      var top = (header ? header.offsetHeight : 0) + 16;
+      var bottom = window.innerHeight * 0.9;
+      var seen = targets.filter(function (t) {
+        var r = t.getBoundingClientRect();
+        return r.bottom > top && r.top < bottom;
+      });
+      if (seen.length) return seen;
+      // Between two sections nothing qualifies, so hold the last one passed
+      // rather than clearing: the rail should never go blank mid-read.
+      var last = targets[0];
       for (var i = 0; i < targets.length; i++) {
-        if (targets[i].getBoundingClientRect().top <= line) active = targets[i];
+        if (targets[i].getBoundingClientRect().top <= top) last = targets[i];
         else break;
       }
-      return active;
+      return last ? [last] : [];
     }
 
-    var activeLink = null;
+    var activeKey = null;
     function syncToc() {
-      var target = currentTarget();
-      var activeId = target ? target.id : null;
-      var current = null;
+      var ids = visibleTargets().map(function (t) { return t.id; });
+      var key = ids.join('|');
+      // Reading the marker's position forces a layout. That is worth doing
+      // when the answer changes and wasteful on every other frame.
+      if (key === activeKey) return;
+      activeKey = key;
+
+      var current = [];
       tocLinks.forEach(function (a) {
-        if (activeId && decodeURIComponent(a.hash.slice(1)) === activeId) current = a;
+        var id = decodeURIComponent(a.hash.slice(1));
+        if (ids.indexOf(id) >= 0) current.push(a);
       });
-      // Reading the marker's target position forces the browser to lay the
-      // page out. Doing that on every scrolled frame costs a full layout for an
-      // answer that only changes when the reader crosses a heading, so nothing
-      // below here runs until it actually has.
-      if (current === activeLink) return;
-      activeLink = current;
+
       tocLinks.forEach(function (a) {
-        if (a === current) a.setAttribute('aria-current', 'true');
-        else a.removeAttribute('aria-current');
+        a.classList.toggle('is-reading', current.indexOf(a) >= 0);
+        a.removeAttribute('aria-current');
       });
+      // aria-current names one location, so only the first carries it while
+      // the class shows the reader the whole group.
+      if (current[0]) current[0].setAttribute('aria-current', 'true');
       moveMarker(current);
     }
 
@@ -166,21 +187,31 @@
     list.appendChild(marker);
 
     var last = null;
-    function place(a) {
-      if (a) last = a;
-      var target = a || last;
-      if (!target) return;
-      marker.style.opacity = a ? '1' : '0';
-      marker.style.transform =
-        'translateY(' + target.offsetTop + 'px) scaleY(' + target.offsetHeight + ')';
-      // The rail can be taller than its own box, so the current entry has to be
-      // brought into view or the marker travels somewhere the reader cannot
-      // see. Scrolling the list directly, rather than scrollIntoView, keeps the
-      // page itself exactly where the reader put it.
+    function place(group) {
+      var reading = Array.isArray(group) ? group.filter(Boolean) : (group ? [group] : []);
+      if (reading.length) last = reading;
+      var shown = reading.length ? reading : last;
+      if (!shown || !shown.length) return;
+
+      // The bar covers everything on screen, so a row of three portraits gets
+      // one continuous mark rather than a single name picked out of three.
+      var first = shown[0];
+      var final = shown[shown.length - 1];
+      var top = first.offsetTop;
+      var height = Math.max(1, (final.offsetTop + final.offsetHeight) - top);
+      marker.style.opacity = reading.length ? '1' : '0';
+      marker.style.transform = 'translateY(' + top + 'px) scaleY(' + height + ')';
+
+      // The rail can be taller than its own box, so what is being read has to
+      // be brought into view or the marker travels somewhere nobody can see.
+      // Scrolling the list directly, rather than scrollIntoView, keeps the page
+      // itself exactly where the reader put it.
       var box = list.getBoundingClientRect();
-      var item = target.getBoundingClientRect();
-      if (item.top < box.top || item.bottom > box.bottom) {
-        var to = target.offsetTop - list.clientHeight / 2 + target.offsetHeight / 2;
+      var a1 = first.getBoundingClientRect();
+      var a2 = final.getBoundingClientRect();
+      if (a1.top < box.top || a2.bottom > box.bottom) {
+        var mid = top + height / 2;
+        var to = mid - list.clientHeight / 2;
         var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (list.scrollTo) list.scrollTo({ top: to, behavior: smooth ? 'smooth' : 'auto' });
         else list.scrollTop = to;
