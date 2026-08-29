@@ -144,22 +144,27 @@ function check(site, add, { profile = DEFAULT_PROFILE, root } = {}) {
       const ceiling = largestOnDisk(best.url, resolveFile);
       const couldBeBigger = ceiling > best.w + 1;
 
+      // Ask "can this be fixed?" before "how bad is it?". Ordering these the
+      // other way round reported 55 hero images as needing a larger rendition
+      // when the largest file that exists is already in use: a fix nobody can
+      // carry out, which is worse than saying nothing because it teaches people
+      // to skim past the report.
       let id;
       let severity;
       let fix;
-      if (ratio >= UPSCALED) {
-        id = 'image-soft';
-        severity = 'warning';
-        fix = 'Add a rendition around twice the display width and reference it via srcset.';
-      } else if (couldBeBigger) {
-        id = 'image-upscaled';
-        severity = 'error';
-        fix = `A ${ceiling}px version of this image already exists — reference that instead.`;
-      } else {
+      if (!couldBeBigger) {
         id = 'image-source-lowres';
         severity = 'warning';
         fix = 'The original upload is this size, so no rendition can be sharper. ' +
           'Re-upload a higher-resolution original, or present the image smaller.';
+      } else if (ratio >= UPSCALED) {
+        id = 'image-soft';
+        severity = 'warning';
+        fix = `A ${ceiling}px version already exists; reference it via srcset so dense screens get it.`;
+      } else {
+        id = 'image-upscaled';
+        severity = 'error';
+        fix = `A ${ceiling}px version of this image already exists — reference that instead.`;
       }
 
       worst.set(key, {

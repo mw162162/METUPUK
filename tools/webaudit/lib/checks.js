@@ -15,6 +15,15 @@ const isSpecial = (href) => /^(mailto:|tel:|javascript:|data:|#)/i.test(href);
 
 /* --- SEO ------------------------------------------------------------------ */
 
+// A page carrying `noindex` is not part of the site being audited: it is an
+// admin shell, a preview route, or a utility page. Holding it to the standards
+// for a content page produces findings that cannot be acted on, which is worse
+// than silence because it trains people to ignore the report.
+function isNoindex(dom) {
+  const robots = dom.querySelector('meta[name="robots"]');
+  return !!robots && /noindex/i.test(robots.getAttribute('content') || '');
+}
+
 function seo(site, add) {
   const titles = new Map();
   const descs = new Map();
@@ -67,7 +76,7 @@ function seo(site, add) {
     if (!dom.querySelector('meta[property="og:title"]') && !noindex) {
       add({ id: 'og-missing', severity: SEV.warning, page: url, detail: 'No Open Graph tags.', fix: 'Add og:title, og:description and og:image so shared links show a rich card. This is one of the cheapest wins for social reach.' });
     } else if (!dom.querySelector('meta[property="og:image"]')) {
-      add({ id: 'og-image-missing', severity: SEV.warning, page: url, detail: 'Open Graph tags present but no og:image.', fix: 'A shared link without an image gets far fewer clicks.' });
+      if (!isNoindex(dom)) add({ id: 'og-image-missing', severity: SEV.warning, page: url, detail: 'Open Graph tags present but no og:image.', fix: 'A shared link without an image gets far fewer clicks.' });
     }
 
     if (!dom.querySelector('script[type="application/ld+json"]')) {
@@ -294,7 +303,7 @@ function accessibility(site, add) {
     }
 
     // Landmarks
-    if (!dom.querySelector('main')) add({ id: 'landmark-main-missing', severity: SEV.warning, page: url, detail: 'No <main> landmark.', fix: 'Lets keyboard and screen-reader users skip straight to the content.' });
+    if (!dom.querySelector('main') && !isNoindex(dom)) add({ id: 'landmark-main-missing', severity: SEV.warning, page: url, detail: 'No <main> landmark.', fix: 'Lets keyboard and screen-reader users skip straight to the content.' });
     const navs = dom.querySelectorAll('nav');
     const unlabelled = navs.filter((n) => !attr(n, 'aria-label') && !attr(n, 'aria-labelledby'));
     if (navs.length > 1 && unlabelled.length) {
