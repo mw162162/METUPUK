@@ -482,19 +482,36 @@
     ].join(', '));
     if (blocks.length) {
       root.classList.add('js-reveal');
+      // The cascade is worked out per batch, not from the position in the
+      // markup. Capping a DOM index meant the first row of a grid cascaded
+      // 0/80/160ms and every row after it sat at the cap, so three cards landed
+      // together on every row but the first. Whatever crosses in the same
+      // frame is what gets staggered, which is right for any column count and
+      // for a single column too.
       var revealObserver = new IntersectionObserver(function (entries, obs) {
-        entries.forEach(function (en) {
-          if (!en.isIntersecting) return;
+        var arriving = entries.filter(function (en) { return en.isIntersecting; });
+        if (!arriving.length) return;
+        // Reading order: down the page, then across it.
+        arriving.sort(function (a, b) {
+          var ra = a.boundingClientRect, rb = b.boundingClientRect;
+          return (ra.top - rb.top) || (ra.left - rb.left);
+        });
+        arriving.forEach(function (en, i) {
+          // 70ms apart, four deep. Past that a cascade stops reading as one
+          // movement and starts reading as a queue.
+          en.target.style.setProperty('--reveal-delay', Math.min(i, 3) * 70 + 'ms');
           en.target.classList.add('is-visible');
           obs.unobserve(en.target);
         });
-      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+      }, {
+        // Start a little before the block is reached, so it has settled by the
+        // time it is actually being looked at rather than moving under the eye.
+        rootMargin: '0px 0px -4% 0px',
+        threshold: 0.01,
+      });
 
-      Array.prototype.forEach.call(blocks, function (el, i) {
+      Array.prototype.forEach.call(blocks, function (el) {
         el.setAttribute('data-reveal', '');
-        // Stagger only within a row of siblings, never down the whole page.
-        var siblingIndex = Array.prototype.indexOf.call(el.parentNode.children, el);
-        el.style.setProperty('--reveal-delay', Math.min(siblingIndex, 3) * 80 + 'ms');
         revealObserver.observe(el);
       });
 

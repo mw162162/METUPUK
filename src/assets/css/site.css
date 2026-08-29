@@ -433,7 +433,10 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
   transform: translateY(18px);
   /* Entering, so it uses the strong ease-out: fast off the mark, settling
      softly. --ease is the gentler curve kept for hover and colour. */
-  transition: opacity var(--dur-5) var(--ease-out), transform var(--dur-5) var(--ease-out);
+  /* 560ms, not 700. With the stagger on top, 700 put nearly a second between
+     the first card of a row and the last, which on a grid you scroll past
+     reads as sluggish rather than considered. */
+  transition: opacity var(--dur-4) var(--ease-out), transform var(--dur-4) var(--ease-out);
   transition-delay: var(--reveal-delay, 0ms);
 }
 .js-reveal [data-reveal].is-visible { opacity: 1; transform: none; }
