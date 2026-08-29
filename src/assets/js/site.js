@@ -475,6 +475,7 @@
     var blocks = document.querySelectorAll([
       'main .section > .wrap > *', 'main .hero__copy', 'main .hero__stat',
       'main .card', 'main .portrait', 'main .route',
+      'main .act',
       'main .prose > figure', 'main .prose > .c-embed', 'main .prose > blockquote',
       'main .prose > .prose-grid', 'main .prose > .c-card', 'main .prose > .c-gallery',
       'main .prose > p:has(> img)', 'main .profile-grid', 'main .tmm_wrap',

@@ -1803,14 +1803,27 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
    The tint reaches the edges of the window without leaving the grid: a very
    large spread shadow paints outward, and clip-path stops it bleeding
    vertically into the acts above and below. */
-.act { padding-block: var(--sp-7); }
-.act + .act { padding-top: var(--sp-7); }
+.act { padding-block: var(--sp-6); }
+.act + .act { padding-top: var(--sp-8); }
 .act__inner > * { max-width: var(--measure); }
 .act__inner > * + * { margin-top: var(--sp-4); }
-.act--tint {
-  background: var(--surface-tint);
-  box-shadow: 0 0 0 100vmax var(--surface-tint);
-  clip-path: inset(0 -100vmax);
+/* No coloured bands. Blocks of tint were a blunt way to say "you have moved",
+   and they made the page look like a stack of boxes. The movement itself says
+   it: each act rises into place as it comes into view, so the page arrives
+   under the reader instead of sitting there waiting.
+
+   The act settles before it is reached, never while it is being read. That is
+   the whole difference between this and text that animates at you. */
+.js-reveal .act[data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity var(--dur-5) var(--ease-out),
+    transform var(--dur-5) var(--ease-out);
+}
+.js-reveal .act[data-reveal].is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .act[data-reveal] { opacity: 1; transform: none; transition: none; }
 }
 /* The opening line of an act carries it, so the act announces itself without
    a heading anyone had to write for it. */
