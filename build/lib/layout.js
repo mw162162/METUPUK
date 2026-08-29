@@ -305,10 +305,16 @@ function storyCards(html, { min = 3 } = {}) {
     for (const [head, body] of run) {
       const card = parse('<article class="story"></article>').firstChild;
       grid.appendChild(card);
+      // Move the anchor when there is one, not the image inside it. Taking the
+      // image alone left eight links on this page with nothing in them, which
+      // is a link a screen reader announces and cannot describe.
       const img = head.querySelector('img');
+      const wrap = img && img.parentNode && (img.parentNode.rawTagName || '').toLowerCase() === 'a'
+        ? img.parentNode
+        : img;
       const media = parse('<div class="story__media"></div>').firstChild;
       card.appendChild(media);
-      media.appendChild(img);
+      if (wrap) media.appendChild(wrap);
       head.setAttribute('class', 'story__title');
       card.appendChild(head);
       body.setAttribute('class', 'story__body');

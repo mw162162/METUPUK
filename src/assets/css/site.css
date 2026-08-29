@@ -284,7 +284,7 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
    disappeared behind the icons. The rail's footprint is reserved here so text
    stops short of it. Above 1280 the gutter is wide enough on its own. */
 @media (min-width: 47rem) and (max-width: 1279px) {
-  .wrap { padding-right: 3rem; }
+  .wrap { padding-right: 3.5rem; }
 }
 .wrap--narrow { width: min(100% - 2.5rem, var(--wrap-narrow)); margin-inline: auto; }
 .section { padding-block: var(--sp-8); }
@@ -1352,7 +1352,10 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
 .social-rail {
   position: fixed;
   top: 50%;
-  right: clamp(0.75rem, 1.5vw, 1.5rem);
+  /* Sat further in than it needs to. Overlapping the page is fine and often
+     looks better; what matters is that it never lands on text, and the wrap
+     reserves its width for that. */
+  right: clamp(1.25rem, 2.4vw, 2.75rem);
   transform: translateY(-50%);
   z-index: 90;
 }
@@ -1445,7 +1448,7 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
    hide: smaller marks, tighter to the edge, and no label — the label is what
    would reach into the content. */
 @media (max-width: 1360px) {
-  .social-rail { right: 0.25rem; }
+  .social-rail { right: 0.9rem; }
   .social-rail ul { gap: 0.35rem; }
   .social-rail__icon { width: 2.125rem; height: 2.125rem; }
   .social-rail svg { width: 0.85rem; height: 0.85rem; }
@@ -1459,7 +1462,7 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
    widget bolted on. Below 1280 the page gutter is only 20-30px, so the marks
    shrink and tuck against the edge rather than being dropped. */
 @media (max-width: 1279px) {
-  .social-rail { right: 0.25rem; }
+  .social-rail { right: 0.9rem; }
   .social-rail ul { gap: 0.3rem; }
   .social-rail__icon { width: 1.9rem; height: 1.9rem; }
   .social-rail svg { width: 0.8rem; height: 0.8rem; }
@@ -1892,3 +1895,4 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
   font-size: 0.94rem; line-height: 1.6; color: var(--text-muted);
   max-width: none; margin-top: var(--sp-3);
 }
+.story__media a { display: block; }
