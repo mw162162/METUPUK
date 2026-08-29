@@ -157,6 +157,19 @@ function pathOf(link) {
 // image that is actually a picture. Judge the ORIGINAL upload, not whichever
 // small rendition the editor happened to insert — a portrait photo placed at
 // 225px wide usually has a 2000px original sitting next to it.
+// Dimensions for the image a page leads with. WordPress supplies them for a
+// featured image and for nothing else, so anything picked out of the body has
+// to be measured off disk. Zero here is not "small", it is "unknown", and
+// every caller that treats those as the same thing gets it wrong.
+function measured(feat, src) {
+  if (feat && feat.width) return { imageWidth: feat.width, imageHeight: feat.height || 0 };
+  if (!src || !src.startsWith('/media/')) return { imageWidth: 0, imageHeight: 0 };
+  const original = src.replace(/-\d+x\d+(\.[a-z0-9]+)$/i, '$1');
+  const file = path.join(ASSET_ROOT, decodeURIComponent(original.replace('/media/', '')));
+  const size = fs.existsSync(file) ? measure(file) : null;
+  return { imageWidth: (size && size.w) || 0, imageHeight: (size && size.h) || 0 };
+}
+
 function firstImage(html) {
   for (const m of html.matchAll(/<img[^>]*>/gi)) {
     const tag = m[0];
@@ -237,8 +250,11 @@ function build() {
       imageAlt: feat ? feat.alt : '',
       // Intrinsic width of the chosen image, so templates can decline to
       // stretch a small upload across a full-width slot.
-      imageWidth: feat ? (feat.width || 0) : 0,
-      imageHeight: feat ? (feat.height || 0) : 0,
+      // Measured from the file when WordPress has no record of it. Only a
+      // featured image carries dimensions in the API; one found in the body
+      // does not, and reporting that as zero let the banner treat "unknown" as
+      // "big enough" and stretch a 492px newspaper clipping across 1600px.
+      ...measured(feat, feat ? feat.src : firstImage(html)),
       categories: (raw.categories || []).map((id) => catById.get(id)).filter(Boolean).filter((c) => c.slug !== 'uncategorized'),
     };
   };

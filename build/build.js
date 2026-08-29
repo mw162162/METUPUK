@@ -169,7 +169,7 @@ function renderHome(model, exhibition) {
   <div class="wrap hero__grid">
     <div class="hero__copy">
       <p class="hero__eyebrow">Metastatic breast cancer · United Kingdom</p>
-      <h1>Another 31 women will die today.<br><em class="hero__beat">And tomorrow.</em><br><em class="hero__beat hero__beat--last">And the next.</em></h1>
+      <h1>Another 31 women will die today. <br><em class="hero__beat">And tomorrow.</em> <br><em class="hero__beat hero__beat--last">And the next.</em></h1>
       <p class="hero__lede">METUPUK is the only patient advocacy group in the UK campaigning solely on metastatic (secondary) breast cancer. We are the patients — volunteer-led, unpaid, and #BusyLivingWithMets.</p>
       <div class="hero__actions">
         <a class="btn btn--donate" href="/help-us/#donate">Donate</a>
@@ -376,7 +376,11 @@ function renderPage(doc, model) {
   // it is the image they chose to represent that page.
   // A full-bleed banner spans roughly 1600px. Using a narrower upload there
   // just stretches it, so the plain page header is the better answer.
-  const bannerFits = doc.image && (doc.imageWidth === 0 || doc.imageWidth >= 1100);
+  // An unknown width is not a licence to stretch. It used to read
+  // `imageWidth === 0 || >= 1100`, so anything unmeasured got blown across the
+  // full 1600px banner: a 492px newspaper clipping among them. Now the image
+  // has to be measurably big enough, and anything else keeps its own size.
+  const bannerFits = doc.image && doc.imageWidth >= 1100;
   const banner = bannerFits
     ? responsiveImg(doc.image, {
         className: 'page-head__bg', alt: '', eager: true,
