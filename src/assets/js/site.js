@@ -247,16 +247,36 @@
     // makes the strip continuous: without it all four showed the same fragment
     // at the same moment, which reads as a repeated logo rather than as
     // something you are moving across.
-    var top = icons[0].getBoundingClientRect().top;
-    var offsets = icons.map(function (el) {
-      return Math.round(el.getBoundingClientRect().top - top);
-    });
+    // Re-measured on resize: the mark shrinks at 1280px, so offsets taken once
+    // at load had every icon reading the wrong slice after crossing it.
+    var offsets = [];
+    function measure() {
+      var top = icons[0].getBoundingClientRect().top;
+      offsets = icons.map(function (el) {
+        return Math.round(el.getBoundingClientRect().top - top);
+      });
+    }
+
+    // The artwork tile is 72 x 1900 and is drawn to the width of the mark, so
+    // its height on screen scales with it. Offsets wrap within one tile: the
+    // strip repeats, so travelling further than that shows the same thing while
+    // pushing a finite layer out of the circle.
+    var TILE_W = 72, TILE_H = 1900;
+    function tileHeight() {
+      var w = icons[0].getBoundingClientRect().width || TILE_W;
+      return TILE_H * (w / TILE_W);
+    }
+    var tile = TILE_H;
 
     var queued = false;
     function paint() {
       var y = window.scrollY * 0.35;
       for (var i = 0; i < icons.length; i++) {
-        icons[i].style.backgroundPosition = 'center ' + (-(y + offsets[i])).toFixed(1) + 'px';
+        // A transform on the artwork layer, not the icon's background position.
+        // background-position cannot be composited, so the old version repainted
+        // four SVG backgrounds on every frame of every scroll.
+        var offset = (y + offsets[i]) % tile;
+        icons[i].style.setProperty('--art-y', (-offset).toFixed(1) + 'px');
       }
     }
     function onScroll() {
@@ -264,8 +284,15 @@
       queued = true;
       requestAnimationFrame(function () { queued = false; paint(); });
     }
+    measure();
+    tile = tileHeight();
     paint();
     window.addEventListener('scroll', onScroll, { passive: true });
+    var remeasure;
+    window.addEventListener('resize', function () {
+      clearTimeout(remeasure);
+      remeasure = setTimeout(function () { measure(); tile = tileHeight(); paint(); }, 150);
+    }, { passive: true });
   })();
 
   /* --- How far through the page you are ---------------------------------- */

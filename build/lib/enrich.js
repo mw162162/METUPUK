@@ -388,6 +388,29 @@ function leadImages(html, { inlineMax = 140 } = {}) {
   return root.toString();
 }
 
+/* A corner radius needs an image tall enough to carry it. The prose radius is
+   10px, which on a 330x38 logo curves away a quarter of the height at each end
+   and clipped the last letter clean off the NIHR wordmark. Anything shorter
+   than about six times the radius is marked so it keeps square corners. */
+function flatCorners(html, { minHeight = 90 } = {}) {
+  if (!html || !html.includes('<img')) return html;
+  const root = parse(html);
+  for (const img of root.querySelectorAll('img')) {
+    const h = parseInt(img.getAttribute('height'), 10) || 0;
+    if (!h || h >= minHeight) continue;
+    const mark = (el) => {
+      if (!el) return;
+      const cls = (el.getAttribute('class') || '').split(/\s+/).filter(Boolean);
+      if (!cls.includes('img--flat')) cls.push('img--flat');
+      el.setAttribute('class', cls.join(' '));
+    };
+    mark(img);
+    const parent = img.parentNode;
+    if (parent && (parent.rawTagName || '').toLowerCase() === 'a') mark(parent);
+  }
+  return root.toString();
+}
+
 function fixLinks(html) {
   if (!html.includes('<a')) return html;
   const root = parse(html);
@@ -572,6 +595,7 @@ function enrich(html) {
   out = fillColumn(out);
   out = openingParagraph(out);
   out = leadImages(out);
+  out = flatCorners(out);
   out = layout.profiles(out);
   return out;
 }
