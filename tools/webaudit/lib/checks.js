@@ -79,6 +79,16 @@ function seo(site, add) {
       }
     }
 
+    // Placeholder copy that reached production. Cheap to detect, embarrassing
+    // to ship, and easy to miss on a large site.
+    const bodyText = (dom.querySelector('main') || dom.querySelector('body') || dom).text;
+    const filler = bodyText.match(/lorem ipsum|dolor sit amet|consectetur adipiscing/i);
+    if (filler) {
+      add({ id: 'placeholder-copy', severity: SEV.error, page: url,
+        detail: `Placeholder text is published here: "${filler[0]}".`,
+        fix: 'Replace it with real copy, or remove the block. Visitors and search engines both see this.' });
+    }
+
     // Thin content ranks badly and rarely earns links.
     const main = dom.querySelector('main') || dom.querySelector('body');
     const words = main ? main.text.replace(/\s+/g, ' ').trim().split(' ').filter(Boolean).length : 0;

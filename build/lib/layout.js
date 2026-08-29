@@ -164,4 +164,82 @@ function floatNarrow(html, { narrow = 420, minProse = 180 } = {}) {
   return root.innerHTML;
 }
 
-module.exports = { group, profiles, floatNarrow };
+/* --- Acts -----------------------------------------------------------------
+   A long article was one column, one width, one background from top to
+   bottom, and no amount of subheads or pull quotes changes what that feels
+   like to scroll: the landmarks change, the space does not.
+
+   So the space changes. The blocks are grouped into acts and every other act
+   sits on a tinted ground that runs the full width of the window. The measure
+   never moves, because that is what keeps the text readable. What moves is
+   what the text is sitting on, and that is enough to feel like passing from
+   one part of a piece to another.
+
+   Where the author already marked their sections with a rule, those are the
+   breaks. Where they did not, the blocks are divided evenly. Nothing is
+   reordered and nothing is dropped, so the content check still passes.
+
+   Deliberately not here: no dark act, which on a page about dying reads as
+   melodrama, and no "01 / 06" counter, which is the section-numbering tell. */
+const ACT_BLOCK = new Set(['p', 'ul', 'ol', 'h2', 'h3', 'h4', 'blockquote', 'figure', 'div', 'details', 'table', 'hr']);
+
+function acts(html, { minBlocks = 8, perAct = 7, max = 6 } = {}) {
+  if (!html) return html;
+  const root = parse(`<div>${html}</div>`).firstChild;
+  const nodes = root.childNodes.slice();
+  const isEl = (n) => n.nodeType === 1;
+  const tagOf = (n) => (isEl(n) ? (n.rawTagName || '').toLowerCase() : '');
+  const blocks = nodes.filter((n) => ACT_BLOCK.has(tagOf(n)));
+  if (blocks.length < minBlocks) return html;
+  if (root.querySelector('.tmm_wrap') || root.querySelector('.profile-grid')) return html;
+
+  // Walk every child, not only the elements. Slicing the element list alone
+  // stranded the text nodes between them, which left them sitting before the
+  // acts instead of inside them and reordered the page. The content check
+  // caught it: nine posts diverged near their end.
+  const rules = nodes.filter((n) => tagOf(n) === 'hr').length;
+  const perGroup = Math.ceil(blocks.length / Math.max(3, Math.min(max, Math.round(blocks.length / perAct))));
+
+  const groups = [];
+  let current = [];
+  let seen = 0;
+  for (const node of nodes) {
+    if (rules >= 2) {
+      // The author's own section breaks. The rule itself is the boundary and
+      // is not carried into either side of it.
+      if (tagOf(node) === 'hr') {
+        if (current.some(isEl)) groups.push(current);
+        current = [];
+        continue;
+      }
+      current.push(node);
+    } else {
+      current.push(node);
+      if (ACT_BLOCK.has(tagOf(node))) seen++;
+      if (seen >= perGroup) { groups.push(current); current = []; seen = 0; }
+    }
+  }
+  if (current.length) {
+    if (groups.length && !current.some(isEl)) groups[groups.length - 1].push(...current);
+    else groups.push(current);
+  }
+
+  if (groups.filter((g) => g.some(isEl)).length < 3) return html;
+
+  for (const node of nodes) {
+    const idx = root.childNodes.indexOf(node);
+    if (idx >= 0) root.childNodes.splice(idx, 1);
+  }
+  groups.forEach((group, i) => {
+    const tint = i % 2 === 1 ? ' act--tint' : '';
+    const act = parse(`<section class="act${tint}"><div class="act__inner"></div></section>`).firstChild;
+    const inner = act.querySelector('.act__inner');
+    group.forEach((el) => inner.appendChild(el));
+    root.appendChild(act);
+    act.parentNode = root;
+  });
+
+  return root.innerHTML;
+}
+
+module.exports = { group, profiles, floatNarrow, acts };

@@ -16,3 +16,6 @@ _scrape/assets/
 # Screenshot scratch from visual verification
 .shots/
 shot.py
+
+# Mockups sent to the user, not part of the build
+mockups/

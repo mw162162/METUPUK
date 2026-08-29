@@ -364,6 +364,30 @@ function openingParagraph(html, { minWords = 300 } = {}) {
   return root.toString();
 }
 
+/* A logo or badge sitting at the front of a paragraph, with the sentence
+   running straight on from it, is how the old editor left several of these.
+   At 330px wide the text crashes into it. Anything beyond an inline icon is
+   set as a block so the sentence starts underneath. */
+function leadImages(html, { inlineMax = 140 } = {}) {
+  if (!html || !html.includes('<img')) return html;
+  const root = parse(html);
+  for (const para of root.querySelectorAll('p')) {
+    const first = para.childNodes.find((n) => n.nodeType === 1
+      || (n.nodeType === 3 && n.rawText.trim()));
+    if (!first || first.nodeType !== 1) continue;
+    const tag = (first.rawTagName || '').toLowerCase();
+    const img = tag === 'img' ? first : (tag === 'a' ? first.querySelector('img') : null);
+    if (!img) continue;
+    const w = parseInt(img.getAttribute('width'), 10) || 0;
+    if (w <= inlineMax) continue;            // a real inline icon stays inline
+    if (!para.text.replace(/\s/g, '')) continue; // no text beside it, nothing to fix
+    const cls = (para.getAttribute('class') || '').split(/\s+/).filter(Boolean);
+    if (!cls.includes('has-lead-image')) cls.push('has-lead-image');
+    para.setAttribute('class', cls.join(' '));
+  }
+  return root.toString();
+}
+
 function fixLinks(html) {
   if (!html.includes('<a')) return html;
   const root = parse(html);
@@ -546,6 +570,7 @@ function enrich(html) {
   out = layout.floatNarrow(out);
   out = fillColumn(out);
   out = openingParagraph(out);
+  out = leadImages(out);
   out = layout.profiles(out);
   return out;
 }

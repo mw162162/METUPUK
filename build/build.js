@@ -5,6 +5,7 @@ const { build: buildModel, SITE } = require('./lib/model');
 const ex = require('./lib/exhibition');
 const { createResolver } = require('./lib/links');
 const { enrich } = require('./lib/enrich');
+const articleLayout = require('./lib/layout');
 const T = require('./lib/templates');
 
 const ROOT = path.join(__dirname, '..');
@@ -360,7 +361,7 @@ function standfirst(doc) {
 }
 
 function renderPage(doc, model) {
-  const html = addHeadingIds(doc.html);
+  let html = addHeadingIds(doc.html);
   const toc = tableOfContents(html);
   const kids = (doc.children || []).length ? `<section class="section section--tight section--sunken">
     <div class="wrap">
@@ -382,6 +383,10 @@ function renderPage(doc, model) {
         sizes: '100vw', maxWidth: 2048, extra: 'aria-hidden="true"',
       })
     : '';
+
+  // Acts only where there is no contents rail beside the text: the tinted
+  // ground runs the full width of the window, which would pass behind it.
+  if (!toc) html = articleLayout.acts(html);
 
   const body = `<div class="page-head${bannerFits ? ' page-head--image' : ''}">
   ${banner}
@@ -428,8 +433,9 @@ ${kids}`;
 }
 
 function renderPost(doc, prev, next) {
-  const html = addHeadingIds(doc.html);
+  let html = addHeadingIds(doc.html);
   const toc = doc.words > 900 ? tableOfContents(html) : '';
+  if (!toc) html = articleLayout.acts(html);
   const cats = (doc.categories || [])
     .map((c) => `<a class="tag" href="/news/topic/${c.slug}/">${esc(c.name)}</a>`).join(' ');
 
