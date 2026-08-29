@@ -478,7 +478,13 @@
       'main .act',
       'main .prose > figure', 'main .prose > .c-embed', 'main .prose > blockquote',
       'main .prose > .prose-grid', 'main .prose > .c-card', 'main .prose > .c-gallery',
-      'main .prose > p:has(> img)', 'main .profile-grid', 'main .tmm_wrap',
+      'main .prose > p:has(> img)',
+      // The cells, not the grid around them. A grid is one element, so
+      // observing it revealed 59 profiles the instant its top edge appeared
+      // and the whole nine screens below were already showing by the time they
+      // were reached. Watching each card means they arrive in front of the
+      // reader, a row at a time.
+      'main .profile', 'main .tmm_member', 'main .story',
     ].join(', '));
     if (blocks.length) {
       root.classList.add('js-reveal');
