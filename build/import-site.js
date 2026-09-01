@@ -146,150 +146,33 @@ function descendToBlocks(el) {
   visit(el, 0);
   return best;
 }
-// A contact form is the one thing on a client's site that is neither prose nor
-// a picture, and nearly every site has one. Left as raw HTML it renders fine,
-// but a client cannot change a question — and changing a question is the first
-// thing they ask for.
-//
-// So read the markup back into fields. What can be read is read; a form using
-// a control this kit does not model (a select, a file upload, an unlabelled
-// input) is left alone, because a half-converted form is worse than an honest
-// lump of HTML.
-const FIELD_TYPES = new Set(['text', 'email', 'tel', 'textarea']);
-
-function labelFor(form, input) {
-  // Anything hidden from a screen reader is decoration, not the label. The
-  // asterisk on a required field is the usual case, and the renderer draws
-  // its own, so reading it back would print it twice.
-  const read = (el) => {
-    const copy = el.clone();
-    copy.querySelectorAll('[aria-hidden="true"]').forEach((n) => n.remove());
-    return copy.text.replace(/\s+/g, ' ').trim();
-  };
-
-  const id = input.getAttribute('id');
-  if (id) {
-    const el = form.querySelector(`label[for="${id}"]`);
-    if (el) return read(el);
-  }
-  // Otherwise the label is usually the one wrapping it.
-  let node = input.parentNode;
-  while (node && node !== form) {
-    if ((node.rawTagName || '').toLowerCase() === 'label') return read(node);
-    const el = node.querySelector('label');
-    if (el) return read(el);
-    node = node.parentNode;
-  }
-  return '';
-}
-
-function readForm(el) {
-  const fields = [];
-  let submit = 'Send';
-  let consent = '';
-
-  for (const c of el.querySelectorAll('input, textarea, select, button')) {
-    const tag = (c.rawTagName || '').toLowerCase();
-    if (tag === 'select') return null;
-    const type = (c.getAttribute('type') || (tag === 'textarea' ? 'textarea' : 'text')).toLowerCase();
-
-    if (tag === 'button' || type === 'submit') {
-      submit = (c.text || c.getAttribute('value') || '').trim() || submit;
-      continue;
-    }
-    if (type === 'hidden') continue;
-    // A control taken out of the tab order is a honeypot, not a question.
-    if (c.getAttribute('tabindex') === '-1') continue;
-
-    const name = c.getAttribute('name');
-    if (!name) continue;
-
-    if (type === 'checkbox') {
-      // One tick box before the button is a consent line, which the renderer
-      // draws itself. More than one is a question set this kit does not model.
-      if (consent) return null;
-      consent = labelFor(el, c) || 'I agree';
-      continue;
-    }
-    if (!FIELD_TYPES.has(type)) return null;
-
-    const label = labelFor(el, c);
-    if (!label) return null;
-    const field = { label, name, type };
-    if (c.hasAttribute('required')) field.required = true;
-    // Whatever the control says describes it. aria-describedby is how help
-    // text is attached to an input on any form built properly, so reading it
-    // costs nothing and keeps the note under the field where it belongs.
-    const describedBy = c.getAttribute('aria-describedby');
-    if (describedBy) {
-      const help = el.querySelector(`#${describedBy.split(/s+/)[0]}`);
-      if (help) field.help = help.text.trim();
-    }
-    fields.push(field);
-  }
-  if (!fields.length) return null;
-
-  // Any paragraph standing above the first field is the form's own preamble.
-  let intro = '';
-  for (const child of el.childNodes) {
-    if (child.nodeType !== 1) continue;
-    const tag = (child.rawTagName || '').toLowerCase();
-    // A hidden field carries no words, so it does not end the search.
-    if (tag === 'input' && (child.getAttribute('type') || '') === 'hidden') continue;
-    if (tag !== 'p') break;
-    if (child.querySelector('input, textarea, select, label')) continue;
-    intro = child.text.trim();
-    break;
-  }
-
-  const action = el.getAttribute('action');
-  const block = {
-    type: 'form',
-    name: el.getAttribute('name') || el.getAttribute('id') || 'contact',
-    fields,
-    submit,
-  };
-  if (intro) block.intro = intro;
-  if (consent) block.consent = consent;
-  if (action) block.action = action;
-  return block;
-}
-
 // The status regions a form needs — the thank-you and the did-not-send — are
 // drawn by the renderer, so a page this kit built once already has them sitting
-// inline. Import them again and every message appears twice. They are dropped
-// only where a form was actually recognised, and the integrity check below is
-// what makes that safe: it compares the source against the rendered blocks, so
-// anything the renderer does not put back still counts as loss.
+// inline. Import them again and every message appears twice.
+//
+// Reading the form itself is the splitter's job, not this file's: the form
+// component carries its own recogniser, so a <form> arrives here already typed.
+// All that is left is the furniture around it, which only a page built by this
+// kit will have.
 const REDRAWN = /form__(done|error)/;
 
-function recogniseForms(blocks) {
-  const out = [];
-  let found = false;
-  for (const b of blocks) {
-    if (b.type !== 'html') { out.push(b); continue; }
-    const root = parse(String(b.html || '')).firstChild;
-    const tag = root && (root.rawTagName || '').toLowerCase();
-    if (tag === 'form') {
-      const form = readForm(root);
-      if (form) { out.push(form); found = true; continue; }
-    }
-    out.push(b);
-  }
-  if (!found) return blocks;
+function tidyFormFurniture(blocks) {
+  if (!blocks.some((b) => b.type === 'form')) return blocks;
 
   // The thank-you is the one part of those regions the page wrote for itself,
   // so it moves into the form rather than being dropped with the markup that
-  // held it. The did-not-send line is the renderer's own and comes back on
-  // its own; integrity below is what proves both claims.
-  const done = out.find((b) => b.type === 'html' && /form__done/.test(String(b.html || '')));
+  // held it. The did-not-send line is the renderer's own and comes back on its
+  // own; the integrity check is what proves both claims, because it compares
+  // the source against the rendered blocks rather than the stored ones.
+  const done = blocks.find((b) => b.type === 'html' && /form__done/.test(String(b.html || '')));
   if (done) {
     const message = toText(String(done.html)).replace(/\s+/g, ' ').trim();
-    for (const b of out) if (b.type === 'form' && !b.success && message) b.success = message;
+    for (const b of blocks) if (b.type === 'form' && !b.success && message) b.success = message;
   }
 
-  return out.filter((b) => !(b.type === 'html' && REDRAWN.test(String(b.html || ''))));
+  return blocks.filter((b) => !(b.type === 'html' && REDRAWN.test(String(b.html || ''))));
 }
+
 
 // Remove the furniture that survived inside the content element.
 function stripBoilerplate(el, boiler) {
@@ -433,7 +316,7 @@ function main() {
     const html = content.innerHTML;
     if (letters(toText(html)).length < 40) { problems.push(`${doc.file}: almost no content found`); failed++; continue; }
 
-    const blocks = recogniseForms(split(html));
+    const blocks = tidyFormFurniture(split(html));
     const lost = integrity(html, blocks);
     if (lost) { problems.push(`${doc.file}: lost text near "...${lost}..."`); failed++; continue; }
     blocks.forEach((b) => { counts[b.type] = (counts[b.type] || 0) + 1; });

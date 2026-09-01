@@ -1,0 +1,102 @@
+# Editor configuration.
+#
+# Read by Sveltia CMS (and by Decap, which shares this format) from /admin.
+# Content lives as files in the repo, so an edit is a commit and a commit
+# rebuilds the site. There is no database and no per-seat licence.
+#
+# The component list under `sections` is the part that matters commercially:
+# it is what the client sees when they press "Add section", and it is the same
+# list on every site built from this kit. Add a component here and it appears
+# in the editor; the build renders it.
+
+backend:
+  name: github
+  repo: OWNER/REPO          # set per client
+  branch: main
+  # Sveltia talks to GitHub directly; no OAuth server of your own is needed.
+
+# Lets you run the editor against local files while developing:
+#   npx @sveltia/cms-proxy-server   then open /admin
+local_backend: true
+
+# The originals only, not the WordPress renditions. Pointing this at
+# _scrape/assets meant the editor walked 5,436 files and 1.1 GB before it could
+# show anything, and then offered a client eight crops of every photograph.
+# Rebuild it with: npm run media
+media_folder: "media-library"
+public_folder: "/media"
+
+# Editors see the site, not the repo.
+site_url: /
+display_url: /
+
+# ---------------------------------------------------------------------------
+# Reusable component definitions.
+#
+# YAML anchors keep one definition per component. A collection references them
+# with `<<: *name`, so a component is described once and behaves identically
+# wherever it is offered.
+# ---------------------------------------------------------------------------
+# @components
+
+collections:
+  - name: pages
+    label: "Pages"
+    label_singular: "Page"
+    folder: content/pages
+    create: true
+    slug: "{{fields.slug}}"
+    identifier_field: title
+    summary: "{{title}}"
+    sortable_fields: [title, date]
+    fields:
+      - { label: "Title", name: title, widget: string }
+      - { label: "URL", name: url, widget: string, hint: "The address of this page, e.g. /about-us/our-team/" }
+      - { label: "Date", name: date, widget: datetime }
+      - { label: "Last updated", name: modified, widget: datetime, required: false }
+      - { label: "Parent page", name: parent, widget: string, required: false,
+          hint: "The slug of the page this sits under. Leave empty for a top-level page." }
+      - { label: "Order", name: order, widget: number, required: false }
+      # Declared because these editors write back only the fields they know
+      # about. An undeclared key is not preserved, it is dropped — so the
+      # 41 pages carrying a hand-written summary would lose it the first
+      # time anyone opened them and pressed save.
+      - { label: "Summary", name: excerpt, widget: text, required: false,
+          hint: "Shown under the heading and in search results. Leave empty to use the opening of the page." }
+      - { label: "Banner image", name: image, widget: image, required: false }
+      - { label: "Banner alt text", name: imageAlt, widget: string, required: false }
+      - label: "Sections"
+        name: sections
+        widget: list
+        label_singular: "Section"
+        # @component-types
+
+  - name: posts
+    label: "News and blog"
+    label_singular: "Post"
+    folder: content/posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    identifier_field: title
+    summary: "{{title}}"
+    sortable_fields: [date, title]
+    fields:
+      - { label: "Title", name: title, widget: string }
+      - { label: "URL", name: url, widget: string }
+      - { label: "Date", name: date, widget: datetime }
+      - { label: "Last updated", name: modified, widget: datetime, required: false }
+      - { label: "Categories", name: categories, widget: list, required: false,
+          field: { label: Category, name: category, widget: string } }
+      # Declared because these editors write back only the fields they know
+      # about. An undeclared key is not preserved, it is dropped — so the
+      # 41 pages carrying a hand-written summary would lose it the first
+      # time anyone opened them and pressed save.
+      - { label: "Summary", name: excerpt, widget: text, required: false,
+          hint: "Shown under the heading and in search results. Leave empty to use the opening of the page." }
+      - { label: "Featured image", name: image, widget: image, required: false }
+      - { label: "Featured image alt text", name: imageAlt, widget: string, required: false }
+      - label: "Sections"
+        name: sections
+        widget: list
+        label_singular: "Section"
+        # @component-types

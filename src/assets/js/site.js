@@ -505,6 +505,7 @@
       'main .act',
       'main .prose > figure', 'main .prose > .c-embed', 'main .prose > blockquote',
       'main .prose > .prose-grid', 'main .prose > .c-card', 'main .prose > .c-gallery',
+      'main .prose > .c-video', 'main .prose > .c-buttons',
       'main .prose > p:has(> img)',
       // The cells, not the grid around them. A grid is one element, so
       // observing it revealed 59 profiles the instant its top edge appeared

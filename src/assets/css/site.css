@@ -1003,6 +1003,60 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
 .c-embed--audio { padding-top: 0; height: 11.5rem; background: transparent; }
 /* Dashboards and boards need height, but nothing like a video's. */
 .c-embed--panel { padding-top: 0; height: clamp(24rem, 55vh, 34rem); }
+/* --- Video, buttons, columns ------------------------------------------- */
+
+/* Self-hosted video, as opposed to an embed. Not ratio-locked the way
+   .c-embed is: an embed has to reserve space for an iframe whose contents it
+   cannot measure, but a <video> reports its own dimensions, and forcing a 4:3
+   archive clip into 16:9 spends a third of the screen on black bars. */
+.c-video { margin-block: var(--sp-5); }
+.c-video__player {
+  display: block; width: 100%; height: auto;
+  border-radius: var(--radius); background: var(--bg-sunken);
+}
+/* Only ever seen if the browser cannot play the file at all, in which case it
+   is the download link and should read as text, not as a caption. */
+.c-video__fallback { padding: var(--sp-4); font-size: var(--step--1); }
+
+/* A row of buttons. Wraps rather than scrolls, and the gap is the one already
+   used between paragraphs so a call to action sits in the rhythm of the page
+   instead of floating in its own pocket of space. */
+.c-buttons {
+  display: flex; flex-wrap: wrap; gap: var(--sp-3);
+  margin-block: var(--sp-5);
+}
+
+/* Columns of ordinary prose. The measure is lifted here and only here: two
+   columns inside a 66ch limit are 33ch each, which is a newspaper column, not
+   a readable line. Below 46rem they stack, because two columns on a phone are
+   one column with extra steps. */
+.prose > .c-columns { max-width: none; }
+.c-columns {
+  display: grid; gap: var(--sp-5) var(--sp-6);
+  margin-block: var(--sp-5);
+}
+.c-columns__col > * + * { margin-top: var(--sp-4); }
+@media (min-width: 46em) {
+  .c-columns { grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr)); }
+  .c-columns[data-count="3"] { --cols: 3; }
+  .c-columns[data-count="4"] { --cols: 4; }
+  /* An asymmetric split is two columns whatever the count says, because the
+     ratio is the whole point of asking for it. */
+  .c-columns[data-layout="wide-left"] { grid-template-columns: 3fr 2fr; }
+  .c-columns[data-layout="wide-right"] { grid-template-columns: 2fr 3fr; }
+}
+
+/* A picture grid. The renderer has emitted this class since the migration and
+   nothing ever styled it, so every gallery on the site has been rendering as a
+   stack of full-width images. */
+.prose > .prose-grid { max-width: none; }
+.prose-grid {
+  display: grid; gap: var(--sp-3);
+  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+  margin-block: var(--sp-5);
+}
+.prose-grid img { width: 100%; height: 100%; object-fit: cover; }
+
 .c-disclosure {
   border: 1px solid var(--border); border-radius: var(--radius);
   background: var(--bg-raised); padding: 0; overflow: hidden;
