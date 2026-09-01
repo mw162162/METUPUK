@@ -4,16 +4,18 @@
 # Components live in build/lib/components.js, which is also where the build
 # gets its renderers, so the editor cannot offer a component the site cannot
 # render.
-# Editor configuration.
+# Editor configuration — the per-site half.
 #
 # Read by Sveltia CMS (and by Decap, which shares this format) from /admin.
 # Content lives as files in the repo, so an edit is a commit and a commit
 # rebuilds the site. There is no database and no per-seat licence.
 #
-# The component list under `sections` is the part that matters commercially:
-# it is what the client sees when they press "Add section", and it is the same
-# list on every site built from this kit. Add a component here and it appears
-# in the editor; the build renders it.
+# This file holds what changes per client: which repo, which collections, and
+# what a page's own fields are. The component list is generated into it from
+# build/lib/components.js, which is also where the build gets its renderers —
+# so the editor cannot offer a component the site cannot render.
+#
+# Do not edit src/static/admin/config.yml. It is generated from this file.
 
 backend:
   name: github
@@ -36,13 +38,6 @@ public_folder: "/media"
 site_url: /
 display_url: /
 
-# ---------------------------------------------------------------------------
-# Reusable component definitions.
-#
-# YAML anchors keep one definition per component. A collection references them
-# with `<<: *name`, so a component is described once and behaves identically
-# wherever it is offered.
-# ---------------------------------------------------------------------------
 definitions:
   prose: &prose
     label: "Text"
@@ -53,134 +48,35 @@ definitions:
         name: "body"
         widget: "markdown"
 
-  disclosure: &disclosure
-    label: "Expandable section"
-    name: disclosure
-    summary: "Expandable: {{fields.summary}}"
+  image: &image
+    label: "Image"
+    name: image
+    summary: "Image: {{fields.alt}}"
     fields:
-      - label: "Heading"
-        name: "summary"
-        widget: "string"
-      - label: "Body"
-        name: "body"
-        widget: "markdown"
-
-  embed: &embed
-    label: "Embedded video or player"
-    name: embed
-    summary: "Embed: {{fields.title}}"
-    fields:
-      - label: "Address"
+      - label: "Picture"
         name: "src"
-        widget: "string"
-        hint: "The embed address, e.g. https://www.youtube.com/embed/XXXX"
-      - label: "Title"
-        name: "title"
-        widget: "string"
-        required: false
-        hint: "What the video is, for anyone who cannot see it."
-      - label: "Kind"
-        name: "variant"
-        widget: "select"
-        default: "video"
-        options: ["video", "audio", "panel"]
-
-  card: &card
-    label: "Card"
-    name: card
-    summary: "Card: {{fields.heading}}"
-    fields:
-      - label: "Heading"
-        name: "heading"
-        widget: "string"
-      - label: "Image"
-        name: "image"
         widget: "image"
-        required: false
-      - label: "Alt text"
-        name: "imageAlt"
+      - label: "Describe this picture"
+        name: "alt"
         widget: "string"
         required: false
-      - label: "Link"
-        name: "href"
-        widget: "string"
-        required: false
-      - label: "Body"
-        name: "body"
-        widget: "markdown"
-        required: false
-
-  gallery: &gallery
-    label: "Picture grid"
-    name: gallery
-    summary: "Picture grid"
-    fields:
-      - label: "Pictures"
-        name: "images"
-        widget: "list"
-        label_singular: "Picture"
-        fields:
-          - label: "Picture"
-            name: "src"
-            widget: "image"
-          - label: "Describe this picture"
-            name: "alt"
-            widget: "string"
-            required: false
-
-  profiles: &profiles
-    label: "People"
-    name: profiles
-    summary: "People"
-    fields:
-      - label: "People"
-        name: "people"
-        widget: "list"
-        label_singular: "Person"
-        summary: "{{fields.name}}"
-        fields:
-          - label: "Name"
-            name: "name"
-            widget: "string"
-          - label: "Role"
-            name: "role"
-            widget: "string"
-            required: false
-          - label: "About"
-            name: "body"
-            widget: "markdown"
-            required: false
-          - label: "Links"
-            name: "links"
-            widget: "list"
-            required: false
-            field:
-              label: "Address"
-              name: "href"
-              widget: "string"
-
-  video: &video
-    label: "Video file"
-    name: video
-    summary: "Video: {{fields.caption}}"
-    fields:
-      - label: "Video file"
-        name: "src"
-        widget: "file"
-        hint: "An MP4 you upload. For YouTube or Vimeo, use \"Embedded video\" instead."
-      - label: "Captions file"
-        name: "captions"
-        widget: "file"
-        required: false
-        hint: "A .vtt subtitle file. Without one this video is unusable for anyone deaf — please add it."
-      - label: "Still image"
-        name: "poster"
-        widget: "image"
-        required: false
-        hint: "Shown before anyone presses play."
+        hint: "What would you say to someone on the phone who cannot see it? A person’s name, what is happening, what the graphic says."
+      - label: "This picture is decorative"
+        name: "decorative"
+        widget: "boolean"
+        default: false
+        hint: "Tick only if the picture adds nothing a reader would miss. It will be hidden from screen readers. Leave unticked and write a description for every photograph of a person."
       - label: "Caption"
         name: "caption"
         widget: "string"
+        required: false
+      - label: "Width"
+        name: "width"
+        widget: "number"
+        required: false
+      - label: "Height"
+        name: "height"
+        widget: "number"
         required: false
 
   buttons: &buttons
@@ -232,37 +128,6 @@ definitions:
             name: "body"
             widget: "markdown"
 
-  image: &image
-    label: "Image"
-    name: image
-    summary: "Image: {{fields.alt}}"
-    fields:
-      - label: "Picture"
-        name: "src"
-        widget: "image"
-      - label: "Describe this picture"
-        name: "alt"
-        widget: "string"
-        required: false
-        hint: "What would you say to someone on the phone who cannot see it? A person’s name, what is happening, what the graphic says."
-      - label: "This picture is decorative"
-        name: "decorative"
-        widget: "boolean"
-        default: false
-        hint: "Tick only if the picture adds nothing a reader would miss. It will be hidden from screen readers. Leave unticked and write a description for every photograph of a person."
-      - label: "Caption"
-        name: "caption"
-        widget: "string"
-        required: false
-      - label: "Width"
-        name: "width"
-        widget: "number"
-        required: false
-      - label: "Height"
-        name: "height"
-        widget: "number"
-        required: false
-
   quote: &quote
     label: "Pull quote"
     name: quote
@@ -275,6 +140,136 @@ definitions:
         name: "attribution"
         widget: "string"
         required: false
+
+  disclosure: &disclosure
+    label: "Expandable section"
+    name: disclosure
+    summary: "Expandable: {{fields.summary}}"
+    fields:
+      - label: "Heading"
+        name: "summary"
+        widget: "string"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+
+  card: &card
+    label: "Card"
+    name: card
+    summary: "Card: {{fields.heading}}"
+    fields:
+      - label: "Heading"
+        name: "heading"
+        widget: "string"
+      - label: "Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Alt text"
+        name: "imageAlt"
+        widget: "string"
+        required: false
+      - label: "Link"
+        name: "href"
+        widget: "string"
+        required: false
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        required: false
+
+  gallery: &gallery
+    label: "Picture grid"
+    name: gallery
+    summary: "Picture grid"
+    fields:
+      - label: "Pictures"
+        name: "images"
+        widget: "list"
+        label_singular: "Picture"
+        fields:
+          - label: "Picture"
+            name: "src"
+            widget: "image"
+          - label: "Describe this picture"
+            name: "alt"
+            widget: "string"
+            required: false
+
+  video: &video
+    label: "Video file"
+    name: video
+    summary: "Video: {{fields.caption}}"
+    fields:
+      - label: "Video file"
+        name: "src"
+        widget: "file"
+        hint: "An MP4 you upload. For YouTube or Vimeo, use \"Embedded video\" instead."
+      - label: "Captions file"
+        name: "captions"
+        widget: "file"
+        required: false
+        hint: "A .vtt subtitle file. Without one this video is unusable for anyone deaf — please add it."
+      - label: "Still image"
+        name: "poster"
+        widget: "image"
+        required: false
+        hint: "Shown before anyone presses play."
+      - label: "Caption"
+        name: "caption"
+        widget: "string"
+        required: false
+
+  embed: &embed
+    label: "Embedded video or player"
+    name: embed
+    summary: "Embed: {{fields.title}}"
+    fields:
+      - label: "Address"
+        name: "src"
+        widget: "string"
+        hint: "The embed address, e.g. https://www.youtube.com/embed/XXXX"
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        required: false
+        hint: "What the video is, for anyone who cannot see it."
+      - label: "Kind"
+        name: "variant"
+        widget: "select"
+        default: "video"
+        options: ["video", "audio", "panel"]
+
+  profiles: &profiles
+    label: "People"
+    name: profiles
+    summary: "People"
+    fields:
+      - label: "People"
+        name: "people"
+        widget: "list"
+        label_singular: "Person"
+        summary: "{{fields.name}}"
+        fields:
+          - label: "Name"
+            name: "name"
+            widget: "string"
+          - label: "Role"
+            name: "role"
+            widget: "string"
+            required: false
+          - label: "About"
+            name: "body"
+            widget: "markdown"
+            required: false
+          - label: "Links"
+            name: "links"
+            widget: "list"
+            required: false
+            field:
+              label: "Address"
+              name: "href"
+              widget: "string"
 
   form: &form
     label: "Form"
@@ -354,44 +349,56 @@ collections:
     label_singular: "Page"
     folder: content/pages
     create: true
-    slug: "{{fields.slug}}"
+    # {{slug}} is the built-in one, made from the identifier field below.
+    # It used to be {{fields.slug}}, which named a field no page has and none
+    # declares — so every page created in the editor was written to a file with
+    # no name in it.
+    slug: "{{slug}}"
     identifier_field: title
     summary: "{{title}}"
     sortable_fields: [title, date]
+    view_groups:
+      - { label: "Section of the site", field: parent }
     fields:
+      # Content first. These used to sit below six fields of plumbing — the
+      # address, two timestamps, the parent slug and a sort order — so the one
+      # thing somebody opened the page to change was the tenth thing they saw.
       - { label: "Title", name: title, widget: string }
-      - { label: "URL", name: url, widget: string, hint: "The address of this page, e.g. /about-us/our-team/" }
-      - { label: "Date", name: date, widget: datetime }
-      - { label: "Last updated", name: modified, widget: datetime, required: false }
-      - { label: "Parent page", name: parent, widget: string, required: false,
-          hint: "The slug of the page this sits under. Leave empty for a top-level page." }
-      - { label: "Order", name: order, widget: number, required: false }
-      # Declared because these editors write back only the fields they know
-      # about. An undeclared key is not preserved, it is dropped — so the
-      # 41 pages carrying a hand-written summary would lose it the first
-      # time anyone opened them and pressed save.
       - { label: "Summary", name: excerpt, widget: text, required: false,
           hint: "Shown under the heading and in search results. Leave empty to use the opening of the page." }
       - { label: "Banner image", name: image, widget: image, required: false }
-      - { label: "Banner alt text", name: imageAlt, widget: string, required: false }
+      - { label: "Banner alt text", name: imageAlt, widget: string, required: false,
+          hint: "What the picture shows, for anyone who cannot see it." }
       - label: "Sections"
         name: sections
         widget: list
         label_singular: "Section"
         types:
           - *prose
-          - *disclosure
-          - *embed
-          - *card
-          - *gallery
-          - *profiles
-          - *video
+          - *image
           - *buttons
           - *columns
-          - *image
           - *quote
+          - *disclosure
+          - *card
+          - *gallery
+          - *video
+          - *embed
+          - *profiles
           - *form
           - *html
+
+      # Everything below here is how the page is filed rather than what it
+      # says. It is last on purpose: it is rarely the reason anyone opened
+      # the page, and changing the address breaks every link to it.
+      - { label: "Web address", name: url, widget: string,
+          hint: "Where this page lives, e.g. /about-us/our-team/. Changing it breaks every existing link to this page and any search result pointing at it." }
+      - { label: "Sits under", name: parent, widget: string, required: false,
+          hint: "The last part of the address of the page above this one in the menu. Leave empty for a top-level page." }
+      - { label: "Order in the menu", name: order, widget: number, required: false,
+          hint: "Lower numbers come first. Leave empty to sort by title." }
+      - { label: "First published", name: date, widget: datetime }
+      - { label: "Last updated", name: modified, widget: datetime, required: false }
 
   - name: posts
     label: "News and blog"
@@ -402,36 +409,64 @@ collections:
     identifier_field: title
     summary: "{{title}}"
     sortable_fields: [date, title]
+    # 228 posts in one flat list is a scroll, not a way of finding anything.
+    view_groups:
+      - { label: "Year", field: date, pattern: "\\d{4}" }
     fields:
       - { label: "Title", name: title, widget: string }
-      - { label: "URL", name: url, widget: string }
-      - { label: "Date", name: date, widget: datetime }
-      - { label: "Last updated", name: modified, widget: datetime, required: false }
-      - { label: "Categories", name: categories, widget: list, required: false,
-          field: { label: Category, name: category, widget: string } }
-      # Declared because these editors write back only the fields they know
-      # about. An undeclared key is not preserved, it is dropped — so the
-      # 41 pages carrying a hand-written summary would lose it the first
-      # time anyone opened them and pressed save.
+      - label: "Topics"
+        name: categories
+        widget: select
+        multiple: true
+        required: false
+        hint: "Which topic pages this post appears on. Pick as many as fit."
+        options:
+            - { label: "Alternative Therapies", value: "alternative-therapies" }
+            - { label: "Clinical Trial", value: "clinical-trial" }
+            - { label: "Conferences", value: "conferences" }
+            - { label: "Data", value: "data" }
+            - { label: "Diagnosis", value: "diagnosis" }
+            - { label: "Drug Approval", value: "drug-approval" }
+            - { label: "Education", value: "education" }
+            - { label: "Fundraising", value: "fundraising" }
+            - { label: "Help Us", value: "help-us" }
+            - { label: "Living with MBC", value: "living-with-mbc" }
+            - { label: "Member Stories", value: "member-stories" }
+            - { label: "News", value: "news" }
+            - { label: "Organisations", value: "organisations" }
+            - { label: "Patient Advocacy", value: "patient-advocacy" }
+            - { label: "Policy", value: "policy" }
+            - { label: "Press", value: "press" }
+            - { label: "Quality of Life", value: "quality-of-life" }
+            - { label: "Research", value: "research" }
+            - { label: "Reviews", value: "reviews" }
+            - { label: "Social Media Campaign", value: "social-media-campaign" }
+            - { label: "Treatment Options", value: "treatment-options" }
       - { label: "Summary", name: excerpt, widget: text, required: false,
-          hint: "Shown under the heading and in search results. Leave empty to use the opening of the page." }
+          hint: "Shown under the heading and in search results. Leave empty to use the opening of the post." }
       - { label: "Featured image", name: image, widget: image, required: false }
-      - { label: "Featured image alt text", name: imageAlt, widget: string, required: false }
+      - { label: "Featured image alt text", name: imageAlt, widget: string, required: false,
+          hint: "What the picture shows, for anyone who cannot see it." }
       - label: "Sections"
         name: sections
         widget: list
         label_singular: "Section"
         types:
           - *prose
-          - *disclosure
-          - *embed
-          - *card
-          - *gallery
-          - *profiles
-          - *video
+          - *image
           - *buttons
           - *columns
-          - *image
           - *quote
+          - *disclosure
+          - *card
+          - *gallery
+          - *video
+          - *embed
+          - *profiles
           - *form
           - *html
+
+      - { label: "Web address", name: url, widget: string,
+          hint: "Where this post lives. Changing it breaks every existing link to it." }
+      - { label: "Published", name: date, widget: datetime }
+      - { label: "Last updated", name: modified, widget: datetime, required: false }

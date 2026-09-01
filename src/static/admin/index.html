@@ -58,7 +58,7 @@
   // small file is enough to know. No websocket, no dev-server plugin, and
   // nothing that has to exist in production — in a deployed build the token
   // simply never changes and this loop costs one request every two seconds.
-  function watchForRebuilds(frame) {
+  function watchForRebuilds(frame, onReload) {
     if (!frame || frame.dataset.watching) return;
     frame.dataset.watching = '1';
     var last = null;
@@ -68,8 +68,24 @@
         .then(function (id) {
           if (!id) return;
           if (last !== null && id !== last) {
-            var src = frame.getAttribute('src').split('?')[0];
-            frame.setAttribute('src', src + '?preview=' + id);
+            // Keep the reader where they were. Editing section twelve and
+            // being thrown back to the top of the page on every save is the
+            // kind of small thing that makes an editor tiring to use, and the
+            // frame is same-origin so the position is there for the asking.
+            var keep = 0;
+            try { keep = frame.contentWindow.scrollY || 0; } catch (e) {}
+            frame.addEventListener('load', function restore() {
+              frame.removeEventListener('load', restore);
+              try {
+                // Instant, not smooth. The site sets scroll-behavior: smooth,
+                // so the default would animate a scroll from the top on every
+                // single save — putting motion where the reader expects to
+                // have simply stayed put.
+                if (keep) frame.contentWindow.scrollTo({ top: keep, behavior: 'instant' });
+              } catch (e) {}
+            });
+            frame.setAttribute('src', frame.getAttribute('src').split('?')[0] + '?preview=' + id);
+            if (onReload) onReload();
           }
           last = id;
         })
@@ -82,10 +98,16 @@
     // "however wide the pane happens to be" — which is a column about 1100px
     // across in a split view, so the desktop button never showed the desktop
     // layout. It showed a narrow one and called it desktop.
+    // Height as well as width, because this site is full of things measured
+    // against the viewport: a 100svh hero, a pinned scrollytelling section,
+    // scroll-driven reveals. Give the frame the pane's height instead of the
+    // device's and every one of them previews at proportions no real screen
+    // has — the hero comes out twice as tall as it will ever be, which is the
+    // opposite of what a device preview is for.
     var DEVICES = [
-      { id: 'mobile', label: 'Phone', w: 390 },
-      { id: 'tablet', label: 'Tablet', w: 834 },
-      { id: 'desktop', label: 'Desktop', w: 1280 },
+      { id: 'mobile', label: 'Phone', w: 390, h: 844 },
+      { id: 'tablet', label: 'Tablet', w: 834, h: 1112 },
+      { id: 'desktop', label: 'Desktop', w: 1280, h: 800 },
     ];
 
     function shell(node) {
@@ -94,8 +116,22 @@
       var frame = node.querySelector('iframe');
       var stage = node.querySelector('[data-stage]');
       var readout = node.querySelector('[data-readout]');
+      var status = node.querySelector('[data-status]');
       var current = DEVICES[2];
-      watchForRebuilds(frame);
+
+      // The preview shows the last build, not the keystroke just typed, and
+      // nothing on screen used to say so — which reads as a broken preview
+      // rather than as one waiting for a save. Saying "Updated" the moment the
+      // rebuild lands is the confirmation that was missing.
+      var clearStatus = null;
+      function flash(text) {
+        status.textContent = text;
+        status.style.opacity = '1';
+        if (clearStatus) clearTimeout(clearStatus);
+        clearStatus = setTimeout(function () { status.style.opacity = '0'; }, 2600);
+      }
+
+      watchForRebuilds(frame, function () { flash('Updated'); });
 
       // The pane has to be measured rather than inherited. height:100% only
       // resolves when every ancestor has a height of its own, and inside
@@ -113,15 +149,20 @@
       // desktop layout can be judged in a pane narrower than a desktop —
       // which is the only way it is ever going to be looked at in here.
       function fit() {
-        var room = stage.clientWidth;
-        var scale = room && current.w > room ? room / current.w : 1;
+        var roomW = stage.clientWidth;
+        var roomH = stage.clientHeight;
+        if (!roomW || !roomH) return;
+        // The whole screen, scaled to fit both ways — a shrunken browser
+        // window rather than a tall crop of one. The page scrolls inside it
+        // the way it scrolls on the device.
+        var scale = Math.min(1, roomW / current.w, roomH / current.h);
         frame.style.width = current.w + 'px';
-        // Divided by the scale, so that once shrunk it still covers the pane.
-        frame.style.height = Math.round(stage.clientHeight / scale) + 'px';
+        frame.style.height = current.h + 'px';
         frame.style.transform = scale < 1 ? 'scale(' + scale + ')' : 'none';
         frame.style.transformOrigin = 'top left';
-        frame.style.left = Math.max(0, (room - current.w * scale) / 2) + 'px';
-        readout.textContent = current.w + 'px'
+        frame.style.left = Math.max(0, (roomW - current.w * scale) / 2) + 'px';
+        frame.style.top = Math.max(0, (roomH - current.h * scale) / 2) + 'px';
+        readout.textContent = current.w + ' × ' + current.h
           + (scale < 1 ? ' · ' + Math.round(scale * 100) + '%' : '');
       }
 
@@ -188,9 +229,28 @@
           },
         }, buttons.concat([
           window.h('span', {
-            key: 'readout', 'data-readout': '1',
-            style: { marginLeft: 'auto', font: '500 12px/1 system-ui', color: '#6b5560' },
+            key: 'status', 'data-status': '1',
+            style: {
+              marginLeft: 'auto', font: '600 12px/1 system-ui', color: '#1c7c4a',
+              opacity: '0', transition: 'opacity 200ms ease',
+            },
           }, ''),
+          window.h('span', {
+            key: 'readout', 'data-readout': '1',
+            style: { font: '500 12px/1 system-ui', color: '#6b5560' },
+          }, ''),
+          // Sometimes you just want the page itself — to click through it, to
+          // check a link, to show somebody. The preview is a frame; this is
+          // the door out of it.
+          window.h('a', {
+            key: 'open', href: url, target: '_blank', rel: 'noopener',
+            title: 'Open this page in a new tab',
+            style: {
+              font: '600 12px/1 system-ui', color: '#2b0519', textDecoration: 'none',
+              border: '1px solid rgba(43,5,25,.25)', borderRadius: '999px',
+              padding: '7px 11px', letterSpacing: '.04em', textTransform: 'uppercase',
+            },
+          }, 'Open'),
         ])),
         // The stage clips. A scaled element still takes its full untransformed
         // size in the layout, so a 1280px frame would push a scrollbar across

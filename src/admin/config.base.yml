@@ -1,13 +1,15 @@
-# Editor configuration.
+# Editor configuration — the per-site half.
 #
 # Read by Sveltia CMS (and by Decap, which shares this format) from /admin.
 # Content lives as files in the repo, so an edit is a commit and a commit
 # rebuilds the site. There is no database and no per-seat licence.
 #
-# The component list under `sections` is the part that matters commercially:
-# it is what the client sees when they press "Add section", and it is the same
-# list on every site built from this kit. Add a component here and it appears
-# in the editor; the build renders it.
+# This file holds what changes per client: which repo, which collections, and
+# what a page's own fields are. The component list is generated into it from
+# build/lib/components.js, which is also where the build gets its renderers —
+# so the editor cannot offer a component the site cannot render.
+#
+# Do not edit src/static/admin/config.yml. It is generated from this file.
 
 backend:
   name: github
@@ -30,13 +32,6 @@ public_folder: "/media"
 site_url: /
 display_url: /
 
-# ---------------------------------------------------------------------------
-# Reusable component definitions.
-#
-# YAML anchors keep one definition per component. A collection references them
-# with `<<: *name`, so a component is described once and behaves identically
-# wherever it is offered.
-# ---------------------------------------------------------------------------
 # @components
 
 collections:
@@ -45,31 +40,43 @@ collections:
     label_singular: "Page"
     folder: content/pages
     create: true
-    slug: "{{fields.slug}}"
+    # {{slug}} is the built-in one, made from the identifier field below.
+    # It used to be {{fields.slug}}, which named a field no page has and none
+    # declares — so every page created in the editor was written to a file with
+    # no name in it.
+    slug: "{{slug}}"
     identifier_field: title
     summary: "{{title}}"
     sortable_fields: [title, date]
+    view_groups:
+      - { label: "Section of the site", field: parent }
     fields:
+      # Content first. These used to sit below six fields of plumbing — the
+      # address, two timestamps, the parent slug and a sort order — so the one
+      # thing somebody opened the page to change was the tenth thing they saw.
       - { label: "Title", name: title, widget: string }
-      - { label: "URL", name: url, widget: string, hint: "The address of this page, e.g. /about-us/our-team/" }
-      - { label: "Date", name: date, widget: datetime }
-      - { label: "Last updated", name: modified, widget: datetime, required: false }
-      - { label: "Parent page", name: parent, widget: string, required: false,
-          hint: "The slug of the page this sits under. Leave empty for a top-level page." }
-      - { label: "Order", name: order, widget: number, required: false }
-      # Declared because these editors write back only the fields they know
-      # about. An undeclared key is not preserved, it is dropped — so the
-      # 41 pages carrying a hand-written summary would lose it the first
-      # time anyone opened them and pressed save.
       - { label: "Summary", name: excerpt, widget: text, required: false,
           hint: "Shown under the heading and in search results. Leave empty to use the opening of the page." }
       - { label: "Banner image", name: image, widget: image, required: false }
-      - { label: "Banner alt text", name: imageAlt, widget: string, required: false }
+      - { label: "Banner alt text", name: imageAlt, widget: string, required: false,
+          hint: "What the picture shows, for anyone who cannot see it." }
       - label: "Sections"
         name: sections
         widget: list
         label_singular: "Section"
         # @component-types
+
+      # Everything below here is how the page is filed rather than what it
+      # says. It is last on purpose: it is rarely the reason anyone opened
+      # the page, and changing the address breaks every link to it.
+      - { label: "Web address", name: url, widget: string,
+          hint: "Where this page lives, e.g. /about-us/our-team/. Changing it breaks every existing link to this page and any search result pointing at it." }
+      - { label: "Sits under", name: parent, widget: string, required: false,
+          hint: "The last part of the address of the page above this one in the menu. Leave empty for a top-level page." }
+      - { label: "Order in the menu", name: order, widget: number, required: false,
+          hint: "Lower numbers come first. Leave empty to sort by title." }
+      - { label: "First published", name: date, widget: datetime }
+      - { label: "Last updated", name: modified, widget: datetime, required: false }
 
   - name: posts
     label: "News and blog"
@@ -80,23 +87,24 @@ collections:
     identifier_field: title
     summary: "{{title}}"
     sortable_fields: [date, title]
+    # 228 posts in one flat list is a scroll, not a way of finding anything.
+    view_groups:
+      - { label: "Year", field: date, pattern: "\\d{4}" }
     fields:
       - { label: "Title", name: title, widget: string }
-      - { label: "URL", name: url, widget: string }
-      - { label: "Date", name: date, widget: datetime }
-      - { label: "Last updated", name: modified, widget: datetime, required: false }
-      - { label: "Categories", name: categories, widget: list, required: false,
-          field: { label: Category, name: category, widget: string } }
-      # Declared because these editors write back only the fields they know
-      # about. An undeclared key is not preserved, it is dropped — so the
-      # 41 pages carrying a hand-written summary would lose it the first
-      # time anyone opened them and pressed save.
+      # @categories
       - { label: "Summary", name: excerpt, widget: text, required: false,
-          hint: "Shown under the heading and in search results. Leave empty to use the opening of the page." }
+          hint: "Shown under the heading and in search results. Leave empty to use the opening of the post." }
       - { label: "Featured image", name: image, widget: image, required: false }
-      - { label: "Featured image alt text", name: imageAlt, widget: string, required: false }
+      - { label: "Featured image alt text", name: imageAlt, widget: string, required: false,
+          hint: "What the picture shows, for anyone who cannot see it." }
       - label: "Sections"
         name: sections
         widget: list
         label_singular: "Section"
         # @component-types
+
+      - { label: "Web address", name: url, widget: string,
+          hint: "Where this post lives. Changing it breaks every existing link to it." }
+      - { label: "Published", name: date, widget: datetime }
+      - { label: "Last updated", name: modified, widget: datetime, required: false }

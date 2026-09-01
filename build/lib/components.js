@@ -492,6 +492,7 @@ function readForm(el) {
 const COMPONENTS = [
   {
     name: 'prose',
+    menuOrder: 1,
     label: 'Text',
     summary: 'Text',
     // Ordinary flowing copy is gathered by the splitter across many elements
@@ -501,6 +502,7 @@ const COMPONENTS = [
   },
   {
     name: 'disclosure',
+    menuOrder: 6,
     label: 'Expandable section',
     summary: 'Expandable: {{fields.summary}}',
     fields: [
@@ -513,6 +515,7 @@ const COMPONENTS = [
   },
   {
     name: 'embed',
+    menuOrder: 10,
     label: 'Embedded video or player',
     summary: 'Embed: {{fields.title}}',
     fields: [
@@ -529,6 +532,7 @@ const COMPONENTS = [
   },
   {
     name: 'card',
+    menuOrder: 7,
     label: 'Card',
     summary: 'Card: {{fields.heading}}',
     fields: [
@@ -544,6 +548,7 @@ const COMPONENTS = [
   },
   {
     name: 'gallery',
+    menuOrder: 8,
     label: 'Picture grid',
     summary: 'Picture grid',
     fields: [
@@ -559,6 +564,7 @@ const COMPONENTS = [
   },
   {
     name: 'profiles',
+    menuOrder: 11,
     label: 'People',
     summary: 'People',
     fields: [
@@ -578,6 +584,7 @@ const COMPONENTS = [
   },
   {
     name: 'video',
+    menuOrder: 9,
     label: 'Video file',
     summary: 'Video: {{fields.caption}}',
     fields: [
@@ -595,6 +602,7 @@ const COMPONENTS = [
   },
   {
     name: 'buttons',
+    menuOrder: 3,
     label: 'Buttons',
     summary: 'Buttons',
     fields: [
@@ -616,6 +624,7 @@ const COMPONENTS = [
   },
   {
     name: 'columns',
+    menuOrder: 4,
     label: 'Columns',
     summary: 'Columns',
     fields: [
@@ -631,6 +640,7 @@ const COMPONENTS = [
   },
   {
     name: 'image',
+    menuOrder: 2,
     label: 'Image',
     summary: 'Image: {{fields.alt}}',
     aliases: ['figure'],
@@ -650,6 +660,7 @@ const COMPONENTS = [
   },
   {
     name: 'quote',
+    menuOrder: 5,
     label: 'Pull quote',
     summary: 'Quote: {{fields.text}}',
     fields: [
@@ -662,6 +673,7 @@ const COMPONENTS = [
   },
   {
     name: 'form',
+    menuOrder: 12,
     label: 'Form',
     summary: 'Form: {{fields.name}}',
     fields: [
@@ -693,6 +705,7 @@ const COMPONENTS = [
   },
   {
     name: 'html',
+    menuOrder: 99,
     label: 'Custom HTML',
     summary: 'Custom HTML',
     fields: [
