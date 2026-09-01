@@ -27,7 +27,12 @@ function resolves(url) {
   return false;
 }
 
-const norm = (s) => (s || '').replace(/[\s ]+/g, ' ')
+// Control characters are debris, not content. One post carries a literal
+// U+0002 inside a URL from twenty years of copy-and-paste; the export strips
+// it so the file can be parsed at all, and comparing a stripped page against
+// an unstripped source would report that cleanup as a loss.
+const norm = (s) => (s || '').replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '')
+  .replace(/[\s ]+/g, ' ')
   .replace(/[“”]/g, '"').replace(/[‘’]/g, "'")
   .replace(/[–—]/g, '-').replace(/…/g, '...')
   .toLowerCase().trim();
@@ -40,7 +45,7 @@ function run() {
   const files = walkFiles(OUT)
     .filter((f) => f.endsWith('.html'))
     .filter((f) => !f.replace(/\\/g, '/').includes('/admin/'));
-  const problems = { deadLinks: [], missingImages: [], noH1: [], noTitle: [], contentLoss: [], emptyAlt: 0 };
+  const problems = { deadLinks: [], missingImages: [], noH1: [], noTitle: [], contentLoss: [], emptyAlt: 0, emptyAltPages: [] };
   const linkTargets = new Map();
 
   for (const file of files) {
@@ -66,7 +71,16 @@ function run() {
       if (!fs.existsSync(path.join(OUT, decodeURIComponent(src.replace(/^\//, '').split('?')[0])))) {
         problems.missingImages.push(`${rel} -> ${src}`);
       }
-      if (img.rawTagName === 'img' && !img.getAttribute('alt')) problems.emptyAlt++;
+      // An image with no alt at all is a gap. An image with alt="" and
+      // role="presentation" is a decision someone made, and is not counted.
+      if (img.rawTagName === 'img' && !img.getAttribute('alt')
+        && img.getAttribute('role') !== 'presentation') {
+        problems.emptyAlt++;
+        if (problems.emptyAltPages.length < 12) {
+          const src = img.getAttribute('src') || '?';
+          problems.emptyAltPages.push(`${rel} -> ${src}`);
+        }
+      }
     }
   }
 

@@ -579,26 +579,47 @@
         if (!entries[0].isIntersecting) return;
         obs.disconnect();
 
-        // Each number is held for half as long as the one before it, down to a
-        // floor. Halving all the way is not possible: by the eighth number the
-        // step is 12ms and by the twelfth it is under a millisecond, so
-        // two-thirds of the count would never be drawn at all.
+        // Every number is held a constant fraction less than the one before, so
+        // the count keeps accelerating the whole way instead of reaching a
+        // speed and staying there.
         //
-        //   1     2    3    4    5    6 onward
-        //   1500  750  375  188  94   80ms
+        // Halving was too violent for that. It hit the floor by the fifth
+        // number, which left twenty-six of the thirty-one running at one flat
+        // speed: the opening read as deliberate and everything after it read as
+        // having been let go of. A gentler ratio spends the drama across the
+        // whole count.
         //
-        // The opening is a slow, deliberate beat, and the tail settles into a
-        // steady count rather than a blur. About five seconds in total.
-        var FIRST = 1500;   // ms on the first number
-        var FLOOR = 80;     // never quicker than this
+        //   1    2    3    5    10   20   31
+        //   460  408  363  286  158  48   26ms
+        //
+        // OPENING and TOTAL are the two knobs worth touching. The ratio between
+        // beats is solved from them, so changing the opening beat does not
+        // silently stretch the whole thing to a different length.
+        var OPENING = 460;   // ms held on the first number
+        var TOTAL = 4000;    // ms to reach the target, near enough
+        var FLOOR = 26;      // at least one frame each, so no number is skipped
+
+        // Solve r in TOTAL = OPENING * (1 + r + r^2 + ... + r^(n-1)). The sum
+        // rises monotonically with r, so bisection converges; it runs once, on
+        // a number under a hundred, and forty passes is far more than enough.
+        var n = target;
+        var lo = 0.5;
+        var hi = 0.999;
+        var r = 0.888;
+        for (var p = 0; p < 40; p++) {
+          r = (lo + hi) / 2;
+          if (OPENING * (1 - Math.pow(r, n)) / (1 - r) < TOTAL) lo = r;
+          else hi = r;
+        }
 
         var schedule = [];
         var elapsed = 0;
-        for (var k = 0; k < target; k++) {
-          elapsed += Math.max(FLOOR, FIRST * Math.pow(0.5, k));
+        for (var k = 0; k < n; k++) {
+          elapsed += Math.max(FLOOR, OPENING * Math.pow(r, k));
           schedule.push(elapsed);
         }
 
+        var card = counter.closest ? counter.closest('.hero__stat') : null;
         var start = null;
         var shown = 0;
 
@@ -610,11 +631,31 @@
           if (value !== shown) {
             shown = value;
             counter.textContent = String(value);
+            // The number drives its own crescendo. Written once per number
+            // rather than once per frame — thirty-one writes across four
+            // seconds, not two hundred and forty.
+            counter.style.setProperty('--count', (value / target).toFixed(3));
           }
-          if (shown < target) requestAnimationFrame(tick);
+          if (shown < target) {
+            requestAnimationFrame(tick);
+          } else {
+            // Hand the arrival to CSS. The count ends at full size, which is
+            // exactly where the landing animation begins, so the two meet
+            // without a jump. The card takes the same classes so the label and
+            // note can follow through a beat behind.
+            counter.classList.remove('is-counting');
+            counter.classList.add('is-landed');
+            if (card) {
+              card.classList.remove('is-counting');
+              card.classList.add('is-landed');
+            }
+          }
         };
 
         counter.textContent = '0';
+        counter.style.setProperty('--count', '0');
+        counter.classList.add('is-counting');
+        if (card) card.classList.add('is-counting');
         requestAnimationFrame(tick);
       }, { threshold: 0.6 }).observe(counter);
     }
@@ -636,11 +677,22 @@
         scrolly.classList.toggle('is-active', entries[0].isIntersecting);
       }, { threshold: 0.01 }).observe(scrolly);
 
+      // Which panel is current is also stamped on the section itself, so the
+      // artwork pinned behind the copy can respond to it. The panels are the
+      // only thing that knows where the reader is, and the art is not their
+      // sibling — it lives inside the pinned layer — so a data attribute on the
+      // common ancestor is what joins the two.
+      var mark = function (el) {
+        var n = Array.prototype.indexOf.call(panels, el) + 1;
+        if (n > 0) scrolly.setAttribute('data-panel', String(n));
+      };
+
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
           if (en.isIntersecting) {
             Array.prototype.forEach.call(panels, function (p) { p.classList.remove('is-current'); });
             en.target.classList.add('is-current');
+            mark(en.target);
           }
         });
       }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
@@ -648,9 +700,60 @@
       Array.prototype.forEach.call(panels, function (p) { io.observe(p); });
       // The first panel is current before any scrolling happens.
       panels[0].classList.add('is-current');
+      mark(panels[0]);
     });
   }
 
+
+  /* --- Forms ---------------------------------------------------------------
+     The form works without any of this: it is a plain form that posts, and
+     with JavaScript off the browser submits it and the host replies. This only
+     improves the reply.
+
+     Three things it adds. The answer arrives in place, so the person stays on
+     the page they were reading rather than being thrown to a generic host
+     page. The button says what it is doing while it does it. And a failure is
+     told to the user with another way through, instead of vanishing: someone
+     who types their details and presses send must never be left assuming it
+     worked when it did not. */
+  Array.prototype.forEach.call(document.querySelectorAll('form.form'), function (form) {
+    var done = form.parentNode.querySelector('.form__done');
+    var failed = form.parentNode.querySelector('.form__error');
+    var button = form.querySelector('[type="submit"]');
+    if (!done || !button) return;
+
+    form.addEventListener('submit', function (e) {
+      // Let the browser do its own validation first; it is better than ours.
+      if (!form.checkValidity()) return;
+      e.preventDefault();
+
+      var label = button.textContent;
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      failed.hidden = true;
+
+      var body = new URLSearchParams(new FormData(form)).toString();
+      fetch(form.getAttribute('action') || window.location.pathname, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body,
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error(res.status);
+          form.hidden = true;
+          done.hidden = false;
+          // Move focus to the confirmation, or a screen reader stays on a
+          // button that is no longer there.
+          done.setAttribute('tabindex', '-1');
+          done.focus();
+        })
+        .catch(function () {
+          failed.hidden = false;
+          button.disabled = false;
+          button.textContent = label;
+        });
+    });
+  });
   /* --- Topic filter disclosure -------------------------------------------- */
   var filterToggle = document.querySelector('.filters__toggle');
   if (filterToggle) {

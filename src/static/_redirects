@@ -1,3 +1,17 @@
-# Serve the custom 404 for anything that does not resolve.
-# Understood by Netlify and Cloudflare Pages.
+# Understood by Netlify and Cloudflare Pages alike.
+
+# Legacy paths that 301 on the live WordPress site. The rebuild serves the
+# canonical page but not the old path, so inbound links, bookmarks and anything
+# still sitting in search results would break at go-live. Found by comparing
+# the two sites page by page rather than by crawling our own build, which is
+# why the internal link check never flagged them: nothing on the rebuild points
+# at these, but plenty out on the web still does.
+/charity-information            /about-us/charity-information/                    301
+/awareness-and-education        /aims-and-objectives/awareness-and-education/     301
+/research-and-access-to-drugs   /aims-and-objectives/research-and-access-to-drugs/ 301
+/patient-treatment-and-care     /aims-and-objectives/patient-treatment-and-care/  301
+/2022/06/elementor-3229         /2022/06/honouring-emma-hillier/                  301
+
+# Serve the custom 404 for anything that does not resolve. Must stay last:
+# these files are read in order and this rule matches everything.
 /*  /404.html  404

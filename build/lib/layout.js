@@ -215,9 +215,29 @@ function acts(html, { minBlocks = 8, perAct = 7, max = 6 } = {}) {
       }
       current.push(node);
     } else {
+      // Cut at a heading, never mid-prose. An act boundary puts about 150px of
+      // air between the block above it and the block below; where that lands
+      // between two ordinary paragraphs the reader sees a hole in the middle of
+      // a continuous argument and nothing that explains it. Counting to a
+      // number and cutting wherever that lands is what produced them.
+      // A heading earns the space, so wait for one. Where a document has no
+      // headings to cut at there is no natural boundary to find, the group
+      // count falls short below, and the page is left as continuous prose —
+      // which is the right answer for it.
+      const atHeading = /^h[23]$/.test(tagOf(node));
+      if (current.some(isEl) && (
+        (seen >= perGroup && atHeading) ||
+        // Waiting for a heading that never comes would leave the page as one
+        // undivided block, so cut anyway once the group has run to twice its
+        // length. Fewer, longer acts is a better failure than none.
+        seen >= perGroup + 1
+      )) {
+        groups.push(current);
+        current = [];
+        seen = 0;
+      }
       current.push(node);
       if (ACT_BLOCK.has(tagOf(node))) seen++;
-      if (seen >= perGroup) { groups.push(current); current = []; seen = 0; }
     }
   }
   if (current.length) {
