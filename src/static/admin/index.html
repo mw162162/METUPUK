@@ -78,44 +78,76 @@
   }
 
   ready(function () {
-    // Device widths. A phone is where most people read a charity site, and it
-    // is the view the person writing the page never sees. Putting it one click
-    // away in the editor is the difference between finding a broken layout now
-    // and a supporter finding it later.
+    // Every device is a real width, desktop included. It used to be 0, meaning
+    // "however wide the pane happens to be" — which is a column about 1100px
+    // across in a split view, so the desktop button never showed the desktop
+    // layout. It showed a narrow one and called it desktop.
     var DEVICES = [
       { id: 'mobile', label: 'Phone', w: 390 },
       { id: 'tablet', label: 'Tablet', w: 834 },
-      { id: 'desktop', label: 'Desktop', w: 0 },
+      { id: 'desktop', label: 'Desktop', w: 1280 },
     ];
 
     function shell(node) {
       if (!node || node.dataset.wired) return;
       node.dataset.wired = '1';
       var frame = node.querySelector('iframe');
+      var stage = node.querySelector('[data-stage]');
       var readout = node.querySelector('[data-readout]');
+      var current = DEVICES[2];
       watchForRebuilds(frame);
 
+      // The pane has to be measured rather than inherited. height:100% only
+      // resolves when every ancestor has a height of its own, and inside
+      // somebody else's application that is not a safe assumption — when it
+      // fails the box collapses to a couple of hundred pixels and the preview
+      // looks cropped, which is exactly what it did.
+      function stretch() {
+        var top = node.getBoundingClientRect().top;
+        var available = window.innerHeight - top - 4;
+        node.style.height = (available > 240 ? available : 480) + 'px';
+      }
+
+      // Show the whole device, not the top-left corner of it. The page is laid
+      // out at the device's true width and then scaled down to fit, so a
+      // desktop layout can be judged in a pane narrower than a desktop —
+      // which is the only way it is ever going to be looked at in here.
+      function fit() {
+        var room = stage.clientWidth;
+        var scale = room && current.w > room ? room / current.w : 1;
+        frame.style.width = current.w + 'px';
+        // Divided by the scale, so that once shrunk it still covers the pane.
+        frame.style.height = Math.round(stage.clientHeight / scale) + 'px';
+        frame.style.transform = scale < 1 ? 'scale(' + scale + ')' : 'none';
+        frame.style.transformOrigin = 'top left';
+        frame.style.left = Math.max(0, (room - current.w * scale) / 2) + 'px';
+        readout.textContent = current.w + 'px'
+          + (scale < 1 ? ' · ' + Math.round(scale * 100) + '%' : '');
+      }
+
       function apply(id) {
-        var d = DEVICES.filter(function (x) { return x.id === id; })[0] || DEVICES[2];
-        // Width only. The frame keeps the pane height, so the page scrolls
-        // inside it exactly as it would on the device.
-        frame.style.width = d.w ? d.w + 'px' : '100%';
-        frame.style.margin = d.w ? '0 auto' : '0';
-        frame.style.borderRight = d.w ? '1px solid rgba(0,0,0,.12)' : '0';
-        frame.style.borderLeft = d.w ? '1px solid rgba(0,0,0,.12)' : '0';
-        readout.textContent = d.w ? d.w + 'px' : 'full width';
+        current = DEVICES.filter(function (x) { return x.id === id; })[0] || DEVICES[2];
         Array.prototype.forEach.call(node.querySelectorAll('[data-device]'), function (b) {
           var on = b.getAttribute('data-device') === id;
           b.setAttribute('aria-pressed', on ? 'true' : 'false');
           b.style.background = on ? '#2b0519' : 'transparent';
           b.style.color = on ? '#fff' : '#2b0519';
         });
+        stretch();
+        fit();
         try { localStorage.setItem('metupuk-preview-device', id); } catch (e) {}
       }
 
       Array.prototype.forEach.call(node.querySelectorAll('[data-device]'), function (b) {
         b.addEventListener('click', function () { apply(b.getAttribute('data-device')); });
       });
+
+      // Dragging the divider between the fields and the preview resizes the
+      // pane without resizing the window, so the window event is not enough.
+      window.addEventListener('resize', function () { stretch(); fit(); });
+      if (window.ResizeObserver) {
+        new ResizeObserver(function () { stretch(); fit(); }).observe(stage);
+      }
 
       var saved = null;
       try { saved = localStorage.getItem('metupuk-preview-device'); } catch (e) {}
@@ -160,10 +192,24 @@
             style: { marginLeft: 'auto', font: '500 12px/1 system-ui', color: '#6b5560' },
           }, ''),
         ])),
-        window.h('iframe', {
+        // The stage clips. A scaled element still takes its full untransformed
+        // size in the layout, so a 1280px frame would push a scrollbar across
+        // the pane however far down it had been shrunk.
+        window.h('div', {
+          key: 'stage', 'data-stage': '1',
+          style: {
+            flex: '1 1 auto', minHeight: '0', overflow: 'hidden',
+            position: 'relative', background: '#fff',
+          },
+        }, window.h('iframe', {
           key: 'frame', src: src, title: 'Live preview',
-          style: { flex: '1 1 auto', width: '100%', border: '0', display: 'block', background: '#fff' },
-        }),
+          // Out of flow on purpose. An in-flow 1280px frame contributes that
+          // width to everything above it, and a flex item's min-width is auto
+          // by default — so the preview pane refused to shrink and squeezed the
+          // fields column down to 71px instead of scaling itself. Positioned
+          // absolutely it contributes nothing, and the pane sizes freely.
+          style: { position: 'absolute', top: '0', left: '0', border: '0', display: 'block', background: '#fff' },
+        })),
       ]);
     };
 

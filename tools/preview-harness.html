@@ -1,0 +1,102 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Preview harness</title>
+<!--
+  A stand-in for the editor's split view, for working on the preview pane's
+  geometry without signing into the CMS every time.
+
+  It fetches the real template out of /admin/index.html rather than copying it,
+  so what it measures is what ships. The pane below is deliberately given no
+  height of its own, because that is the condition under which the preview used
+  to collapse to a couple of hundred pixels and look cropped.
+
+  To use it:  cp tools/preview-harness.html dist/  then open
+  http://localhost:4321/preview-harness.html and read window.HARNESS.
+-->
+<style>
+  html, body { margin: 0; height: 100%; font: 14px system-ui; }
+  /* Stands in for the editor's split view: a fields column on the left and a
+     preview pane on the right, with a header above both. The pane is
+     deliberately given no height of its own, because that is the condition
+     under which the real one collapsed. */
+  #app { display: flex; height: 100%; }
+  #fields { width: 380px; border-right: 1px solid #ccc; padding: 12px; }
+  #pane { flex: 1 1 auto; }
+  #head { height: 64px; background: #eee; display: flex; align-items: center; padding: 0 12px; }
+</style>
+<div id="head">Harness — stands in for the Sveltia shell</div>
+<div id="app">
+  <div id="fields">fields column</div>
+  <div id="pane"></div>
+</div>
+<script>
+/* Loads the real preview template out of /admin/index.html and mounts it, so
+   what is measured here is the shipped source rather than a copy of it. */
+var captured = null;
+
+window.h = function (tag, props, children) {
+  var el = document.createElement(tag);
+  props = props || {};
+  Object.keys(props).forEach(function (k) {
+    if (k === 'key' || k === 'ref') return;
+    if (k === 'style') { Object.assign(el.style, props[k]); return; }
+    if (k.slice(0, 2) === 'on') return;
+    el.setAttribute(k, props[k]);
+  });
+  var kids = children == null ? [] : (Array.isArray(children) ? children : [children]);
+  kids.forEach(function (c) {
+    if (c == null) return;
+    el.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+  });
+  if (typeof props.ref === 'function') setTimeout(function () { props.ref(el); }, 0);
+  return el;
+};
+
+window.CMS = {
+  registerPreviewTemplate: function (name, fn) { if (!captured) captured = fn; },
+  registerPreviewStyle: function () {},
+};
+
+fetch('/admin/index.html')
+  .then(function (r) { return r.text(); })
+  .then(function (html) {
+    var scripts = html.match(/<script>([\s\S]*?)<\/script>/g) || [];
+    // The first inline script is the preview template.
+    var body = scripts[0].replace(/^<script>/, '').replace(/<\/script>$/, '');
+    (0, eval)(body);
+    setTimeout(mount, 250);
+  });
+
+function mount() {
+  if (!captured) { document.getElementById('pane').textContent = 'template never registered'; return; }
+  var node = captured({ entry: { data: { url: '/about-metupuk/' } } });
+  document.getElementById('pane').appendChild(node);
+  setTimeout(report, 700);
+}
+
+function report() {
+  var pane = document.getElementById('pane');
+  var shell = pane.firstElementChild;
+  var stage = pane.querySelector('[data-stage]');
+  var frame = pane.querySelector('iframe');
+  window.HARNESS = {
+    viewportHeight: window.innerHeight,
+    paneWidth: Math.round(pane.getBoundingClientRect().width),
+    shellHeight: Math.round(shell.getBoundingClientRect().height),
+    shellBottom: Math.round(shell.getBoundingClientRect().bottom),
+    stageHeight: Math.round(stage.getBoundingClientRect().height),
+    frameCssWidth: frame.style.width,
+    frameCssHeight: frame.style.height,
+    frameTransform: frame.style.transform,
+    frameVisualWidth: Math.round(frame.getBoundingClientRect().width),
+    frameVisualHeight: Math.round(frame.getBoundingClientRect().height),
+    readout: (pane.querySelector('[data-readout]') || {}).textContent,
+    paneScrollsX: pane.scrollWidth > pane.clientWidth + 1,
+  };
+}
+
+window.pick = function (id) {
+  document.querySelector('[data-device="' + id + '"]').click();
+  setTimeout(report, 120);
+};
+</script>
