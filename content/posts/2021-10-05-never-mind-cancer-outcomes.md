@@ -12,11 +12,8 @@ categories:
 sections:
   - type: "prose"
     body: "### It was shocking to hear the Prime Minister dismiss the importance of cancer outcomes in such an offhand way in a TV interview this week (1). But at the same time, it was sadly not surprising to many of us at MetUpUK."
-  - type: "html"
-    html: |-
-      <div class="e-hosted-video elementor-wrapper elementor-open-inline">
-      					<video src="/media/2021/10/boris-short.mp4" controls playsinline></video>
-      				</div>
+  - type: "video"
+    src: "/media/2021/10/boris-short.mp4"
   - type: "prose"
     body: |-
       It’s painfully obvious that cancer, and particularly metastatic (secondary or stage IV) cancer, is low down the government’s priority list. Metastatic breast cancer is the biggest cancer killer of women under 50 in the UK. And yet the UK government doesn’t even know how many people are currently living with this incurable disease. There is a lack of proper data collection with a third of NHS hospital trusts being unable to say how many secondary breast cancer patients currently in their care (2). To rectify this, the charity Breast Cancer Now have been campaigning for 15 years for a national metastatic breast cancer audit. Our founder Jo Taylor has been highlighting this disparity for over 7 years.  This request was finally granted this year. However, the audit will not begin until 2023 and will then take 3 years to run. With an average life expectancy of 2-3 years, most current secondary breast cancer patients will not live to see the data released.

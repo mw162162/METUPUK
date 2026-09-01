@@ -22,41 +22,9 @@ const { toText } = require('./lib/clean');
 const OUT = path.join(__dirname, '..', 'content');
 
 /* --- YAML ---------------------------------------------------------------- */
-// Small enough to write by hand: the shapes here are strings, numbers, lists
-// and plain objects. JSON's string escaping is a valid YAML double-quoted
-// scalar, and anything multi-line uses a literal block so Markdown stays
-// readable in the file instead of becoming one long escaped line.
-function scalar(v, indent) {
-  if (v == null || v === '') return '""';
-  if (typeof v === 'number' || typeof v === 'boolean') return String(v);
-  const s = String(v);
-  if (!s.includes('\n')) return JSON.stringify(s);
-  const pad = ' '.repeat(indent + 2);
-  return `|-\n${s.split('\n').map((l) => (l ? pad + l : '')).join('\n')}`;
-}
-
-function yamlValue(v, indent) {
-  const pad = ' '.repeat(indent);
-  if (Array.isArray(v)) {
-    if (!v.length) return ' []';
-    return '\n' + v.map((item) => {
-      if (item && typeof item === 'object' && !Array.isArray(item)) {
-        return `${pad}  - ` + yamlObject(item, indent + 4).replace(/^\s+/, '');
-      }
-      return `${pad}  - ${scalar(item, indent + 4)}`;
-    }).join('\n');
-  }
-  if (v && typeof v === 'object') return '\n' + yamlObject(v, indent + 2);
-  return ' ' + scalar(v, indent);
-}
-
-function yamlObject(obj, indent) {
-  const pad = ' '.repeat(indent);
-  return Object.entries(obj)
-    .filter(([, v]) => v !== null && v !== undefined)
-    .map(([k, v]) => `${pad}${k}:${yamlValue(v, indent)}`)
-    .join('\n');
-}
+// Shared with the importer and the retyping pass, so all three write a page
+// the same way. See build/lib/yaml-out.js.
+const { contentFile } = require('./lib/yaml-out');
 
 /* --- integrity ------------------------------------------------------------ */
 // Compare at the level of letters, not words. Markdown puts syntax inside
@@ -115,7 +83,38 @@ function checkIntegrity(originalHtml, blocks) {
 }
 
 /* --- export --------------------------------------------------------------- */
+// This was a one-time migration and it has already run. content/ is now the
+// source of truth: it is what the build reads, what the editor writes, and
+// where everything authored since the migration lives — none of which exists
+// in the WordPress scrape this reads from.
+//
+// Running it again overwrites all of that. It is not hypothetical: it silently
+// deleted a hand-built form the first time it was re-run after the switchover,
+// and the only reason anyone noticed was a diff.
+//
+// So it refuses by default once content/ has pages in it. --force is there for
+// re-running the migration deliberately, and expects you to have looked at
+// `git status` first.
+function refuseToClobber() {
+  if (process.argv.includes('--force')) return;
+  const pages = path.join(OUT, 'pages');
+  const count = fs.existsSync(pages) ? fs.readdirSync(pages).filter((f) => f.endsWith('.md')).length : 0;
+  if (!count) return;
+
+  console.error(`content/ already holds ${count} pages, and this would overwrite every one of them`);
+  console.error('from the WordPress scrape, losing anything written since the migration.');
+  console.error('');
+  console.error('To retype existing blocks after adding a component, use:');
+  console.error('  node build/retype-blocks.js');
+  console.error('');
+  console.error('To re-run the migration anyway, having checked git status:');
+  console.error('  node build/export-content.js --force');
+  process.exit(1);
+}
+
+
 function main() {
+  refuseToClobber();
   const m = model.build();
   const slugOf = new Map(m.pages.map((p) => [p.id, p.slug]));
   const catOf = new Map((m.categories || []).map((c) => [c.id, c.slug || c.name]));
@@ -173,7 +172,7 @@ function main() {
     const name = doc.kind === 'page'
       ? `${doc.slug}.md`
       : `${(doc.date || '').slice(0, 10)}-${doc.slug}.md`;
-    fs.writeFileSync(path.join(OUT, dir, name), `---\n${yamlObject(front, 0)}\n---\n`);
+    fs.writeFileSync(path.join(OUT, dir, name), contentFile(front));
     written++;
   }
 
