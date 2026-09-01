@@ -5,6 +5,9 @@ date: "2022-05-11T08:08:04"
 modified: "2022-05-09T20:44:06"
 image: "/media/2022/05/NICE-approvals.png"
 imageAlt: ""
+categories:
+  - "education"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-

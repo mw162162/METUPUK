@@ -5,6 +5,12 @@ date: "2024-10-29T23:30:05"
 modified: "2024-10-30T08:35:33"
 image: "/media/2024/10/Kelly-Hughes-1024x1003.jpeg"
 imageAlt: "Kelly Hughes"
+categories:
+  - "diagnosis"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

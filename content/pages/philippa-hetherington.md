@@ -17,7 +17,7 @@ sections:
 
       In May 2020 a chest x-ray looking for a possible pulmonary embolism picked up a nodule on my lung; a surveillance scan six months later found that the nodule had grown and multiplied and I now had secondary breast cancer. This was confirmed in November 2020.
 
-      **Age at Diagnosis:**35 at first diagnosis; 37 at secondary
+      **Age at Diagnosis:** 35 at first diagnosis; 37 at secondary
   - type: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#phillipa-hetherington"

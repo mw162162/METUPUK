@@ -5,6 +5,12 @@ date: "2024-05-07T01:58:56"
 modified: "2024-05-29T02:01:42"
 image: "/media/2023/01/kirsten-spencer.jpg"
 imageAlt: ""
+categories:
+  - "conferences"
+  - "drug-approval"
+  - "living-with-mbc"
+  - "patient-advocacy"
+  - "research"
 sections:
   - type: "prose"
     body: |-

@@ -5,6 +5,8 @@ date: "2020-12-01T13:42:55"
 modified: "2023-05-12T10:18:04"
 image: "/media/2020/12/2020-12-01-07.55.18-768x621.jpg"
 imageAlt: "Tassia Haines Illustration - first Day of Christmas"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

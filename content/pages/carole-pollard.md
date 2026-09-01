@@ -5,15 +5,12 @@ date: "2021-10-22T10:51:39"
 modified: "2021-10-22T10:55:03"
 image: "/media/2021/10/FB-1920x1080-22.Carole-Pollard-1024x576.png"
 imageAlt: "FB-1920×1080-22.Carole-Pollard"
+excerpt: "Name: Carole PollardAge: 39Region: Manchester Diagnosis: Stage 3, grade 3 HER2+ primary breast cancer diagnosed in December 2019. Bone mets diagnosed in February 2020 (likely there since diagnosis).…"
 parent: "darker-pink"
 sections:
   - type: "prose"
     body: |-
-      **Name: Carole Pollard  
-      Age: 39  
-      Region: Manchester  
-        
-      Diagnosis:**Stage 3, grade 3 HER2+ primary breast cancer diagnosed in December 2019. Bone mets diagnosed in February 2020 (likely there since diagnosis). Brain mets diagnosed in March 2021. Leptomeningeal disease diagnosed in April 2021.
+      <strong>Name: Carole Pollard<br>Age: 39<br>Region: Manchester<br><br>Diagnosis: </strong>Stage 3, grade 3 HER2+ primary breast cancer diagnosed in December 2019. Bone mets diagnosed in February 2020 (likely there since diagnosis). Brain mets diagnosed in March 2021. Leptomeningeal disease diagnosed in April 2021.
 
       **Age at Diagnosis: 38**
   - type: "embed"

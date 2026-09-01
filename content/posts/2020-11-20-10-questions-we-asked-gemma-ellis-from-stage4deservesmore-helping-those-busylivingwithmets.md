@@ -5,6 +5,8 @@ date: "2020-11-20T08:30:52"
 modified: "2023-05-12T10:18:05"
 image: "/media/2020/11/Gemma-Ellis-Stage-4-Deserves-More.png"
 imageAlt: "Gemma Ellis, Stage 4 Deserves More"
+categories:
+  - "organisations"
 sections:
   - type: "prose"
     body: |-

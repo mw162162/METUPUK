@@ -5,6 +5,11 @@ date: "2024-06-05T01:42:26"
 modified: "2024-06-05T17:05:34"
 image: "/media/2024/06/Economist-Impact.png"
 imageAlt: ""
+categories:
+  - "conferences"
+  - "education"
+  - "living-with-mbc"
+  - "patient-advocacy"
 sections:
   - type: "prose"
     body: |-

@@ -5,6 +5,8 @@ date: "2020-10-03T15:12:44"
 modified: "2023-05-12T10:18:58"
 image: "/media/2020/10/bex-fb-metup-1024x1024.jpg"
 imageAlt: "METUP Facebook Frame"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

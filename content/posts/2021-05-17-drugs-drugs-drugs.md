@@ -5,6 +5,10 @@ date: "2021-05-17T07:03:11"
 modified: "2022-06-07T10:41:30"
 image: "/media/2021/04/sinking-boat-1024x708.jpg"
 imageAlt: "Drugs, drugs, drugs, like patching up a sinking boat"
+categories:
+  - "diagnosis"
+  - "living-with-mbc"
+  - "quality-of-life"
 sections:
   - type: "prose"
     body: |-

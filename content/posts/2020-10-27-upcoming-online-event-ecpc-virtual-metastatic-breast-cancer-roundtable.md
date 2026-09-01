@@ -5,12 +5,14 @@ date: "2020-10-27T08:30:42"
 modified: "2023-05-12T10:18:28"
 image: "/media/2020/10/ECPC-Header-1024x486.png"
 imageAlt: "Screenshot of ECPC Website Header"
+categories:
+  - "conferences"
 sections:
   - type: "prose"
     body: |-
       Some of our team are planning on attending this (free) event (later this week), run by the <a href="https://ecpc.org/" rel="noopener" target="_blank">European Cancer Patient Coalition</a>.
 
-      ***Moderated by****Dr. Fatima Cardoso, President of the ABC Global Alliance, Chair of the ABC International Consensus Conference and Guidelines and Director of the Breast Unit of the Champalimaud Clinical Center in Lisbon, Portugal*
+      ***Moderated by*** *Dr. Fatima Cardoso, President of the ABC Global Alliance, Chair of the ABC International Consensus Conference and Guidelines and Director of the Breast Unit of the Champalimaud Clinical Center in Lisbon, Portugal*
 
       As you know, while the impact of MBC on productivity and financial burden are well-documented, it remains unclear **how new treatments for MBC can reduce productivity-related burdens and improve quality of life**. Over the past few months, in partnership with Precision HealthCare, sponsored by Sanofi, ECPC conducted a targeted literature review of studies measuring MBC patient preferences on treatment outcomes (i.e., progression-free survival) to better understand the patient perspective on quality of life. With this research now complete, ECPC would like to share the findings, get insightful feedback and discuss how to utilize this information to promote meaningful change through impactful initiatives, innovations and global policies.
 

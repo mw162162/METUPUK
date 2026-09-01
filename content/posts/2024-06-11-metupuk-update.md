@@ -3,6 +3,14 @@ title: "METUPUK update"
 url: "/2024/06/metupuk-update/"
 date: "2024-06-11T01:48:51"
 modified: "2024-06-11T01:53:00"
+categories:
+  - "conferences"
+  - "drug-approval"
+  - "education"
+  - "living-with-mbc"
+  - "patient-advocacy"
+  - "policy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-
@@ -10,7 +18,7 @@ sections:
 
       Founder Jo Taylor was due to have been in Berlin to present a poster about #FightingMBCPlatitudes which was a joint effort with Eva Schumacher from a German breast cancer organisation.  The Poster won first prize at #ESMOBerlin!   We were thrilled.  Jo was unable to attend in person because of health issues but delivered a keynote speech at the Greater Manchester Cancer Conference at the same time #GMCC24
 
-      A project which is coming to life soon is our **Advocacy Programme for Patients.**This will address the need for patients to support themselves in learning and advocating about their disease.  We introduced the concept back in 2023 at our conference, and we intend to launch a pilot of the programme in Greater Manchester that can be developed further and rolled out across the UK.  Planning is underway with our dedicated project team and we will soon be ready for launch.  This work will complement the various strands of work we do already for metastatic breast cancer patients.  METUPUK loves being able to support patients becoming advocates and we are pleased to have done so much in such a short time, all as unpaid volunteers.
+      A project which is coming to life soon is our **Advocacy Programme for Patients.** This will address the need for patients to support themselves in learning and advocating about their disease.  We introduced the concept back in 2023 at our conference, and we intend to launch a pilot of the programme in Greater Manchester that can be developed further and rolled out across the UK.  Planning is underway with our dedicated project team and we will soon be ready for launch.  This work will complement the various strands of work we do already for metastatic breast cancer patients.  METUPUK loves being able to support patients becoming advocates and we are pleased to have done so much in such a short time, all as unpaid volunteers.
 
       We are also delighted to announce that the Darker Side of Pink Campaign, that made it to the glamourous location of Houses of Parliament last year, is now back travelling the UK.  It is currently at Centre for Digital Innovation in Northallerton.
 

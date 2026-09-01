@@ -5,6 +5,8 @@ date: "2023-05-06T07:01:45"
 modified: "2023-05-06T10:06:47"
 image: "/media/2023/04/Hannah-Harrison-photo-1-771x1024.jpg"
 imageAlt: "Hannah Harrison photo (1)"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

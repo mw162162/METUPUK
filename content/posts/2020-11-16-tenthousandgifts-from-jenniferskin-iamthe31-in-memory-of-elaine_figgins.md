@@ -5,6 +5,8 @@ date: "2020-11-16T07:30:57"
 modified: "2023-05-12T10:18:21"
 image: "/media/2020/11/intro-768x864.jpg"
 imageAlt: "Jennifer Young Gift montage"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

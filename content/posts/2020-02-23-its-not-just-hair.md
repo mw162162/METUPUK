@@ -5,6 +5,8 @@ date: "2020-02-23T14:34:41"
 modified: "2023-05-12T10:19:46"
 image: "/media/2019/10/Jo-Taylor-and-Jo-Myatt-768x1024.jpg"
 imageAlt: "Jo Taylor and Jo Myatt"
+categories:
+  - "quality-of-life"
 sections:
   - type: "prose"
     body: |-

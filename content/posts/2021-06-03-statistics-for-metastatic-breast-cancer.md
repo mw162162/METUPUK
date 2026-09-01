@@ -5,6 +5,10 @@ date: "2021-06-03T07:15:35"
 modified: "2022-06-07T10:42:29"
 image: "/media/2021/06/iStock-1220059467-1024x683.jpg"
 imageAlt: "Statistics for Metastatic Breast Cancer"
+categories:
+  - "living-with-mbc"
+  - "policy"
+  - "research"
 sections:
   - type: "prose"
     body: |-
@@ -14,7 +18,7 @@ sections:
 
       So what we are trying to do, and what #BusyLivingWithMets has *tried* to do is not paint a picture that everyone is living well.  Unfortunately, some people never achieve stability on their MBC treatments &#8211; something even more likely for Triple Negative and Hormone Positive breast cancers. But we want to get across to people that we *COULD* live well, and we *COULD* live longer than the 2-3 year median survival.
 
-      MBC is not a chronic disease, but it *COULD*be one, and we want more to be done to make it so.  How does this happen?
+      MBC is not a chronic disease, but it *COULD* be one, and we want more to be done to make it so.  How does this happen?
 
       The only way is **investment** &#8211; we need those in power whether it is NHS funding herceptin 4th+ line or whether it&#8217;s pharma or research or clinical trials &#8211; we need people to stop thinking that this is a done deal.
 

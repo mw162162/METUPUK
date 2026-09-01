@@ -20,7 +20,7 @@ sections:
 
       Sandy is very clear about her life at the moment “I&#8217;m definitely living. I&#8217;m not dying yet”, a sentiment shared by many women living with metastatic breast cancer.
 
-      *Read the full article here*<a href="https://www.scotsman.com/news/opinion/columnists/im-definitely-living-im-not-dying-yet-as-treatment-improves-even-incurable-cancer-will-become-a-chronic-illness-4140486" rel="noopener" target="_blank"><i>https://www.scotsman.com/news/opinion/columnists/im-definitely-living-im-not-dying-yet-as-treatment-improves-even-incurable-cancer-will-become-a-chronic-illness-4140486</i></a>
+      *Read the full article here* <a href="https://www.scotsman.com/news/opinion/columnists/im-definitely-living-im-not-dying-yet-as-treatment-improves-even-incurable-cancer-will-become-a-chronic-illness-4140486" rel="noopener" target="_blank"><i>https://www.scotsman.com/news/opinion/columnists/im-definitely-living-im-not-dying-yet-as-treatment-improves-even-incurable-cancer-will-become-a-chronic-illness-4140486</i></a>
 
       Sandy is a member of METUPUK and patient advocate in Scotland.
 ---

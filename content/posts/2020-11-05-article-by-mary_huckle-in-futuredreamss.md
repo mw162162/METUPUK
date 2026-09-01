@@ -5,6 +5,8 @@ date: "2020-11-05T16:28:00"
 modified: "2023-05-12T10:18:24"
 image: "/media/2020/11/MaryHuckleArticle-1024x1024.jpg"
 imageAlt: "MaryHuckleArticle"
+categories:
+  - "press"
 sections:
   - type: "prose"
     body: |-

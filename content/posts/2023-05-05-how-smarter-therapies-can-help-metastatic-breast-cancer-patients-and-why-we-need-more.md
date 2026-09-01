@@ -5,6 +5,8 @@ date: "2023-05-05T07:00:39"
 modified: "2023-05-05T08:40:30"
 image: "/media/2022/05/PXL_20220427_150129711-768x1024.jpg"
 imageAlt: "Why we need MBC research more than ever"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

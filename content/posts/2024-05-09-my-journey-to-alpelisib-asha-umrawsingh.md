@@ -5,6 +5,9 @@ date: "2024-05-09T14:48:55"
 modified: "2024-05-09T14:52:57"
 image: "/media/2023/04/Asha-blog-photo.jpg"
 imageAlt: ""
+categories:
+  - "drug-approval"
+  - "patient-advocacy"
 sections:
   - type: "prose"
     body: |-

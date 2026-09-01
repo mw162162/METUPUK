@@ -5,6 +5,8 @@ date: "2020-10-07T13:56:45"
 modified: "2023-05-12T10:18:56"
 image: "/media/2020/10/mary-huckle-jen-cronje-itv-lorraine-featured-image-768x536.png"
 imageAlt: "Mary Huckle and Jen Cronje on ITV Lorraine"
+categories:
+  - "press"
 sections:
   - type: "prose"
     body: |-

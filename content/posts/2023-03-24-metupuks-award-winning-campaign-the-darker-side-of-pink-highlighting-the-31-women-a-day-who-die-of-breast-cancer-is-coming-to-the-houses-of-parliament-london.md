@@ -18,9 +18,9 @@ sections:
 
       volunteers and Trustees will be meeting them to discuss the issues we need focus on.  
 
-      **Mayor of Greater Manchester, Andy Burnham, said**: *“I have had family experience of**secondary, or metastatic, breast cancer and have seen how hard it can be for women to get the support they need. Sadly, they can all too easily get lost in the system and miss out on treatment. This is why I am so pleased to see the powerful Darker Side of Pink exhibition heading to Parliament. We want the women facing this condition to feel truly seen and heard and that is what Darker Side of Pink helps to do. But it is also vital to raise awareness amongst opinion-formers of the need to improve support and treatment options for people with metastatic breast cancer. I would ask all MPs and Lords to pass by and find out more**about the personal stories of women fighting this disease.&#8221;*
+      **Mayor of Greater Manchester, Andy Burnham, said**: *“I have had family experience of* *secondary, or metastatic, breast cancer and have seen how hard it can be for women to get the support they need. Sadly, they can all too easily get lost in the system and miss out on treatment. This is why I am so pleased to see the powerful Darker Side of Pink exhibition heading to Parliament. We want the women facing this condition to feel truly seen and heard and that is what Darker Side of Pink helps to do. But it is also vital to raise awareness amongst opinion-formers of the need to improve support and treatment options for people with metastatic breast cancer. I would ask all MPs and Lords to pass by and find out more* *about the personal stories of women fighting this disease.&#8221;*
 
-      **Founder of METUPUK, Jo Taylor, said**: *“Breast Cancer awareness is hugely important and valuable to many women, but the uncomfortable truth is that metastatic breast cancer is**incurable and killing almost 1,000 of our mothers, sisters, daughters and friends every**month. It can’t be sugar-coated and is severely under-represented in the global**conversation around breast cancer. We’re passionate about changing the narrative to**ensure that every woman facing metastatic breast cancer is supported and valued.&#8221;*
+      **Founder of METUPUK, Jo Taylor, said**: *“Breast Cancer awareness is hugely important and valuable to many women, but the uncomfortable truth is that metastatic breast cancer is* *incurable and killing almost 1,000 of our mothers, sisters, daughters and friends every* *month. It can’t be sugar-coated and is severely under-represented in the global* *conversation around breast cancer. We’re passionate about changing the narrative to* *ensure that every woman facing metastatic breast cancer is supported and valued.&#8221;*
 
       MBC occurs when the cancer has travelled from the primary breast site through the blood or lymphatic system to a distant area of the body. When this happens, it becomes an incurable disease. Amongst those diagnosed with early-stage Breast Cancer, approximately 30% will go on to develop MBC.
 
@@ -28,7 +28,7 @@ sections:
 
       Notes  
 
-      Videos from our 31 stories are all available to view on http://metupuk.org.uk/darker-sideof-pink/ and are shared across all METUPUK’s social media platforms.
+      Videos from our 31 stories are all available to view on http://metupuk.org.uk/darker-sideof-pink/ and are shared across all METUPUK’s social media platforms.
 
       The Darker Side of Pink campaign will be at the Houses of Parliament from Monday 27th March to Thursday 30th March 2023.
 

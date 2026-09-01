@@ -5,6 +5,8 @@ date: "2023-05-08T07:00:50"
 modified: "2023-05-08T07:20:43"
 image: "/media/2023/04/Laura-Ashurst-2.jpg"
 imageAlt: "Laura Ashurst 2"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

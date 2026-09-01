@@ -5,10 +5,12 @@ date: "2020-10-26T14:06:00"
 modified: "2023-05-12T10:18:28"
 image: "/media/2020/10/kirsty-tg-xmY3qMBfzBs-unsplash-1024x683.jpg"
 imageAlt: "Photo of a letterbox"
+categories:
+  - "patient-advocacy"
 sections:
   - type: "prose"
     body: |-
-      We really need to raise awareness around what people with secondary cancer require, encouraging the debate to be placed upon the policy table. You can really help us by**writing to your local MP**(you <a href="https://members.parliament.uk/FindYourMP" rel="noopener" target="_blank">find them here</a> or <a href="https://www.theyworkforyou.com/" rel="noopener" target="_blank">here</a>), whether you are a person &#8216;living with and beyond cancer&#8217;, or a friend or family who is supporting someone who is, or just think that this is an important issue as cancer affects us all.
+      We really need to raise awareness around what people with secondary cancer require, encouraging the debate to be placed upon the policy table. You can really help us by **writing to your local MP** (you <a href="https://members.parliament.uk/FindYourMP" rel="noopener" target="_blank">find them here</a> or <a href="https://www.theyworkforyou.com/" rel="noopener" target="_blank">here</a>), whether you are a person &#8216;living with and beyond cancer&#8217;, or a friend or family who is supporting someone who is, or just think that this is an important issue as cancer affects us all.
 
       Thanks to METUPUK member Mary Huckle, who has written a letter template which we can all use and adapt (and [download](/media/2020/10/MP_Lobby_Letter_October_2020.docx)).
   - type: "quote"

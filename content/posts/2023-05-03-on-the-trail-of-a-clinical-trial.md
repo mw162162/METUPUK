@@ -5,6 +5,11 @@ date: "2023-05-03T10:38:18"
 modified: "2023-05-03T13:32:23"
 image: "/media/2022/05/iStock-1306208167-1024x683.jpg"
 imageAlt: "On the trail of a Clinical Trial…"
+excerpt: "METUPUK historically maintained their own in-house clinical trial database for metastatic trials in the UK as there was no one source that contained them all. It used the key sites used across the…"
+categories:
+  - "living-with-mbc"
+  - "research"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-
@@ -22,9 +27,9 @@ sections:
 
       **Cancer Research UK** – 17. That number only made possible through manually combing through all trials. See footnote (2) below to read the detail on the painful searching.
 
-      **Be Part of Research –**\39. Again, manual intervention needed to weed out any trials that make reference to ‘metastatic’ in body text. No pre-determined filters/categories to aide searching. See footnote (3).
+      **Be Part of Research –** \39. Again, manual intervention needed to weed out any trials that make reference to ‘metastatic’ in body text. No pre-determined filters/categories to aide searching. See footnote (3).
 
-      **ISRCTN** **–**11**.**All but 1 were listed on Clinical Trials.Gov. Annoyingly that means I can’t discount it as a source to include. See footnote (4).
+      **ISRCTN** **–** 11**.** All but 1 were listed on Clinical Trials.Gov. Annoyingly that means I can’t discount it as a source to include. See footnote (4).
 
       **Clinical Trials.Gov** – 56. The largest source but again blighted by poor searching functionality and tagging of data. On trialing their new beta site, I was able to filter by metastatic breast cancer (yay &#8211; finally!) however the total of 54(?) recruiting trials in the UK was muddled with incorrect entries. Examples like the term ‘metastases’ in relation to axillary nodes (stage 3), a study with metastases excluded in the body text rather than patient information section, a trial including ‘non-metastatic…’ in its title – seriously people!! See footnote (5).
 
@@ -38,7 +43,7 @@ sections:
 
       **(1) Breast Cancer Now (BCN)**. Arguably the main charity and champions for breast cancer patients across the UK and who brand themselves as ‘the research and care charity’. Despite funding a number of clinical trials, they don’t maintain a searchable registry themselves but provide re-directs to other trial sites for searching clinical trials. Annoying, yes. Note that the charity **Target Ovarian Cancer** maintain their own searchable listing on their website, filtered by sub types and curative, recurrence etc . WE NEED THIS!! **BCN** recommend the NHS website (which doesn’t have a listing as it uses Be Part of Research), Cancer Research UK and Be Part of Research.  I plough on to **Cancer Research UK** as the first recommendation from BCN.
 
-      **(2) Cancer Research UK**Now this is where the IT techy (and the patient) in me starts to get annoyed. Of the 17 trials on the Cancer Research UK site applicable to metastatic patients that are recruiting, only 2 come up when using a manual search for ‘breast cancer metastatic**’**, 5 come up when searching ‘breast cancer stage 4’ (but only 2 out of the 5 are for metastatic/stage 4/secondary patients). ‘Breast cancer secondary’ retrieves only 6 trials. If we filter by ‘secondary’ and then add the sub filter of ‘breast cancer’ we get 8 results. The only way to get the full list of 17 is when you individually sift through ALL breast cancer search results one by one reading the inclusion/exclusion criteria. Why’s that? Because, I would guess, that the right tagging (metadata for any IT readers) hasn’t been put in for the trial to be picked up in a search. They also like to use the term ‘secondary’ and filter based on where your secondary is. For example, filtering on ‘secondary – spread to the liver’ I get a bowel cancer trial as there is no additional inclusion of the primary filter. I’m sure there are probably more than the 17 (especially for solid tumour trials that include a number of cancers) but frankly who will be reading through every trial inclusion to find out?
+      **(2) Cancer Research UK** Now this is where the IT techy (and the patient) in me starts to get annoyed. Of the 17 trials on the Cancer Research UK site applicable to metastatic patients that are recruiting, only 2 come up when using a manual search for ‘breast cancer metastatic**’**, 5 come up when searching ‘breast cancer stage 4’ (but only 2 out of the 5 are for metastatic/stage 4/secondary patients). ‘Breast cancer secondary’ retrieves only 6 trials. If we filter by ‘secondary’ and then add the sub filter of ‘breast cancer’ we get 8 results. The only way to get the full list of 17 is when you individually sift through ALL breast cancer search results one by one reading the inclusion/exclusion criteria. Why’s that? Because, I would guess, that the right tagging (metadata for any IT readers) hasn’t been put in for the trial to be picked up in a search. They also like to use the term ‘secondary’ and filter based on where your secondary is. For example, filtering on ‘secondary – spread to the liver’ I get a bowel cancer trial as there is no additional inclusion of the primary filter. I’m sure there are probably more than the 17 (especially for solid tumour trials that include a number of cancers) but frankly who will be reading through every trial inclusion to find out?
 
       Cancer Research UK state “We have a searchable database of cancer trials. We don&#8217;t only include Cancer Research UK trials on our database. We aim to include information on **all trials and studies that recruit people in the UK**, funded by a wide range of organisations.” I think that’s a long way off if it really is an aim. 11 trials were unique to Cancer Research UK that weren’t listed anywhere else.
 
@@ -46,7 +51,7 @@ sections:
 
       Medical conditions are listed within each trial listing and look like they are pre-formed information. But on closer inspection they must be free-formed typed as there are many different grammatical variations of the same terms. They also aren’t included in the search/filtering functionality grrrr. 39 metastatic trials are recruiting but very difficult to pull the information together and, like Cancer Research UK, it required manual collations of multiple searches.  **Be Part of Research** has a significant overlap with the beast that is **ClinicalTrials.Gov**, however not all of them are listed.
 
-      **(4) ISRCTN**They are piloting a new dashboard to see trials as well but doesn’t do free text search yet so can’t look at just breast cancer trials, for example. I found 11 trials (by combining search results) although these are overlapping with Cancer Research UK’s 17 trials. One unique trial which no other site had meaning I have to keep checking it.
+      **(4) ISRCTN** They are piloting a new dashboard to see trials as well but doesn’t do free text search yet so can’t look at just breast cancer trials, for example. I found 11 trials (by combining search results) although these are overlapping with Cancer Research UK’s 17 trials. One unique trial which no other site had meaning I have to keep checking it.
 
       **(5) ClinicalTrials.gov** Finally onto the big guns. ClinicalTrials.gov is a database of privately and publicly funded clinical studies conducted around the world (note that the website currently being modernised). When trialling the beta version of the new site, I’m specifically able to pick ‘breast cancer metastatic’ as a search term and ‘United Kingdom’ as a location, so far so good. I get only 25 results which obviously means that ‘United Kingdom’ is not a correct way of getting UK trials. Back to the original clunky Clinical Trials. Gov site. A lot of combining data to get the eventual 56.
 

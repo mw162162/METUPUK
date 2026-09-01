@@ -5,6 +5,10 @@ date: "2022-06-02T07:09:51"
 modified: "2022-06-01T16:38:19"
 image: "/media/2022/06/The-gammon-dragon-1024x673.jpg"
 imageAlt: "The gammon dragon"
+excerpt: "A new campaign in Wales, by MetUpUK member Tassia Haines, aims to draw attention to the fact that Metastatic Breast Cancer (MBC) patients feel that they are being failed by the Welsh Government."
+categories:
+  - "patient-advocacy"
+  - "policy"
 sections:
   - type: "prose"
     body: |-

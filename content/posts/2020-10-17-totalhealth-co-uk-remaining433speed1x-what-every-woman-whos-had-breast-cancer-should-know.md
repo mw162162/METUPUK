@@ -5,6 +5,8 @@ date: "2020-10-17T18:09:15"
 modified: "2023-05-12T10:18:50"
 image: "/media/2020/11/total-health-woman-breast-cancer-1024x857.png"
 imageAlt: "Woman's Eyes in Screenshot in Total Health"
+categories:
+  - "press"
 sections:
   - type: "prose"
     body: "METUPUK founder Jo Taylor, and member Madeleine Meynell featured in this piece in Total Health:"

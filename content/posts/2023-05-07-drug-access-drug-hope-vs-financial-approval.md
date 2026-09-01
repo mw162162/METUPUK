@@ -5,6 +5,8 @@ date: "2023-05-07T08:08:45"
 modified: "2023-05-07T08:51:33"
 image: "/media/2021/03/Lisa.jpg"
 imageAlt: "Lisa"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

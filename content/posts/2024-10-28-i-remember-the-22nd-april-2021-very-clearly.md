@@ -5,6 +5,10 @@ date: "2024-10-28T20:47:11"
 modified: "2024-10-29T07:45:26"
 image: "/media/2024/09/Sue-Thomas-PIP-906x1024.jpeg"
 imageAlt: "Sue Thomas PIP"
+categories:
+  - "living-with-mbc"
+  - "member-stories"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

@@ -5,6 +5,8 @@ date: "2020-08-03T00:24:20"
 modified: "2023-05-12T10:19:28"
 image: "/media/2020/08/Not-dead-yet.jpeg"
 imageAlt: "Not dead yet"
+categories:
+  - "quality-of-life"
 sections:
   - type: "prose"
     body: |-

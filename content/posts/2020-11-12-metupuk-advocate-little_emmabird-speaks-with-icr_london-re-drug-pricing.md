@@ -5,6 +5,8 @@ date: "2020-11-12T10:46:56"
 modified: "2023-05-12T10:18:23"
 image: "/media/2020/12/nastya-dulhiier-V8U4zraWnbg-unsplash-1024x683.jpg"
 imageAlt: "nastya-dulhiier-V8U4zraWnbg-unsplash"
+categories:
+  - "press"
 sections:
   - type: "prose"
     body: "METUPUK advocate Emma Robertson spoke with ICR on pricing for cancer drugs, and gave insights into how the process can be sped up, saving more lives. The article covers the new 9-point plan and included Emma saying:"

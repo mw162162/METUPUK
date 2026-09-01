@@ -3,6 +3,12 @@ title: "Guilt – Helen Stewart"
 url: "/2024/05/guilt-helen-stewart/"
 date: "2024-05-25T00:57:10"
 modified: "2024-05-25T00:58:35"
+categories:
+  - "diagnosis"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

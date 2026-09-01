@@ -3,6 +3,12 @@ title: "“Never mind cancer outcomes”"
 url: "/2021/10/never-mind-cancer-outcomes/"
 date: "2021-10-05T16:46:23"
 modified: "2021-10-05T16:46:23"
+excerpt: "It was shocking to hear the Prime Minister dismiss the importance of cancer outcomes in such an offhand way in a TV interview this week. But at the same time, it was sadly not surprising to many of…"
+categories:
+  - "education"
+  - "living-with-mbc"
+  - "patient-advocacy"
+  - "policy"
 sections:
   - type: "prose"
     body: "### It was shocking to hear the Prime Minister dismiss the importance of cancer outcomes in such an offhand way in a TV interview this week (1). But at the same time, it was sadly not surprising to many of us at MetUpUK."

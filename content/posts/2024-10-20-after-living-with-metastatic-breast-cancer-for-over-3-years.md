@@ -5,6 +5,11 @@ date: "2024-10-20T23:32:01"
 modified: "2024-10-21T08:34:46"
 image: "/media/2024/05/IMG_1399-768x1024.jpg"
 imageAlt: "IMG_1399"
+categories:
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

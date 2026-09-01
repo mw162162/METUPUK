@@ -5,6 +5,8 @@ date: "2023-03-10T18:56:23"
 modified: "2023-04-25T16:08:01"
 image: "/media/2020/10/IMG-20201002-WA0006-768x792.jpg"
 imageAlt: "IMG-20201002-WA0006"
+categories:
+  - "member-stories"
 sections:
   - type: "prose"
     body: |-

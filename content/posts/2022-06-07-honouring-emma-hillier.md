@@ -5,6 +5,7 @@ date: "2022-06-07T10:49:59"
 modified: "2022-07-14T19:54:02"
 image: "/media/2021/12/IMG-20211217-WA0009-1024x1024.jpg"
 imageAlt: "IMG-20211217-WA0009"
+excerpt: "Today we want to honour our friend and MetUpUK member Emma Hillier."
 sections:
   - type: "prose"
     body: |-

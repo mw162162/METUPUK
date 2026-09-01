@@ -5,6 +5,8 @@ date: "2020-10-05T14:56:55"
 modified: "2023-05-12T10:18:57"
 image: "/media/2020/10/mary-huckle-what-if.png"
 imageAlt: "Mary Huckle, with METUP-UK frame, on Facebook"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

@@ -5,6 +5,8 @@ date: "2020-07-07T20:58:35"
 modified: "2023-05-12T10:19:35"
 image: "/media/2020/10/jo-taylor-bell-ringing-cancer.png"
 imageAlt: "Screenshot - the Telegraph"
+categories:
+  - "press"
 sections:
   - type: "prose"
     body: |-

@@ -3,6 +3,10 @@ title: "METUPUK are delighted by the Scottish Medicines Consortium (SMC) approva
 url: "/2022/01/metupuk-and-the-smc-are-delighted-to-announce-tucatinib-has-been-accepted-for-routine-use-by-nhs-scotland/"
 date: "2022-01-17T14:08:11"
 modified: "2022-01-17T15:22:08"
+categories:
+  - "policy"
+  - "press"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-
@@ -15,7 +19,7 @@ sections:
 
       Jo Taylor, founder of METUPUK, commented:
 
-      *“These two drug authorisations are a significant step forward for the many Scottish patients living with HER2-positive metastatic breast cancer**.**We know up to 50% of patients with metastatic HER2 positive breast cancer go on to develop brain metastases.  Today a treatment combination has been made available to Scottish NHS patients that is proven to show increased overall survival in patients with brain metastases.  Disease progression in metastatic breast cancer patients is an unmet need beyond second line treatment and new medicines are essential in the challenge to supress this incurable disease.”*
+      *“These two drug authorisations are a significant step forward for the many Scottish patients living with HER2-positive metastatic breast cancer**.* *We know up to 50% of patients with metastatic HER2 positive breast cancer go on to develop brain metastases.  Today a treatment combination has been made available to Scottish NHS patients that is proven to show increased overall survival in patients with brain metastases.  Disease progression in metastatic breast cancer patients is an unmet need beyond second line treatment and new medicines are essential in the challenge to supress this incurable disease.”*
 
       Lesley Stephen is an advocate for METUPUK and lives in Scotland.  She submitted evidence to the <a href="https://www.scottishmedicines.org.uk/" rel="noopener" target="_blank">SMC</a> on behalf of METUPUK and commented:
 

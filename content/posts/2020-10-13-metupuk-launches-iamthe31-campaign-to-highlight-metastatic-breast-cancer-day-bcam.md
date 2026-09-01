@@ -5,6 +5,8 @@ date: "2020-10-13T00:15:34"
 modified: "2023-05-12T10:18:52"
 image: "/media/2020/10/email-header-2.jpg"
 imageAlt: "email header (2)"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-
@@ -24,7 +26,7 @@ sections:
 
       A [webpage](/i-am-the-31/) includes over 60 people who are living with the disease and shares a little bit about them and their diagnosis.
 
-      The aim of the campaign is to**put faces to the numbers**, showing that the 31 people who die daily are real people with real lives, families, and friends who will be devastated by their death.
+      The aim of the campaign is to **put faces to the numbers**, showing that the 31 people who die daily are real people with real lives, families, and friends who will be devastated by their death.
 
       **MetUpUk demands change** and they need your help to spread the word of secondary breast cancer.
 

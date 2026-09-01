@@ -5,6 +5,11 @@ date: "2023-01-11T11:56:10"
 modified: "2023-01-11T11:59:54"
 image: "/media/2022/12/Philippa-843x1024.jpg"
 imageAlt: "Philippa"
+excerpt: "We had to confirm back on the 5th November the heartbreaking news that the wonderful Philippa Hetherington had died 💔 She was an absolute force of intellectual nature for breast cancer in general,…"
+categories:
+  - "member-stories"
+  - "patient-advocacy"
+  - "research"
 sections:
   - type: "prose"
     body: |-

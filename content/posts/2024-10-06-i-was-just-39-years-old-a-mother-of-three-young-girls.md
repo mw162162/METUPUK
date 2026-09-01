@@ -5,6 +5,11 @@ date: "2024-10-06T01:12:19"
 modified: "2024-10-07T19:29:33"
 image: "/media/2024/04/IMG-20240427-WA0021-683x1024.jpg"
 imageAlt: "Helen G 2024"
+categories:
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-
@@ -18,7 +23,7 @@ sections:
 
       I had an abundance of hectic medical appointments to attend, drug regimens to get to grips with; I **HAD** to buy a diary; disposable paper nonchalantly used to manage time, cheap and easy to get; unlike the time and memories it represented.
 
-      I’ve since advocated for myself and challenged when appointments, scans and drug schedules are incorrect. I say advocate, usually “fight”. Precious time calling, emailing, **challenging**to get appropriate and convenient appointments. Hours spent travelling to and from appointments, waiting for tests to be done and results to be reported.
+      I’ve since advocated for myself and challenged when appointments, scans and drug schedules are incorrect. I say advocate, usually “fight”. Precious time calling, emailing, **challenging** to get appropriate and convenient appointments. Hours spent travelling to and from appointments, waiting for tests to be done and results to be reported.
 
       If I needed prescription drugs from the hospital pharmacy, then I would need to factor in a further one, two or sometimes three hours’ waiting time, sometimes even to be told that the items I so desperately needed were not even in stock, to then be sent home and told they’d be posted to me….
 

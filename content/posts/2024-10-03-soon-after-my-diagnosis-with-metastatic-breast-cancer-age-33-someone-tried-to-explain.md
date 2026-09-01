@@ -5,6 +5,11 @@ date: "2024-10-03T23:38:02"
 modified: "2024-10-07T19:30:00"
 image: "/media/2020/06/Kit-768x553.jpg"
 imageAlt: "Kit"
+categories:
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

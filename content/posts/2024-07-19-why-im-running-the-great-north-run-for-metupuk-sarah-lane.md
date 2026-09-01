@@ -5,6 +5,11 @@ date: "2024-07-19T10:59:13"
 modified: "2024-07-19T10:59:13"
 image: "/media/2024/07/Sarah-Lane-2-scaled-e1721382544834-768x1024.jpg"
 imageAlt: "Sarah Lane 2"
+categories:
+  - "fundraising"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
 sections:
   - type: "prose"
     body: |-

@@ -5,6 +5,14 @@ date: "2024-10-13T23:22:41"
 modified: "2024-10-13T23:22:41"
 image: "/media/2024/05/Jo-brochure.jpg"
 imageAlt: "Jo brochure"
+categories:
+  - "diagnosis"
+  - "drug-approval"
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "social-media-campaign"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-

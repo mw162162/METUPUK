@@ -5,6 +5,8 @@ date: "2020-10-30T11:20:54"
 modified: "2023-05-12T10:18:26"
 image: "/media/2020/11/EC-ConfOpen-1024x705.jpg"
 imageAlt: "Screenshot of organisations involved in ECPC Roundtable"
+categories:
+  - "conferences"
 sections:
   - type: "prose"
     body: |-

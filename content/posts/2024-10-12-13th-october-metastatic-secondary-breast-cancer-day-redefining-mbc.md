@@ -3,6 +3,14 @@ title: "13th October – metastatic (secondary) breast cancer day – redefining
 url: "/2024/10/13th-october-metastatic-secondary-breast-cancer-day-redefining-mbc/"
 date: "2024-10-12T21:53:06"
 modified: "2024-10-12T21:53:06"
+categories:
+  - "data"
+  - "drug-approval"
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

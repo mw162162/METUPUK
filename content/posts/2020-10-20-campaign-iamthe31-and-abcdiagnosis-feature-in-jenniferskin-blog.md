@@ -5,6 +5,8 @@ date: "2020-10-20T18:59:56"
 modified: "2023-05-12T10:18:31"
 image: "/media/2020/10/jennifer-young-beauty-768x385.jpg"
 imageAlt: "Photo of Jennifer Young toiletries"
+categories:
+  - "press"
 sections:
   - type: "prose"
     body: |-

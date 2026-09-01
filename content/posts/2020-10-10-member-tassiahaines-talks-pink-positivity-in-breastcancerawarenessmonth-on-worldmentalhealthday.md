@@ -5,6 +5,8 @@ date: "2020-10-10T21:01:05"
 modified: "2023-05-12T10:18:54"
 image: "/media/2020/10/tassia-image-pink-positivity-735x1024.jpg"
 imageAlt: "Tassia's cartoon re pink positivity"
+categories:
+  - "member-stories"
 sections:
   - type: "prose"
     body: "It&#8217;s <a href=\"https://www.mentalhealth.org.uk/campaigns/world-mental-health-day\" rel=\"noopener\" target=\"_blank\">World Mental Health Day</a>, and we&#8217;ve seen so many good social media posts about the need to move beyond talking to action&#8230; Cancer is a *real* challenge to your mental health as much as your physical health, and unfortunately, incurable cancer patients are often weighed down with expectations of &#8216;positivity&#8217;. When we are &#8216;realistic&#8217; (in that our chances of being alive in 5 years are around 22%), this is seen as being &#8216;negative&#8217;, and seen as having a negative impact upon our survival chances. METUP member Tassia turned this into a <a href=\"https://pinkisnotmycolour.weebly.com/home/breast-cancer-awareness-month\" rel=\"noopener\" target=\"_blank\">blog post</a> (and the attached cartoon):"

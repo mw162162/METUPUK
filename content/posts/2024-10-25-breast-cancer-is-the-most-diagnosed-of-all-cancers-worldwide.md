@@ -5,14 +5,22 @@ date: "2024-10-25T16:02:25"
 modified: "2024-10-26T08:57:07"
 image: "/media/2024/09/Kirstin-tiger-768x1024.jpg"
 imageAlt: "Kirstin & tiger"
+categories:
+  - "data"
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "research"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-
       **We are very much minding the gap!**
 
-      Breast Cancer is the most diagnosed of **ALL** cancers worldwide.  In the United Kingdom, Metastatic Breast Cancer is the **biggest killer of** **working age****women aged 35 –64 in England (<a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/bulletins/deathsregistrationsummarytables/2022" rel="noopener" target="_blank">https://www.ons.gov.uk/peoplepopulationandcommunity/</a>**  
+      Breast Cancer is the most diagnosed of **ALL** cancers worldwide.  In the United Kingdom, Metastatic Breast Cancer is the **biggest killer of**  **working age** **women aged 35 –64 in England (<a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/bulletins/deathsregistrationsummarytables/2022" rel="noopener" target="_blank">https://www.ons.gov.uk/peoplepopulationandcommunity/</a>**  
 
-      **birthsdeathsandmarriages/deaths/bulletins/deathsregistrationsummarytables/2022)** and approximately 30% of women with primary breast cancer will become metastatic (their disease will come back, spread and become incurable i.e. terminal).  These facts seem to lie under a thick cloud of dust where most people are not aware of them until stricken with disease themselves and it is too late.  Looking the other way to the problem is turning your back on a huge cohort of women: mothers, wives, daughters, close friends who are currently hidden in a failing system.  No one is counting them (except for the approx. 5% of ‘de novo’ patients, who present as metastatic at their first or primary diagnosis).  **The NHS cannot plan** for adequate care and treatments because the NHS has **no idea of the real extent of the problem** and the number of women with metastatic breast cancer.  The **NHS made it mandatory to count**women with metastatic breast cancer in 2013.  **Nobody followed their compulsory mandate!**  Who is responsible for this?  **Why did no one with the power do something** follow this up?  Where is the accountability?
+      **birthsdeathsandmarriages/deaths/bulletins/deathsregistrationsummarytables/2022)** and approximately 30% of women with primary breast cancer will become metastatic (their disease will come back, spread and become incurable i.e. terminal).  These facts seem to lie under a thick cloud of dust where most people are not aware of them until stricken with disease themselves and it is too late.  Looking the other way to the problem is turning your back on a huge cohort of women: mothers, wives, daughters, close friends who are currently hidden in a failing system.  No one is counting them (except for the approx. 5% of ‘de novo’ patients, who present as metastatic at their first or primary diagnosis).  **The NHS cannot plan** for adequate care and treatments because the NHS has **no idea of the real extent of the problem** and the number of women with metastatic breast cancer.  The **NHS made it mandatory to count** women with metastatic breast cancer in 2013.  **Nobody followed their compulsory mandate!**  Who is responsible for this?  **Why did no one with the power do something** follow this up?  Where is the accountability?
 
       You may be sitting busy in your own world and think, **“Who really cares?”**.  I would balance that with the fact that, breast cancer does not differentiate in which person type it develops.  You cannot be sure that you, your daughter, sister, mother or close friend won’t become one of us.
 
@@ -21,7 +29,7 @@ sections:
       NaoMe MUST finally address the number of women living with metastatic disease so ensuing NHS staffing issues, drugs access and care gaps can be meaningfully assessed and addressed.
 
       1. 
-        1. **COUNT**how many women currently live with metastatic breast cancer
+        1. **COUNT** how many women currently live with metastatic breast cancer
         2. Metastatic breast cancer women should check their oncologist has registered their metastatic disease on the National Cancer registry database.
 
       **But why should this be our issue?**

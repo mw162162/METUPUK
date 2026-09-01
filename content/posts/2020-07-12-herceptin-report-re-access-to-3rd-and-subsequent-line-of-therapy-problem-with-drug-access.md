@@ -5,6 +5,8 @@ date: "2020-07-12T13:29:04"
 modified: "2023-05-12T10:19:30"
 image: "/media/2019/10/metupuk-logo.jpg"
 imageAlt: "metupuk logo"
+categories:
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-
@@ -28,7 +30,7 @@ sections:
 
       There is a lack of access to data to request a review by the NICE (overwhelming data **does** exist from several source points from many clinical trials for HER2+ patients)
 
-      **Herceptin** is widely used as the SOC – **Standard of Care** &#8211; treatment “arm” in clinical trials. So patients who have had many lines of treatment will be offered Herceptin in clinical trials. When **you sign the contract for a clinical trial**, it clearly **states proven safety and efficacy**.
+      **Herceptin** is widely used as the SOC – **Standard of Care**  &#8211; treatment “arm” in clinical trials. So patients who have had many lines of treatment will be offered Herceptin in clinical trials. When **you sign the contract for a clinical trial**, it clearly **states proven safety and efficacy**.
 
       Alternative drugs such as **biosimilars** are **cheaper**, but the **price is still inflated**. However, the price still falls within the NICE QALY (Quality Adjusted Life Year) model and **Roche wont provide data** as they **see these manufacturers as competition** and wont give them historical data
 
@@ -64,7 +66,7 @@ sections:
 
       New drug **Enhertu** is in the pipeline – **will it be available only 3<sup>rd</sup> line**?  This drug **needs to be available** **any line of treatment**.
 
-      New drug**Tucatinib** it important for HER2+ patient who have **brain mets as this is a huge UNMET NEED**
+      New drug **Tucatinib** it important for HER2+ patient who have **brain mets as this is a huge UNMET NEED**
 
       This is all down to market share – **drugs are combined with Herceptin** and sold as a package and **roche will not loose out** due to these new drugs becoming available ie  above mentioned Enhertu and Tucatinib
 

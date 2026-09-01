@@ -5,6 +5,8 @@ date: "2020-10-16T15:02:10"
 modified: "2023-05-12T10:18:50"
 image: "/media/2020/11/ABC-logo-1024x341.jpeg"
 imageAlt: "ABC Global Alliance Header"
+categories:
+  - "conferences"
 sections:
   - type: "prose"
     body: |-

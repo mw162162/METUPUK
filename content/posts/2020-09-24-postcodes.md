@@ -5,6 +5,8 @@ date: "2020-09-24T22:44:48"
 modified: "2023-05-12T10:19:01"
 image: "/media/2020/09/2_metupuk.jpg"
 imageAlt: "2_metupuk"
+categories:
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-

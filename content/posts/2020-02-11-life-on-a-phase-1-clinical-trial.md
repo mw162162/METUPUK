@@ -3,6 +3,8 @@ title: "Life on a Phase 1 clinical trial"
 url: "/2020/02/life-on-a-phase-1-clinical-trial/"
 date: "2020-02-11T19:40:22"
 modified: "2023-05-12T10:20:07"
+categories:
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-

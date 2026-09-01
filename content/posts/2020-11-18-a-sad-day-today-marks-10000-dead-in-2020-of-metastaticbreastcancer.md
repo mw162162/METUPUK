@@ -5,6 +5,8 @@ date: "2020-11-18T14:30:00"
 modified: "2023-05-12T10:18:05"
 image: "/media/2020/11/metup-uk-10k-people-died-by-today-1020x1024.png"
 imageAlt: "Screenshot of METUPUK graphic created by Emma Fisher"
+categories:
+  - "education"
 sections:
   - type: "prose"
     body: "Today, Wednesday 18 November 2020 , marks a sad milestone for secondary breast cancer this year. It is the day when statistics show that we&#8217;ll reach 10,000 deaths for the year so far. That is 322.5 days of 31 British people (mostly women) a day dying of the pink cancer, the so called &#8216;easy cancer&#8217; (and doesn&#8217;t even include numbers for any other cancers)."

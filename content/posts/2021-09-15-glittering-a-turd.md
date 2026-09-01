@@ -5,6 +5,9 @@ date: "2021-09-15T13:28:09"
 modified: "2021-09-15T13:43:22"
 image: "/media/2021/09/Screenshot-2021-09-15-130944.jpg"
 imageAlt: "Screenshot 2021-09-15 130944"
+excerpt: "I’ve followed the work of Kris Hallenga since I was first diagnosed with cancer and became aware of enthusiastic students bouncing around in giant boob costumes."
+categories:
+  - "reviews"
 sections:
   - type: "prose"
     body: |-

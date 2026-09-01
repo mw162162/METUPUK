@@ -5,6 +5,13 @@ date: "2024-05-30T00:50:38"
 modified: "2024-05-30T09:21:25"
 image: "/media/2023/11/kat-southwell-scaled-e1698867859659.jpg"
 imageAlt: ""
+categories:
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "research"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

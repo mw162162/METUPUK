@@ -5,6 +5,13 @@ date: "2024-10-16T23:21:36"
 modified: "2024-10-17T08:56:45"
 image: "/media/2024/09/Helen-Thomas-BCAM-pic-768x1024.jpg"
 imageAlt: "Helen Thomas BCAM pic"
+categories:
+  - "clinical-trial"
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

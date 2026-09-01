@@ -5,6 +5,8 @@ date: "2020-12-16T10:30:56"
 modified: "2023-05-12T10:17:59"
 image: "/media/2020/12/Video-Still-Balls-1024x346.png"
 imageAlt: "Screentshot from video - illustrating bouncing balls and CT scan"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

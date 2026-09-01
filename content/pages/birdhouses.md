@@ -5,6 +5,7 @@ date: "2021-02-04T20:13:56"
 modified: "2021-02-16T14:58:51"
 image: "/media/2021/02/birdbox-3.jpg"
 imageAlt: ""
+excerpt: "Bird houses for METUP UK One of our supporters, Jason, is building some stunning handmade birdboxes. All the money is going to METUP UK. Get yours here…. About the bird boxes The Apex is 250mm by…"
 sections:
   - type: "html"
     html: |-

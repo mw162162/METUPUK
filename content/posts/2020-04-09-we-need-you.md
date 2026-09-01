@@ -5,6 +5,8 @@ date: "2020-04-09T10:06:08"
 modified: "2023-05-12T10:19:38"
 image: "/media/2019/10/Quote-768x494.jpg"
 imageAlt: "Quote"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

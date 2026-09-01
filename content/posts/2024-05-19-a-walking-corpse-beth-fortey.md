@@ -3,6 +3,10 @@ title: "A walking corpse – Beth Fortey"
 url: "/2024/05/a-walking-corpse-beth-fortey/"
 date: "2024-05-19T21:57:34"
 modified: "2024-05-19T21:57:34"
+categories:
+  - "living-with-mbc"
+  - "member-stories"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

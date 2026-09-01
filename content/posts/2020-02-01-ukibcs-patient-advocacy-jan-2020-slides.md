@@ -5,6 +5,8 @@ date: "2020-02-01T11:29:07"
 modified: "2023-05-12T10:20:08"
 image: "/media/2020/02/the-climate-reality-project-Hb6uWq0i4MI-unsplash-1024x683.jpg"
 imageAlt: "the-climate-reality-project-Hb6uWq0i4MI-unsplash"
+categories:
+  - "conferences"
 sections:
   - type: "prose"
     body: |-

@@ -5,6 +5,13 @@ date: "2024-05-23T00:01:35"
 modified: "2024-05-23T00:01:35"
 image: "/media/2024/05/23rd-May-Mean-Well-Poem-1024x1024.png"
 imageAlt: "23rd May Mean Well Poem"
+categories:
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "quality-of-life"
+  - "social-media-campaign"
 sections:
   - type: "image"
     src: "/media/2024/05/23rd-May-Mean-Well-Poem.png"

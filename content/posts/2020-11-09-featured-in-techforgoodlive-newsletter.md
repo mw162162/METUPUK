@@ -5,6 +5,8 @@ date: "2020-11-09T16:26:43"
 modified: "2023-05-12T10:18:24"
 image: "/media/2020/11/metup-techforgood.png"
 imageAlt: "Screenshot of Newsletter"
+categories:
+  - "press"
 sections:
   - type: "prose"
     body: "METUPUK member Bex Lewis has loved attending &#8216;<a href=\"https://www.techforgood.live/\" rel=\"noopener\" target=\"_blank\">Tech for Good</a>&#8216; sessions in Manchester for many years (the events started in 2016), and has enjoyed hearing speakers from NHS Digital amongst others. It&#8217;s mission:"

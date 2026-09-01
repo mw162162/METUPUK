@@ -5,10 +5,12 @@ date: "2020-12-07T10:56:25"
 modified: "2023-05-12T10:18:01"
 image: "/media/2020/12/metastatic-cascade-1024x797.png"
 imageAlt: "Illustration of metastatic process from article"
+categories:
+  - "research"
 sections:
   - type: "prose"
     body: |-
-      **Abstract:**Despite being the hallmark of cancer that is responsible for the highest number of deaths, very little is known about the biology of metastasis. Metastatic disease typically manifests after a protracted period of undetectable disease following surgery or systemic therapy, owing to relapse or recurrence. In the case of breast cancer, metastatic relapse can occur months to decades after initial diagnosis and treatment. In this review, we provide an overview of the known key factors that influence metastatic recurrence, with the goal of highlighting the critical unanswered questions that still need to be addressed to make a difference in the mortality of breast cancer patients.
+      **Abstract:** Despite being the hallmark of cancer that is responsible for the highest number of deaths, very little is known about the biology of metastasis. Metastatic disease typically manifests after a protracted period of undetectable disease following surgery or systemic therapy, owing to relapse or recurrence. In the case of breast cancer, metastatic relapse can occur months to decades after initial diagnosis and treatment. In this review, we provide an overview of the known key factors that influence metastatic recurrence, with the goal of highlighting the critical unanswered questions that still need to be addressed to make a difference in the mortality of breast cancer patients.
 
       Read <a href="https://www.nature.com/articles/s41416-020-01161-4?" rel="noopener" target="_blank">full article,</a> and it&#8217;s conclusions:
   - type: "quote"

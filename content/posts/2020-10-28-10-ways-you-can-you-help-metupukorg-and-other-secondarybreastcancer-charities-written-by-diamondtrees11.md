@@ -5,6 +5,8 @@ date: "2020-10-28T08:30:29"
 modified: "2023-05-12T10:18:27"
 image: "/media/2020/10/noah-buscher-AUM5vcnuYd4-unsplash-crop-845x1024.jpg"
 imageAlt: "Photo of a woman reaching out for a helping hand"
+categories:
+  - "organisations"
 sections:
   - type: "prose"
     body: |-

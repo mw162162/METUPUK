@@ -5,6 +5,11 @@ date: "2024-10-10T00:59:08"
 modified: "2024-10-10T14:20:14"
 image: "/media/2021/03/Lisa.jpg"
 imageAlt: "Lisa"
+categories:
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

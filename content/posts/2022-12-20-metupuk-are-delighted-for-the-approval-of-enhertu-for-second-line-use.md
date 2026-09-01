@@ -5,6 +5,11 @@ date: "2022-12-20T09:06:25"
 modified: "2022-12-20T09:11:37"
 image: "/media/2022/12/Emma-enhertu-1024x961.jpg"
 imageAlt: "Emma Fisher - Enhertu"
+categories:
+  - "news"
+  - "press"
+  - "research"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-

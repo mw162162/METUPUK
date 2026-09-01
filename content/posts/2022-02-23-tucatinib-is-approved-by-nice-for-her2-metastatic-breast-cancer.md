@@ -5,12 +5,16 @@ date: "2022-02-23T15:48:48"
 modified: "2022-03-07T09:41:31"
 image: "/media/2022/02/Image-3-TUKYSA-tucatinib-768x576.jpg"
 imageAlt: "TUKYSA-tucatinib"
+categories:
+  - "patient-advocacy"
+  - "policy"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-
       METUPUK welcome the National Institute of Clinical Excellence (NICE) decision to accept Tucatinib with trastuzumab and capecitabine for treating HER2-positive unresectable locally advanced or metastatic breast cancer after 2 or more anti-HER2 therapies for routine commissioning use in NHS in England and Wales.
 
-      Jo Taylor, founder of METUP UK said:*“This drug authorisation is a significant step forward for patients living in England and Wales with HER2-positive metastatic breast cancer. We know up to 50% of patients with metastatic HER2-positive breast cancer go on to develop brain metastases.  Today a treatment combination has been made available to NHS patients in England that are proven to show increased overall survival in patients with brain metastases.  Disease progression in metastatic breast cancer patients is an unmet need beyond second-line treatment and new medicines are essential in the challenge to suppress this incurable disease”*
+      Jo Taylor, founder of METUP UK said: *“This drug authorisation is a significant step forward for patients living in England and Wales with HER2-positive metastatic breast cancer. We know up to 50% of patients with metastatic HER2-positive breast cancer go on to develop brain metastases.  Today a treatment combination has been made available to NHS patients in England that are proven to show increased overall survival in patients with brain metastases.  Disease progression in metastatic breast cancer patients is an unmet need beyond second-line treatment and new medicines are essential in the challenge to suppress this incurable disease”*
 
       Approval of the innovative Tucatinib combination gives hope to all patients with HER2-positive metastatic breast cancer.  Adding an additional line of anti-HER2 therapy means patients will gain extra time to spend with their loved ones.  It will help bridge some of the gap in drug access between NHS patients and patients in other similar income countries who already are offered anti-HER2 therapy beyond two lines of treatment.
 

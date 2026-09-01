@@ -15,13 +15,13 @@ sections:
 
       Women are predominately affected by MBC, but **men can also be diagnosed**.
 
-      The most common travel sites are to the**lungs, liver, bones and brain,** however it can spread to other areas of the body.\[1\] The **average life expectancy with a MBC diagnosis is 2 – 3 years.**\[2\]  
+      The most common travel sites are to the **lungs, liver, bones and brain,** however it can spread to other areas of the body.\[1\] The **average life expectancy with a MBC diagnosis is 2 – 3 years.**\[2\]  
 
       One of the key challenges with MBC is the fact we are not informed about signs and symptoms, so are often not diagnosed until it’s too late.
 
       &#8220;Complications can occur with any operation and we are advised of these small % risks. We are fully informed and it’s explained you may die, BUT you are TOLD about every possible issue – yet even though MBC affects so many people, and has such a poor prognosis, we are not even advised of red flag symptoms”.\[3\]
 
-      MBC exists in the shadows of the Pink Ribbon campaigns. Many**‘survivors’ run races** to raise funds for awareness **in the belief they are ‘cured’**. Although around **two thirds of people will go on to live long lives**, around **one third will face MBC**\[4\].  
+      MBC exists in the shadows of the Pink Ribbon campaigns. Many **‘survivors’ run races** to raise funds for awareness **in the belief they are ‘cured’**. Although around **two thirds of people will go on to live long lives**, around **one third will face MBC**\[4\].  
 
       **We are in fact living in ignorance.**
 

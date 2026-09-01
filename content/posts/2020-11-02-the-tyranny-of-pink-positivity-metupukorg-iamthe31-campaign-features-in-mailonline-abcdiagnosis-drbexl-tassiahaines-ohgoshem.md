@@ -5,6 +5,8 @@ date: "2020-11-02T10:07:47"
 modified: "2023-05-12T10:18:25"
 image: "/media/2020/11/mailonline-675x1024.png"
 imageAlt: "Mobile screenshot of MailOnline"
+categories:
+  - "press"
 sections:
   - type: "prose"
     body: "The article starts:"

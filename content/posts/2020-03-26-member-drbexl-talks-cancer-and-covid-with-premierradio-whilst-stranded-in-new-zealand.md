@@ -5,6 +5,8 @@ date: "2020-03-26T14:36:30"
 modified: "2023-05-12T10:19:39"
 image: "/media/2020/10/Cancer-New-Zealand.png"
 imageAlt: "Screenshot Premier Radio Interview"
+categories:
+  - "press"
 sections:
   - type: "prose"
     body: "This morning member Bex Lewis spoke to <a href=\"https://www.premierchristianradio.com/Shows/Weekday/Inspirational-Breakfast/Interviews/Alone-Dealing-with-Cancer-High-Risk-and-in-a-different-country\" rel=\"noopener\" target=\"_blank\">John Pantry from Premier Christian Radio</a> from Vaughan Park in New Zealand, where she had won a <a href=\"https://drbexl.co.uk/2019/10/12/life-academia-writing-scholarship-in-new-zealand-with-vaughanpark/\" rel=\"noopener\" target=\"_blank\">two-month writing scholarship</a> (and break from ongoing treatment for secondary cancer) as COVID broke out around the world, and things start to look complicated:"

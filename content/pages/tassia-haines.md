@@ -11,7 +11,7 @@ sections:
     body: |-
       **Name:** Tassia Haines
 
-      **Age:**29
+      **Age:** 29
 
       **Region:** South Wales
 

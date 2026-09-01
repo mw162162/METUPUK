@@ -5,6 +5,8 @@ date: "2020-07-11T12:33:03"
 modified: "2023-05-12T10:19:32"
 image: "/media/2020/06/1-660x1024.png"
 imageAlt: "1"
+categories:
+  - "fundraising"
 sections:
   - type: "prose"
     body: |-

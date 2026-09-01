@@ -3,6 +3,11 @@ title: "Metastatic May – a Primary Patient by Jane Cooke"
 url: "/2024/05/metastatic-may-a-primary-patient-by-jane-cooke/"
 date: "2024-05-28T01:19:26"
 modified: "2024-05-28T10:53:54"
+categories:
+  - "education"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

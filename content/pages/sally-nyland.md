@@ -5,13 +5,14 @@ date: "2021-10-24T10:37:02"
 modified: "2021-10-24T10:41:15"
 image: "/media/2021/10/FB-1920x1080-11.Sally-Nyland-1024x576.png"
 imageAlt: "FB-1920×1080-11.Sally-Nyland"
+excerpt: "Name: Sally NylandAge: 45Region: Derbyshire Diagnosis: Primary DX June 2019 (Triple Negative). MBC Dx November 2020 Age at Diagnosis: 43 Hi my name is Sally. I live in Derby with my husband, Steve,…"
 parent: "darker-pink"
 sections:
   - type: "prose"
     body: |-
-      **Name:**Sally Nyland**Age:**45**Region:**Derbyshire **Diagnosis:**Primary DX June 2019 (Triple Negative). MBC Dx November 2020
+      **Name:** Sally Nyland **Age:** 45 **Region:** Derbyshire  **Diagnosis:** Primary DX June 2019 (Triple Negative). MBC Dx November 2020
 
-      **Age at Diagnosis:**43
+      **Age at Diagnosis:** 43
   - type: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#sally-nyland"
@@ -52,5 +53,5 @@ sections:
 
       Our lives matter, our voices need to be heard, and more research needs to happen into stage 4 breast cancer to help keep women alive longer.
 
-      **Twitter:**@Salnyland**Public Facebook:**Sally Ann**Instagram:**@sally1tit
+      **Twitter:** @Salnyland **Public Facebook:** Sally Ann **Instagram:** @sally1tit
 ---

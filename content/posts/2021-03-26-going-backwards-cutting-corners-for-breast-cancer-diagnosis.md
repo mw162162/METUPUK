@@ -5,6 +5,9 @@ date: "2021-03-26T07:02:40"
 modified: "2023-05-12T10:17:15"
 image: "/media/2021/03/YouTube-Thumbnails-1024x576.jpg"
 imageAlt: "YouTube Thumbnails"
+excerpt: "MetUpUK Member Tassia discusses “Going Backwards. Cutting Corners for Breast Cancer Diagnosis”"
+categories:
+  - "education"
 sections:
   - type: "prose"
     body: "MetUpUK Member Tassia discusses &#8220;Going Backwards. Cutting Corners for Breast Cancer Diagnosis&#8221;"

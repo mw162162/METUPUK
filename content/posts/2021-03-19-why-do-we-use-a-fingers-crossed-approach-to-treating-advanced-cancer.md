@@ -5,6 +5,10 @@ date: "2021-03-19T07:28:39"
 modified: "2023-05-12T10:17:16"
 image: "/media/2021/03/istockphoto-1055287290-612x612-1.jpg"
 imageAlt: "Why do we use a ‘fingers crossed’ approach to treating advanced cancer?"
+categories:
+  - "education"
+  - "research"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-

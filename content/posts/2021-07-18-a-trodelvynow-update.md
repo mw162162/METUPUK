@@ -5,6 +5,12 @@ date: "2021-07-18T16:28:22"
 modified: "2021-09-08T15:00:45"
 image: "/media/2021/07/trov-DM-article-copy-1024x768.jpg"
 imageAlt: "Trodelvy"
+excerpt: "Following on from our #TrodelvyNow post last month, MetUpUk Member Phillippa has appeared in the Daily Mail, alongside other women for who this drug could mean, literally the difference between life…"
+categories:
+  - "living-with-mbc"
+  - "policy"
+  - "research"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-
@@ -44,7 +50,7 @@ sections:
     caption: ""
   - type: "prose"
     body: |-
-      Breast cancer now are calling on **Bob Roosjen**(Interim GM of UK &amp; Ireland, Gilead) to provide Trodelvy free of charge, until a decision is made about its routine use on the NHS.
+      Breast cancer now are calling on **Bob Roosjen** (Interim GM of UK &amp; Ireland, Gilead) to provide Trodelvy free of charge, until a decision is made about its routine use on the NHS.
 
       Sign their petition now;
 

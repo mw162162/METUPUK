@@ -5,6 +5,8 @@ date: "2023-05-27T07:00:01"
 modified: "2023-05-27T07:54:40"
 image: "/media/2023/05/Bren-photo.jpg"
 imageAlt: "Bren photo"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

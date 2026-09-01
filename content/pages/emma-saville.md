@@ -36,7 +36,7 @@ sections:
 
       I was diagnosed with incurable metastatic breast cancer just before Christmas 2020, three days later I was then told I would need spinal surgery to stabilise my spine. So in February 2021 I had a major operation to insert a large rod into my spine, followed by 10 rounds of radiotherapy. Following this I started on Ribociclib (a targeted therapy drug) and anastrozole (hormone therapy), and I have monthly zoladex and denusomab injections. My last CT scan was inconclusive so I am currently waiting for the results of my next scan to see whether the treatment is working or not.
 
-      **Why you wanted to be involved with the MetUpUK campaign:**I wanted to be involved in raising awareness of metastatic breast cancer and the issues that we currently face.
+      **Why you wanted to be involved with the MetUpUK campaign:** I wanted to be involved in raising awareness of metastatic breast cancer and the issues that we currently face.
 
       Twitter &#8211; amamyb
 

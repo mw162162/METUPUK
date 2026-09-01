@@ -278,4 +278,18 @@ function build() {
   return { pages, posts, pageById, categories: [...catById.values()], media };
 }
 
-module.exports = { build, decodeEntities, rewriteMedia, rewriteLink, summarise, SITE };
+// The same model, sourced from the editable files rather than the scrape.
+// Kept here rather than in content-model.js so the helpers that derive what
+// content/ does not store — summaries, word counts, image dimensions — are the
+// single implementation both sources share. Two implementations would drift,
+// and the whole point of the switch is that the output does not change.
+function buildFromContent() {
+  return require('./content-model').build({
+    summarise,
+    measured,
+    firstImage,
+    media: buildMediaIndex(),
+  });
+}
+
+module.exports = { build, buildFromContent, decodeEntities, rewriteMedia, rewriteLink, summarise, SITE };

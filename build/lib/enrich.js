@@ -411,11 +411,34 @@ function flatCorners(html, { minHeight = 90 } = {}) {
   return root.toString();
 }
 
+// Proofpoint rewrites every link that passes through a corporate mail gateway,
+// so a URL pasted out of an email arrives wrapped: 213 characters of
+// urldefense.com with the real address encoded inside it. The charity's donate
+// button was one of these. A wrapper is bad on all three counts that matter —
+// it reads as phishing to anyone who hovers it, it puts a third party's proxy
+// in front of the single most valuable link on the site, and Proofpoint can
+// retire it whenever they like. The real URL is right there in the wrapper, so
+// take it back out.
+function unwrapProofpoint(href) {
+  if (!href.includes('urldefense.com')) return href;
+  const m = href.match(/\/v3\/__(.*?)__;/);
+  if (!m) return href;
+  let inner = decodeURIComponent(m[1]);
+  // The wrapper stores "https:/host" with one slash. Restore the second.
+  inner = inner.replace(/^(https?:)\/(?!\/)/i, '$1//');
+  return /^https?:\/\/\S+$/i.test(inner) ? inner : href;
+}
+
 function fixLinks(html) {
   if (!html.includes('<a')) return html;
   const root = parse(html);
   for (const a of root.querySelectorAll('a')) {
-    const href = (a.getAttribute('href') || '').trim();
+    let href = (a.getAttribute('href') || '').trim();
+    const unwrapped = unwrapProofpoint(href);
+    if (unwrapped !== href) {
+      a.setAttribute('href', unwrapped);
+      href = unwrapped;
+    }
 
     // An anchor with no destination is not a link. Neither is href="#", which
     // page builders leave behind for JavaScript that no longer exists.

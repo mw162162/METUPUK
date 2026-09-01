@@ -5,6 +5,8 @@ date: "2020-10-04T16:00:36"
 modified: "2023-05-12T10:18:58"
 image: "/media/2020/10/symptoms-inflammatory-breast-cancer-768x323.jpg"
 imageAlt: "symptoms-inflammatory-breast-cancer"
+categories:
+  - "education"
 sections:
   - type: "prose"
     body: |-

@@ -5,6 +5,8 @@ date: "2021-12-30T17:05:18"
 modified: "2022-01-12T09:36:45"
 image: "/media/2021/12/IMG-20211201-WA0023-768x1024.jpg"
 imageAlt: "IMG-20211201-WA0023"
+categories:
+  - "member-stories"
 sections:
   - type: "prose"
     body: |-

@@ -3,6 +3,14 @@ title: "Wales update"
 url: "/2024/10/wales-update/"
 date: "2024-10-27T00:01:10"
 modified: "2024-10-27T10:58:05"
+categories:
+  - "data"
+  - "drug-approval"
+  - "help-us"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-
@@ -12,7 +20,7 @@ sections:
 
       She was a force to be reckoned with and has changed the pathway of Metastatic Breast Cancer patients in Wales, with her successful campaign efforts and drive to improve patient care, secure dedicated Secondary Breast Cancer nurses, educate around red flags for metastatic disease and raise awareness of clinical trials, access to drugs and data collection.
 
-      Tassia took on the Senedd with her petition **‘Don’t leave MBC patients in Wales behind’**and has left a legacy that will benefit existing and future MBC patients.
+      Tassia took on the Senedd with her petition **‘Don’t leave MBC patients in Wales behind’** and has left a legacy that will benefit existing and future MBC patients.
 
       A legacy that Tassia’s husband Nick, family and friends can be proud of, a legacy that we at **METUPUK** are proud of with the work she did for our charity.  We will be forever grateful to have had Tass in our corner and in our lives.
 

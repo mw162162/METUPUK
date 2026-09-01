@@ -5,6 +5,8 @@ date: "2020-01-23T00:06:13"
 modified: "2023-05-12T10:20:10"
 image: "/media/2020/01/Rachel_Photo-819x1024.jpg"
 imageAlt: "Rachel"
+categories:
+  - "research"
 sections:
   - type: "prose"
     body: |-

@@ -12,7 +12,7 @@ sections:
 
       The survey has now been launched and the link is below and will only take approximately 10 minutes to complete  <a href="https://online.igvmafo.com/survey/selfserve/593/2023034" rel="noopener" target="_blank">https://online.igvmafo.com/survey/selfserve/593/2023034</a>
 
-      We would like MBC patients (only) to complete this short survey which is open until the **1st October**to gather information.
+      We would like MBC patients (only) to complete this short survey which is open until the **1st October** to gather information.
 
       Please share this in your own communities so that we can gather as much information as possible.
 

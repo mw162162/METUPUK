@@ -5,6 +5,13 @@ date: "2024-09-01T00:27:13"
 modified: "2024-10-07T01:05:58"
 image: "/media/2024/09/Jane-Cooke-768x1024.jpg"
 imageAlt: "Jane Cooke"
+categories:
+  - "diagnosis"
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

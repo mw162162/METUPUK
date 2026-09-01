@@ -5,6 +5,8 @@ date: "2020-10-23T13:14:30"
 modified: "2023-05-12T10:18:29"
 image: "/media/2020/10/2020-10-21-19.03.50-1024x685.jpg"
 imageAlt: "2020-10-21 19.03.50"
+categories:
+  - "education"
 sections:
   - type: "prose"
     body: "Today is <a href=\"https://twitter.com/hashtag/wearitpink?src=hashtag_click\" rel=\"noopener\" target=\"_blank\">#WearItPink</a> Day headed by <a href=\"https://twitter.com/BreastCancerNow\" rel=\"noopener\" target=\"_blank\">Breast Cancer Now</a>:"

@@ -5,6 +5,9 @@ date: "2020-03-09T18:37:54"
 modified: "2023-05-12T10:19:43"
 image: "/media/2020/03/With-Laura-947x1024.jpg"
 imageAlt: "Jo Taylor & Laura Ashurst members of METUPUK attending the petition hand in"
+excerpt: "Terminal breast cancer patients descended on parliament last week. Armed with over 70,000 signatures, they demanded change for the tens of thousands in the UK living with the killer disease. Members…"
+categories:
+  - "news"
 sections:
   - type: "image"
     src: "/media/2020/03/With-Laura-278x300.jpg"

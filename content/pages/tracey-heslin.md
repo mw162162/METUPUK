@@ -17,7 +17,7 @@ sections:
 
       **Diagnosis;** denovo Her2 ,ER, PR in one breast and ER PR in other secondary in spine and sternum only
 
-      **Age at diagnosis:**32
+      **Age at diagnosis:** 32
   - type: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#tracey-davies"

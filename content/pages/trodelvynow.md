@@ -65,7 +65,7 @@ sections:
     caption: ""
   - type: "prose"
     body: |-
-      Breast cancer now are calling on **Bob Roosjen**(Interim GM of UK &amp; Ireland, Gilead) to provide Trodelvy free of charge, until a decision is made about its routine use on the NHS.
+      Breast cancer now are calling on **Bob Roosjen** (Interim GM of UK &amp; Ireland, Gilead) to provide Trodelvy free of charge, until a decision is made about its routine use on the NHS.
 
       Sign their petition now;
 

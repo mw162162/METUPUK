@@ -5,6 +5,8 @@ date: "2020-11-15T14:28:54"
 modified: "2023-05-12T10:18:22"
 image: "/media/2020/11/2020-11-15-14.24.28-547x1024.jpg"
 imageAlt: "2020-11-15 14.24.28"
+categories:
+  - "press"
 sections:
   - type: "prose"
     body: "Sarah Hughes has written an excellent piece in *The Guardian* about what it&#8217;s like to live with Stage IV cancer during COVID times (including missing out as life ticks away, the challenges of accessing treatment, and fears about cancer research funding). It was great to see a mention for METUPUK in there:"

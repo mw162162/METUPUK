@@ -5,6 +5,8 @@ date: "2019-11-06T19:25:44"
 modified: "2023-05-12T10:20:12"
 image: "/media/2020/10/ncri-2019-conference-at-the-sec-centre-in-glasgow-945x532-1-768x432.jpg"
 imageAlt: "NCRI Banners"
+categories:
+  - "conferences"
 sections:
   - type: "prose"
     body: |-

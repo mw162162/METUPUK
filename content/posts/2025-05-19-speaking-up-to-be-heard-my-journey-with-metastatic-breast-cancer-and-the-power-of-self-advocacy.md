@@ -3,6 +3,13 @@ title: "Speaking Up to Be Heard: My Journey With Metastatic Breast Cancer and th
 url: "/2025/05/speaking-up-to-be-heard-my-journey-with-metastatic-breast-cancer-and-the-power-of-self-advocacy/"
 date: "2025-05-19T22:59:27"
 modified: "2025-05-19T23:01:18"
+categories:
+  - "diagnosis"
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

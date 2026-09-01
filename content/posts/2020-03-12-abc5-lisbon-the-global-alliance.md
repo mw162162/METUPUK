@@ -5,6 +5,8 @@ date: "2020-03-12T13:58:09"
 modified: "2023-05-12T10:19:40"
 image: "/media/2020/03/Group-1024x508.jpg"
 imageAlt: "Group"
+categories:
+  - "conferences"
 sections:
   - type: "prose"
     body: |-

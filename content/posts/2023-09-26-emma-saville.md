@@ -5,6 +5,9 @@ date: "2023-09-26T19:16:56"
 modified: "2023-09-27T08:24:38"
 image: "/media/2023/09/emma-saville-blog-1.jpeg"
 imageAlt: ""
+categories:
+  - "member-stories"
+  - "patient-advocacy"
 sections:
   - type: "prose"
     body: |-

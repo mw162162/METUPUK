@@ -5,6 +5,8 @@ date: "2020-02-11T20:30:50"
 modified: "2023-05-12T10:20:06"
 image: "/media/2020/02/Beth-swim.png"
 imageAlt: "Beth swim"
+categories:
+  - "alternative-therapies"
 sections:
   - type: "prose"
     body: |-

@@ -5,6 +5,8 @@ date: "2022-05-23T07:06:44"
 modified: "2023-05-26T01:07:11"
 image: "/media/2022/05/iStock-1299156473-1024x683.jpg"
 imageAlt: "Nurse comforting patient - Paliative Care"
+categories:
+  - "quality-of-life"
 sections:
   - type: "prose"
     body: |-

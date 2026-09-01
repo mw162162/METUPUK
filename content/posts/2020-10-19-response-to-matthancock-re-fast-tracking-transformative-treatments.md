@@ -5,6 +5,8 @@ date: "2020-10-19T08:30:40"
 modified: "2023-05-12T10:18:32"
 image: "/media/2020/10/national-cancer-institute-cw2Zn2ZQ9YQ-unsplash-1024x683.jpg"
 imageAlt: "Image of man taking drugs from a shelf in the National Cancer Institute"
+categories:
+  - "news"
 sections:
   - type: "prose"
     body: "METUPUK are looking for ACTION not just words on this new initiative that was released last week by Matt Hancock the Health Secretary."

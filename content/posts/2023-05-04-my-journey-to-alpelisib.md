@@ -5,6 +5,8 @@ date: "2023-05-04T06:56:23"
 modified: "2023-05-04T08:10:49"
 image: "/media/2023/04/Asha-blog-photo-768x1024.jpg"
 imageAlt: "Asha blog photo"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

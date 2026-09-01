@@ -5,6 +5,8 @@ date: "2020-04-19T13:28:27"
 modified: "2023-05-12T10:19:36"
 image: "/media/2020/05/flavio-amiel-kg11HbuQ5nU-unsplash-1024x683.jpg"
 imageAlt: "Photo of French letter box"
+categories:
+  - "patient-advocacy"
 sections:
   - type: "prose"
     body: |-

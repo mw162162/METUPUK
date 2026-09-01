@@ -5,6 +5,12 @@ date: "2024-10-25T22:18:49"
 modified: "2024-10-26T09:02:26"
 image: "/media/2024/09/Claire-Redshaw-photo-760x1024.jpg"
 imageAlt: "Claire Redshaw"
+categories:
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

@@ -5,6 +5,12 @@ date: "2024-10-23T22:02:15"
 modified: "2024-10-24T10:35:30"
 image: "/media/2024/09/Laura-Ashurst-785x1024.jpeg"
 imageAlt: "Laura Ashurst"
+categories:
+  - "data"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

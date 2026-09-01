@@ -5,6 +5,9 @@ date: "2021-11-15T11:00:24"
 modified: "2021-11-15T09:58:19"
 image: "/media/2021/11/hands-1024x396.jpg"
 imageAlt: "<p>METUPUK (Metastatic Exchange To Unleash Power United Kingdom) are very proud to announce their registration with the Charity Commission, marking an important new chapter for the UK’s only metastatic breast cancer advocacy group. </p>"
+excerpt: "METUPUK are very proud to announce their registration with the Charity Commission, marking an important new chapter for the UK’s only metastatic breast cancer advocacy group."
+categories:
+  - "news"
 sections:
   - type: "prose"
     body: |-

@@ -5,6 +5,8 @@ date: "2020-09-07T19:10:40"
 modified: "2023-05-12T10:19:02"
 image: "/media/2020/10/world-at-one-768x565.png"
 imageAlt: "Screenshot of 'World at One' on BBC Radio 4"
+categories:
+  - "press"
 sections:
   - type: "prose"
     body: |-

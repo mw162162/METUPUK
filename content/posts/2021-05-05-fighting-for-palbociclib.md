@@ -5,6 +5,11 @@ date: "2021-05-05T07:08:30"
 modified: "2023-05-12T10:17:12"
 image: "/media/2021/05/iStock-1281089341-1024x768.jpg"
 imageAlt: "Fighting for Ibrance"
+categories:
+  - "education"
+  - "member-stories"
+  - "patient-advocacy"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-

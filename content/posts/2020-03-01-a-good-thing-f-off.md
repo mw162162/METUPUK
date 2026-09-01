@@ -5,6 +5,8 @@ date: "2020-03-01T11:22:05"
 modified: "2023-05-12T10:19:44"
 image: "/media/2019/10/metupuk-logo-icon.jpg"
 imageAlt: "metupuk logo icon"
+categories:
+  - "quality-of-life"
 sections:
   - type: "prose"
     body: |-

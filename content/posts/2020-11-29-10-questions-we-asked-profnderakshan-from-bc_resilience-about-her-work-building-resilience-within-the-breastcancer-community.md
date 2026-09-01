@@ -5,6 +5,8 @@ date: "2020-11-29T12:40:16"
 modified: "2023-05-12T10:18:04"
 image: "/media/2020/11/1500x500BRICLogo-1024x341.jpeg"
 imageAlt: "BRIC Logo"
+categories:
+  - "organisations"
 sections:
   - type: "prose"
     body: |-

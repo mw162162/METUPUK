@@ -5,6 +5,10 @@ date: "2021-04-14T11:37:54"
 modified: "2023-05-12T10:17:15"
 image: "/media/2020/09/49184546_10155887451562026_8223351093107621888_n-Tassia-Haines.jpg"
 imageAlt: "Tassia Haines"
+categories:
+  - "education"
+  - "patient-advocacy"
+  - "policy"
 sections:
   - type: "prose"
     body: "On March 22nd In Wales, the 20 page cancer delivery plan (CDP) had been replaced by a vague 3 quality statement. (QS) The WHO recommends every nation should have a CDP and just like that Wales became the only nation in the UK without one.  The work started out almost immediately. I initially sent emails to representatives within the cross party group for cancer and set to FB, Insta, Twitter and LI to rally any Welshie&#8217;s willing to help. From there I drafted an &#8217;email pack&#8217; with links to the new QS and the older CPD, two articles (one from Welsh cancer alliance and Cancer research UK) pinpointing what was wrong with the QS, Links to who represents each area for the Cross Party group in the Senedd and finally an example an email to send with amendable entries.  Very quickly my social inbox&#8217;s started to swell and these make shift &#8216;packs&#8217; were sent off."

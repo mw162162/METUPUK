@@ -5,6 +5,10 @@ date: "2021-05-05T07:02:11"
 modified: "2023-05-12T10:17:13"
 image: "/media/2021/05/iStock-1283339512-1024x683.jpg"
 imageAlt: "The cancer postcode lottery"
+categories:
+  - "education"
+  - "patient-advocacy"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-

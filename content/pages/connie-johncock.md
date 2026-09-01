@@ -5,6 +5,7 @@ date: "2021-10-16T16:45:28"
 modified: "2021-10-22T09:27:50"
 image: "/media/2021/10/FB-1920x1080-5.Connie-Johncock-1024x576.png"
 imageAlt: "FB-1920×1080-5.Connie-Johncock"
+excerpt: "Name: Connie JohncockAge: 32Region: Kent Diagnosis: Her2+ denovo December 2012 age 23 (non invasive ductal carcinoma) Age at Diagnosis: 23 Hi I’m Connie. I was diagnosed denovo her2+ breast cancer at…"
 parent: "darker-pink"
 sections:
   - type: "prose"
@@ -36,6 +37,6 @@ sections:
 
       My experience of living with secondary breast cancer has been a roller coaster. My story is long but always happy to share.
 
-      **Why you wanted to be involved with the MetUpUK campaign:**I want to be part of the change as I am a living example of how someone can live if they have access to the right treatments.  
+      **Why you wanted to be involved with the MetUpUK campaign:** I want to be part of the change as I am a living example of how someone can live if they have access to the right treatments.  
       I also feel breast in young women is not rare and we need to change this perception to stop young women dying of metastatic breast cancer
 ---

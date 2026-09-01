@@ -5,6 +5,8 @@ date: "2020-12-13T22:37:10"
 modified: "2023-05-12T10:18:00"
 image: "/media/2020/12/12th-day-christmas-768x384.png"
 imageAlt: "Screengrab of 12th Day of Christmas"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

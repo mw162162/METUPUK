@@ -5,6 +5,11 @@ date: "2022-05-30T07:04:30"
 modified: "2022-05-29T20:33:00"
 image: "/media/2022/05/metup-1024x573.jpg"
 imageAlt: "Join us as Laura, Mary Helen & Emily discuss primary & secondary breast cancer."
+categories:
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
 sections:
   - type: "embed"
     variant: "video"

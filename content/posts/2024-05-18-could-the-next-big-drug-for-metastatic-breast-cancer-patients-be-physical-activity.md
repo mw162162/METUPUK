@@ -3,6 +3,13 @@ title: "Could the next big drug for metastatic breast cancer patients be physica
 url: "/2024/05/could-the-next-big-drug-for-metastatic-breast-cancer-patients-be-physical-activity/"
 date: "2024-05-18T07:16:27"
 modified: "2024-05-18T07:36:23"
+categories:
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "quality-of-life"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

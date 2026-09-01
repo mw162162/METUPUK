@@ -5,6 +5,11 @@ date: "2023-04-10T14:05:57"
 modified: "2023-04-25T16:08:29"
 image: "/media/2023/04/Enhertu-1024x518.png"
 imageAlt: "Enhertu"
+categories:
+  - "patient-advocacy"
+  - "press"
+  - "research"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-

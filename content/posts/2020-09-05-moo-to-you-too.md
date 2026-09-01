@@ -5,6 +5,8 @@ date: "2020-09-05T13:06:12"
 modified: "2023-05-12T10:19:03"
 image: "/media/2020/09/I-Am-the-31-819x1024.jpg"
 imageAlt: "I Am the 31"
+categories:
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-

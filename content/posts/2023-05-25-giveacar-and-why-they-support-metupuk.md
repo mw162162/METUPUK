@@ -5,6 +5,10 @@ date: "2023-05-25T07:00:41"
 modified: "2023-05-29T01:56:29"
 image: "/media/2023/05/Louise-Furneaux.jpg"
 imageAlt: ""
+categories:
+  - "living-with-mbc"
+  - "member-stories"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

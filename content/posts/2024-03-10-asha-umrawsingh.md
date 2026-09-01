@@ -5,6 +5,9 @@ date: "2024-03-10T21:40:39"
 modified: "2024-03-10T21:42:24"
 image: "/media/2024/03/Asha-in-parliament-768x432.jpg"
 imageAlt: "Asha in parliament"
+categories:
+  - "member-stories"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-

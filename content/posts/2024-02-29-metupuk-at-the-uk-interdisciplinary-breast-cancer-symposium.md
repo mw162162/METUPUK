@@ -5,6 +5,11 @@ date: "2024-02-29T18:51:34"
 modified: "2024-02-29T18:51:34"
 image: "/media/2024/02/UKIBCS.jpg"
 imageAlt: "UKIBCS"
+categories:
+  - "conferences"
+  - "education"
+  - "research"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-

@@ -5,6 +5,10 @@ date: "2022-05-12T07:22:28"
 modified: "2022-05-10T14:26:11"
 image: "/media/2022/05/279575358_7350239778379919_3754856271294437627_n-1024x538.jpg"
 imageAlt: "THE DARKER SIDE OF PINK: UK-WIDE CAMPAIGN REVEALS THE REALITY OF LIVING WITH SECONDARY BREAST CANCER"
+categories:
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
 sections:
   - type: "prose"
     body: |-

@@ -5,6 +5,8 @@ date: "2020-08-07T21:49:06"
 modified: "2023-05-12T10:19:27"
 image: "/media/2019/10/metupuk-logo-icon.jpg"
 imageAlt: "metupuk logo icon"
+categories:
+  - "quality-of-life"
 sections:
   - type: "prose"
     body: |-
@@ -22,7 +24,7 @@ sections:
 
       Anyone want to join me?
 
-      Support METUP UK, support the new stage 4 initiative **#PatientsTogether**and **#BusyLivingWithMets** &#8211; Scream, shout, cry, get drunk and get angry. Or you could always be positive, pretty and wear pink the ONE day a year to show you care! After all so much change in history has been caused by people wearing pink and having a coffee and cake morning &#x1f644;
+      Support METUP UK, support the new stage 4 initiative **#PatientsTogether** and **#BusyLivingWithMets** &#8211; Scream, shout, cry, get drunk and get angry. Or you could always be positive, pretty and wear pink the ONE day a year to show you care! After all so much change in history has been caused by people wearing pink and having a coffee and cake morning &#x1f644;
 
       Kit @METUPUK patient advocate
 ---

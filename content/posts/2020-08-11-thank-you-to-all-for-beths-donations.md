@@ -3,6 +3,10 @@ title: "Thank you to all for Beth’s donations"
 url: "/2020/08/thank-you-to-all-for-beths-donations/"
 date: "2020-08-11T10:48:56"
 modified: "2023-05-12T10:19:27"
+image: "/media/2020/11/beth-roberts-metup-uk.png"
+imageAlt: "Photo of Beth Roberts"
+categories:
+  - "fundraising"
 sections:
   - type: "prose"
     body: |-

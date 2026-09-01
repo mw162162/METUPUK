@@ -5,6 +5,8 @@ date: "2020-10-12T17:20:07"
 modified: "2023-05-12T10:18:53"
 image: "/media/2020/10/2020-10-12-14.47.36-1024x1024.jpg"
 imageAlt: "Google Search for metastatic, secondary cancer"
+categories:
+  - "education"
 sections:
   - type: "prose"
     body: |-

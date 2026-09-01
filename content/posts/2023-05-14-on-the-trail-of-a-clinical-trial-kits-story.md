@@ -5,6 +5,8 @@ date: "2023-05-14T07:00:16"
 modified: "2023-05-14T08:29:37"
 image: "/media/2020/06/Kit-768x553.jpg"
 imageAlt: "Kit"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

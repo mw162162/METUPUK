@@ -5,15 +5,11 @@ date: "2021-10-22T11:33:10"
 modified: "2021-10-22T11:36:53"
 image: "/media/2021/10/FB-1920x1080-17.Jacqui-Crewe-1024x576.png"
 imageAlt: "FB-1920×1080-17.Jacqui-Crewe"
+excerpt: "Name: Jacqui Crewe Age: 63Region: Shropshire Age at Diagnosis: 48 Hi my name is Jacqui. I’m from Shropshire. I was diagnosed with primary breast cancer in 2006. I was 48. The treatment plan was…"
 parent: "darker-pink"
 sections:
   - type: "prose"
-    body: |-
-      **Name: Jacqui Crewe   
-      Age: 63  
-      Region: Shropshire   
-        
-      Age at Diagnosis: 48**
+    body: "<strong>Name: Jacqui Crewe <br>Age: 63<br>Region: Shropshire <br><br>Age at Diagnosis: 48</strong>"
   - type: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#jacqui-crewe"

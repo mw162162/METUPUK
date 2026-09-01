@@ -5,6 +5,12 @@ date: "2024-10-02T23:12:11"
 modified: "2024-10-03T14:55:56"
 image: "/media/2024/09/Nicky-Goldthorpe.jpg"
 imageAlt: "Nicky Goldthorpe"
+categories:
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

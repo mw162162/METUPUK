@@ -3,6 +3,11 @@ title: "Anticipatory Grief – Relationships and metastatic breast cancer – Jo
 url: "/2024/05/anticipatory-grief-relationships-and-metastatic-breast-cancer-jo-taylor/"
 date: "2024-05-22T00:43:17"
 modified: "2024-05-22T00:43:17"
+categories:
+  - "conferences"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
 sections:
   - type: "prose"
     body: |-

@@ -5,6 +5,12 @@ date: "2023-05-11T07:00:26"
 modified: "2024-05-09T20:25:56"
 image: "/media/2023/05/Mary-Huckle-for-MMay.jpg"
 imageAlt: "Mary Huckle for MMay"
+categories:
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "quality-of-life"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-
@@ -32,9 +38,9 @@ sections:
 
       Unfortunately, being thrust into this cancer world and being part of a community means not only facing our own mortality daily, but that of our friends as well. Young, old, men, women. Cancer really doesn’t discriminate. No rhyme or reason, but we grieve, we try to avoid thinking about our own mortality, and move forward despite the sadness and unfairness of it all. I’ve experienced so many friends dying over the years that I’ve almost become desensitised to it. Every time someone else dies, of course I feel sadness, but I feel anger and frustration too. Thirty-one British women dying every day should not be ignored. It’s a daily tragedy. Almost 1,000 every single month. If two jumbo jets carrying 500 passengers went down each month, I wonder how soon the matter would be looked into.
 
-      I must admit, I get a little narked at how we often say so flippantly that **cancer doesn’t define us.**This is so dependent on where you are with cancer at any given time. We might say that cancer doesn’t define someone who has finished primary treatment, but that same person may have PTSD and live with the constant fear of recurrence. Then there are those in the stage 4 bracket, whose treatment is working and quite often are well enough to enjoy a long and stable quality of life. These are the stage 4 thrivers and ‘cancer doesn’t define them’. You might not say that cancer doesn’t define someone who is at desperation point, whose diaries are crammed with hospital appointments, with zero quality of life, and who can’t just go and grab life for one reason or another. The same goes for those fast approaching end of life. A juxtaposition so close yet so contrasting. In the words of Shakespeare, ‘To be, or not to be’. It’s very much up to you. I think we need to be respectfully considerate of that.
+      I must admit, I get a little narked at how we often say so flippantly that **cancer doesn’t define us.** This is so dependent on where you are with cancer at any given time. We might say that cancer doesn’t define someone who has finished primary treatment, but that same person may have PTSD and live with the constant fear of recurrence. Then there are those in the stage 4 bracket, whose treatment is working and quite often are well enough to enjoy a long and stable quality of life. These are the stage 4 thrivers and ‘cancer doesn’t define them’. You might not say that cancer doesn’t define someone who is at desperation point, whose diaries are crammed with hospital appointments, with zero quality of life, and who can’t just go and grab life for one reason or another. The same goes for those fast approaching end of life. A juxtaposition so close yet so contrasting. In the words of Shakespeare, ‘To be, or not to be’. It’s very much up to you. I think we need to be respectfully considerate of that.
 
-      **So how do I cope?**It’s a question I’ve been asked over the years. I might be perfecting the art of self-preservation. BUT. I don’t cope all of the time. As well as the resilient me, there is also this:
+      **So how do I cope?** It’s a question I’ve been asked over the years. I might be perfecting the art of self-preservation. BUT. I don’t cope all of the time. As well as the resilient me, there is also this:
 
       Sometimes….
 
@@ -64,7 +70,7 @@ sections:
 
       However, rather than suppressing these feelings and emotions, I’ve learned to accept them. They are part and parcel of my existence and part of a process which is normal for me. I let them pass over and through me. They can be as intense as a tornado, or like the whisper of a soft breeze.
 
-      Here’s some **DIY therapy**which might help you.
+      Here’s some **DIY therapy** which might help you.
 
       Try to not think too far ahead if you find that projecting into the future is frightening. On the other hand, planning and looking forward to something nice can give you a focus. It can motivate you, give you renewed confidence and empowerment.
 

@@ -5,6 +5,8 @@ date: "2019-10-23T16:12:43"
 modified: "2023-05-12T10:20:13"
 image: "/media/2019/10/IMG_1883-e1571836543737-1024x769.jpg"
 imageAlt: "IMG_1883"
+categories:
+  - "conferences"
 sections:
   - type: "prose"
     body: |-
@@ -78,7 +80,7 @@ sections:
 
       What do we want to do here? Save money and progress people through fixed drug regimes or actually extend people’s lives and give them more time with their families? Additionally use cheaper chemotherapies that for some can work. Oncologists need to be smart in their approach. Mix and match.
 
-      Next was**Dr Mark Davies** Consultant Medical Oncologist from Swansea Bay University Hospital who talked about genomics and matching people with trials and said that funding was an issue for whole genomic testing of course. This is beginning to be used more and results can be processed in a day whereas it had taken WEEKS to get this information. This would help to find the best drugs for the patient for survival.
+      Next was **Dr Mark Davies** Consultant Medical Oncologist from Swansea Bay University Hospital who talked about genomics and matching people with trials and said that funding was an issue for whole genomic testing of course. This is beginning to be used more and results can be processed in a day whereas it had taken WEEKS to get this information. This would help to find the best drugs for the patient for survival.
 
       <img src="/media/2019/10/IMG_1938-300x225.jpg" alt width="300" height="225" loading="lazy" decoding="async">     <img src="/media/2019/10/IMG_1939-300x225.jpg" alt width="279" height="209" loading="lazy" decoding="async"> <img src="/media/2019/10/IMG_1940-300x225.jpg" alt width="300" height="225" loading="lazy" decoding="async">     <img src="/media/2019/10/IMG_1941-e1571836450979-225x300.jpg" alt width="225" height="300" loading="lazy" decoding="async">
 

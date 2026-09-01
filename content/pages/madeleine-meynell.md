@@ -5,17 +5,18 @@ date: "2021-10-22T12:18:56"
 modified: "2021-10-22T12:20:56"
 image: "/media/2021/10/FB-1920x1080-8.Madeline-Meynell-1024x576.png"
 imageAlt: "FB-1920×1080-8.Madeline-Meynell"
+excerpt: "Name: Madeleine MeynellAge: 49Region: London Diagnosis: (i.e When diagnosed primary, When diagnosed mets, Or denovo, What disease type – HER2+/- ER-/ER+ or TNBC or IBC) Age at Diagnosis: 43 Hi my…"
 parent: "darker-pink"
 sections:
   - type: "prose"
     body: |-
-      **Name:**Madeleine Meynell  
-      **Age:**49  
-      **Region:**London  
+      **Name:** Madeleine Meynell  
+      **Age:** 49  
+      **Region:** London  
         
-      **Diagnosis:***(i.e When diagnosed primary, When diagnosed mets, Or denovo, What disease type &#8211; HER2+/- ER-/ER+ or TNBC or IBC)*
+      **Diagnosis:** *(i.e When diagnosed primary, When diagnosed mets, Or denovo, What disease type &#8211; HER2+/- ER-/ER+ or TNBC or IBC)*
 
-      **Age at Diagnosis:**43
+      **Age at Diagnosis:** 43
   - type: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#madeline-meynell"
@@ -38,7 +39,7 @@ sections:
 
       The stereotactic radiotherapy I received for my brain mets is not available to all patients who could benefit.  Where not available patients are offered whole brain radiotherapy which has greater side effects.
 
-      **Why you wanted to be involved with the MetUpUK campaign:**My aim is for all UK patients to have access to the best care available.  However, even with best available care metastatic breast cancer is still a terminal disease.  We need more investment to make metastatic breast cancer a disease we live with well rather die early from.
+      **Why you wanted to be involved with the MetUpUK campaign:** My aim is for all UK patients to have access to the best care available.  However, even with best available care metastatic breast cancer is still a terminal disease.  We need more investment to make metastatic breast cancer a disease we live with well rather die early from.
 
-      **Twitter:**@madmeynell
+      **Twitter:** @madmeynell
 ---

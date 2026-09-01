@@ -5,6 +5,10 @@ date: "2021-05-06T07:20:39"
 modified: "2023-05-12T10:17:11"
 image: "/media/2021/04/iStock-1178374751-1024x683.jpg"
 imageAlt: "Clinical trials"
+categories:
+  - "education"
+  - "quality-of-life"
+  - "research"
 sections:
   - type: "prose"
     body: |-

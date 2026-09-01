@@ -78,6 +78,26 @@ function blockText(b) {
   return Object.entries(b).filter(([k]) => k !== 'type').map(([, v]) => walk(v)).join(' ');
 }
 
+// Twenty years of copy-and-paste leaves debris. One post carried a literal
+// U+0002 through from WordPress, and YAML refuses to parse a stream containing
+// control characters — so that file could not be opened by any standard parser,
+// which means the CMS could not have opened it either. Invisible, unprintable,
+// and load-bearing enough to break a client's editor on the one page they
+// wanted to change. Stripped on the way out, so every future import is covered.
+// Tab, newline and carriage return are kept; they are real formatting.
+const CONTROL = /[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g;
+
+function sanitise(value) {
+  if (typeof value === 'string') return value.replace(CONTROL, '');
+  if (Array.isArray(value)) return value.map(sanitise);
+  if (value && typeof value === 'object') {
+    const out = {};
+    for (const [k, v] of Object.entries(value)) out[k] = sanitise(v);
+    return out;
+  }
+  return value;
+}
+
 function checkIntegrity(originalHtml, blocks) {
   const want = letters(toText(originalHtml));
   const got = letters(toText(blocks.map(blockText).join(' ')));
@@ -123,15 +143,31 @@ function main() {
     const front = { title: doc.title, url: doc.url, date: doc.date || '' };
     if (doc.modified) front.modified = doc.modified;
     if (doc.image) { front.image = doc.image; front.imageAlt = doc.imageAlt || ''; }
+    // WordPress lets an author write a summary by hand rather than take the
+    // opening of the body. Where they did, it is content and has to travel:
+    // 41 pages carry one, and without it their standfirst silently changes to
+    // the first two lines of the page. Where the excerpt is only a restatement
+    // of the body, it is left out — the model derives that anyway, and a
+    // redundant field is one more thing for a client to wonder about.
+    const derived = model.summarise(doc.text, 200);
+    if (doc.excerpt && doc.excerpt !== derived) front.excerpt = doc.excerpt;
     if (doc.kind === 'page') {
       const parent = doc.parent ? slugOf.get(doc.parent) : null;
       if (parent) front.parent = parent;
       if (doc.order) front.order = doc.order;
     } else {
-      const cats = (doc.categories || []).map((id) => catOf.get(id)).filter(Boolean);
+      // The model hands back whole category objects, not ids. Mapping them
+      // through the id lookup returned undefined for every post, so all 228
+      // exported without a single category and the twenty-one topic filters
+      // would have emptied the moment the build started reading these files.
+      // Nothing failed and nothing warned: the frontmatter key was simply
+      // absent. Accept either shape so it cannot silently regress again.
+      const cats = (doc.categories || [])
+        .map((c) => (c && typeof c === 'object' ? c.slug || c.name : catOf.get(c)))
+        .filter(Boolean);
       if (cats.length) front.categories = cats;
     }
-    front.sections = blocks;
+    front.sections = sanitise(blocks);
 
     const dir = doc.kind === 'page' ? 'pages' : 'posts';
     const name = doc.kind === 'page'
@@ -141,7 +177,23 @@ function main() {
     written++;
   }
 
+  // A category's display name cannot be recovered from its slug —
+  // "living-with-mbc" is not "Living with MBC" — so the names are written out
+  // beside the content. Without this the content directory would still depend
+  // on the scrape to label its own topic pages, and a directory that cannot
+  // rebuild the site on its own is not really the source of truth.
+  const cats = (m.categories || [])
+    .filter((c) => c.slug !== 'uncategorized')
+    .sort((a, b) => a.slug.localeCompare(b.slug));
+  fs.writeFileSync(
+    path.join(OUT, 'categories.yml'),
+    '# Topic names, written by the export. Slug is the identity; name is what\n'
+    + '# readers see. Edit a name here and every topic page follows.\n'
+    + cats.map((c) => `${c.slug}: ${JSON.stringify(c.name)}`).join('\n') + '\n'
+  );
+
   console.log(`Files written:        ${written}`);
+  console.log(`Categories written:   ${cats.length}`);
   console.log(`Conversions rejected: ${failed}`);
   console.log('\nBlocks by component type:');
   Object.entries(counts).sort((a, b) => b[1] - a[1])

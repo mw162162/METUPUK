@@ -5,6 +5,7 @@ date: "2021-10-22T11:56:54"
 modified: "2021-10-22T12:16:24"
 image: "/media/2021/10/FB-1920x1080-10.JLeila-Asoko-1024x576.png"
 imageAlt: "FB-1920×1080-10.JLeila-Asoko"
+excerpt: "Name: Leila AsokoAge:41Region: Merseyside Diagnosis: Oct 2006, primary dx. ER+Oct 2016, secondary dx, metastases to bones. Assumed to still be ER+, HER2-Spread to Liver metastases summer 2019. Age at…"
 parent: "darker-pink"
 sections:
   - type: "prose"

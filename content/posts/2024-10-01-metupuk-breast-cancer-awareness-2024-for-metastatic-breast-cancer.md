@@ -5,6 +5,16 @@ date: "2024-10-01T13:08:07"
 modified: "2024-10-01T13:11:15"
 image: "/media/2024/10/METUPUK-BCAM24-1024x1024.jpg"
 imageAlt: "METUPUK BCAM24"
+categories:
+  - "clinical-trial"
+  - "data"
+  - "diagnosis"
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "research"
+  - "social-media-campaign"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-
@@ -24,7 +34,7 @@ sections:
 
       This campaign started in North Allerton this year and will continue to travel to various areas in the UK so keep a check on our website as there will be updates where it will be travelling to so you can come and see the installation.
 
-      They Mayor of Greater Manchester**,**Andy Burnham, will also be attending a conference in Manchester on the 11<sup>th</sup> October, to support the work that we do with the Greater Manchester Cancer Alliance and metastatic breast cancer to highlighting the importance of work that METUPUK do.
+      They Mayor of Greater Manchester**,** Andy Burnham, will also be attending a conference in Manchester on the 11<sup>th</sup> October, to support the work that we do with the Greater Manchester Cancer Alliance and metastatic breast cancer to highlighting the importance of work that METUPUK do.
 
       **Founder of METUPUK, Jo Taylor, said:** “Breast Cancer awareness month is hugely important and valuable to many women, but the uncomfortable truth is that metastatic breast cancer is incurable and killing almost 1,000 of our mothers, sisters, daughters and friends every month. It can’t be sugar-coated and is severely under-represented in the global conversation around breast cancer. We’re passionate about changing the narrative to ensure that every woman facing metastatic breast cancer is supported and valued.”
 

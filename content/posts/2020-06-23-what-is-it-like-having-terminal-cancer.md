@@ -5,6 +5,8 @@ date: "2020-06-23T23:15:19"
 modified: "2023-05-12T10:19:35"
 image: "/media/2020/06/Kit-768x553.jpg"
 imageAlt: "Kit"
+categories:
+  - "quality-of-life"
 sections:
   - type: "prose"
     body: |-

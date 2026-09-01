@@ -5,6 +5,9 @@ date: "2021-04-02T07:16:04"
 modified: "2023-05-12T10:17:15"
 image: "/media/2021/03/Lisa-and-Gizmo.jpg"
 imageAlt: "Lisa and Gizmo"
+categories:
+  - "living-with-mbc"
+  - "member-stories"
 sections:
   - type: "prose"
     body: "I was diagnosed with primary breast cancer in April 2018. It didn’t come as a surprise to me as my mum had died from breast cancer a few years earlier having been diagnosed with primary breast cancer in her 30s."

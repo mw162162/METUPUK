@@ -5,6 +5,8 @@ date: "2020-10-22T13:39:25"
 modified: "2023-05-12T10:18:30"
 image: "/media/2020/10/nadine-shaabana-soX8qpVwOm4-unsplash-1024x683.jpg"
 imageAlt: "Pair of trainers in front of the number 31 painted on the road"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

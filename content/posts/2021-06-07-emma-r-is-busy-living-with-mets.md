@@ -5,6 +5,9 @@ date: "2021-06-07T06:55:35"
 modified: "2021-09-08T15:01:42"
 image: "/media/2021/06/Emma-r-2.jpg"
 imageAlt: "Emma r 2"
+categories:
+  - "living-with-mbc"
+  - "member-stories"
 sections:
   - type: "prose"
     body: |-

@@ -5,6 +5,13 @@ date: "2024-10-28T01:24:34"
 modified: "2024-10-28T11:24:52"
 image: "/media/2024/09/Phil-Southwell-740x1024.jpg"
 imageAlt: "Phil Southwell"
+categories:
+  - "diagnosis"
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

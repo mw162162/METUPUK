@@ -5,6 +5,10 @@ date: "2022-05-24T07:08:33"
 modified: "2022-05-23T21:12:05"
 image: "/media/2022/05/laura-nina-thubnail-1024x576.png"
 imageAlt: "laura nina thubnail"
+categories:
+  - "diagnosis"
+  - "education"
+  - "living-with-mbc"
 sections:
   - type: "prose"
     body: |-

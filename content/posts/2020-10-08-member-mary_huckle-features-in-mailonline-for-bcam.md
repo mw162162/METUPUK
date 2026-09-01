@@ -5,6 +5,8 @@ date: "2020-10-08T17:42:42"
 modified: "2023-05-12T10:18:56"
 image: "/media/2020/10/mary-huckle-mail-online-768x624.png"
 imageAlt: "Screenshot Mary Huckle in Daily Mail"
+categories:
+  - "press"
 sections:
   - type: "prose"
     body: "Further to METUP member [Mary Huckle&#8217;s appearance on Lorraine](/2020/10/members-mary_huckle-and-beingjencronje-on-lorraine-for-breastcancerawarenessmonth/) yesterday, she was featured in the *Daily Mail*, which has a daily readership of 2.2 million."

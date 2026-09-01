@@ -3,6 +3,12 @@ title: "When D-Day’s DE NOVO – Sue Thomas"
 url: "/2024/05/when-d-days-de-novo-sue-thomas/"
 date: "2024-05-26T22:37:18"
 modified: "2024-05-26T22:45:53"
+categories:
+  - "diagnosis"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

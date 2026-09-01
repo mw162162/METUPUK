@@ -5,6 +5,11 @@ date: "2023-05-29T07:00:17"
 modified: "2023-05-29T08:07:35"
 image: "/media/2019/10/kit-dzeryn.jpg"
 imageAlt: ""
+categories:
+  - "education"
+  - "living-with-mbc"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

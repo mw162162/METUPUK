@@ -5,6 +5,8 @@ date: "2020-12-09T10:33:46"
 modified: "2023-05-12T10:18:00"
 image: "/media/2020/11/Kate-and-husband-1024x768.jpg"
 imageAlt: "Kate and husband"
+categories:
+  - "member-stories"
 sections:
   - type: "prose"
     body: |-

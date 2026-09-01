@@ -18,7 +18,7 @@ sections:
 
       In this article, the author Chris Cook, explained:
 
-      “*NICE aims to spend less than £20,000 to £30,000 per QALY. That is not a hard limit; it will go almost twice as high for end-of-life drugs*\[up to £50,000 per QALY gained\]*. NICE accepts that, at the very end, a small amount of extra time can seem to be worth a lot more to patients and families.*”  Chris goes on to explain that this level has been fixed since 1999 when NICE was established. Therefore, between 1999 and 2014, the willingness to pay had fallen in real terms because it had not kept up with inflation.
+      “*NICE aims to spend less than £20,000 to £30,000 per QALY. That is not a hard limit; it will go almost twice as high for end-of-life drugs* \[up to £50,000 per QALY gained\]*. NICE accepts that, at the very end, a small amount of extra time can seem to be worth a lot more to patients and families.*”  Chris goes on to explain that this level has been fixed since 1999 when NICE was established. Therefore, between 1999 and 2014, the willingness to pay had fallen in real terms because it had not kept up with inflation.
 
       Ten years has passed since this article was written, so now is a good time to revisit it.  In 2024, NICE still aims to spend less than £20,000 to £30,000 per QALY gained.  This is the exact same amount fixed 25 years ago, a huge fall in real terms, taking inflation into account.  A new voluntary pricing agreement with the pharma industry has recently been signed, freezing this amount until 2029.  That will be a whopping 30 years of the same price structure for higher cost drugs being used by NICE.
 

@@ -5,6 +5,13 @@ date: "2024-10-12T00:26:45"
 modified: "2024-10-14T13:23:58"
 image: "/media/2023/05/Carole-Pollard-for-MM-Blog-e1684093755901.jpg"
 imageAlt: "Carole Pollard for MM Blog"
+categories:
+  - "diagnosis"
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "quality-of-life"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

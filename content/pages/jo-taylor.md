@@ -5,6 +5,7 @@ date: "2021-10-16T15:18:35"
 modified: "2021-10-22T11:38:10"
 image: "/media/2021/10/FB-1920x1080-1.Jo-Taylor-1024x576.png"
 imageAlt: "FB-1920×1080-1.Jo-Taylor"
+excerpt: "Name: Jo Taylor Age: 52Region: Manchester Diagnosis: Primary diagnosis 2007 HER2+ right breast – 2014 diagnosed with MBC in neck nodes and oligomets in the sternum, since then mets in the humerus,…"
 parent: "darker-pink"
 sections:
   - type: "prose"
@@ -13,7 +14,7 @@ sections:
       Age:  52  
       Region: Manchester**
 
-      **Diagnosis:**Primary diagnosis 2007 HER2+ right breast &#8211; 2014 diagnosed with MBC in neck nodes and oligomets in the sternum, since then mets in the humerus, left axilla clearance, brain met in the cerebellum<u></u><u></u>
+      **Diagnosis:** Primary diagnosis 2007 HER2+ right breast &#8211; 2014 diagnosed with MBC in neck nodes and oligomets in the sternum, since then mets in the humerus, left axilla clearance, brain met in the cerebellum<u></u><u></u>
 
       **Age at Diagnosis: 42**
   - type: "embed"

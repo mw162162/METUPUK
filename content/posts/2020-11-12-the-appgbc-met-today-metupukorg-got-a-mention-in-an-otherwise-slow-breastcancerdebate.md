@@ -5,6 +5,8 @@ date: "2020-11-12T22:45:51"
 modified: "2023-05-12T10:18:23"
 image: "/media/2020/11/parliament-tv-APPGBC-768x898.png"
 imageAlt: "Screenshot from Parliamentary Debate"
+categories:
+  - "policy"
 sections:
   - type: "prose"
     body: "Check out just before 14:45 in the debate:"

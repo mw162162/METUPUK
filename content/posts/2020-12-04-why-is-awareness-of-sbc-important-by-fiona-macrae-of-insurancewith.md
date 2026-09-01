@@ -5,6 +5,8 @@ date: "2020-12-04T18:45:47"
 modified: "2023-05-12T10:18:03"
 image: "/media/2020/12/insurance-with-1024x341.jpeg"
 imageAlt: "insurance-with"
+categories:
+  - "education"
 sections:
   - type: "prose"
     body: "<a href=\"https://youtalk-insurance.com/broker-news/travel-insurance-facilities-appoints-new-head-of-client\" rel=\"noopener\" target=\"_blank\"><img src=\"/media/2020/12/fiona_macrae_final-200x300.jpg\" alt=\"Fiona macrae final\" width=\"200\" height=\"300\" loading=\"lazy\" decoding=\"async\"></a>I received an email from Fiona who is the creator of <a href=\"https://www.insurancewith.com/\" rel=\"noopener\" target=\"_blank\">InsuranceWith</a> and it again highlights why it is so important to be aware of secondary breast cancer.  She has given me permission to share this as she said it is so important that secondary breast cancer is diagnosed quickly, and treatment started."

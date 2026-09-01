@@ -5,6 +5,8 @@ date: "2020-03-18T17:32:28"
 modified: "2023-05-12T10:19:40"
 image: "/media/2020/10/Screenshot-2020-12-04-at-19.14.59-1024x640.png"
 imageAlt: "Kit in Breast Cancer Now Story"
+categories:
+  - "press"
 sections:
   - type: "prose"
     body: "METUPUK member Kit D was featured on Breast Cancer Now, as a patient story, living at a young age with &#8216;de novo&#8217; metastatic cancer, including this section:"

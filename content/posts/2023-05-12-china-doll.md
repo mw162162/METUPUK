@@ -5,6 +5,10 @@ date: "2023-05-12T07:28:05"
 modified: "2023-05-12T10:14:49"
 image: "/media/2021/05/iStock-938088940-1024x681.jpg"
 imageAlt: "<p>Porcelain paper mache clay statuette girl pretty woman young girl smile blonde beauty handmade checkers handcrafted toy craft vintage decor doll gift texture skin defects concept</p>"
+excerpt: "Birthday and cancerversaries became bittersweet as I was dealing with the realities of cancer, the side effects, the constant fear of the unknown, the helplessness, the indignity of losing who you…"
+categories:
+  - "living-with-mbc"
+  - "member-stories"
 sections:
   - type: "prose"
     body: |-

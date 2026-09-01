@@ -5,6 +5,13 @@ date: "2024-01-21T09:28:50"
 modified: "2024-01-21T09:28:50"
 image: "/media/2024/01/Talazaparib-blog.png"
 imageAlt: ""
+categories:
+  - "drug-approval"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "quality-of-life"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-
@@ -22,7 +29,7 @@ sections:
 
       Talazoparib is parp inhibitor, which is a small molecule drug targeted against BRCA mutated cancers. It is the most potent of the currently licensed parp inhibitors, and clinical trials show it increases the time patients have before their cancer gets worse. The drug is taken orally and its position in the treatment pathway depends on the subtype of breast cancer. For hormone positive patients, Talazoparib is expected to be used after endocrine treatment and chemotherapy. For triple negative patients it is expected to be used after immunotherapy (if eligible) and chemotherapy, but before Trodelvy. As Talazoparib is taken orally, pressure is taken off hospital chemotherapy units. And for patients, they will spend less time in hospitals and more time doing things that are valuable to them.
 
-      Helen is a METUPUK patient advocate living with BRCA2 mutated metastatic breast cancer who worked on the drug appraisal. She writes,  **“The approval of Talazoparib means there is a BRCA specific treatment, for the first time for patients with advanced breast cancer. Being BRCA2 brings with it feelings of guilt and dread that my faulty gene has been passed down to my children and grandchildren. Knowing that there would be a new treatment, kinder and able to give better quality of life, available to not just me, but to my children gives me hope for their future.****I dread the time when I will be on chemotherapy again, so being able to access a BRCA specific drug which would mean fewer hospital visits, oral administration, less harsh side effects and therefore more time with my family and time to continue as normal life as possible, would be critical to my improved quality of life.”**
+      Helen is a METUPUK patient advocate living with BRCA2 mutated metastatic breast cancer who worked on the drug appraisal. She writes,  **“The approval of Talazoparib means there is a BRCA specific treatment, for the first time for patients with advanced breast cancer. Being BRCA2 brings with it feelings of guilt and dread that my faulty gene has been passed down to my children and grandchildren. Knowing that there would be a new treatment, kinder and able to give better quality of life, available to not just me, but to my children gives me hope for their future.** **I dread the time when I will be on chemotherapy again, so being able to access a BRCA specific drug which would mean fewer hospital visits, oral administration, less harsh side effects and therefore more time with my family and time to continue as normal life as possible, would be critical to my improved quality of life.”**
 
       Founder of METUPUK, Jo Taylor, said:  “We are delighted that NICE has recommended Talazoparib for the treatment of HER2-negative, locally advanced or metastatic breast cancer with germline BRCA1 or BRCA2 mutation for patients living in England. Talazoparib is a targeted drug for patients with hereditary BRCA mutations. It is an oral drug taken once a day, and can delay the need for chemotherapy. In practical terms, this means less hospital visits and a better quality of life for patients, compared to treatment with chemotherapy.”
 

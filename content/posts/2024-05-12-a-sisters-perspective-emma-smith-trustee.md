@@ -5,6 +5,12 @@ date: "2024-05-12T22:52:06"
 modified: "2024-05-12T23:57:28"
 image: "/media/2024/05/20190301_133149.jpg"
 imageAlt: ""
+categories:
+  - "diagnosis"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

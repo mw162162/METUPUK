@@ -3,6 +3,15 @@ title: "“It shouldn’t be this hard”. That was a comment on my Twitter thre
 url: "/2024/10/it-shouldnt-be-this-hard-that-was-a-comment-on-my-twitter-thread/"
 date: "2024-10-18T22:33:17"
 modified: "2024-10-19T11:17:00"
+image: "/media/2019/10/kit-dzeryn.jpg"
+imageAlt: "Photo of Kit Dzeryn"
+categories:
+  - "clinical-trial"
+  - "drug-approval"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

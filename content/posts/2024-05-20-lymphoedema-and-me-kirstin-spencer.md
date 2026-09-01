@@ -3,6 +3,11 @@ title: "Lymphoedema and me… Kirstin Spencer"
 url: "/2024/05/lymphoedema-and-me-kirstin-spencer/"
 date: "2024-05-20T20:55:54"
 modified: "2024-05-20T20:55:54"
+categories:
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "quality-of-life"
 sections:
   - type: "prose"
     body: |-

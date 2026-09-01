@@ -5,6 +5,8 @@ date: "2020-11-13T19:12:55"
 modified: "2023-05-12T10:18:22"
 image: "/media/2020/11/angiola-harry-nJv6xnlpNaA-unsplash-1024x681.jpg"
 imageAlt: "Hands holding a pink ribbon"
+categories:
+  - "education"
 sections:
   - type: "prose"
     body: |-

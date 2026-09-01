@@ -5,6 +5,9 @@ date: "2021-11-02T07:20:15"
 modified: "2021-11-01T20:20:42"
 image: "/media/2021/11/Support-group-logo-ideas.png"
 imageAlt: "Friends and family support group"
+excerpt: "Breast Cancer Awareness Month has come and gone again with one day, Tuesday 13th set aside for Secondary Breast Cancer. But for those of us living with MBC, “Every day is secondary breast cancer day”."
+categories:
+  - "living-with-mbc"
 sections:
   - type: "prose"
     body: |-

@@ -5,6 +5,8 @@ date: "2023-05-15T06:00:27"
 modified: "2023-05-15T07:44:15"
 image: "/media/2023/05/Carole-Pollard-for-MM-Blog-e1684093755901.jpg"
 imageAlt: "Carole Pollard for MM Blog"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

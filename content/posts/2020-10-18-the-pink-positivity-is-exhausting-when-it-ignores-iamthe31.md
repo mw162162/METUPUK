@@ -5,6 +5,8 @@ date: "2020-10-18T19:39:13"
 modified: "2023-05-12T10:18:32"
 image: "/media/2020/10/WhatsApp-Image-2020-10-17-at-14.15.55-1-1024x987.jpeg"
 imageAlt: "Tassia Cartoon 'No Bra Day' - pink positivity standing on coffin of ignored secondary patient."
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

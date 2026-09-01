@@ -5,6 +5,14 @@ date: "2024-07-29T23:55:07"
 modified: "2024-08-01T15:32:09"
 image: "/media/2024/07/Melanoma-Quote-1024x1024.png"
 imageAlt: "Melanoma Quote"
+categories:
+  - "drug-approval"
+  - "living-with-mbc"
+  - "patient-advocacy"
+  - "policy"
+  - "press"
+  - "research"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-

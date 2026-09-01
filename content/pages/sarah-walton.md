@@ -15,7 +15,7 @@ sections:
 
       **Region:** East Yorkshire
 
-      **Diagnosis:** Primary DX &#8211; December 2019 MBC DX denovo &#8211; March 2020   ER+ Metastatic Breast Cancer to the liver
+      **Diagnosis:**  Primary DX &#8211; December 2019 MBC DX denovo &#8211; March 2020   ER+ Metastatic Breast Cancer to the liver
 
       **Age at Diagnosis:** 42
   - type: "embed"
@@ -40,7 +40,7 @@ sections:
 
       I then had my ovaries out in May 2021 and changed to Letrozole. My last scans showed some growth again so, just after my wedding in July, I began taking Abemaciclib alongside my Letrozole. I had a PET CT scan on 31st August and have a CT scan on 20th September so fingers crossed when I visit the oncologist on 30th there will be good news!
 
-      **Why you wanted to be involved with the MetUpUK campaign***:*I wanted to help raise awareness of secondary breast cancer to ensure funding and research are available to help me and the 1,000s of others like me. MetUpUK is dedicated to making sure our voices are heard.
+      **Why you wanted to be involved with the MetUpUK campaign***:* I wanted to help raise awareness of secondary breast cancer to ensure funding and research are available to help me and the 1,000s of others like me. MetUpUK is dedicated to making sure our voices are heard.
 
       **Public Facebook:** Sarah Walton / @yorkshirechic
 

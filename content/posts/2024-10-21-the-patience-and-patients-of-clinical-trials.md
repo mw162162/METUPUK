@@ -5,6 +5,13 @@ date: "2024-10-21T22:54:28"
 modified: "2024-10-21T22:54:28"
 image: "/media/2024/10/Kat-clinical-trials-768x1024.jpg"
 imageAlt: "Kat clinical trials"
+categories:
+  - "clinical-trial"
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "research"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

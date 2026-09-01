@@ -5,13 +5,14 @@ date: "2021-10-24T10:47:42"
 modified: "2021-10-24T10:50:59"
 image: "/media/2021/10/FB-1920x1080-15.Sara-Halpern-1024x576.png"
 imageAlt: "FB-1920×1080-15.Sara-Halpern"
+excerpt: "Name: Sara HalpernAge: 36Region: North WestDiagnosis: DeNovo – ER + / Her2 negative Age at Diagnosis: 35 I went to my local gps about 1.5 years before my official diagnosis to have a lump on my…"
 parent: "darker-pink"
 sections:
   - type: "prose"
     body: |-
-      **Name:**Sara Halpern**Age:**36**Region:**North West**Diagnosis:**DeNovo &#8211; ER + / Her2 negative
+      **Name:** Sara Halpern **Age:** 36 **Region:** North West **Diagnosis:** DeNovo &#8211; ER + / Her2 negative
 
-      **Age at Diagnosis:**35
+      **Age at Diagnosis:** 35
   - type: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#sara-halpern"
@@ -30,5 +31,5 @@ sections:
 
       **Why you wanted to be involved with the MetUpUK campaign:**  I want to help to raise awareness of this terrible disease and hopefully with this change some of the outdated policies that restrict things like access to medication and trials for people that need it the most.
 
-      **Twitter:**@Mujewlaa**Public Facebook:**Sara Halpern**Instagram:**saradhalpern
+      **Twitter:** @Mujewlaa **Public Facebook:** Sara Halpern **Instagram:** saradhalpern
 ---

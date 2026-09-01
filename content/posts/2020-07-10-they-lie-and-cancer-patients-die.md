@@ -5,6 +5,8 @@ date: "2020-07-10T20:54:58"
 modified: "2023-05-12T10:19:34"
 image: "/media/2020/07/Bra-advert.jpeg"
 imageAlt: "Bra advert"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

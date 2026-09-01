@@ -5,6 +5,9 @@ date: "2022-03-07T14:05:09"
 modified: "2022-03-08T09:23:43"
 image: "/media/2022/03/Structural_formula_of_sacituzumab_govitecan-trodelvy-1024x504.png"
 imageAlt: "Trodelvy is approved by the Scottish Medicines Consortium (SMC) for Metastatic Triple Negative Breast Cancer for use by NHS Scotland"
+categories:
+  - "patient-advocacy"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-
@@ -23,7 +26,7 @@ sections:
     body: |-
       Dr Philippa Hetherington is a METUPUK patient advocate who is living with mTNBC and has been key to the campaign for the drug and the subsequent approval.  Philippa commented:  &#8220;*Trodelvy is the first drug that is considered a targeted therapy for triple-negative breast cancer. The clinical trials show that it is much more effective than some of the chemotherapies they put you on for triple-negative breast cancer. Crucially, it is also effective for patients who are heavily pre-treated. Often, when you have had a number of treatments, each one has less and less likelihood of working, whereas Trodelvy can work very well on people who have had a number of chemotherapies already.  A treatment like Trodelvy is everything for young women who should have decades left to live.&#8221;*
 
-      Jo Taylor, founder of METUP UK said:*&#8220;The authorisation of Trodelvy is a welcome advance for patients with metastatic triple negative breast cancer living in Scotland.  The drug is proven to increase overall survival in an aggressive disease subtype, and addresses an important unmet need.  Metastatic triple negative breast cancer often progresses very quickly, and we urgently need new and better treatments.  Too many patients have died during delays enrolling in trials or managed access schemes with pharmaceutical companies.  Now in Scotland, oncologists will be able to prescribe Trodelvy to NHS patients with metastatic triple negative breast cancer when they need it.&#8221;*
+      Jo Taylor, founder of METUP UK said: *&#8220;The authorisation of Trodelvy is a welcome advance for patients with metastatic triple negative breast cancer living in Scotland.  The drug is proven to increase overall survival in an aggressive disease subtype, and addresses an important unmet need.  Metastatic triple negative breast cancer often progresses very quickly, and we urgently need new and better treatments.  Too many patients have died during delays enrolling in trials or managed access schemes with pharmaceutical companies.  Now in Scotland, oncologists will be able to prescribe Trodelvy to NHS patients with metastatic triple negative breast cancer when they need it.&#8221;*
   - type: "image"
     src: "/media/2021/06/jo-thank-you.jpg"
     alt: "Jo thank you"
@@ -36,7 +39,7 @@ sections:
 
       *Improved drug access allows us to stay #BusyLivingWithMets and increase our survival outcomes.*
 
-      *We demand change.*  
+      *We demand change.*   
       *METUPUK*
 
       ***Additional notes***

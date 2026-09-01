@@ -5,6 +5,8 @@ date: "2020-10-02T18:53:55"
 modified: "2023-05-12T10:18:59"
 image: "/media/2020/10/iamthe31-poster-724x1024.jpg"
 imageAlt: "iamthe31 poster"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

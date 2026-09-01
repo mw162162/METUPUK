@@ -34,7 +34,7 @@ sections:
 
       My sister and I have both got faulty BRACA2 genes, we aren&#8217;t surprised at the news as we have a very strong family history. We now have the worry and dread though that we have passed this in to our children, and that is the part that breaks our hearts.
 
-      **Reason to be involved in MetUPUK;**Secondary metastatic breast cancer what kills us. People have to stop thinking that Breast Cancer is a &#8216;good&#8217; cancer to have, that it is totally curable, that buying a pink t-shirt will help &#8216;cure&#8217; us all.  And it has been shocking to me that there is a lack of knowledge, understanding and research. We need access to more treatments, access to more clinical trials and we need to become visible, Metupuk is here for us, shouting for us and helping our voices be heard.
+      **Reason to be involved in MetUPUK;** Secondary metastatic breast cancer what kills us. People have to stop thinking that Breast Cancer is a &#8216;good&#8217; cancer to have, that it is totally curable, that buying a pink t-shirt will help &#8216;cure&#8217; us all.  And it has been shocking to me that there is a lack of knowledge, understanding and research. We need access to more treatments, access to more clinical trials and we need to become visible, Metupuk is here for us, shouting for us and helping our voices be heard.
 
       Twitter Helen Stewart
 

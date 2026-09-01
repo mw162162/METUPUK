@@ -5,6 +5,7 @@ date: "2022-12-08T13:45:20"
 modified: "2022-12-08T13:47:00"
 image: "/media/2022/12/Cancerfree-1024x683.png"
 imageAlt: "<p>If a person has a heart attack, do they get told that they will never have a heart attack again and they are free of heart disease?</p>"
+excerpt: "If a person has a heart attack, do they get told that they will never have a heart attack again and they are free of heart disease?"
 sections:
   - type: "prose"
     body: |-

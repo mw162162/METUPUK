@@ -5,6 +5,13 @@ date: "2024-10-15T23:22:19"
 modified: "2024-10-15T23:22:19"
 image: "/media/2021/02/unnamed-1024x768.jpg"
 imageAlt: "Madeleine Meynell"
+categories:
+  - "drug-approval"
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

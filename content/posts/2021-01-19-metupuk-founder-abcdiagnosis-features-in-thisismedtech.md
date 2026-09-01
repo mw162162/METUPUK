@@ -5,6 +5,8 @@ date: "2021-01-19T20:59:36"
 modified: "2023-05-12T10:17:57"
 image: "/media/2021/01/jo-taylor-medtech-jan-21-1024x814.png"
 imageAlt: "jo-taylor-medtech-jan-21"
+categories:
+  - "press"
 sections:
   - type: "prose"
     body: "The article, featuring METUP-UK founder Jo Taylor, starts:"

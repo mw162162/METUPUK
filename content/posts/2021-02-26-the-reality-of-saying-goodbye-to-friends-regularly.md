@@ -5,6 +5,8 @@ date: "2021-02-26T10:39:34"
 modified: "2023-05-12T10:17:17"
 image: "/media/2021/02/tumblr_e1ce01b2fc0885ce4f2a0ca3a26040a3_09ba3961_1280.jpg"
 imageAlt: "The reality of living with death"
+categories:
+  - "member-stories"
 sections:
   - type: "prose"
     body: |-

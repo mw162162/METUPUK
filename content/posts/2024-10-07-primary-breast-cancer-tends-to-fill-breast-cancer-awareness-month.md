@@ -5,6 +5,13 @@ date: "2024-10-07T01:01:26"
 modified: "2024-10-07T23:13:38"
 image: "/media/2024/09/Sue-Thomas-infographics-768x1024.jpeg"
 imageAlt: "Sue Thomas infographics"
+categories:
+  - "diagnosis"
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

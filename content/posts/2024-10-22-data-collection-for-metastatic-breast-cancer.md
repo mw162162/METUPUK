@@ -5,6 +5,10 @@ date: "2024-10-22T22:59:07"
 modified: "2024-10-25T11:10:46"
 image: "/media/2023/11/kat-southwell-scaled-e1698867859659-952x1024.jpg"
 imageAlt: "kat southwell"
+categories:
+  - "data"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

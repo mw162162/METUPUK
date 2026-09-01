@@ -3,6 +3,10 @@ title: "Breathing Techniques with Louisa from Breathe Balance Be"
 url: "/2023/05/breathing-techniques-with-louisa-from-breathe-balance-be/"
 date: "2023-05-09T07:17:10"
 modified: "2023-05-12T10:11:23"
+excerpt: "“As long as you are breathing, there is more right with you than there is wrong…..”"
+categories:
+  - "alternative-therapies"
+  - "living-with-mbc"
 sections:
   - type: "prose"
     body: |-

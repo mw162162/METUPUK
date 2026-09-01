@@ -5,6 +5,12 @@ date: "2024-10-01T00:28:50"
 modified: "2024-10-01T00:29:46"
 image: "/media/2024/09/13575844_10154396124647203_9216716426183773543_o-768x1024.jpg"
 imageAlt: "Ceirios Davies"
+categories:
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

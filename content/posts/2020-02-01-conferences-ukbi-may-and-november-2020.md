@@ -5,6 +5,8 @@ date: "2020-02-01T11:14:15"
 modified: "2023-05-12T10:20:09"
 image: "/media/2020/02/joao-cruz-IkEpl3JkVqU-unsplash-1024x680.jpg"
 imageAlt: "Microphone in front of conference crowd"
+categories:
+  - "conferences"
 sections:
   - type: "prose"
     body: |-

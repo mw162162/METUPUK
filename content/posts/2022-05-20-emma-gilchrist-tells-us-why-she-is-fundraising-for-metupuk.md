@@ -5,6 +5,9 @@ date: "2022-05-20T07:04:00"
 modified: "2022-05-19T21:07:13"
 image: "/media/2022/05/IMG-20220424-WA0020-1024x768.jpg"
 imageAlt: "Emma Gilchrist tells us why she is fundraising for METUPUK"
+excerpt: "“My little sister Helen is 39 years old. She is a married mum of 3 girls, all under the age of 9, and is a nurse with 22 years of service in the RAF. She is a much-loved wife, an adored mummy, a…"
+categories:
+  - "fundraising"
 sections:
   - type: "prose"
     body: |-

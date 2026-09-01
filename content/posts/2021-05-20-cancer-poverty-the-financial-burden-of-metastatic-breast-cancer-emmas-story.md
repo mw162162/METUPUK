@@ -5,6 +5,10 @@ date: "2021-05-20T07:10:45"
 modified: "2022-06-07T10:41:47"
 image: "/media/2021/05/iStock-1142945282-1024x683.jpg"
 imageAlt: "Cancer Poverty: The financial burden of metastatic breast cancer… Emma’s Story"
+excerpt: "Metastatic breast cancer is not only taking the lives of 31 women per day. In the limited time they have left women living with this disease are experiencing financial hardship."
+categories:
+  - "living-with-mbc"
+  - "member-stories"
 sections:
   - type: "prose"
     body: |-

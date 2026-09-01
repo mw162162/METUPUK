@@ -5,6 +5,10 @@ date: "2023-09-27T11:58:11"
 modified: "2023-09-27T11:58:11"
 image: "/media/2023/09/Talazoparib.jpg"
 imageAlt: "Talazoparib"
+categories:
+  - "patient-advocacy"
+  - "research"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-

@@ -5,6 +5,8 @@ date: "2021-01-26T19:52:09"
 modified: "2023-05-12T10:17:57"
 image: "/media/2021/01/good-enough-project-will-taylor-bex-lewis-1024x578.png"
 imageAlt: "Bex Lewis Podcast Cover Image"
+categories:
+  - "press"
 sections:
   - type: "prose"
     body: "METUP-UK member Bex Lewis was pleased to be invited to join <a href=\"https://www.willtaylor.online/thegoodenoughproject\" rel=\"noopener\" target=\"_blank\">Will Taylor&#8217;s &#8216;Good Enough&#8217; podcast</a>, off the back of social media content talking about the problematic nature of talking about &#8216;cancer&#8217; and &#8216;fighting&#8217;. Will introduces Bex:"

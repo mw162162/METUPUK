@@ -5,6 +5,8 @@ date: "2020-08-28T18:22:10"
 modified: "2023-05-12T10:19:04"
 image: "/media/2020/11/total-health-sarah-harding-1024x930.png"
 imageAlt: "total-health-sarah-harding"
+categories:
+  - "press"
 sections:
   - type: "prose"
     body: |-

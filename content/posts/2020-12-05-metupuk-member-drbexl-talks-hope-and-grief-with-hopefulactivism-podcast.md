@@ -5,6 +5,8 @@ date: "2020-12-05T17:43:21"
 modified: "2023-05-12T10:18:02"
 image: "/media/2020/12/The-Hopeful-Activists-Podcast-YELLOW-1024x1022-crop.jpg"
 imageAlt: "The Hopeful Activists Podcast Logo"
+categories:
+  - "press"
 sections:
   - type: "prose"
     body: |-

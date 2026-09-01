@@ -5,6 +5,8 @@ date: "2020-02-12T22:24:25"
 modified: "2023-05-12T10:19:48"
 image: "/media/2020/02/enric-domas-iD4r0bm0ZDU-unsplash-1024x768.jpg"
 imageAlt: "Open air arena in Athens"
+categories:
+  - "conferences"
 sections:
   - type: "prose"
     body: |-

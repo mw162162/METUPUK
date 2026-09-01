@@ -5,6 +5,8 @@ date: "2020-12-08T14:56:52"
 modified: "2023-05-12T10:18:01"
 image: "/media/2020/12/owise-blog-1024x580.jpeg"
 imageAlt: "OWise Blog, hands holding tablets"
+categories:
+  - "education"
 sections:
   - type: "prose"
     body: "A new article from the OWise app kicks off with a quote from METUPUK:"

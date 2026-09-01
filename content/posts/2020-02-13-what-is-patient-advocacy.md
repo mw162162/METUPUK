@@ -5,6 +5,8 @@ date: "2020-02-13T18:50:35"
 modified: "2023-05-12T10:19:47"
 image: "/media/2020/02/jason-rosewell-ASKeuOZqhYU-unsplash-1024x683.jpg"
 imageAlt: "Boy shouting into a microphone"
+categories:
+  - "patient-advocacy"
 sections:
   - type: "prose"
     body: |-

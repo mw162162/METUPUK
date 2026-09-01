@@ -5,6 +5,8 @@ date: "2023-05-19T02:23:55"
 modified: "2023-05-19T02:23:17"
 image: "/media/2021/05/iStock-1142945282-1024x683.jpg"
 imageAlt: "Cancer Poverty: The financial burden of metastatic breast cancer… Emma’s Story"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

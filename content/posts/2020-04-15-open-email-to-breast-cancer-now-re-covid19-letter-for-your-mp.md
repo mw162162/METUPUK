@@ -5,6 +5,8 @@ date: "2020-04-15T15:23:39"
 modified: "2023-05-12T10:19:37"
 image: "/media/2019/10/metupuk-logo-icon.jpg"
 imageAlt: "metupuk logo icon"
+categories:
+  - "fundraising"
 sections:
   - type: "prose"
     body: |-

@@ -5,6 +5,8 @@ date: "2020-10-11T18:53:46"
 modified: "2023-05-12T10:18:54"
 image: "/media/2020/10/Banner_BCY5-768x436.jpg"
 imageAlt: "BCYOnline Banner Image"
+categories:
+  - "conferences"
 sections:
   - type: "prose"
     body: |-

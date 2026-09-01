@@ -5,6 +5,9 @@ date: "2022-05-04T09:44:12"
 modified: "2023-04-27T17:02:09"
 image: "/media/2022/02/facebook-headers-1024x577.png"
 imageAlt: "MetUpUK"
+excerpt: "METUPUK is now 5 years old. In those 5 years there haven’t been many changes in our plans from what we set out to do, but we have achieved so much! And we are now a registered charity! Our strategy,…"
+categories:
+  - "news"
 sections:
   - type: "prose"
     body: |-
@@ -29,7 +32,7 @@ sections:
       We demand more money is ringfenced for research for MBC patients and to address the following:-
 
       - **Awareness and education of MBC** this is why the infographic is important and why we need a MBC awareness campaign.
-      - **Research and access to drugs** – we need **effective drugs** so we can live longer with good quality of life. We have found that **clinical trials** and trial design are restrictive and can stop patients accessing them.  Collecting **data**on MBC is important and we know this wouldn’t have been progressed if it wasn’t for the work METUPUK has done on this with stakeholders.
+      - **Research and access to drugs** – we need **effective drugs** so we can live longer with good quality of life. We have found that **clinical trials** and trial design are restrictive and can stop patients accessing them.  Collecting **data** on MBC is important and we know this wouldn’t have been progressed if it wasn’t for the work METUPUK has done on this with stakeholders.
       - **Patient treatment and care** – we support patients with a wealth of information.
 
       We have achieved so much but sadly we have lost many members over the last 6 years.
@@ -43,7 +46,7 @@ sections:
       - **#Metastatic May**
       - And the brilliant **#DarkerPink** campaign which has been a huge success and continues to be a success with the campaign travelling the UK. MBC isn’t just a day or a month, we live with it every day.
 
-      We are the***ONLY patient advocacy group in the UK*** who are addressing the problems and needs of MBC patients directly.
+      We are the ***ONLY patient advocacy group in the UK*** who are addressing the problems and needs of MBC patients directly.
 
       We work with other advocates, campaigners, policy people, local and national government and those charities who have the foresight to work together to address our problems, and to hopefully create solutions.  We want to address transparency that is lacking in areas of research.  We strive to downgrade this disease from an incurable one to a chronic one – we want a disease that you can live with for 20+ years instead of being given a 2-3 year median life expectancy.
 

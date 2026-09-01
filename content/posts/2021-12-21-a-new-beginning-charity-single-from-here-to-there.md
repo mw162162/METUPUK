@@ -39,11 +39,11 @@ sections:
 
       **Who’s Who?**
 
-      **PAUL ROBERTS**was the lead singer of The Stranglers.  Additionally, Roberts also played and recorded as Paul Roberts, Paul Roberts and The Faith Band and Soulsec .Releases included the albums *Faith?* (Paul Roberts, 1999\], *Self-Discovery* (Paul Roberts and The Faith band, 2001), The Pressure Sensitive (The Faith band, 2003) and *End Games* (Soulsec, 2007). Also the singles “God”, “When Reason Sleeps”, “8 Days” and “Swim”. There have also been several acoustic/electric live and compilation CDs. Paul provides all the vocals on A New Beginning.
+      **PAUL ROBERTS** was the lead singer of The Stranglers.  Additionally, Roberts also played and recorded as Paul Roberts, Paul Roberts and The Faith Band and Soulsec .Releases included the albums *Faith?* (Paul Roberts, 1999\], *Self-Discovery* (Paul Roberts and The Faith band, 2001), The Pressure Sensitive (The Faith band, 2003) and *End Games* (Soulsec, 2007). Also the singles “God”, “When Reason Sleeps”, “8 Days” and “Swim”. There have also been several acoustic/electric live and compilation CDs. Paul provides all the vocals on A New Beginning.
 
       **SHAUN SMITH** has played in various local bands in the Bath and Bristol area and listeners will know him best as the man who wakes up Bath – on his Radio Bath Breakfast Show. He also presents specialist programmes and during one of these, with Neil Taylor, he approached him about helping on a song he had written. Shaun also playa bass bass guitar on the track.
 
-      **NEIL TAYLOR** Neil started his career playing guitar with local band, Tears for Fears and features on the album ‘*Songs from the Big Chair ‘* (the one featuring ***that*** famous guitar solo on ‘*Everybody wants to Rule the World*‘). Neil’s involvement with Tears for Fears was long lasting, seeing him play on 2 world tours and the bands 3<sup>rd</sup> Album ‘*The Seeds of Love* ‘.
+      **NEIL TAYLOR** Neil started his career playing guitar with local band, Tears for Fears and features on the album ‘*Songs from the Big Chair ‘* (the one featuring ***that*** famous guitar solo on ‘*Everybody wants to Rule the World* ‘). Neil’s involvement with Tears for Fears was long lasting, seeing him play on 2 world tours and the bands 3<sup>rd</sup> Album ‘*The Seeds of Love* ‘.
   - type: "image"
     src: "/media/2021/12/IMG-20211217-WA0010-150x150.jpg"
     alt: "Emma Hillier"

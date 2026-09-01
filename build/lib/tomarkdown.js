@@ -20,6 +20,19 @@ function escapeText(text) {
     .replace(/^(\s*)([#>+-]|\d+\.)\s/gm, '$1\\$2 ');
 }
 
+// Emphasis that runs across a paragraph break cannot be written with paired
+// markers. The opening one sits in one paragraph and the closing one in the
+// next, so Markdown reads the pair as unbalanced: a stray `*` is left behind
+// and everything after it is treated as syntax. One post ended up with
+// `Date*` in the middle of a letter for exactly this reason.
+// Markdown allows inline HTML, so where the markers cannot work the element
+// travels intact instead — which is the same rule this file already applies to
+// anything else it cannot express cleanly.
+function spansBlocks(inner) {
+  return /\n\s*\n/.test(inner)
+    || /<(p|div|h[1-6]|ul|ol|li|blockquote|table|br)[\s/>]/i.test(inner);
+}
+
 function isInlineOnly(el) {
   for (const node of el.childNodes) {
     if (node.nodeType === 3) continue;
@@ -40,13 +53,25 @@ function inline(node) {
 
   switch (tag) {
     case 'br': return '  \n';
+    // Markdown will not let a marker sit against whitespace — `** bold **` is
+    // not emphasis — so the inner text has to be trimmed. But the space it
+    // trims is often the only thing separating two words: an editor who wrote
+    // `global<strong> conversation</strong>` loses it, and the page reads
+    // "globalconversation". Keep the whitespace by moving it outside the
+    // markers, where it means the same thing and still renders.
     case 'strong': case 'b': {
-      const inner = kids().trim();
-      return inner ? `**${inner}**` : '';
+      const raw = kids();
+      const inner = raw.trim();
+      if (!inner) return '';
+      if (spansBlocks(inner)) return node.toString();
+      return `${/^\s/.test(raw) ? ' ' : ''}**${inner}**${/\s$/.test(raw) ? ' ' : ''}`;
     }
     case 'em': case 'i': {
-      const inner = kids().trim();
-      return inner ? `*${inner}*` : '';
+      const raw = kids();
+      const inner = raw.trim();
+      if (!inner) return '';
+      if (spansBlocks(inner)) return node.toString();
+      return `${/^\s/.test(raw) ? ' ' : ''}*${inner}*${/\s$/.test(raw) ? ' ' : ''}`;
     }
     case 'code': return `\`${node.text}\``;
     case 'a': {

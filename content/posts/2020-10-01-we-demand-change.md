@@ -5,6 +5,8 @@ date: "2020-10-01T18:12:31"
 modified: "2023-05-12T10:19:00"
 image: "/media/2020/10/2020-10-01-13.03.17-768x962.jpg"
 imageAlt: "METUP UK Demands Change: Infographic highlighting relevant stats and the changes the METUP is calling for."
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

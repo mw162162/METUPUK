@@ -5,6 +5,8 @@ date: "2020-10-09T18:02:40"
 modified: "2023-05-12T10:18:55"
 image: "/media/2020/10/kitvscancer-1024x320.png"
 imageAlt: "Segment from Kit vs Cancer"
+categories:
+  - "member-stories"
 sections:
   - type: "prose"
     body: |-

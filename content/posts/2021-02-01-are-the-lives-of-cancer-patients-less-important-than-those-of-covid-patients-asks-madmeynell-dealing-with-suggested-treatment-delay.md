@@ -5,6 +5,8 @@ date: "2021-02-01T18:17:05"
 modified: "2023-05-12T10:17:56"
 image: "/media/2021/02/national-cancer-institute-KMvoHcB-w5g-unsplash-crop-1024x572.jpg"
 imageAlt: "Drug Bottles"
+categories:
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-
@@ -46,7 +48,7 @@ sections:
 
       ### What happened in my case?
 
-      I am on three weekly trastuzumab and pertuzumab.  My oncologist said I was to be changed to six weekly cycles because of staff shortages in the chemo unit.  I immediately refused, and told her this was unacceptable.  After some unpleasant haggling about cycle lengths we settled on a single four weekly cycle followed by a review.  I am satisfied that a single four weekly cycle will not be dangerous.  However, I am less certain of the impact of ongoing longer cycles. **For my peace of mind, my GP has referred me to another hospital for a second opinion.**
+      I am on three weekly trastuzumab and pertuzumab.  My oncologist said I was to be changed to six weekly cycles because of staff shortages in the chemo unit.  I immediately refused, and told her this was unacceptable.  After some unpleasant haggling about cycle lengths we settled on a single four weekly cycle followed by a review.  I am satisfied that a single four weekly cycle will not be dangerous.  However, I am less certain of the impact of ongoing longer cycles.  **For my peace of mind, my GP has referred me to another hospital for a second opinion.**
 
       My research has shown that most hospitals are maintaining three weekly cycles for patients on this regimen, which is excellent news.  Unfortunately at least one other woman in another town has been asked to take a 9 week break, so we can infer that there will be other similar cases.  I don’t want to transfer my care to another hospital, but I only get one chance at life.  **I will do whatever I need to do.**  If I keep my care at my present hospital, my oncology team will need to work hard to regain my trust.
 

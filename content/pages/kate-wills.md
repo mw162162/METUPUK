@@ -5,11 +5,12 @@ date: "2021-10-24T12:12:29"
 modified: "2021-10-24T12:18:59"
 image: "/media/2021/10/FB-1920x1080-16.Kate-Wills-Berger-1024x576.png"
 imageAlt: "FB-1920×1080-16.Kate-Wills-Berger"
+excerpt: "Name: Kate Wills Age: 46Region: London – Finchley Diagnosis: (i.e When diagnosed primary, When diagnosed mets, Or denovo, What disease type – HER2+/- ER-/ER+ or TNBC or IBC) I was diagnosed with…"
 parent: "darker-pink"
 sections:
   - type: "prose"
     body: |-
-      **Name:**Kate Wills **Age:** 46**Region:**London &#8211; Finchley**Diagnosis:**(i.e When diagnosed primary, When diagnosed mets, Or denovo, What disease type &#8211; HER2+/- ER-/ER+ or TNBC or IBC)
+      **Name:** Kate Wills  **Age:**  46 **Region:** London &#8211; Finchley **Diagnosis:** (i.e When diagnosed primary, When diagnosed mets, Or denovo, What disease type &#8211; HER2+/- ER-/ER+ or TNBC or IBC)
 
       I was diagnosed with primary breast cancer in Sept 2011 aged just 36.  2 tumours.  Grade 3 both ER8 PR8 and Her2+.  It had spread to one lymph node.  I had a right mastectomy.  Followed by FEC, weekly Taxol and then Herceptin.  In 2012 I started on Tamoxifen.
 

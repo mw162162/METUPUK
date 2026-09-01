@@ -3,6 +3,11 @@ title: "Your Cancer Crew – getting with those that get it – Sue Thomas"
 url: "/2024/05/your-cancer-crew-getting-with-those-that-get-it-sue-thomas/"
 date: "2024-05-15T22:32:57"
 modified: "2024-05-16T12:56:31"
+categories:
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

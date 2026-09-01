@@ -3,8 +3,10 @@ title: "The importance of mammograms? #BreastCancerAwarenessMonth #IAmThe31"
 url: "/2020/10/the-importance-of-mammogram/"
 date: "2020-10-02T12:37:25"
 modified: "2023-05-12T10:19:00"
-image: "/media/2019/10/SBC-infographics-header.png"
-imageAlt: ""
+image: "/media/2020/11/beth-roberts-metup-uk.png"
+imageAlt: "Photo of Beth Roberts"
+categories:
+  - "member-stories"
 sections:
   - type: "prose"
     body: |-
@@ -16,7 +18,7 @@ sections:
 
       All well and good for me you may think. Well maybe, but maybe not. I had a clear mammogram aged 51 and a 2.2cm lump detected by the next mammogram aged 54. My surgeon told me even he would not have been able to feel it for another 9 months. So **mammograms are good**, yes, because they can save lives and are a lot safer than poking around yourself looking for lumps &#8211; my oncologist told me not to bother!
 
-      <a href="https://www.abcdiagnosis.co.uk/resources/infographics/" rel="noopener" target="_blank"><img src="/media/2019/10/SBC-infographics-header-300x146.png" alt="Secondary Breast Cancer Infographics" width="300" height="146" loading="lazy" decoding="async"></a>Yet no one, absolutely no NHS consultant, registrar, gp, or nurse, has even once mentioned my**1 in 3 risk of getting secondary breast cancer**, let alone told me to <a href="https://www.abcdiagnosis.co.uk/resources/infographics/" rel="noopener" target="_blank">look out for any symptoms</a>.
+      <a href="https://www.abcdiagnosis.co.uk/resources/infographics/" rel="noopener" target="_blank"><img src="/media/2019/10/SBC-infographics-header-300x146.png" alt="Secondary Breast Cancer Infographics" width="300" height="146" loading="lazy" decoding="async"></a>Yet no one, absolutely no NHS consultant, registrar, gp, or nurse, has even once mentioned my **1 in 3 risk of getting secondary breast cancer**, let alone told me to <a href="https://www.abcdiagnosis.co.uk/resources/infographics/" rel="noopener" target="_blank">look out for any symptoms</a>.
 
       More importantly, for me, I ask what if my daughter had been offered mammograms in 2006 &#8211; given that if you have a first degree relative with breast cancer, your risk doubles? What if I had been given a genetic test in 2006 and a kind person against official policy had given my daughter a genetic test? **Would she still be alive now?** Yes, dear reader, my most beloved eldest daughter Beth Roberts died of secondary breast cancer this June, aged just 46. Given that she was told in 2015 that her mean survival time was 3.4 years, I guess she &#8216;beat the odds&#8217;. Some odds, when, even if beaten, mean so many young women like my daughter are taken from their children, husbands, brothers and sisters, mums and dads long before their time.
 

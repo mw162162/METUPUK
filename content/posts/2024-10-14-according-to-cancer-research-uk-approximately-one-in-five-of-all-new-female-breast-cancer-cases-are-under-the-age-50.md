@@ -5,6 +5,12 @@ date: "2024-10-14T22:47:21"
 modified: "2024-10-16T07:47:00"
 image: "/media/2020/09/2217911D-11BF-4FC5-9692-045DFA0A877F-Madeleine-Meynell-768x1024.jpeg"
 imageAlt: "Madeleine Meynell"
+categories:
+  - "diagnosis"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-
@@ -22,7 +28,7 @@ sections:
 
       This loss of personality and erosion of the sense of self is one of the hardest things about metastatic breast cancer. I have been on treatments for six years, not as a super responder but as someone who is on a third-line chemo. Don’t get me wrong: I’m grateful for these treatments, without them I would be long dead. But I used to be fairly smart and could hold my own in an argument. Now, I’m the slowest in my family. Get me on a good week and hopefully you won’t notice.
 
-      **Who Really Cares?** I do.
+      **Who Really Cares?**  I do.
 
       Madeleine Meynell
 

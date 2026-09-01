@@ -5,6 +5,9 @@ date: "2021-05-18T06:56:05"
 modified: "2022-06-07T10:42:10"
 image: "/media/2021/05/Busylivingwithmets-768x768.png"
 imageAlt: "#Busylivingwithmets"
+categories:
+  - "living-with-mbc"
+  - "member-stories"
 sections:
   - type: "prose"
     body: |-

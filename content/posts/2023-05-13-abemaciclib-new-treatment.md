@@ -5,6 +5,8 @@ date: "2023-05-13T07:00:45"
 modified: "2023-05-13T08:46:42"
 image: "/media/2023/05/Ailsa-photo-590x1024.jpg"
 imageAlt: "Ailsa photo"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

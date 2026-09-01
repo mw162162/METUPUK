@@ -5,15 +5,12 @@ date: "2021-10-22T10:57:33"
 modified: "2021-10-22T10:59:32"
 image: "/media/2021/10/FB-1920x1080-20.Chloe-Franklin-1024x576.png"
 imageAlt: "FB-1920×1080-20.Chloe-Franklin"
+excerpt: "Name: Chloe FranklinAge: 28Region: Greater Manchester Diagnosis: De novo ER+ metastatic cancer with spread to liver and bones. Age at Diagnosis: 27 Hi! I’m Chloe and I live in Manchester, working in…"
 parent: "darker-pink"
 sections:
   - type: "prose"
     body: |-
-      **Name: Chloe Franklin  
-      Age: 28  
-      Region: Greater Manchester  
-        
-      Diagnosis:***De novo ER+ metastatic cancer with spread to liver and bones.*
+      <strong>Name: Chloe Franklin<br>Age: 28<br>Region: Greater Manchester<br><br>Diagnosis: </strong>*De novo ER+ metastatic cancer with spread to liver and bones.*
 
       **Age at Diagnosis: 27**
   - type: "embed"
@@ -36,7 +33,7 @@ sections:
 
       So far I have had shrinkage at every scan which was entirely unexpected but it helps me to keep living my life as I did before and plough through the tough card life has dealt me.
 
-      **Why you wanted to be involved with the MetUpUK campaign:**I need people to understand what the hell metastatic breast cancer is and not assume I going to go through chemo, lose my hair and be fine. I honestly wouldn’t have known myself a year ago and my own ignorance has made me want to educate many more people, especially younger women.
+      **Why you wanted to be involved with the MetUpUK campaign:** I need people to understand what the hell metastatic breast cancer is and not assume I going to go through chemo, lose my hair and be fine. I honestly wouldn’t have known myself a year ago and my own ignorance has made me want to educate many more people, especially younger women.
 
       **Instagram: @letsbefranklin**
 ---

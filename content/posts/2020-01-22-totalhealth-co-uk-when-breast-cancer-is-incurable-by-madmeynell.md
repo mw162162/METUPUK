@@ -5,6 +5,8 @@ date: "2020-01-22T18:16:24"
 modified: "2023-05-12T10:20:11"
 image: "/media/2020/11/when-breast-cancer-is-incurable-1024x897.png"
 imageAlt: "Screenshot TotalHealth article"
+categories:
+  - "press"
 sections:
   - type: "prose"
     body: "METUPUK Member and &#8216;Patient Expert&#8217; Madeleine Meynell wrote this piece for Total Health:"

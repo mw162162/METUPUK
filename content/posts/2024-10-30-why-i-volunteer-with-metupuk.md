@@ -5,6 +5,13 @@ date: "2024-10-30T22:51:22"
 modified: "2024-10-31T07:51:20"
 image: "/media/2024/10/METUPUK-team-photo-1-768x1024.jpg"
 imageAlt: "METUPUK team photo 1"
+categories:
+  - "diagnosis"
+  - "education"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

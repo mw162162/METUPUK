@@ -5,6 +5,12 @@ date: "2024-06-18T02:07:15"
 modified: "2024-06-18T07:59:03"
 image: "/media/2024/06/Pic-1-300x206.jpg"
 imageAlt: ""
+categories:
+  - "education"
+  - "living-with-mbc"
+  - "patient-advocacy"
+  - "policy"
+  - "research"
 sections:
   - type: "prose"
     body: |-

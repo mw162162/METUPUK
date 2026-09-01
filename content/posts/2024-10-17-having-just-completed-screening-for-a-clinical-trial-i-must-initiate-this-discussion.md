@@ -5,6 +5,12 @@ date: "2024-10-17T23:57:54"
 modified: "2024-10-18T09:22:41"
 image: "/media/2024/09/Helen-Crawford-photo-1024x1024.jpg"
 imageAlt: "Helen Crawford photo"
+categories:
+  - "clinical-trial"
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

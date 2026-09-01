@@ -3,6 +3,12 @@ title: "Trustees’ Week by Madeleine Meynell"
 url: "/2024/11/trustees-week-by-madeleine-meynell/"
 date: "2024-11-06T10:17:37"
 modified: "2024-11-06T10:17:37"
+categories:
+  - "help-us"
+  - "living-with-mbc"
+  - "member-stories"
+  - "news"
+  - "patient-advocacy"
 sections:
   - type: "prose"
     body: |-

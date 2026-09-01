@@ -5,6 +5,11 @@ date: "2025-02-02T23:30:06"
 modified: "2025-02-02T23:30:06"
 image: "/media/2025/02/image1-rotated.jpeg"
 imageAlt: "image1"
+categories:
+  - "clinical-trial"
+  - "living-with-mbc"
+  - "patient-advocacy"
+  - "research"
 sections:
   - type: "prose"
     body: |-
@@ -26,7 +31,7 @@ sections:
 
       Now looking at metastatic breast cancer.  The statistics haven’t massively changed in the last 30+ years.  Yes Traztuzamab/Herceptin for HER2 breast cancer came along over 20+ years ago and helped those patients and a few new treatments have increased survival for other breast cancer types over the last 10 years BUT we are still dying from this disease.  Many not living over 5 years, running through lines of treatment and being resistant to the drugs.
 
-      If someone with AIDS/HIV was told to go out and exercise instead of being provided with effective drugs which improve outcomes, they would have laughed.  I know that physical activity *can*help with reducing the risk of recurrence for cancer (there is research on this) but there are no figures to say how many patients this benefits because we don’t know.  Just like we don’t know *why*breast cancer happens for some people and not others, and why some patients metastasize, and some don’t.  We don’t know why some people survive for a long time on existing treatments and why some patients die within months or even weeks of starting treatment.  We only know that if you get MBC, women die, 31 women every day.
+      If someone with AIDS/HIV was told to go out and exercise instead of being provided with effective drugs which improve outcomes, they would have laughed.  I know that physical activity *can* help with reducing the risk of recurrence for cancer (there is research on this) but there are no figures to say how many patients this benefits because we don’t know.  Just like we don’t know *why* breast cancer happens for some people and not others, and why some patients metastasize, and some don’t.  We don’t know why some people survive for a long time on existing treatments and why some patients die within months or even weeks of starting treatment.  We only know that if you get MBC, women die, 31 women every day.
 
       Currently in the UK 187,000 patients die from all types of cancer (2021 data below) HIV accounts for 235 patients dying in the UK.  <a href="https://ourworldindata.org/grapher/annual-number-of-deaths-by-cause" rel="noopener" target="_blank">https://ourworldindata.org/grapher/annual-number-of-deaths-by-cause</a>
 
@@ -50,7 +55,7 @@ sections:
 
       So how do we change this?  How do we get our voices heard?  How do we get policy makers to make the change to drive better survival and outcomes?
 
-      I really don’t know, but I do know one thing, that physical activity isn’t the thing that we should be focusing on.  Yes, part of rehabilitation and supportive care but we need to make sure that *real change is being made to help women live longer with MBC*and for us eventually to have drugs that we are not resistant to, and this is key.
+      I really don’t know, but I do know one thing, that physical activity isn’t the thing that we should be focusing on.  Yes, part of rehabilitation and supportive care but we need to make sure that *real change is being made to help women live longer with MBC* and for us eventually to have drugs that we are not resistant to, and this is key.
 
       I was hoping that genomic testing and ctDNA (measuring circulating tumour DNA in the blood) would change things for MBC patients. In the UK we are not routinely testing for genomic alterations in ctDNA as standard on progression, although there is now limited provision for some patients with hormone receptor positive MBC.  We need research to explore if ctDNA testing has wider potential for all MBC patients and if it can be implemented in our pathway. Of course, knowledge of biomarkers is of limited use if there are no drugs to target them. So, we need better drugs to target cancer, and for these drugs to be approved and funded for use on the NHS across the UK.
 

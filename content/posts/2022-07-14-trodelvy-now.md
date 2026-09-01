@@ -5,6 +5,13 @@ date: "2022-07-14T19:40:50"
 modified: "2022-07-14T20:00:10"
 image: "/media/2022/07/trodelvy.jpg"
 imageAlt: "Trodelvy Approved by NICE"
+categories:
+  - "education"
+  - "living-with-mbc"
+  - "patient-advocacy"
+  - "quality-of-life"
+  - "research"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-

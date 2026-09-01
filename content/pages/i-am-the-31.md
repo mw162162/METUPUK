@@ -5,6 +5,7 @@ date: "2020-09-30T21:34:30"
 modified: "2023-04-25T16:11:56"
 image: "/media/2020/10/Tiles-768x433.jpg"
 imageAlt: "I am the 31"
+excerpt: "https://www.youtube.com/watch?v=pkvXtQxGTf0&feature=youtu.be 31 people die every day in the UK from metastatic breast cancer There are 31 days in October, and there are 31 deaths every day. By the…"
 sections:
   - type: "embed"
     variant: "video"
@@ -755,7 +756,7 @@ sections:
     body: "<div class=\"c-disclosure__body\"><p>I was diagnosed with stage 3 breast cancer in May 2020. My CT scan was clear for spread-yay! My first chemotherapy was in June 2020 just 5 weeks after diagnosis, which was great during COVID-19. Just before I had my first chemo my oncologist said he would like me to have a PET scan as in internal mammory lymph nodes looked inflamed on my CT scan. I was then told on the phone after my initial chemo that my cancer had spread to my liver and bones and that I have metastatic breast cancer or stage 4 or secondary breast cancer-they all mean the same. They all mean I am no longer curable but “treatable” being the only option. Devastated beyond belief I had to tell my family that the scan giving me the clear for spread was wrong and that I do have breast cancer spread. I had to tell my children this will kill me but we just don’t know when. </p></div>"
   - type: "prose"
     body: |-
-      **If you would like to add your name to our list of metastatic breast cancer #31&#8217;s,****please fill out the form and tell us about yourself.**
+      **If you would like to add your name to our list of metastatic breast cancer #31&#8217;s,** **please fill out the form and tell us about yourself.**
 
       <a href="https://forms.gle/KQb7mWKNjEyGRJEq9" rel="noopener" target="_blank">
 

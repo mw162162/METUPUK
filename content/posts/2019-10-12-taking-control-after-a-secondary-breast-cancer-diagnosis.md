@@ -5,6 +5,9 @@ date: "2019-10-12T10:38:06"
 modified: "2023-05-12T10:20:16"
 image: "/media/2019/10/bethroberts-blog-1.png"
 imageAlt: "bethroberts-blog-1"
+categories:
+  - "diagnosis"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-

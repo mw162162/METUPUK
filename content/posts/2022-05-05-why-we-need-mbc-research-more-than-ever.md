@@ -5,6 +5,10 @@ date: "2022-05-05T08:01:37"
 modified: "2022-05-04T12:22:40"
 image: "/media/2022/05/PXL_20220427_150541272.PORTRAIT-1024x768.jpg"
 imageAlt: "Why we need MBC research more than ever"
+categories:
+  - "fundraising"
+  - "research"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-

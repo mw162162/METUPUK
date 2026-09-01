@@ -5,6 +5,11 @@ date: "2022-07-14T19:49:01"
 modified: "2022-07-14T19:52:42"
 image: "/media/2021/12/IMG-20211217-WA0010.jpg"
 imageAlt: ""
+categories:
+  - "education"
+  - "living-with-mbc"
+  - "patient-advocacy"
+  - "treatment-options"
 sections:
   - type: "prose"
     body: |-

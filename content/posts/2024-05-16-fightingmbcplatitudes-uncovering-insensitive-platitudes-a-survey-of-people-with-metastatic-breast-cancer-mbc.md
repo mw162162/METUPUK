@@ -3,6 +3,11 @@ title: "#FightingMBCplatitudes – Uncovering insensitive platitudes: a survey o
 url: "/2024/05/fightingmbcplatitudes-uncovering-insensitive-platitudes-a-survey-of-people-with-metastatic-breast-cancer-mbc/"
 date: "2024-05-16T23:41:36"
 modified: "2024-05-17T12:22:21"
+categories:
+  - "conferences"
+  - "education"
+  - "living-with-mbc"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-

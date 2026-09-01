@@ -5,6 +5,10 @@ date: "2023-01-18T07:11:44"
 modified: "2023-04-12T10:23:20"
 image: "/media/2023/01/kirsten-scotland.jpg"
 imageAlt: "kirstin scotland"
+excerpt: "The Scottish Medicines Consortium (SMC) have decided against funding the metastatic breast cancer drug alpelisib (Piqray)."
+categories:
+  - "patient-advocacy"
+  - "policy"
 sections:
   - type: "prose"
     body: |-

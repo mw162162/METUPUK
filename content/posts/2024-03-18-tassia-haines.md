@@ -5,6 +5,10 @@ date: "2024-03-18T21:52:43"
 modified: "2024-03-18T21:52:43"
 image: "/media/2021/02/tass-1024x1024.jpg"
 imageAlt: "Tassia Haines"
+categories:
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
 sections:
   - type: "prose"
     body: |-

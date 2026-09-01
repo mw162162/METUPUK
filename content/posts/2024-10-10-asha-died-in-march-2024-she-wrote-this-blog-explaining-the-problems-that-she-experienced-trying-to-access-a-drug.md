@@ -5,12 +5,17 @@ date: "2024-10-10T23:46:38"
 modified: "2024-10-12T00:23:32"
 image: "/media/2023/04/Asha-blog-photo-768x1024.jpg"
 imageAlt: "Asha blog photo"
+categories:
+  - "living-with-mbc"
+  - "member-stories"
+  - "patient-advocacy"
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: |-
       *Asha died in March 2024. She wrote this blog, explaining the problems that she experienced trying to access a drug that she was ineligible for, because she fell outside of the treatment lines guidance.*
 
-      *There are many reasons why patients fall outside of treatment line guidance, but often it is because of an earlier treatment line they have accessed.  Asha lived with metastatic breast cancer for around 10 years, for most of that time working as a full-time NHS A&amp;E doctor.  When she was diagnosed,****today’s first line NHS treatment did not exist****and the drug that she was given is no longer used as a single therapy.  This then had implications which impacted on her later treatment lines.****Patients cannot access a drug prior to it being approved, but you can if you are a private patient.***
+      *There are many reasons why patients fall outside of treatment line guidance, but often it is because of an earlier treatment line they have accessed.  Asha lived with metastatic breast cancer for around 10 years, for most of that time working as a full-time NHS A&amp;E doctor.  When she was diagnosed,* ***today’s first line NHS treatment did not exist*** *and the drug that she was given is no longer used as a single therapy.  This then had implications which impacted on her later treatment lines.* ***Patients cannot access a drug prior to it being approved, but you can if you are a private patient.***
 
       *It is unbelievable that rationing medicines according to treatment line occurs in the NHS.  When patients are diagnosed with progression in their disease, they should be getting support.  Instead, they are navigating an awkward and laborious system. At a time when you have so many other health issues to deal with, this is wrong.*
 

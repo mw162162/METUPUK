@@ -5,6 +5,10 @@ date: "2021-10-08T07:15:47"
 modified: "2021-10-05T17:18:50"
 image: "/media/2021/10/Screenshot-2021-10-05-165328.jpg"
 imageAlt: "Juliet FitzPatrick"
+categories:
+  - "education"
+  - "help-us"
+  - "patient-advocacy"
 sections:
   - type: "prose"
     body: |-

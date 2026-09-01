@@ -5,6 +5,10 @@ date: "2021-03-12T07:04:23"
 modified: "2023-05-12T10:17:16"
 image: "/media/2021/03/youarenotalone-768x437.jpg"
 imageAlt: "<p>It’s not always easy to accept help and support. I was diagnosed with cancer in my early thirties when I was already struggling with a lot of feelings of failure.</p>"
+excerpt: "It’s not always easy to accept help and support. I was diagnosed with cancer in my early thirties when I was already struggling with a lot of feelings of failure."
+categories:
+  - "living-with-mbc"
+  - "quality-of-life"
 sections:
   - type: "image"
     src: "/media/2021/03/youarenotalone.jpg"

@@ -5,6 +5,8 @@ date: "2020-10-31T16:42:21"
 modified: "2023-05-12T10:18:26"
 image: "/media/2020/10/2020-10-28-15.40.23-1024x884.jpg"
 imageAlt: "Tassia Cartoon - limited options"
+categories:
+  - "social-media-campaign"
 sections:
   - type: "prose"
     body: "As &#8216;Breast Cancer Awareness Month&#8217; comes to an end, and as we prepare for November in which awareness focuses upon Lung and Pancreatic cancers, we think about the work that we have done with [#IAmThe31](/i-am-the-31/)."

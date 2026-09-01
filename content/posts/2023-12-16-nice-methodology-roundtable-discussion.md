@@ -5,6 +5,9 @@ date: "2023-12-16T01:21:13"
 modified: "2023-12-16T01:21:13"
 image: "/media/2019/10/Medeleine-Hunter.jpeg"
 imageAlt: ""
+categories:
+  - "education"
+  - "patient-advocacy"
 sections:
   - type: "prose"
     body: |-
