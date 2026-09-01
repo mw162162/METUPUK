@@ -15,30 +15,40 @@ sections:
       ## What is IBC?
 
       <a href="https://www.macmillan.org.uk/cancer-information-and-support/breast-cancer/inflammatory-breast-cancer" rel="noopener" target="_blank">Macmillan</a> describes it as:
-  - type: "html"
-    html: |-
-      <div class="content-card-text mb-4">
-      <blockquote><p>Inflammatory breast cancer cells grow along tiny channels (lymph vessels) in the skin of the breast. These cells block the lymph vessels. Lymph vessels are part of <a title="Find information about breast cancer and the lymphatic system" href="https://www.macmillan.org.uk/cancer-information-and-support/breast-cancer/breast-cancer-and-the-lymphatic-system" rel="noopener" target="_blank">the lymphatic system</a>. They drain fluid from tissues, collecting and filtering out bacteria and any waste materials from the body’s cells.</p>
-      <p>Inflammatory breast cancer is rare. It is called inflammatory breast cancer because the breast becomes inflamed and swollen. This is because the body is reacting to the cancer cells in the lymph vessels.</p>
-      <p>Unlike other breast cancers, you may not feel a lump.</p></blockquote>
-      <h2>What are the symptoms of IBC?</h2>
-      <p><a href="https://breastcancernow.org/information-support/facing-breast-cancer/diagnosed-breast-cancer/primary-breast-cancer/inflammatory-breast-cancer?gclid=Cj0KCQjw5eX7BRDQARIsAMhYLP8H-CD8xVSaq8yNc8lXcIM4UhauvDE1cFfYE7b4IF1IEYQlybyq0UcaAnrREALw_wcB" rel="noopener" target="_blank">Breast Cancer Now</a> notes that symptoms of IBC can develop swiftly and can include the following:</p>
-      <ul>
-      <li>Redness, warmth or swelling of the breast</li>
-      <li>The skin of the breast changing colour or looking bruised</li>
-      <li>Dimpling, ridges or thickening of the skin. Or the breast looking pitted like the skin of an orange (known as peau d’orange)</li>
-      <li>An increase in breast size</li>
-      <li>Pain or tenderness in the breast</li>
-      <li>Persistent itching of the breast</li>
-      <li>An inverted (pulled-in) nipple</li>
-      <li>Swelling or lumps in the armpit or around the collar bone</li>
-      </ul>
-      <h2>IBC &amp; Metastasis</h2>
-      <p>The <a href="https://www.cancer.org/cancer/breast-cancer/understanding-a-breast-cancer-diagnosis/types-of-breast-cancer/inflammatory-breast-cancer.html" rel="noopener" target="_blank">American Cancer Society</a> describes IBC as typically being an invasive ductal carcinoma, but rarely presents as a lump, and therefore has often spread beyond the original breast cancer site (metastasized) by the time that it is discovered.</p>
-      <blockquote><p>In about 1 of every 3 cases, IBC has already spread (metastasized) to distant parts of the body when it is diagnosed. This makes it harder to treat successfully.</p></blockquote>
-      <p>As with other ductal breast cancers, patients should be aware of the &#8216;red flags&#8217; for metastatic spread, and speak to GP or specialist team sooner rather than later if concerned (typical advice is book an appointment if &#8216;concerning symptoms&#8217; that are not obvious continue to worry you for a fortnight):</p>
-      <p><img src="/media/2020/03/ABCD-Ductal-Breast-Cancer-v9-20200224-1024x576.png" alt="ABCD Ductal Breast Cancer v9 20200224" width="640" height="360" loading="lazy" decoding="async"></p>
-      </div>
+  - type: "quote"
+    text: |-
+      Inflammatory breast cancer cells grow along tiny channels (lymph vessels) in the skin of the breast. These cells block the lymph vessels. Lymph vessels are part of the lymphatic system. They drain fluid from tissues, collecting and filtering out bacteria and any waste materials from the body’s cells.
+
+      Inflammatory breast cancer is rare. It is called inflammatory breast cancer because the breast becomes inflamed and swollen. This is because the body is reacting to the cancer cells in the lymph vessels.
+
+      Unlike other breast cancers, you may not feel a lump.
+    attribution: ""
+  - type: "prose"
+    body: |-
+      ## What are the symptoms of IBC?
+
+      <a href="https://breastcancernow.org/information-support/facing-breast-cancer/diagnosed-breast-cancer/primary-breast-cancer/inflammatory-breast-cancer?gclid=Cj0KCQjw5eX7BRDQARIsAMhYLP8H-CD8xVSaq8yNc8lXcIM4UhauvDE1cFfYE7b4IF1IEYQlybyq0UcaAnrREALw_wcB" rel="noopener" target="_blank">Breast Cancer Now</a> notes that symptoms of IBC can develop swiftly and can include the following:
+
+      - Redness, warmth or swelling of the breast
+      - The skin of the breast changing colour or looking bruised
+      - Dimpling, ridges or thickening of the skin. Or the breast looking pitted like the skin of an orange (known as peau d’orange)
+      - An increase in breast size
+      - Pain or tenderness in the breast
+      - Persistent itching of the breast
+      - An inverted (pulled-in) nipple
+      - Swelling or lumps in the armpit or around the collar bone
+
+      ## IBC &amp; Metastasis
+
+      The <a href="https://www.cancer.org/cancer/breast-cancer/understanding-a-breast-cancer-diagnosis/types-of-breast-cancer/inflammatory-breast-cancer.html" rel="noopener" target="_blank">American Cancer Society</a> describes IBC as typically being an invasive ductal carcinoma, but rarely presents as a lump, and therefore has often spread beyond the original breast cancer site (metastasized) by the time that it is discovered.
+  - type: "quote"
+    text: "In about 1 of every 3 cases, IBC has already spread (metastasized) to distant parts of the body when it is diagnosed. This makes it harder to treat successfully."
+    attribution: ""
+  - type: "prose"
+    body: |-
+      As with other ductal breast cancers, patients should be aware of the &#8216;red flags&#8217; for metastatic spread, and speak to GP or specialist team sooner rather than later if concerned (typical advice is book an appointment if &#8216;concerning symptoms&#8217; that are not obvious continue to worry you for a fortnight):
+
+      <img src="/media/2020/03/ABCD-Ductal-Breast-Cancer-v9-20200224-1024x576.png" alt="ABCD Ductal Breast Cancer v9 20200224" width="640" height="360" loading="lazy" decoding="async">
   - type: "prose"
     body: "Featured image source: <a href=\"https://www.facebook.com/ImagingandUltrasoundInc/posts/1871857606200925\" rel=\"noopener\" target=\"_blank\">Facebook</a>"
 ---

@@ -65,9 +65,16 @@ function renderEmbed(b) {
   return `<div class="c-embed${cls}"><iframe src="${esc(b.src)}"${attr('title', b.title)} loading="lazy" allowfullscreen>${fallback}</iframe></div>`;
 }
 
+// A quotation can run to more than one paragraph, and a blank line in the
+// field is how someone says so. Collapsing them into a single paragraph loses
+// no words, which is why it went unnoticed — it just silently reflows somebody
+// else's writing into a wall of text.
 function renderQuote(b) {
   const cite = b.attribution ? `<cite>${esc(b.attribution)}</cite>` : '';
-  return `<blockquote><p>${esc(b.text)}</p>${cite}</blockquote>`;
+  const paragraphs = String(b.text == null ? '' : b.text)
+    .split(/\n{2,}/).map((p) => p.trim()).filter(Boolean)
+    .map((p) => `<p>${esc(p)}</p>`).join('');
+  return `<blockquote>${paragraphs || '<p></p>'}${cite}</blockquote>`;
 }
 
 function renderDisclosure(b) {
@@ -261,9 +268,20 @@ function readQuote(el) {
   const body = el.clone();
   const c = body.querySelector('cite, footer');
   if (c) c.remove();
+
+  // Paragraphs inside the quotation are kept as blank lines, which is what the
+  // renderer reads back. Whitespace is still collapsed within a paragraph,
+  // because the line breaks in the source markup are indentation, not meaning.
+  const paragraphs = body.querySelectorAll('p')
+    .map((p) => p.text.replace(/\s+/g, ' ').trim())
+    .filter(Boolean);
+  const text = paragraphs.length
+    ? paragraphs.join('\n\n')
+    : body.text.replace(/\s+/g, ' ').trim();
+
   return {
     type: 'quote',
-    text: body.text.replace(/\s+/g, ' ').trim(),
+    text,
     attribution: cite ? cite.text.trim() : '',
   };
 }

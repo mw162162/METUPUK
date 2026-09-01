@@ -17,9 +17,7 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
-const { parse } = require('node-html-parser');
-const { classify } = require('./lib/blocks');
-const { BY_NAME } = require('./lib/components');
+const { split } = require('./lib/blocks');
 const { renderBlocks } = require('./lib/torender');
 const { contentFile } = require('./lib/yaml-out');
 const { toText } = require('./lib/clean');
@@ -52,7 +50,7 @@ function frontMatter(raw) {
 // was never written.
 function survives(before, after) {
   const want = letters(toText(renderBlocks([before])));
-  const got = letters(toText(renderBlocks([after])));
+  const got = letters(toText(renderBlocks(after)));
   let j = 0;
   for (let i = 0; i < want.length; i++) {
     const at = got.indexOf(want[i], j);
@@ -62,20 +60,26 @@ function survives(before, after) {
   return true;
 }
 
+// One lump can become several blocks, because a wrapper often held a whole
+// stretch of a page — headings, paragraphs and a pull quote — that only looked
+// like one thing because a div from Gmail was around it.
+//
+// The splitter is what does the work, so this stays in step with it for free:
+// it already knows every component and it already knows how to peel an inert
+// wrapper. Running it again on markup it once gave up on is the whole trick.
 function retype(block) {
   if (block.type !== 'html') return null;
-  const root = parse(String(block.html || '')).firstChild;
-  if (!root || root.nodeType !== 1) return null;
 
-  const kind = classify(root);
-  if (kind === 'html' || kind === 'prose') return null;
+  const produced = split(String(block.html || ''));
+  if (!produced.length) return null;
+  // No better than it started: one lump in, one lump out.
+  if (produced.length === 1 && produced[0].type === 'html') return null;
 
-  const component = BY_NAME.get(kind);
-  if (!component || !component.read) return null;
-  const typed = component.read(root);
-  if (!typed) return null;
-
-  return survives(block, typed) ? typed : { refused: kind };
+  if (!survives(block, produced)) {
+    const kinds = [...new Set(produced.map((b) => b.type))].join(', ');
+    return { refused: kinds };
+  }
+  return produced;
 }
 
 function main() {
@@ -91,15 +95,15 @@ function main() {
     if (!front || !Array.isArray(front.sections)) continue;
 
     let dirty = false;
-    front.sections = front.sections.map((b) => {
+    front.sections = front.sections.flatMap((b) => {
       const typed = retype(b);
-      if (!typed) return b;
+      if (!typed) return [b];
       if (typed.refused) {
         refused++;
         console.log(`  kept as HTML (would have lost text): ${path.basename(file)} -> ${typed.refused}`);
-        return b;
+        return [b];
       }
-      counts[typed.type] = (counts[typed.type] || 0) + 1;
+      for (const t of typed) counts[t.type] = (counts[t.type] || 0) + 1;
       dirty = true;
       changed++;
       return typed;

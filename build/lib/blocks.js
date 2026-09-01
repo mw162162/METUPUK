@@ -15,6 +15,7 @@
 const { parse } = require('node-html-parser');
 const { COMPONENTS, BY_NAME } = require('./components');
 const { toMarkdown } = require('./tomarkdown');
+const { unwrap } = require('./unwrap');
 
 // Everything that is ordinary flowing copy gets gathered into one prose block
 // rather than becoming a block per paragraph.
@@ -60,8 +61,25 @@ function split(html) {
     flushProse();
     const component = BY_NAME.get(kind);
     const block = component && component.read ? component.read(node) : null;
+    if (block) { blocks.push(block); continue; }
+
+    // Nothing recognised it. Before giving up and keeping the markup verbatim,
+    // check whether it is only wrapped: a div from Gmail or Word around what
+    // is otherwise ordinary content is the single commonest reason a page
+    // cannot be edited, and there is nothing inside it that needs a component.
+    //
+    // The result is only taken if it is an improvement. Unwrapping something
+    // that turns out to be one unrecognised lump inside another unrecognised
+    // lump has gained nothing, and the original is the more honest record.
+    const inner = unwrap(node.toString());
+    if (inner !== null) {
+      const nested = split(inner);
+      const stillOpaque = nested.length === 1 && nested[0].type === 'html';
+      if (nested.length && !stillOpaque) { blocks.push(...nested); continue; }
+    }
+
     // An extractor that found nothing keeps the original rather than dropping it.
-    blocks.push(block || { type: 'html', html: node.toString() });
+    blocks.push({ type: 'html', html: node.toString() });
   }
   flushProse();
   return blocks;
