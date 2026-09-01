@@ -1,0 +1,23 @@
+# Deploy configuration.
+#
+# The site is built here and uploaded prebuilt, so `command` only matters if the
+# repo is later connected to Netlify's own build pipeline. `publish` is the line
+# that does the work either way: it stops the CLI asking which folder to send.
+#
+# Headers and redirects are not repeated here — dist/_headers and
+# dist/_redirects come from src/static/ and are read by Netlify and Cloudflare
+# Pages alike, so the same build deploys to either without edits.
+#
+# Note the X-Robots-Tag: noindex in src/static/_headers. A preview copy of a
+# charity's own site must not be indexed: two copies of the same pages competing
+# in search results would cost them traffic on the real one. robots.txt still
+# allows crawling on purpose — a crawler has to be able to fetch a page to read
+# the noindex header, and disallowing it instead can leave the URL indexed with
+# no content, which is the outcome we are trying to avoid.
+
+[build]
+  publish = "dist"
+  command = "node build/build.js"
+
+[build.environment]
+  NODE_VERSION = "20"

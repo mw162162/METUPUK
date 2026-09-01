@@ -1,0 +1,16 @@
+# Deploy with: npx wrangler deploy   (from this directory)
+#
+# GITHUB_TOKEN is a secret, not a variable — it never belongs in this file or in
+# the repository. Set it with:  npx wrangler secret put GITHUB_TOKEN
+
+name = "metupuk-cms-auth"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+[vars]
+# The Cloudflare Zero Trust team domain, e.g. "yourteam.cloudflareaccess.com".
+ACCESS_TEAM_DOMAIN = ""
+# The Access application's audience tag. Until this is filled in the Worker
+# refuses to issue a token at all, which is the correct behaviour for an
+# endpoint whose only protection is the thing that is missing.
+ACCESS_AUD = ""

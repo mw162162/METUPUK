@@ -16,10 +16,18 @@
     "assets": "node build/make-portraits.js && node build/make-renditions.js",
     "pull": "node build/pull.js",
     "publish": "node build/pull.js && node build/make-renditions.js && node build/build.js && node build/verify.js && node tools/webaudit dist",
-    "export": "node build/export-content.js",
-    "cms": "npx --yes @sveltia/cms-proxy-server"
+    "export": "node build/export-content.js && node build/verify-roundtrip.js",
+    "deploy": "node build/build.js && node build/verify.js && npx --yes netlify-cli deploy --dir=dist --prod",
+    "deploy:draft": "node build/build.js && npx --yes netlify-cli deploy --dir=dist",
+    "cms": "npx --yes decap-server",
+    "verify:roundtrip": "node build/verify-roundtrip.js",
+    "watch": "node build/watch.js",
+    "dev": "node build/watch.js",
+    "import": "node build/import-site.js",
+    "media": "node build/make-media-library.js"
   },
   "dependencies": {
+    "js-yaml": "^5.4.1",
     "node-html-parser": "^9.0.1",
     "sharp": "^0.35.4"
   }

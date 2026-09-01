@@ -1,11 +1,12 @@
 // Build the static site from the migrated WordPress content.
 const fs = require('fs');
 const path = require('path');
-const { build: buildModel, SITE } = require('./lib/model');
+const { build: buildModel, buildFromContent, SITE } = require('./lib/model');
 const ex = require('./lib/exhibition');
 const { createResolver } = require('./lib/links');
 const { enrich } = require('./lib/enrich');
 const articleLayout = require('./lib/layout');
+const { buildPreviewBundle } = require('./lib/preview-bundle');
 const T = require('./lib/templates');
 
 const ROOT = path.join(__dirname, '..');
@@ -67,18 +68,53 @@ function copyReferencedMedia() {
   scan(OUT);
 
   let copied = 0;
+  let skipped = 0;
   let bytes = 0;
   const from = path.join(SCRAPE, 'assets');
   for (const rel of wanted) {
     const src = path.join(from, rel);
-    if (!fs.existsSync(src)) continue;
+    let stat;
+    try { stat = fs.statSync(src); } catch { continue; }
     const dst = path.join(OUT, 'media', rel);
+    bytes += stat.size;
+
+    // Copying half a gigabyte of unchanged photographs on every build is most
+    // of what a rebuild costs, and while editing it is the whole difference
+    // between a preview that follows you and one you wait for. A file already
+    // there at the same size and no older than its source is the same file.
+    let existing = null;
+    try { existing = fs.statSync(dst); } catch { /* not copied yet */ }
+    if (existing && existing.size === stat.size && existing.mtimeMs >= stat.mtimeMs) {
+      skipped++;
+      continue;
+    }
+
     fs.mkdirSync(path.dirname(dst), { recursive: true });
     fs.copyFileSync(src, dst);
     copied++;
-    bytes += fs.statSync(src).size;
   }
-  return { copied, referenced: wanted.size, bytes };
+
+  // Prune. Keeping the media directory between builds means a photograph
+  // removed from a page would otherwise sit in the deploy forever — the cache
+  // has to forget as well as remember, or "unpublished" stops meaning gone.
+  let pruned = 0;
+  const mediaRoot = path.join(OUT, 'media');
+  const sweep = (dir) => {
+    if (!fs.existsSync(dir)) return;
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        sweep(full);
+        if (!fs.readdirSync(full).length) fs.rmdirSync(full);
+        continue;
+      }
+      const rel = path.relative(mediaRoot, full).split(path.sep).join('/');
+      if (!wanted.has(rel)) { fs.rmSync(full, { force: true }); pruned++; }
+    }
+  };
+  sweep(mediaRoot);
+
+  return { copied, skipped, pruned, referenced: wanted.size, bytes };
 }
 
 /* --- Content helpers ------------------------------------------------------ */
@@ -114,7 +150,7 @@ function inlineExhibitionFilms(model, exhibition) {
       (whole, anchor) => {
         const p = (anchor && bySlug.get(anchor)) || byName.get(norm(doc.title));
         if (!p || !p.video) return '';
-        return `<div class="c-embed"><iframe src="${p.video}" title="${p.name} — The Darker Side of Pink" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+        return `<div class="c-embed"><iframe src="${p.video}" title="${p.name}, The Darker Side of Pink" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
 <p><a href="/darker-side-of-pink/">See the full Darker Side of Pink exhibition →</a></p>`;
       }
     );
@@ -131,7 +167,7 @@ function renderHome(model, exhibition) {
   };
 
   const aims = [
-    { title: 'Awareness & education', url: '/aims-and-objectives/awareness-and-education/', text: 'Confront the reality of MBC that the celebratory pink of most breast cancer marketing leaves out — and make policy makers, charities and government bodies treat it as a priority.' },
+    { title: 'Awareness & education', url: '/aims-and-objectives/awareness-and-education/', text: 'Confront the reality of MBC that the celebratory pink of most breast cancer marketing leaves out, and make policy makers, charities and government bodies treat it as a priority.' },
     { title: 'Research & access to drugs', url: '/aims-and-objectives/research-and-access-to-drugs/', text: 'Push for a fair share of research funding, faster approvals, and access to the treatments that extend and improve life for people living with secondary breast cancer.' },
     { title: 'Patient treatment & care', url: '/aims-and-objectives/patient-treatment-and-care/', text: 'Fight for every MBC patient to have a clinical nurse specialist, proper support, and care that meets national standards wherever they live.' },
   ];
@@ -170,7 +206,7 @@ function renderHome(model, exhibition) {
     <div class="hero__copy">
       <p class="hero__eyebrow">Metastatic breast cancer · United Kingdom</p>
       <h1>Another 31 women will die today. <br><em class="hero__beat">And tomorrow.</em> <br><em class="hero__beat hero__beat--last">And the next.</em></h1>
-      <p class="hero__lede">METUPUK is the only patient advocacy group in the UK campaigning solely on metastatic (secondary) breast cancer. We are the patients — volunteer-led, unpaid, and #BusyLivingWithMets.</p>
+      <p class="hero__lede">METUPUK is the only patient advocacy group in the UK campaigning solely on metastatic (secondary) breast cancer. We are the patients: volunteer-led, unpaid, and #BusyLivingWithMets.</p>
       <div class="hero__actions">
         <a class="btn btn--donate" href="/help-us/#donate">Donate</a>
         <a class="btn btn--ghost" href="/about-us/">Who we are</a>
@@ -178,8 +214,8 @@ function renderHome(model, exhibition) {
     </div>
     <div class="hero__stat">
       <p class="hero__stat-number" data-count-to="31">31</p>
-      <p class="hero__stat-label">women in the UK die every single day from metastatic breast cancer — the biggest cancer killer of women under 50.</p>
-      <p class="hero__stat-note">Median life expectancy after diagnosis is just 2–3 years. We believe that is an unacceptable outcome, and that MBC can become a chronic disease.</p>
+      <p class="hero__stat-label">women in the UK die every single day from metastatic breast cancer. It is the biggest cancer killer of women under 50.</p>
+      <p class="hero__stat-note">Median life expectancy after diagnosis is just 2-3 years. We believe that is an unacceptable outcome, and that MBC can become a chronic disease.</p>
     </div>
   </div>
 </section>
@@ -218,7 +254,7 @@ function renderHome(model, exhibition) {
       <div>
         <h2>What we are pushing on right now</h2>
       </div>
-      <p class="lede">Campaigns, resources and research that METUPUK members are driving — from the red-flag symptoms infographic to the fight for faster drug approvals.</p>
+      <p class="lede">Campaigns, resources and research that METUPUK members are driving, from the red-flag symptoms infographic to the fight for faster drug approvals.</p>
     </div>
     <div class="grid grid--3" style="margin-top:var(--sp-7)">
       ${featured.map((p) => `<article class="card">
@@ -242,6 +278,41 @@ function renderHome(model, exhibition) {
     ${responsiveImg('/media/2021/10/darker-pink-bg.jpg', {
       alt: '', sizes: '100vw', maxWidth: 1920, eager: false, extra: 'aria-hidden="true"',
     })}
+    ${/* The left half of this band was empty: the copy is pushed right so the
+          photograph stays legible, but that photograph is a 1200px snapshot
+          under a heavy scrim and there is nothing to read there. The campaign's
+          own material fills it far better — thirty-one women, one for each
+          death a day, which is exactly what the panel beside them says.
+
+          Decorative here: every one of them is named and linked on
+          /darker-side-of-pink/, so this is a second presentation of content
+          that already exists rather than the only route to it. Hence
+          aria-hidden — a screen reader gets the exhibition page, not
+          thirty-one alt strings stacked behind a heading. */''}
+    ${(() => {
+      // The woman who stays sits in the middle of the grid, not at the start.
+      // At index 0 she was the top-left face — the first thing the sticky
+      // header covers — so the one portrait the whole panel is about was the
+      // one you could not see. Twelve is the middle of thirty-one laid out
+      // eight to a row: second row, fifth column — a little above centre, which
+      // is where the eye lands, and comfortably clear of the header.
+      const KEPT = 12;
+      const order = exhibition.portraits.slice();
+      const [lead] = order.splice(0, 1);
+      order.splice(KEPT, 0, lead);
+      const faces = order.map((p, i) => `<img class="scrolly__face${i === KEPT ? ' is-kept' : ''}" src="${p.image.replace(/\.(jpg|jpeg|png)$/i, '-323x430.$1')}" alt="" loading="lazy" width="323" height="430">`).join('\n        ');
+      const first = lead.name.split(' ')[0];
+      return `<div class="scrolly__art">
+      <div class="scrolly__faces" aria-hidden="true">
+        ${faces}
+      </div>
+      <p class="scrolly__kept">
+        <b>${esc(lead.name)}</b>
+        <span>She recorded her own film for the exhibition.</span>
+        <a class="btn btn--pink" href="/darker-pink/${esc(lead.slug)}/">Watch ${esc(first)}'s film</a>
+      </p>
+    </div>`;
+    })()}
   </div>
   <div class="scrolly__panels">
     <div class="scrolly__panel">
@@ -257,14 +328,14 @@ function renderHome(model, exhibition) {
       <div class="wrap">
         <div class="scrolly__copy">
           <p class="scrolly__figure">31</p>
-          <p>Transparent figures tour the UK — one for every woman who dies each day from metastatic breast cancer. Each carries a QR code that plays a film recorded by the woman herself.</p>
+          <p>Transparent figures tour the UK, one for every woman who dies each day from metastatic breast cancer. Each carries a QR code that plays a film recorded by the woman herself.</p>
         </div>
       </div>
     </div>
     <div class="scrolly__panel">
       <div class="wrap">
         <div class="scrolly__copy">
-          <h2>Give us a chance to live — don’t write us off</h2>
+          <h2>Give us a chance to live and don’t write us off</h2>
           <p>We can be #BusyLivingWithMets, even those of us on the darker side of pink.</p>
           <div class="hero__actions">
             <a class="btn btn--donate" href="/darker-side-of-pink/">See the exhibition</a>
@@ -283,7 +354,7 @@ function renderHome(model, exhibition) {
         <h2>${exhibition.portraits.length} women, ${exhibition.portraits.length} films</h2>
         <p class="lede" style="margin-top:var(--sp-4)">Every figure in the exhibition is a real person who recorded her own story. Watch them, or read the written accounts.</p>
         <div class="hero__actions">
-          <a class="btn btn--ghost" href="/darker-side-of-pink/">Meet all ${exhibition.portraits.length}</a>
+          <a class="btn btn--ghost" href="/darker-side-of-pink/">See the exhibition</a>
         </div>
       </div>
       <div>
@@ -315,7 +386,7 @@ function renderHome(model, exhibition) {
     <div class="cta-band">
       <div>
         <h2>Help us keep pushing</h2>
-        <p>We are entirely volunteer-run and self-funded — no salaries, no remuneration. Every donation, every letter to an MP, every share goes directly into changing outcomes for people living with MBC.</p>
+        <p>We are entirely volunteer-run and self-funded. No salaries, no remuneration. Every donation, every letter to an MP, every share goes directly into changing outcomes for people living with MBC.</p>
       </div>
       <div class="btn-row">
         <a class="btn btn--donate" href="/help-us/#donate">Donate</a>
@@ -354,10 +425,35 @@ function renderHome(model, exhibition) {
    it; it is only kept off the page when it is an echo. */
 function standfirst(doc) {
   if (!doc.description) return '';
+  // A page builder's video widget holds its URL in a data attribute and shows
+  // no text, so when WordPress auto-generated the excerpt it stripped the
+  // markup and took the URL as the opening words. That is machine leftovers,
+  // not a standfirst, and it printed a raw youtube.com link under the heading.
+  const text = doc.description.replace(/^\s*https?:\/\/\S+\s*/i, '').trim();
+  if (!text) return '';
   const norm = (s) => (s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
-  const opening = norm(doc.description).split(' ').slice(0, 12).join(' ');
+  const opening = norm(text).split(' ').slice(0, 12).join(' ');
   if (opening && norm(doc.text).startsWith(opening)) return '';
-  return `<p class="lede">${esc(doc.description)}</p>`;
+  return `<p class="lede">${esc(text)}</p>`;
+}
+
+/* Some pages carry a call to action that belongs at the top, in reach before
+   the reader has scrolled. WordPress had no field for it, so it lives here,
+   keyed by page URL. Add an entry to give any page a button under its heading. */
+const PAGE_ACTIONS = {
+  '/i-am-the-31/': {
+    href: 'https://www.youtube.com/watch?v=pkvXtQxGTf0',
+    label: 'Watch the film',
+  },
+};
+
+function pageAction(doc) {
+  const action = PAGE_ACTIONS[doc.url];
+  if (!action || !action.href) return '';
+  const away = /^https?:\/\//i.test(action.href);
+  return `<p class="page-head__action"><a class="btn btn--primary" href="${esc(action.href)}"${
+    away ? ' target="_blank" rel="noopener"' : ''}>${esc(action.label)}${
+    away ? '<span class="btn__away" aria-hidden="true">&#8599;</span><span class="visually-hidden"> (opens in a new tab)</span>' : ''}</a></p>`;
 }
 
 function renderPage(doc, model) {
@@ -388,6 +484,24 @@ function renderPage(doc, model) {
       })
     : '';
 
+  // An image too narrow to span the banner still has to appear somewhere.
+  // Requiring 1100px stopped a 492px newspaper clipping being blown across a
+  // full-bleed header, which was right — but it also meant the picture rendered
+  // nowhere at all, so three pages silently lost their only photograph. The
+  // migration audit caught it; the text-integrity check never could, because it
+  // compares words. Posts have always done this properly, so pages now do the
+  // same: show it at its own size at the top of the article.
+  const inlineLead = !bannerFits && doc.image
+    ? (() => {
+        const small = doc.imageWidth > 0 && doc.imageWidth < 700;
+        return `<figure class="post-hero${small ? ' post-hero--contained' : ''}">${responsiveImg(doc.image, {
+          alt: doc.imageAlt || '', eager: true, maxWidth: 1560,
+          width: doc.imageWidth || undefined, height: doc.imageHeight || undefined,
+          sizes: small ? `${doc.imageWidth}px` : '(min-width: 1024px) 780px, 100vw',
+        })}</figure>`;
+      })()
+    : '';
+
   // Acts only where there is no contents rail beside the text: the tinted
   // ground runs the full width of the window, which would pass behind it.
   if (!toc) html = articleLayout.acts(html);
@@ -398,12 +512,14 @@ function renderPage(doc, model) {
     ${breadcrumb(doc.breadcrumb, doc.title)}
     <h1>${esc(doc.title)}</h1>
     ${standfirst(doc)}
+    ${pageAction(doc)}
   </div>
 </div>
 
 <div class="section">
   <div class="wrap layout-aside${toc ? '' : ' layout-aside--solo'}">
     <div class="prose">
+      ${inlineLead}
       ${html}
     </div>
     ${toc}
@@ -489,7 +605,7 @@ function renderPost(doc, prev, next) {
     url: doc.url,
     description: doc.description && doc.description.length > 40
       ? doc.description
-      : `${doc.title} — from the MET UP UK blog, the UK's metastatic breast cancer patient advocacy charity.`,
+      : `${doc.title}. From the MET UP UK blog, the UK's metastatic breast cancer patient advocacy charity.`,
     image: doc.image,
     body,
     ogType: 'article',
@@ -515,7 +631,7 @@ function renderNewsIndex(posts, model, { page = 1, total = 1, base = '/latest-ne
     .filter((c) => c.slug !== 'uncategorized' && c.count > 0)
     .sort((a, b) => b.count - a.count);
 
-  const title = category ? `${category.name} — news` : 'News & blog';
+  const title = category ? `${category.name} news` : 'News & blog';
   const intro = category
     ? `Articles filed under ${category.name}.`
     : 'All our latest news, campaign updates and blog posts from the METUPUK team and the wider MBC community.';
@@ -678,7 +794,7 @@ function renderExhibition(exhibition, model) {
   <div class="wrap">
     <div class="cta-band">
       <div>
-        <h2>Give us a chance to live — don’t write us off</h2>
+        <h2>Give us a chance to live and don’t write us off</h2>
         <p>We can be #BusyLivingWithMets, even those of us on the darker side of pink. Tag METUPUK into your post, share the figures, and help us push policy to change for the better.</p>
       </div>
       <div class="btn-row">
@@ -798,10 +914,37 @@ const FAVICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 
 function run() {
   const t0 = Date.now();
-  fs.rmSync(OUT, { recursive: true, force: true });
+  // Clear everything except the media directory. Every page is regenerated
+  // from scratch, so the HTML must go — but the photographs are copies of files
+  // that have not changed, and re-copying half a gigabyte of them was most of
+  // what a rebuild cost. Anything no longer referenced is pruned after the
+  // pages are written, so this caches without going stale.
+  // Keep media and assets; everything else is regenerated.
+  //
+  // Deleting assets/ and writing it back moments later leaves a window, a
+  // second or two wide, where the site is served with no stylesheet. Nobody
+  // would notice on a manual build. With a watcher and a preview that reloads
+  // itself, the preview lands in that window and shows the client their page
+  // stripped to raw HTML: skip link visible, logo broken, nav as bullets. It
+  // looks like the edit destroyed the site.
+  //
+  // The files are overwritten in place instead, so there is never a moment when
+  // the stylesheet is absent.
+  const KEEP = new Set(['media', 'assets']);
+  if (fs.existsSync(OUT)) {
+    for (const entry of fs.readdirSync(OUT)) {
+      if (KEEP.has(entry)) continue;
+      fs.rmSync(path.join(OUT, entry), { recursive: true, force: true });
+    }
+  }
   fs.mkdirSync(OUT, { recursive: true });
 
-  const model = buildModel();
+  // content/ is the source of truth. The scrape is the importer that filled it
+  // once, and is still where the media library and its dimensions live.
+  // SOURCE=scrape rebuilds from the original import — kept so the two can be
+  // diffed against each other, which is how the switch was proved lossless.
+  const fromScrape = process.env.SOURCE === 'scrape';
+  const model = fromScrape ? buildModel() : buildFromContent();
   const exhibition = ex.extract();
 
   // Repair links that were already broken on the old site, now that we know
@@ -884,18 +1027,38 @@ function run() {
   const assetCount = copyDir(path.join(ROOT, 'src', 'assets'), path.join(OUT, 'assets'));
   // Host config (_redirects, _headers) copied to the root of the deploy.
   copyDir(path.join(ROOT, 'src', 'static'), OUT);
+
+  // The editor's preview pane renders with the same code as the build, so it
+  // cannot show the client one thing and publish another.
+  fs.writeFileSync(path.join(OUT, 'admin', 'preview-render.js'), buildPreviewBundle());
   const media = copyReferencedMedia();
+
+  // A token the editor's preview polls. Changing it is how the iframe knows to
+  // reload itself: no websocket, no dev server plugin, nothing to run in
+  // production. A plain file that a static server already knows how to serve.
+  fs.writeFileSync(path.join(OUT, 'build-id.txt'), String(Date.now()));
 
   console.log(`Built ${written.length} pages`);
   console.log(`  links     ${resolver.stats.resolved} repaired, ${resolver.stats.unlinked} unlinked, ${resolver.stats.kept} unchanged`);
   console.log(`  pages     ${model.pages.length}`);
   console.log(`  posts     ${model.posts.length}`);
   console.log(`  archives  ${totalPages} news + category pages`);
-  console.log(`  media     ${media.copied} files (${(media.bytes / 1024 / 1024).toFixed(0)} MB) of ${media.referenced} referenced`);
+  console.log(`  media     ${media.referenced} referenced (${(media.bytes / 1024 / 1024).toFixed(0)} MB) — ${media.copied} copied, ${media.skipped} already current${media.pruned ? `, ${media.pruned} pruned` : ''}`);
   console.log(`  assets    ${assetCount} theme files`);
   console.log(`  in        ${((Date.now() - t0) / 1000).toFixed(1)}s`);
   return { model, written };
 }
 
 if (require.main === module) run();
-module.exports = { run };
+// Exported so the watcher can hold the expensive setup in memory and re-render
+// a single page on save. Building the model costs three seconds because it
+// parses all three hundred content files; rendering one page costs about sixty
+// milliseconds. Doing the first once and the second per keystroke-save is the
+// whole difference between a preview you wait for and one that is already there.
+module.exports = {
+  run,
+  write,
+  renderHome, renderPage, renderPost, renderNewsIndex, renderExhibition,
+  inlineExhibitionFilms, addHeadingIds,
+  POSTS_PER_PAGE, OUT,
+};

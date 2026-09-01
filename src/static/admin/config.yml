@@ -19,7 +19,11 @@ backend:
 #   npx @sveltia/cms-proxy-server   then open /admin
 local_backend: true
 
-media_folder: "_scrape/assets"
+# The originals only, not the WordPress renditions. Pointing this at
+# _scrape/assets meant the editor walked 5,436 files and 1.1 GB before it could
+# show anything, and then offered a client eight crops of every photograph.
+# Rebuild it with: npm run media
+media_folder: "media-library"
 public_folder: "/media"
 
 # Editors see the site, not the repo.
@@ -55,8 +59,10 @@ definitions:
     summary: "Image: {{fields.alt}}"
     fields:
       - { label: "Image", name: src, widget: image }
-      - { label: "Alt text", name: alt, widget: string,
-          hint: "Describe the picture for someone who cannot see it. Leave empty only if it is purely decorative." }
+      - { label: "Describe this picture", name: alt, widget: string, required: false,
+          hint: "What would you say to someone on the phone who cannot see it? A person's name, what is happening, what the graphic says." }
+      - { label: "This picture is decorative", name: decorative, widget: boolean, default: false,
+          hint: "Tick only if the picture adds nothing a reader would miss. It will be hidden from screen readers. Leave unticked and write a description for every photograph of a person." }
       - { label: "Caption", name: caption, widget: string, required: false }
       - { label: "Width", name: width, widget: number, required: false }
       - { label: "Height", name: height, widget: number, required: false }
@@ -86,6 +92,37 @@ definitions:
       - { label: "Fallback", name: fallback, widget: text, required: false,
           hint: "Shown if the embed cannot load." }
 
+
+  # A real form. The site had none: 303 pages and the only way to join was a
+  # mailto: link, which is a dead end on a phone with no mail client set up.
+  # Every field a client can set here maps to plain HTML, so the form works
+  # with JavaScript switched off and needs no validation library.
+  form: &form
+    label: "Form"
+    name: form
+    summary: "Form: {{fields.name}}"
+    fields:
+      - { label: "Form name", name: name, widget: string,
+          hint: "Shown with each message so you know which form it came from." }
+      - { label: "Intro", name: intro, widget: text, required: false }
+      - label: "Questions"
+        name: fields
+        widget: list
+        label_singular: "Question"
+        summary: "{{fields.label}}"
+        fields:
+          - { label: "Label", name: label, widget: string }
+          - { label: "Field name", name: name, widget: string,
+              hint: "Lowercase, no spaces. This is the heading it arrives under." }
+          - { label: "Type", name: type, widget: select, default: text,
+              options: [text, email, tel, textarea] }
+          - { label: "Required", name: required, widget: boolean, default: false }
+          - { label: "Help text", name: help, widget: string, required: false }
+      - { label: "Consent line", name: consent, widget: string, required: false,
+          hint: "A tick box people must agree to before sending. Leave empty for none." }
+      - { label: "Button text", name: submit, widget: string, default: "Send" }
+      - { label: "Send submissions to", name: action, widget: string, required: false,
+          default: "netlify", hint: "Leave as netlify unless you have your own endpoint." }
   card: &card
     label: "Card"
     name: card
@@ -146,6 +183,12 @@ collections:
       - { label: "Parent page", name: parent, widget: string, required: false,
           hint: "The slug of the page this sits under. Leave empty for a top-level page." }
       - { label: "Order", name: order, widget: number, required: false }
+      # Declared because these editors write back only the fields they know
+      # about. An undeclared key is not preserved, it is dropped — so the
+      # 41 pages carrying a hand-written summary would lose it the first
+      # time anyone opened them and pressed save.
+      - { label: "Summary", name: excerpt, widget: text, required: false,
+          hint: "Shown under the heading and in search results. Leave empty to use the opening of the page." }
       - { label: "Banner image", name: image, widget: image, required: false }
       - { label: "Banner alt text", name: imageAlt, widget: string, required: false }
       - label: "Sections"
@@ -160,6 +203,7 @@ collections:
           - *embed
           - *card
           - *disclosure
+          - *form
           - *profiles
           - *html
 
@@ -179,6 +223,12 @@ collections:
       - { label: "Last updated", name: modified, widget: datetime, required: false }
       - { label: "Categories", name: categories, widget: list, required: false,
           field: { label: Category, name: category, widget: string } }
+      # Declared because these editors write back only the fields they know
+      # about. An undeclared key is not preserved, it is dropped — so the
+      # 41 pages carrying a hand-written summary would lose it the first
+      # time anyone opened them and pressed save.
+      - { label: "Summary", name: excerpt, widget: text, required: false,
+          hint: "Shown under the heading and in search results. Leave empty to use the opening of the page." }
       - { label: "Featured image", name: image, widget: image, required: false }
       - { label: "Featured image alt text", name: imageAlt, widget: string, required: false }
       - label: "Sections"
@@ -193,5 +243,6 @@ collections:
           - *embed
           - *card
           - *disclosure
+          - *form
           - *profiles
           - *html
