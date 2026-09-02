@@ -71,21 +71,37 @@ function copyReferencedMedia() {
   let copied = 0;
   let skipped = 0;
   let bytes = 0;
-  const from = path.join(SCRAPE, 'assets');
+  // Two places a picture can live. The scrape is where the migrated ones are;
+  // media-library is where the editor puts anything a client uploads, and it
+  // was not being read at all — so an image added through the editor was
+  // skipped here in silence and 404ed on the published page. The library is
+  // checked first, because a file that exists in both is the newer one.
+  const sources = [path.join(ROOT, 'media-library'), path.join(SCRAPE, 'assets')];
+  let uploaded = 0;
   for (const rel of wanted) {
-    const src = path.join(from, rel);
-    let stat;
-    try { stat = fs.statSync(src); } catch { continue; }
+    let src = null;
+    let stat = null;
+    for (const dir of sources) {
+      const candidate = path.join(dir, rel);
+      try { stat = fs.statSync(candidate); src = candidate; break; } catch { /* try the next */ }
+    }
+    if (!src) continue;
+    if (src.indexOf('media-library') !== -1) uploaded++;
     const dst = path.join(OUT, 'media', rel);
     bytes += stat.size;
 
     // Copying half a gigabyte of unchanged photographs on every build is most
     // of what a rebuild costs, and while editing it is the whole difference
     // between a preview that follows you and one you wait for. A file already
-    // there at the same size and no older than its source is the same file.
+    // there and no older than its source is the same file.
+    //
+    // Smaller counts as the same file too, because npm run optimise re-encodes
+    // in place: insisting on an equal size meant every optimised image was
+    // treated as stale and overwritten with the original on the next build,
+    // which quietly undid the whole pass.
     let existing = null;
     try { existing = fs.statSync(dst); } catch { /* not copied yet */ }
-    if (existing && existing.size === stat.size && existing.mtimeMs >= stat.mtimeMs) {
+    if (existing && existing.size <= stat.size && existing.mtimeMs >= stat.mtimeMs) {
       skipped++;
       continue;
     }
@@ -115,7 +131,7 @@ function copyReferencedMedia() {
   };
   sweep(mediaRoot);
 
-  return { copied, skipped, pruned, referenced: wanted.size, bytes };
+  return { copied, skipped, pruned, uploaded, referenced: wanted.size, bytes };
 }
 
 /* --- Content helpers ------------------------------------------------------ */

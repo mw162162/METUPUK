@@ -154,7 +154,7 @@ function header(current) {
   return `<header class="site-header">
   <div class="wrap site-header__bar">
     <a class="brand" href="/">
-      <img src="${LOGO}" alt="" width="44" height="44">
+      <img src="${LOGO}" alt="" role="presentation" width="44" height="44">
       <span>
         <span class="brand__name">MET UP UK</span>
         <span class="brand__tag">${esc(SITE_TAGLINE)}</span>
@@ -184,7 +184,7 @@ function header(current) {
   <div class="wrap">
     <div class="drawer__top">
       <a class="brand" href="/">
-        <img src="${LOGO}" alt="" width="44" height="44">
+        <img src="${LOGO}" alt="" role="presentation" width="44" height="44">
         <span><span class="brand__name">MET UP UK</span></span>
       </a>
       <button class="icon-btn" type="button" data-drawer-close aria-label="Close menu">
