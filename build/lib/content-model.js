@@ -63,7 +63,7 @@ function build(base) {
       .filter((n) => n.endsWith('.md'))
       .map((name) => {
         const front = readDoc(path.join(dir, name));
-        if (!front || !front.url) return null;
+        if (!front) return null;
 
         const html = renderBlocks(front.sections);
         const text = toText(html);
@@ -77,12 +77,32 @@ function build(base) {
         const image = front.image || firstImage(html);
         const slug = name.replace(/\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, '');
 
+        // A page with no address used to be dropped here, silently. Somebody
+        // could write a page in the editor, save it, and simply never find it
+        // on the site — no error, no empty page, nothing to search for.
+        //
+        // An address is derivable: it is where the page sits, which is what
+        // the parent, the date and the file name already say. Deriving it
+        // means a new page always appears somewhere, and the client can move
+        // it afterwards rather than having to know the convention before they
+        // start. Posts follow the /year/month/ shape every other post uses, so
+        // a new one does not land somewhere the rest of the site does not.
+        const derived = () => {
+          if (kind === 'post') {
+            const d = new Date(front.date || Date.now());
+            const month = String(d.getUTCMonth() + 1).padStart(2, '0');
+            return `/${d.getUTCFullYear()}/${month}/${slug}/`;
+          }
+          return front.parent ? `/${front.parent}/${slug}/` : `/${slug}/`;
+        };
+        const url = front.url || derived();
+
         return {
           kind,
-          id: front.url,               // the URL is the stable identity here
+          id: url,                     // the URL is the stable identity here
           slug,
           title: front.title || slug,
-          url: front.url,
+          url,
           parentSlug: front.parent || null,
           parent: 0,                   // resolved below, once every page is loaded
           order: front.order || 0,

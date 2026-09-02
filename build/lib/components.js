@@ -494,7 +494,7 @@ const COMPONENTS = [
     name: 'prose',
     menuOrder: 1,
     label: 'Text',
-    summary: 'Text',
+    summary: "Text · {{fields.body | truncate(64)}}",
     // Ordinary flowing copy is gathered by the splitter across many elements
     // rather than matched one at a time, so it has no match() of its own.
     fields: [{ label: 'Body', name: 'body', widget: 'markdown' }],
@@ -504,7 +504,7 @@ const COMPONENTS = [
     name: 'disclosure',
     menuOrder: 6,
     label: 'Expandable section',
-    summary: 'Expandable: {{fields.summary}}',
+    summary: "Expandable · {{fields.summary | truncate(28)}} — {{fields.body | truncate(38)}}",
     fields: [
       { label: 'Heading', name: 'summary', widget: 'string' },
       { label: 'Body', name: 'body', widget: 'markdown' },
@@ -517,7 +517,7 @@ const COMPONENTS = [
     name: 'embed',
     menuOrder: 10,
     label: 'Embedded video or player',
-    summary: 'Embed: {{fields.title}}',
+    summary: "Embed · {{fields.title | truncate(22)}} — {{fields.src | truncate(38)}}",
     fields: [
       { label: 'Address', name: 'src', widget: 'string',
         hint: 'The embed address, e.g. https://www.youtube.com/embed/XXXX' },
@@ -534,7 +534,7 @@ const COMPONENTS = [
     name: 'card',
     menuOrder: 7,
     label: 'Card',
-    summary: 'Card: {{fields.heading}}',
+    summary: "Card · {{fields.heading | default('untitled')}}",
     fields: [
       { label: 'Heading', name: 'heading', widget: 'string' },
       { label: 'Image', name: 'image', widget: 'image', required: false },
@@ -586,7 +586,7 @@ const COMPONENTS = [
     name: 'video',
     menuOrder: 9,
     label: 'Video file',
-    summary: 'Video: {{fields.caption}}',
+    summary: "Video · {{fields.caption | default('no caption')}}",
     fields: [
       { label: 'Video file', name: 'src', widget: 'file',
         hint: 'An MP4 you upload. For YouTube or Vimeo, use "Embedded video" instead.' },
@@ -642,7 +642,7 @@ const COMPONENTS = [
     name: 'image',
     menuOrder: 2,
     label: 'Image',
-    summary: 'Image: {{fields.alt}}',
+    summary: "Image · {{fields.alt | default('no description yet')}}",
     aliases: ['figure'],
     fields: [
       { label: 'Picture', name: 'src', widget: 'image' },
@@ -662,7 +662,7 @@ const COMPONENTS = [
     name: 'quote',
     menuOrder: 5,
     label: 'Pull quote',
-    summary: 'Quote: {{fields.text}}',
+    summary: "Quote · {{fields.text | truncate(64)}}",
     fields: [
       { label: 'Quote', name: 'text', widget: 'text' },
       { label: 'Attribution', name: 'attribution', widget: 'string', required: false },
@@ -675,7 +675,7 @@ const COMPONENTS = [
     name: 'form',
     menuOrder: 12,
     label: 'Form',
-    summary: 'Form: {{fields.name}}',
+    summary: "Form · {{fields.name | default('untitled')}}",
     fields: [
       { label: 'Form name', name: 'name', widget: 'string',
         hint: 'Shown with each message so you know which form it came from.' },

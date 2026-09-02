@@ -32,6 +32,11 @@ public_folder: "/media"
 site_url: /
 display_url: /
 
+# The sign-in screen is the first thing a client ever sees of this, and out of
+# the box it is somebody else's orange logo above two buttons about GitHub.
+# One line puts their own mark there instead.
+logo_url: /brand/metupuk-logo-180.png
+
 # @components
 
 collections:
@@ -69,13 +74,13 @@ collections:
       # Everything below here is how the page is filed rather than what it
       # says. It is last on purpose: it is rarely the reason anyone opened
       # the page, and changing the address breaks every link to it.
-      - { label: "Web address", name: url, widget: string,
-          hint: "Where this page lives, e.g. /about-us/our-team/. Changing it breaks every existing link to this page and any search result pointing at it." }
+      - { label: "Web address", name: url, widget: string, required: false,
+          hint: "Leave empty and we will build one from the title. Fill it in only to move a page — changing it breaks every existing link and any search result pointing at it." }
       - { label: "Sits under", name: parent, widget: string, required: false,
           hint: "The last part of the address of the page above this one in the menu. Leave empty for a top-level page." }
       - { label: "Order in the menu", name: order, widget: number, required: false,
           hint: "Lower numbers come first. Leave empty to sort by title." }
-      - { label: "First published", name: date, widget: datetime }
+      - { label: "First published", name: date, widget: datetime, required: false }
       - { label: "Last updated", name: modified, widget: datetime, required: false }
 
   - name: posts
@@ -104,7 +109,7 @@ collections:
         label_singular: "Section"
         # @component-types
 
-      - { label: "Web address", name: url, widget: string,
-          hint: "Where this post lives. Changing it breaks every existing link to it." }
+      - { label: "Web address", name: url, widget: string, required: false,
+          hint: "Leave empty and we will build one from the date and the title. Changing it breaks every existing link to this post." }
       - { label: "Published", name: date, widget: datetime }
       - { label: "Last updated", name: modified, widget: datetime, required: false }

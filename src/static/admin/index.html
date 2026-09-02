@@ -38,10 +38,32 @@
   about as long as it takes to look up.
 */
 (function () {
+  // Whose site this is. Set per client, alongside logo_url in the config.
+  var BRAND = 'METUPUK';
+
   function ready(fn) {
     if (window.CMS && window.h) return fn();
     setTimeout(function () { ready(fn); }, 120);
   }
+
+  // The browser tab said "Sveltia CMS". A client has a dozen tabs open and
+  // none of them are called that, so theirs is the one they cannot find —
+  // and the name of the tool they were handed is not information they need.
+  // Only the product name is replaced, so the page name Sveltia puts in front
+  // of it survives.
+  (function renameTab() {
+    var fix = function () {
+      if (document.title.indexOf('Sveltia CMS') === -1) return;
+      document.title = document.title.replace('Sveltia CMS', 'Edit ' + BRAND);
+    };
+    fix();
+    var head = document.querySelector('head');
+    if (head && window.MutationObserver) {
+      new MutationObserver(fix).observe(head, { subtree: true, childList: true, characterData: true });
+    } else {
+      setInterval(fix, 1000);
+    }
+  }());
 
   function field(entry, name) {
     try {

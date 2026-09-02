@@ -38,11 +38,16 @@ public_folder: "/media"
 site_url: /
 display_url: /
 
+# The sign-in screen is the first thing a client ever sees of this, and out of
+# the box it is somebody else's orange logo above two buttons about GitHub.
+# One line puts their own mark there instead.
+logo_url: /brand/metupuk-logo-180.png
+
 definitions:
   prose: &prose
     label: "Text"
     name: prose
-    summary: "Text"
+    summary: "Text · {{fields.body | truncate(64)}}"
     fields:
       - label: "Body"
         name: "body"
@@ -51,7 +56,7 @@ definitions:
   image: &image
     label: "Image"
     name: image
-    summary: "Image: {{fields.alt}}"
+    summary: "Image · {{fields.alt | default('no description yet')}}"
     fields:
       - label: "Picture"
         name: "src"
@@ -131,7 +136,7 @@ definitions:
   quote: &quote
     label: "Pull quote"
     name: quote
-    summary: "Quote: {{fields.text}}"
+    summary: "Quote · {{fields.text | truncate(64)}}"
     fields:
       - label: "Quote"
         name: "text"
@@ -144,7 +149,7 @@ definitions:
   disclosure: &disclosure
     label: "Expandable section"
     name: disclosure
-    summary: "Expandable: {{fields.summary}}"
+    summary: "Expandable · {{fields.summary | truncate(28)}} — {{fields.body | truncate(38)}}"
     fields:
       - label: "Heading"
         name: "summary"
@@ -156,7 +161,7 @@ definitions:
   card: &card
     label: "Card"
     name: card
-    summary: "Card: {{fields.heading}}"
+    summary: "Card · {{fields.heading | default('untitled')}}"
     fields:
       - label: "Heading"
         name: "heading"
@@ -199,7 +204,7 @@ definitions:
   video: &video
     label: "Video file"
     name: video
-    summary: "Video: {{fields.caption}}"
+    summary: "Video · {{fields.caption | default('no caption')}}"
     fields:
       - label: "Video file"
         name: "src"
@@ -223,7 +228,7 @@ definitions:
   embed: &embed
     label: "Embedded video or player"
     name: embed
-    summary: "Embed: {{fields.title}}"
+    summary: "Embed · {{fields.title | truncate(22)}} — {{fields.src | truncate(38)}}"
     fields:
       - label: "Address"
         name: "src"
@@ -274,7 +279,7 @@ definitions:
   form: &form
     label: "Form"
     name: form
-    summary: "Form: {{fields.name}}"
+    summary: "Form · {{fields.name | default('untitled')}}"
     fields:
       - label: "Form name"
         name: "name"
@@ -391,13 +396,13 @@ collections:
       # Everything below here is how the page is filed rather than what it
       # says. It is last on purpose: it is rarely the reason anyone opened
       # the page, and changing the address breaks every link to it.
-      - { label: "Web address", name: url, widget: string,
-          hint: "Where this page lives, e.g. /about-us/our-team/. Changing it breaks every existing link to this page and any search result pointing at it." }
+      - { label: "Web address", name: url, widget: string, required: false,
+          hint: "Leave empty and we will build one from the title. Fill it in only to move a page — changing it breaks every existing link and any search result pointing at it." }
       - { label: "Sits under", name: parent, widget: string, required: false,
           hint: "The last part of the address of the page above this one in the menu. Leave empty for a top-level page." }
       - { label: "Order in the menu", name: order, widget: number, required: false,
           hint: "Lower numbers come first. Leave empty to sort by title." }
-      - { label: "First published", name: date, widget: datetime }
+      - { label: "First published", name: date, widget: datetime, required: false }
       - { label: "Last updated", name: modified, widget: datetime, required: false }
 
   - name: posts
@@ -466,7 +471,7 @@ collections:
           - *form
           - *html
 
-      - { label: "Web address", name: url, widget: string,
-          hint: "Where this post lives. Changing it breaks every existing link to it." }
+      - { label: "Web address", name: url, widget: string, required: false,
+          hint: "Leave empty and we will build one from the date and the title. Changing it breaks every existing link to this post." }
       - { label: "Published", name: date, widget: datetime }
       - { label: "Last updated", name: modified, widget: datetime, required: false }
