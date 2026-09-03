@@ -27,3 +27,9 @@ mockups/
 # media-library/ is tracked through Git LFS (see .gitattributes). It has to
 # be in the repo: it is where the editor writes what a client uploads, and
 # the build copies from it.
+
+# Secrets. This repository is public, and a TinaCloud token committed to a
+# public repo is a token that has to be revoked rather than deleted.
+.env
+.env.*
+!.env.example
