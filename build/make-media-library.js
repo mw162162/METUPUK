@@ -1,6 +1,6 @@
 // Build the media library the CMS shows a client.
 //
-//   node build/make-media-library.js
+//   node build/make-media.js
 //
 // The editor was pointed straight at _scrape/assets: 5,436 files and 1.1 GB,
 // of which 86% are WordPress renditions — eight crops of the same photograph.
@@ -21,7 +21,7 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const FROM = path.join(ROOT, '_scrape', 'assets');
-const TO = path.join(ROOT, 'media-library');
+const TO = path.join(ROOT, 'media');
 
 // A WordPress rendition ends in -WIDTHxHEIGHT before its extension. The file
 // without that suffix is the upload someone actually made.

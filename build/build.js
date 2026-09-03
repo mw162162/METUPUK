@@ -59,7 +59,7 @@ function plannedRendition(rel) {
   if (!m) return null;
   const [, stem, w, h, ext] = m;
 
-  const library = path.join(ROOT, 'media-library');
+  const library = path.join(ROOT, 'media');
   const original = [stem + ext, stem + '-scaled' + ext, stem.replace(/-scaled$/, '') + ext]
     .map((c) => path.join(library, c))
     .find((p) => fs.existsSync(p));
@@ -128,7 +128,7 @@ function copyReferencedMedia() {
   let skipped = 0;
   let bytes = 0;
   // Two places a picture can live. The scrape is where the migrated ones are;
-  // media-library is where the editor puts anything a client uploads, and it
+  // media/ is where the editor puts anything a client uploads, and it
   // was not being read at all — so an image added through the editor was
   // skipped here in silence and 404ed on the published page. The library is
   // checked first, because a file that exists in both is the newer one.
@@ -137,8 +137,8 @@ function copyReferencedMedia() {
   // builds clean without it, it will build anywhere.
   const useScrape = !process.argv.includes('--no-scrape');
   const sources = useScrape
-    ? [path.join(ROOT, 'media-library'), path.join(SCRAPE, 'assets')]
-    : [path.join(ROOT, 'media-library')];
+    ? [path.join(ROOT, 'media'), path.join(SCRAPE, 'assets')]
+    : [path.join(ROOT, 'media')];
   let uploaded = 0;
   let generated = 0;
   const toGenerate = [];
@@ -164,7 +164,7 @@ function copyReferencedMedia() {
       if (job && !job.done) toGenerate.push(job);
       continue;
     }
-    if (src.indexOf('media-library') !== -1) uploaded++;
+    if (src.indexOf(path.sep + 'media' + path.sep) !== -1) uploaded++;
     const dst = path.join(OUT, 'media', rel);
     bytes += stat.size;
 

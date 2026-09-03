@@ -19,7 +19,7 @@ export default defineConfig({
       // /<mediaRoot>/..., which is exactly where this site already keeps
       // its pictures — so no path rewriting is needed anywhere.
       mediaRoot: "media",
-      publicFolder: "dist",
+      publicFolder: ".",
     },
   },
   schema: {
