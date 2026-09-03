@@ -24,4 +24,6 @@ mockups/
 # DERIVED FOR NOW, so ignored. This must be committed before a client uses the
 # editor for real: an image they upload lands here, and an uncommitted upload
 # is an image that shows in the editor and never appears on the site.
-media-library/
+# media-library/ is tracked through Git LFS (see .gitattributes). It has to
+# be in the repo: it is where the editor writes what a client uploads, and
+# the build copies from it.
