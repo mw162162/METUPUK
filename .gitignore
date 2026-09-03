@@ -31,3 +31,6 @@ mockups/
 # Secrets. Never commit.
 .env
 .env.*
+
+# Local Netlify folder
+.netlify

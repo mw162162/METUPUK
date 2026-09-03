@@ -2348,3 +2348,41 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .social-rail__icon::before { transform: none; }
 }
+
+/* --- The header on a narrow screen -------------------------------------- */
+
+/* Confirmed on a real phone, not an emulator: the bar was wider than the
+   screen. The brand would not shrink, the four controls beside it are all
+   fixed-size, and nothing wrapped — so the logo was cut off the left edge and
+   the whole page slid sideways under the thumb. A page that moves when you
+   scroll it is the thing people notice before anything else.
+   The brand shrinks first, the tagline goes before the name does, and the bar
+   is told outright that it may not overflow. */
+@media (max-width: 40em) {
+  .site-header__bar { gap: var(--sp-3); min-width: 0; }
+  .brand { flex: 0 1 auto; min-width: 0; gap: var(--sp-2); }
+  .brand > span { min-width: 0; }
+  .brand__name {
+    font-size: 1rem;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  /* The hashtag is the first thing to go: the logo beside it already says
+     who this is, and losing it buys the width the buttons need. */
+  .brand__tag { display: none; }
+  .site-header__actions { gap: 4px; min-width: 0; }
+  .site-header__actions .btn { padding-inline: var(--sp-3); font-size: 0.72rem; }
+  .icon-btn { width: 2.5rem; height: 2.5rem; }
+}
+
+/* Belt and braces, at every width: the header is never the reason the page
+   scrolls sideways. */
+.site-header, .site-header__bar { max-width: 100%; }
+.site-header { overflow-x: clip; }
+
+/* --- Drawer submenus ----------------------------------------------------- */
+
+/* The rule down the left of a submenu was touching the words. A line that
+   close reads as a crossing-out rather than as grouping, and on a phone the
+   text starts hard against the edge of the tap target. */
+.drawer .drawer__sub { padding-left: var(--sp-5); }
+.drawer .drawer__sub .is-child a { padding-left: var(--sp-4); }

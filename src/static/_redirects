@@ -12,6 +12,14 @@
 /patient-treatment-and-care     /aims-and-objectives/patient-treatment-and-care/  301
 /2022/06/elementor-3229         /2022/06/honouring-emma-hillier/                  301
 
+# The editor. TinaCloud links to /admin without a trailing slash, and the
+# catch-all below would otherwise hand that to the 404 page — which is exactly
+# what a client would see after clicking "Edit with TinaCMS". Serving it
+# directly, rather than redirecting, keeps the address the editor was opened
+# at so its hash routing is not disturbed.
+/admin      /admin/index.html   200
+/admin/*    /admin/index.html   200
+
 # Serve the custom 404 for anything that does not resolve. Must stay last:
 # these files are read in order and this rule matches everything.
 /*  /404.html  404
