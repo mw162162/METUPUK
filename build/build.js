@@ -216,7 +216,7 @@ function renderHome(model, exhibition) {
 
   const body = `<section class="hero hero--image">
   ${responsiveImg('/media/2019/10/4-ladies-in-pink.jpg', {
-    className: 'hero__bg', alt: '', eager: true, maxWidth: 2048,
+    className: 'hero__bg', alt: '', decorative: true, eager: true, maxWidth: 2048,
     sizes: '100vw', extra: 'aria-hidden="true"',
   })}
   <div class="wrap hero__grid">
@@ -317,7 +317,7 @@ function renderHome(model, exhibition) {
       const order = exhibition.portraits.slice();
       const [lead] = order.splice(0, 1);
       order.splice(KEPT, 0, lead);
-      const faces = order.map((p, i) => `<img class="scrolly__face${i === KEPT ? ' is-kept' : ''}" src="${p.image.replace(/\.(jpg|jpeg|png)$/i, '-323x430.$1')}" alt="" loading="lazy" width="323" height="430">`).join('\n        ');
+      const faces = order.map((p, i) => `<img class="scrolly__face${i === KEPT ? ' is-kept' : ''}" src="${p.image.replace(/\.(jpg|jpeg|png)$/i, '-323x430.$1')}" alt="" role="presentation" loading="lazy" width="323" height="430">`).join('\n        ');
       const first = lead.name.split(' ')[0];
       return `<div class="scrolly__art">
       <div class="scrolly__faces" aria-hidden="true">

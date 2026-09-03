@@ -84,7 +84,7 @@ const { srcsetFor } = require('./srcset');
 
 // Build a responsive <img> from a local media path, using the renditions
 // WordPress already generated.
-function responsiveImg(src, { alt = '', sizes, className, width, height, eager = false, maxWidth = 2048, extra = '' } = {}) {
+function responsiveImg(src, { alt = '', decorative = false, sizes, className, width, height, eager = false, maxWidth = 2048, extra = '' } = {}) {
   if (!src) return '';
   const set = srcsetFor(src, { maxWidth });
   // Intrinsic size prevents layout shift; fall back to the rendition's own.
@@ -95,7 +95,10 @@ function responsiveImg(src, { alt = '', sizes, className, width, height, eager =
     `src="${esc(set ? set.src : src)}"`,
     set ? `srcset="${esc(set.srcset)}"` : '',
     set && sizes ? `sizes="${esc(sizes)}"` : '',
-    `alt="${esc(alt)}"`,
+    // Decoration has to be asked for. Treating every empty alt as deliberate
+    // would have declared 165 undescribed photographs on news cards to be
+    // decorative — which silences the warning without describing anything.
+    decorative ? `alt="" role="presentation"` : `alt="${esc(alt)}"`,
     width ? `width="${width}"` : '',
     height ? `height="${height}"` : '',
     eager ? 'fetchpriority="high" decoding="async"' : 'loading="lazy" decoding="async"',
