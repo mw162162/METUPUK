@@ -1,0 +1,213 @@
+fragment PagesParts on Pages {
+  __typename
+  title
+  excerpt
+  image
+  imageAlt
+  sections {
+    __typename
+    ... on PagesSectionsProse {
+      body
+    }
+    ... on PagesSectionsDisclosure {
+      summary
+      body
+    }
+    ... on PagesSectionsEmbed {
+      src
+      title
+      variant
+      fallback
+    }
+    ... on PagesSectionsCard {
+      heading
+      image
+      imageAlt
+      href
+      body
+    }
+    ... on PagesSectionsGallery {
+      images {
+        __typename
+        src
+        alt
+      }
+    }
+    ... on PagesSectionsProfiles {
+      people {
+        __typename
+        name
+        role
+        body
+        links {
+          __typename
+          href
+        }
+      }
+    }
+    ... on PagesSectionsVideo {
+      src
+      captions
+      poster
+      caption
+    }
+    ... on PagesSectionsButtons {
+      buttons {
+        __typename
+        label
+        href
+        style
+        newTab
+      }
+    }
+    ... on PagesSectionsColumns {
+      layout
+      columns {
+        __typename
+        body
+      }
+    }
+    ... on PagesSectionsImage {
+      src
+      alt
+      decorative
+      caption
+      width
+      height
+    }
+    ... on PagesSectionsQuote {
+      text
+      attribution
+    }
+    ... on PagesSectionsForm {
+      name
+      intro
+      fields {
+        __typename
+        label
+        name
+        type
+        required
+        help
+      }
+      consent
+      success
+      submit
+      action
+    }
+    ... on PagesSectionsHtml {
+      html
+    }
+  }
+  url
+  parent
+  order
+  date
+  modified
+}
+
+fragment PostsParts on Posts {
+  __typename
+  title
+  excerpt
+  image
+  imageAlt
+  sections {
+    __typename
+    ... on PostsSectionsProse {
+      body
+    }
+    ... on PostsSectionsDisclosure {
+      summary
+      body
+    }
+    ... on PostsSectionsEmbed {
+      src
+      title
+      variant
+      fallback
+    }
+    ... on PostsSectionsCard {
+      heading
+      image
+      imageAlt
+      href
+      body
+    }
+    ... on PostsSectionsGallery {
+      images {
+        __typename
+        src
+        alt
+      }
+    }
+    ... on PostsSectionsProfiles {
+      people {
+        __typename
+        name
+        role
+        body
+        links {
+          __typename
+          href
+        }
+      }
+    }
+    ... on PostsSectionsVideo {
+      src
+      captions
+      poster
+      caption
+    }
+    ... on PostsSectionsButtons {
+      buttons {
+        __typename
+        label
+        href
+        style
+        newTab
+      }
+    }
+    ... on PostsSectionsColumns {
+      layout
+      columns {
+        __typename
+        body
+      }
+    }
+    ... on PostsSectionsImage {
+      src
+      alt
+      decorative
+      caption
+      width
+      height
+    }
+    ... on PostsSectionsQuote {
+      text
+      attribution
+    }
+    ... on PostsSectionsForm {
+      name
+      intro
+      fields {
+        __typename
+        label
+        name
+        type
+        required
+        help
+      }
+      consent
+      success
+      submit
+      action
+    }
+    ... on PostsSectionsHtml {
+      html
+    }
+  }
+  url
+  date
+  modified
+}
