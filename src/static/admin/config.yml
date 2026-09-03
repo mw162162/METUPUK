@@ -248,6 +248,11 @@ definitions:
         widget: "select"
         default: "video"
         options: ["video", "audio", "panel"]
+      - label: "If the player cannot load"
+        name: "fallback"
+        widget: "text"
+        required: false
+        hint: "Shown in place of the player when a browser or network blocks it. Usually the track name and a direct link."
 
   profiles: &profiles
     label: "People"

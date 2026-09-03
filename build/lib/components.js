@@ -525,6 +525,13 @@ const COMPONENTS = [
         hint: 'What the video is, for anyone who cannot see it.' },
       { label: 'Kind', name: 'variant', widget: 'select', default: 'video',
         options: ['video', 'audio', 'panel'] },
+      // Declared because an undeclared key is not preserved, it is dropped.
+      // The reader captures this and the renderer emits it, but the editor did
+      // not know it existed — so opening the Bandcamp post and pressing save
+      // would have silently thrown away the track name and the plain link that
+      // are all anyone gets when the player will not load.
+      { label: 'If the player cannot load', name: 'fallback', widget: 'text', required: false,
+        hint: 'Shown in place of the player when a browser or network blocks it. Usually the track name and a direct link.' },
     ],
     match: (el, { has }) => has('c-embed'),
     read: readEmbed,
