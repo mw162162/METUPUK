@@ -578,18 +578,6 @@
     if (target > 0) {
       new IntersectionObserver(function (entries, obs) {
         if (!entries[0].isIntersecting) return;
-
-        // Being visible is not the same as being looked at. On a 375x812
-        // phone this number sits 671px down, so 141px of it is already on
-        // screen when the page loads — the count ran itself out while the
-        // reader was still on the headline, and by the time they scrolled
-        // down it just said 31. The whole point of counting to it is lost.
-        //
-        // So it also has to be clear of the bottom quarter of the screen.
-        // The observer stays attached until then and fires the moment the
-        // reader actually arrives. Nothing on the page moves; it waits.
-        if (entries[0].boundingClientRect.top > window.innerHeight * 0.75) return;
-
         obs.disconnect();
 
         // Every number is held a constant fraction less than the one before, so
@@ -670,21 +658,17 @@
         counter.classList.add('is-counting');
         if (card) card.classList.add('is-counting');
         requestAnimationFrame(tick);
-      // Threshold alone was not enough. Sixty per cent of a two-digit number
-      // is a small box, and on a 375x812 phone the stat sits 671px down —
-      // already 141px on screen the moment the page loads. So the count ran
-      // itself out while the reader was still on the headline, and by the
-      // time they scrolled to it the number just said 31.
+      // rootMargin, not threshold. On a phone this number is already fully
+      // visible when the page loads — 671px down a 812px screen — so the
+      // count ran itself out while the reader was still on the headline and
+      // said 31 by the time they got there.
       //
-      // rootMargin discounts the bottom quarter of the viewport, so the
-      // number has to be somewhere a person is actually looking before it
-      // starts. Nothing moves on the page; it just waits its turn.
-      // Several thresholds, not one. An observer only reports a change, and
-      // this number is already intersecting when the page loads — so with a
-      // single threshold the callback fired once, the guard below sent it
-      // away, and scrolling never produced another. Crossing each ratio in
-      // turn gives the guard the chances it needs.
-      }, { threshold: [0, 0.25, 0.5, 0.6, 0.75, 1] }).observe(counter);
+      // A threshold cannot fix that: the ratio is 1 on load and stays 1 all
+      // the way down, so nothing is ever crossed and no second callback
+      // arrives. Discounting the bottom quarter of the viewport moves where
+      // intersection begins, which is a real transition — it fires the
+      // moment the reader actually reaches the number.
+      }, { threshold: 0.6, rootMargin: '0px 0px -25% 0px' }).observe(counter);
     }
   }
 
