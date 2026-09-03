@@ -851,7 +851,11 @@ function renderExhibition(exhibition, model) {
     return `<li class="portrait">
         ${responsiveImg(p.image, {
           alt: `Portrait of ${p.name}`,
-          sizes: '(min-width: 900px) 180px, 45vw',
+          // The grid is auto-fill with an 11rem minimum, so a phone gets one
+          // full-width column, not two. Telling the browser 45vw made it ask
+          // for half the pixels the slot needed: it picked the 323px file for
+          // a 335px slot on a 2x screen, and the portraits came out soft.
+          sizes: '(min-width: 900px) 180px, (min-width: 30em) 45vw, 92vw',
           width: 360, height: 480, maxWidth: 720,
         })}
         <p class="portrait__name">${esc(p.name)}</p>
