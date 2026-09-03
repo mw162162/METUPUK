@@ -45,6 +45,64 @@ function copyDir(from, to) {
    The scrape holds every rendition WordPress ever generated (~900 MB). Ship
    only what the built pages actually reference: it keeps the deploy small and
    stops unused 3 MB originals sitting on the server. */
+// Make one of WordPress's generated sizes from the original in the media
+// library. Returns true if the file now exists in the deploy.
+//
+// The name carries the dimensions — photo-600x432.jpg — so the original is the
+// same name without them, give or take the "-scaled" suffix WordPress adds to
+// anything it shrank on upload. Cropped to exactly those dimensions, because
+// the page has already declared that width and height and a different shape
+// would shift the layout.
+function plannedRendition(rel) {
+  const dst = path.join(OUT, 'media', rel);
+  if (fs.existsSync(dst)) return { dst, done: true };
+
+  const m = rel.match(/^(.*)-(\d{2,4})x(\d{2,4})(\.[a-zA-Z]+)$/);
+  if (!m) return null;
+  const [, stem, w, h, ext] = m;
+
+  const library = path.join(ROOT, 'media-library');
+  const original = [stem + ext, stem + '-scaled' + ext, stem.replace(/-scaled$/, '') + ext]
+    .map((c) => path.join(library, c))
+    .find((p) => fs.existsSync(p));
+  if (!original) return null;
+
+  return { original, dst, width: +w, height: +h };
+}
+
+// All of them in one pass, in one child process. Sharp has no synchronous API
+// and the copy loop is synchronous, so the alternative was a process per
+// image — thirteen hundred of them.
+function makeRenditions(jobs) {
+  if (!jobs.length) return 0;
+  const listFile = path.join(OUT, '.renditions.json');
+  fs.writeFileSync(listFile, JSON.stringify(jobs));
+  try {
+    require('child_process').execFileSync(process.execPath, ['-e', `
+      const fs = require('fs'), path = require('path');
+      const sharp = require(${JSON.stringify(require.resolve('sharp'))});
+      const jobs = JSON.parse(fs.readFileSync(${JSON.stringify(listFile)}, 'utf8'));
+      (async () => {
+        let i = 0;
+        const worker = async () => {
+          while (i < jobs.length) {
+            const j = jobs[i++];
+            try {
+              fs.mkdirSync(path.dirname(j.dst), { recursive: true });
+              await sharp(j.original)
+                .resize(j.width, j.height, { fit: 'cover', position: 'centre' })
+                .toFile(j.dst);
+            } catch (e) { /* one bad original must not stop the build */ }
+          }
+        };
+        await Promise.all(Array.from({ length: 8 }, worker));
+      })();
+    `], { stdio: ['ignore', 'ignore', 'pipe'], maxBuffer: 1 << 24 });
+  } catch (e) { /* reported by the missing-media count in verify */ }
+  fs.rmSync(listFile, { force: true });
+  return jobs.filter((j) => fs.existsSync(j.dst)).length;
+}
+
 function copyReferencedMedia() {
   const wanted = new Set();
   const addRef = (u) => {
@@ -76,8 +134,16 @@ function copyReferencedMedia() {
   // was not being read at all — so an image added through the editor was
   // skipped here in silence and 404ed on the published page. The library is
   // checked first, because a file that exists in both is the newer one.
-  const sources = [path.join(ROOT, 'media-library'), path.join(SCRAPE, 'assets')];
+  // --no-scrape proves the repository is self-sufficient: it is what a hosted
+  // build sees, because _scrape is 1.1 GB and is not committed. If the site
+  // builds clean without it, it will build anywhere.
+  const useScrape = !process.argv.includes('--no-scrape');
+  const sources = useScrape
+    ? [path.join(ROOT, 'media-library'), path.join(SCRAPE, 'assets')]
+    : [path.join(ROOT, 'media-library')];
   let uploaded = 0;
+  let generated = 0;
+  const toGenerate = [];
   for (const rel of wanted) {
     let src = null;
     let stat = null;
@@ -85,7 +151,21 @@ function copyReferencedMedia() {
       const candidate = path.join(dir, rel);
       try { stat = fs.statSync(candidate); src = candidate; break; } catch { /* try the next */ }
     }
-    if (!src) continue;
+
+    // Nothing on disk. If what is being asked for is one of WordPress's
+    // generated sizes, it can be made from the original rather than shipped.
+    //
+    // This is what lets the site build from the repository alone. 1,364 of the
+    // 1,711 pictures a page references were sized copies that existed only in
+    // the scrape, which is not committed and is 1.1 GB — so a build anywhere
+    // but this machine produced a site missing eighty per cent of its images.
+    // Committing them would have cost 359 MB to store what a few seconds of
+    // sharp can regenerate.
+    if (!src) {
+      const job = plannedRendition(rel);
+      if (job && !job.done) toGenerate.push(job);
+      continue;
+    }
     if (src.indexOf('media-library') !== -1) uploaded++;
     const dst = path.join(OUT, 'media', rel);
     bytes += stat.size;
@@ -111,6 +191,8 @@ function copyReferencedMedia() {
     copied++;
   }
 
+  generated = makeRenditions(toGenerate);
+
   // Prune. Keeping the media directory between builds means a photograph
   // removed from a page would otherwise sit in the deploy forever — the cache
   // has to forget as well as remember, or "unpublished" stops meaning gone.
@@ -131,7 +213,7 @@ function copyReferencedMedia() {
   };
   sweep(mediaRoot);
 
-  return { copied, skipped, pruned, uploaded, referenced: wanted.size, bytes };
+  return { copied, skipped, pruned, uploaded, generated, referenced: wanted.size, bytes };
 }
 
 /* --- Content helpers ------------------------------------------------------ */
@@ -1065,7 +1147,7 @@ function run() {
   console.log(`  pages     ${model.pages.length}`);
   console.log(`  posts     ${model.posts.length}`);
   console.log(`  archives  ${totalPages} news + category pages`);
-  console.log(`  media     ${media.referenced} referenced (${(media.bytes / 1024 / 1024).toFixed(0)} MB) — ${media.copied} copied, ${media.skipped} already current${media.pruned ? `, ${media.pruned} pruned` : ''}`);
+  console.log(`  media     ${media.referenced} referenced (${(media.bytes / 1024 / 1024).toFixed(0)} MB) — ${media.copied} copied, ${media.skipped} already current${media.generated ? `, ${media.generated} sizes generated` : ``}${media.uploaded ? `, ${media.uploaded} from the editor` : ``}${media.pruned ? `, ${media.pruned} pruned` : ``}`);
   console.log(`  assets    ${assetCount} theme files`);
   console.log(`  in        ${((Date.now() - t0) / 1000).toFixed(1)}s`);
   return { model, written };
