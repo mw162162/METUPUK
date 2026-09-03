@@ -11,7 +11,7 @@ categories:
   - "research"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       *METUPUK (Metastatic Exchange To Unleash Power) attended the 2024 United Kingdom’s Interdisciplinary Breast Cancer Symposium in Birmingham, hosted by Breast Cancer Now and supported by numerous partners.*
 

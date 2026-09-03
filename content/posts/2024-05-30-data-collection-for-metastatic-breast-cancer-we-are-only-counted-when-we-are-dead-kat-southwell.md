@@ -13,7 +13,7 @@ categories:
   - "research"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Just shy of six years ago I was diagnosed with Inflammatory Breast Cancer (IBC). Rare with a “high fatality rate and difficult to treat” is what I learnt in the first few weeks. Make your peace that you are going to die and marry quickly (I’d just got engaged). My faith that I was getting the best of the best in terms of treatment wobbled pretty quickly. Over time, I started learning and advocating for myself and for others who were also not receiving the internationally agreed standard of care for IBC here in the UK. Quickly, I had met more IBC patients than an oncologist might see in an entire career. I learnt about ‘breast cancer’ trials that would reject IBC patients as we apparently screwed with the figures too much by dying. I learnt that there was no data collected or categorised for IBC so all we had was anecdotally what I could see in a charity support group I was part of. Because there were no up to date figures on survival and treatment regimes, I was caught in the loop of no data to prove we could live just as long and no trials to help us live longer. Driven by pure selfishness of wanting to live longer, I got deeper and deeper into the web that is metastatic breast cancer clinical trials in the UK and metastatic breast cancer data.
 

@@ -5,7 +5,7 @@ date: "2020-03-24T15:22:58"
 modified: "2020-03-24T15:24:40"
 parent: "about-us"
 sections:
-  - type: "profiles"
+  - _template: "profiles"
     people:
       - name: "Mary Richards"
         role: ""

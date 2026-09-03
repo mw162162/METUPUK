@@ -21,6 +21,7 @@ const { split } = require('./lib/blocks');
 const { renderBlocks } = require('./lib/torender');
 const { contentFile } = require('./lib/yaml-out');
 const { toText } = require('./lib/clean');
+const { fromDisk } = require('./lib/yaml-out');
 
 const ROOT = path.join(__dirname, '..');
 const CONTENT = path.join(ROOT, 'content');
@@ -41,7 +42,7 @@ function files() {
 
 function frontMatter(raw) {
   const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?$/);
-  return m ? yaml.load(m[1]) : null;
+  return m ? fromDisk(yaml.load(m[1])) : null;
 }
 
 // The same promise as everywhere else: a block may change shape, but not a

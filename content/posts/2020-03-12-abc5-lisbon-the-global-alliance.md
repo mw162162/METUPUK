@@ -8,7 +8,7 @@ imageAlt: "Group"
 categories:
   - "conferences"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Key Messages**
 
@@ -191,7 +191,7 @@ sections:
       Please watch the video then share and sign the Call To Action and make a commitment here<a href="https://www.abcglobalalliance.org/make-a-commitment/" rel="noopener" target="_blank"> https://www.abcglobalalliance.org/make-a-commitment/</a>
 
       *Watch as real women with advanced breast cancer (ABC) tell their stories and shed light on the current gaps in ABC care.  This video was filmed with real patients over three days at the 2019 ESO-ESMO Advanced Breast Cancer Fifth International Consensus Conference (ABC5)*
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "https://www.youtube.com/embed/4zbvXW6BQXc?feature=oembed"
     title: "'I am advanced breast cancer'"

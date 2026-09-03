@@ -11,7 +11,7 @@ categories:
   - "research"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       *METUPUK are delighted by the Scottish Medicines Consortium (SMC) acceptance of Enhertu (trastuzumab deruxtecan) for routine use on the NHS.*
 

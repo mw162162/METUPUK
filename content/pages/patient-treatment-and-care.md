@@ -7,7 +7,7 @@ image: "/media/2019/10/patient-and-treatmeent-care-header-1024x500.jpg"
 imageAlt: "patient-and-treatmeent-care-header"
 parent: "aims-and-objectives"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ## METUPUK will support and encourage initiatives that help MBC patients to understand their treatment and lifestyle options and how they can live well with MBC.
 

@@ -8,7 +8,7 @@ imageAlt: "ABC Global Alliance Header"
 categories:
   - "conferences"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Jo attended this Zoom and here are some of the bullet points from the recording which is now published at the ABC Global Alliance website below <a href="https://www.abcglobalalliance.org/events-initiatives/recommended-events/" rel="noopener" target="_blank">https://www.abcglobalalliance.org/events-initiatives/recommended-events/</a>
 
@@ -59,11 +59,11 @@ sections:
       - Make sure all MBC patients are discussed in MDT’s
 
       This is the video with Lesley and myself who feature when we attended the ABC5 conference last year.
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "https://www.youtube.com/embed/4zbvXW6BQXc"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       A good overview of the state of play in relation to breast cancer in Europe.
 

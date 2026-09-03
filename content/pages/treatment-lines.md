@@ -6,7 +6,7 @@ modified: "2025-05-21T08:15:08"
 image: "/media/2025/05/2.png"
 imageAlt: ""
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Let’s talk treatment lines…
 

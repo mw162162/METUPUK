@@ -7,7 +7,7 @@ image: "/media/2019/10/drugs-header-1024x370.png"
 imageAlt: "drugs-header"
 parent: "research-and-trials"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ## Today’s research is tomorrow’s treatment
 
@@ -39,11 +39,11 @@ sections:
       - You can zoom in and out on the map using you mouse.
       - By selecting a ‘bubble’ location on the map, the list of trials and bar chart split will filter to only show trials for that location.
       - If you click something and want to reset the dashboard back, just click the bubble, trial name or bar chart line again.
-  - type: "embed"
+  - _template: "embed"
     variant: "panel"
     src: "https://app.powerbi.com/view?r=eyJrIjoiYzFjODliYWUtNWIxMS00OTI2LTlmNzgtMDkzMDIyMmI4M2IxIiwidCI6ImZlYTg2NDRkLTQ0ZjctNGU4MC1hMzMxLWI2OGM4OTA0MjRiNCJ9"
     title: "METUPUK MBC Clinical Trials UK"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Our dashboard combines trial information from Clinical Trials.Gov, Cancer Research  
 

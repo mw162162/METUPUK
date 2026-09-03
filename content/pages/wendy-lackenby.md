@@ -8,7 +8,7 @@ imageAlt: "FB-1920×1080-31.Wendy-Lackenby"
 excerpt: "Name: Wendy LackenbyAge: 65Region: Essex Diagnosis: Primary DX – March 2012. Left breast IDC ii, ER positive, HER2 negative, node positive (10/20 lymph nodes involved) treated radically with left…"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name:**  Wendy Lackenby  
       **Age**:  65  
@@ -19,11 +19,11 @@ sections:
       MBC DX – March 2020.  MRI spine reported multilevel metastatic disease, especially at T11.  Following right ischial tuberosity biopsy, histology reported metastatic adenocarcinoma compatible with breast primary, ER positive.  Combination of Letrozole, Palbociclib, Adcal D3 and Zometa commenced July 2020 (delayed due to lockdown).  Zometa discontinued and replaced with Denosumab. Three monthly CT scans, 6 monthly MRI scans, annual DEXA scan.
 
       **Age at Diagnosis:** Primary aet 56, MBC aet 64
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#wendy-lackenby"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Hi, my name is Wendy and I live in a village near to Chelmsford in Essex with my husband of 45 years.  We have 3 grown up children, 5 grandchildren, a crazy Lab named Oscar and a tortoise named Timmy.
 

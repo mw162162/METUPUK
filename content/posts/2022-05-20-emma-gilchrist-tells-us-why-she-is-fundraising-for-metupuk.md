@@ -9,7 +9,7 @@ excerpt: "“My little sister Helen is 39 years old. She is a married mum of 3 g
 categories:
   - "fundraising"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Emma Gilchrist tells us why she is fundraising for METUPUK
 

@@ -8,7 +8,7 @@ imageAlt: "Photo of Beth Roberts"
 categories:
   - "fundraising"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Thank you to all Beth&#8217;s family and friends who donated towards METUPUK from her funeral.
 

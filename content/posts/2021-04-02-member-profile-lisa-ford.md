@@ -9,15 +9,15 @@ categories:
   - "living-with-mbc"
   - "member-stories"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: "I was diagnosed with primary breast cancer in April 2018. It didn’t come as a surprise to me as my mum had died from breast cancer a few years earlier having been diagnosed with primary breast cancer in her 30s."
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/03/Lisa-and-Gizmo.jpg"
     alt: "Lisa and Gizmo"
     width: 640
     height: 427
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I had always been on top of checking and getting anything unusual checked out. My treatment went smoothly and I didn’t have chemotherapy just 2 years Zoladex and 10 years Tamoxifen. I was happy as I’d caught it early and the general opinion from the hospital was if you caught it early you would be OK.
 
@@ -32,13 +32,13 @@ sections:
       Over the last three years I have seen too many of the ladies who have educated me die from secondary breast cancer and I see others struggling to get access to the treatment they need and access to clinical trials.
 
       Things need to change, people need to listen and I’m hoping I can play a part in this.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/03/Lisa.jpg"
     alt: "Lisa"
     width: 600
     height: 529
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       By MetUpUK Member, Lisa Ford.
 

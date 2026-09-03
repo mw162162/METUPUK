@@ -8,7 +8,7 @@ imageAlt: "Tassia Cartoon 'No Bra Day' - pink positivity standing on coffin of i
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       We went quiet, because the majority of us working on the [#IAmThe31 campaign](/i-am-the-31/) are undergoing continued treatment for Secondary Breast Cancer, are awaiting scan results, trying to work, and exhausted ourselves trying to &#8216;shout into the pink positivity&#8217; on Secondary Breast Cancer Awareness Day on Tuesday (and the fact that #NoBraDay was trending for most of that day, allegedly a breast cancer awareness campaign, but many on social media did not seem aware of this &#8211; led to this fantastic cartoon by MetUPUK member Tassia Haines).
 

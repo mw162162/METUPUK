@@ -8,7 +8,7 @@ imageAlt: "Photo of Beth Roberts"
 categories:
   - "member-stories"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I&#8217;m writing this after getting another &#8216;all clear&#8217; mammogram result. The fifteenth to be precise. You may wonder why I&#8217;ve had so many &#8211; one a year since I had primary breast cancer in 2006. Well the first 10 were due to luck &#8211; I was on a trial that specified a 10 year follow up. Most women only got 5 years. The last 5 mammograms are because my daughter was diagnosed de Novo in 2015. Neither of us knew what &#8216;de Novo&#8217; was. Neither of us knew it was possible. **De Novo means to be diagnosed with primary and secondary cancer at the same time.**
 

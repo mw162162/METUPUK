@@ -8,7 +8,7 @@ imageAlt: "BRIC Logo"
 categories:
   - "organisations"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       We love finding out what other organisations are doing to support those of us with metastatic breast cancer, so this week were delighted to talk to Naz. Read on&#8230;
 

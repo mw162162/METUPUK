@@ -8,7 +8,7 @@ imageAlt: "FB-1920×1080-5.Connie-Johncock"
 excerpt: "Name: Connie JohncockAge: 32Region: Kent Diagnosis: Her2+ denovo December 2012 age 23 (non invasive ductal carcinoma) Age at Diagnosis: 23 Hi I’m Connie. I was diagnosed denovo her2+ breast cancer at…"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name: Connie Johncock**  
       **Age: 32**  
@@ -17,11 +17,11 @@ sections:
       **Diagnosis:** Her2+ denovo December 2012 age 23 (non invasive ductal carcinoma)
 
       **Age at Diagnosis:** 23
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#connie-johncock"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Hi I&#8217;m Connie. I was diagnosed denovo her2+ breast cancer at the age of 23.
 

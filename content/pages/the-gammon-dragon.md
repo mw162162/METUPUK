@@ -7,7 +7,7 @@ image: "/media/2023/09/gammon-dragon-1024x493.jpeg"
 imageAlt: "gammon-dragon"
 parent: "mbc-wales"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       The **&#8216;Gammon Dragon&#8217;** is a site specific piece of work, designed to jar people and interrupt their usual walk into the town centre. The work of art is on the corner of Crown Street, Port Talbot and can still be seen. In the same way a surprising diagnosis would pull you from your daily routine.  
 

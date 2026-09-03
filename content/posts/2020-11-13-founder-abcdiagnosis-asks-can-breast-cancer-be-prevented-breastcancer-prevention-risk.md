@@ -8,7 +8,7 @@ imageAlt: "Hands holding a pink ribbon"
 categories:
   - "education"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Breast Cancer Awareness Month has now ended. I want to finish with some words about something that’s really bothering me and is being labelled as “prevention”.
 

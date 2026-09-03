@@ -7,7 +7,7 @@ image: "/media/2019/10/Jo-and-beth.jpg"
 imageAlt: ""
 parent: "about-us"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       METUP was created in America to change the landscape of metastatic cancer through patient advocacy and direct action.  
 

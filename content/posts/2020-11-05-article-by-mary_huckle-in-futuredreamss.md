@@ -8,7 +8,7 @@ imageAlt: "MaryHuckleArticle"
 categories:
   - "press"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       METUPUK member Mary Huckle is featured over 4-pages in the latest &#8216;<a href="https://issuu.com/futuredreamscharity" rel="noopener" target="_blank">Future Dreams</a>&#8216; magazine:
 

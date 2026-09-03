@@ -8,7 +8,7 @@ imageAlt: "Not dead yet"
 categories:
   - "quality-of-life"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       As a secondary breast cancer patient living with an incurable disease, I feel very strongly about wording.  Wording like fight, battle and lost/loosing.  Words matter.
 
@@ -19,10 +19,10 @@ sections:
       Palliative care to me is a negative word.  A word that means death.  Yes, we are all going to die at some point.  But a word that means End Of Life.  I have a lot more living to do #BusyLivingWithMets and I do feel that palliative doesn’t explain my disease as the “Supportive Care” label does.
 
       I mentioned this to a secondary breast cancer friend and she said
-  - type: "quote"
+  - _template: "quote"
     text: "Before I got a CNS, I made use of my assigned palliative care nurse. After reassurances it wasn’t about end of life care, it turned out that all she wanted to talk about was end of life care. All of my palliative support has dropped off because I’m not end of life yet – calls aren’t returned. So now I just laugh when people say palliative isn’t end of life care – it blatantly is."
     attribution: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       My CNS rang me the other day to speak to me about my current status and I talked about an issue with peripheral neuropathy and she shared that the only places that are supporting this are hospices.  I’m not scared of death, I’m not scared of dying BUT I do NOT want my care to be provided in a hospice.  I feel like I’ve been written off and thrown out with the rubbish.  The label is basically saying we are not worth investing in.
 

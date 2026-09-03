@@ -9,7 +9,7 @@ categories:
   - "member-stories"
   - "patient-advocacy"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <img src="/media/2023/09/emma-saville-blog-2-225x300.jpeg" alt="Emma saville blog 2" width="225" height="300" loading="lazy" decoding="async">We met Emma as she applied to be one of the METUPUK Darker Side of Pink ladies with our campaign that started in 2021 which focused on metastatic breast cancer, the disease that Emma had.
 

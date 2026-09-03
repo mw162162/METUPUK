@@ -7,7 +7,7 @@ image: "/media/2021/10/FB-1920x1080-12.Anne-Cargill-1024x576.png"
 imageAlt: "FB-1920×1080-12.Anne-Cargill"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name &#8211;** Anne Cargill
 
@@ -18,11 +18,11 @@ sections:
       **Diagnosis &#8211;** 5th Nov 2018, denovo HER2+ with mets to my spine, neck, pelvis, hips, shoulders and legs
 
       **Age at diagnosis** &#8211; 38
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#anne-cargill"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I was misdiagnosed in August 2017 and told my lump was glandular tissue (in a literal 69 sec exam).
 

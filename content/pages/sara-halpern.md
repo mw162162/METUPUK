@@ -8,16 +8,16 @@ imageAlt: "FB-1920×1080-15.Sara-Halpern"
 excerpt: "Name: Sara HalpernAge: 36Region: North WestDiagnosis: DeNovo – ER + / Her2 negative Age at Diagnosis: 35 I went to my local gps about 1.5 years before my official diagnosis to have a lump on my…"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name:** Sara Halpern **Age:** 36 **Region:** North West **Diagnosis:** DeNovo &#8211; ER + / Her2 negative
 
       **Age at Diagnosis:** 35
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#sara-halpern"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I went to my local gps about 1.5 years before my official diagnosis to have a lump on my breast checked out. The doctor said she thought it was hormonal and sent me on my way.
 

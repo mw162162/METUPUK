@@ -13,7 +13,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Red Flags and DENOVO Breast Cancer**
 

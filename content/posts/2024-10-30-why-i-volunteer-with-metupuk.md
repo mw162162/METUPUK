@@ -13,7 +13,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I was diagnosed with primary breast cancer in 2015, and it all felt like a terrible mistake.  I was 43, in my final year of an optometry degree and already had a job lined up to go to after I finished.
 

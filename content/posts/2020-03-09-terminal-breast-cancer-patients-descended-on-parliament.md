@@ -9,13 +9,13 @@ excerpt: "Terminal breast cancer patients descended on parliament last week. Arm
 categories:
   - "news"
 sections:
-  - type: "image"
+  - _template: "image"
     src: "/media/2020/03/With-Laura-278x300.jpg"
     alt: "Jo Taylor & Laura Ashurst members of METUPUK attending the petition hand in"
     width: 436
     height: 470
     caption: "Jo Taylor & Laura Ashurst members of METUPUK attending the petition hand in"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Terminal breast cancer patients descended on parliament last week.**
 

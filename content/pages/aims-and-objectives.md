@@ -6,7 +6,7 @@ modified: "2021-11-10T10:44:11"
 image: "/media/2021/11/aims-1-1024x576.png"
 imageAlt: "aims 1"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ## “We are a patient advocacy group aiming to turn metastatic breast cancer (MBC) into a chronic illness and support MBC patients to gain access to the best medicines to prolong and improve their quality of life.  
 

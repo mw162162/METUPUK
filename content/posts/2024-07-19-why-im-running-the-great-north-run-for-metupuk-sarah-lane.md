@@ -11,7 +11,7 @@ categories:
   - "member-stories"
   - "patient-advocacy"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       My Mum died in June 2018 after being diagnosed with Breast Cancer in 2016.
 

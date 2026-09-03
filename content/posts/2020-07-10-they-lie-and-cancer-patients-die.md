@@ -8,7 +8,7 @@ imageAlt: "Bra advert"
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Dear social media companies,
 

@@ -10,7 +10,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **When D-Day’s DE NOVO**
 

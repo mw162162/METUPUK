@@ -12,7 +12,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Jo Taylor’s infographic on the red flag signs for metastatic breast cancer is a brilliant resource and one that should be shared far and wide, but this is my story about being so lucky to have been diagnosed before I had any of the warning signs.
 

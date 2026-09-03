@@ -7,7 +7,7 @@ image: "/media/2019/10/SBC-infographics-header-1024x499.png"
 imageAlt: "Secondary Breast Cancer Infographics"
 parent: "about-us"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Our Founders achievement is the red flag infographics.  Created by <a href="https://www.abcdiagnosis.co.uk/" rel="noopener" target="_blank">abcdiagnosis</a> highlighting where secondary disease will return.   No one wanted to promote this information with patients.  Professionals and charities having a paternalistic and outdated view.  A simple idea that just didn’t get promoted by those who should have promoted it.  5 years later NHS England have adopted this and it will be available throughout the NHS in personalized care plans and for GPs via portals ie GateWay C and C The Signs for GPs to learn, view and use effectively for breast cancer patients.
 

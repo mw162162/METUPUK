@@ -8,7 +8,7 @@ categories:
   - "member-stories"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Others reaction to my cancer.
 

@@ -9,7 +9,7 @@ categories:
   - "member-stories"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       This blog will probably upset some people. I talk about real life. In fact I talk about my life. My life with incurable, but always fatal, secondary breast cancer aged 36. So if my reality distress you then don&#8217;t read. Plus this blog might use naughty words. So beware and **enter at your own risk.**
 

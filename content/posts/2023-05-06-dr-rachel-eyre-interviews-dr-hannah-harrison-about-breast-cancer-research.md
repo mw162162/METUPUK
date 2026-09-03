@@ -8,7 +8,7 @@ imageAlt: "Hannah Harrison photo (1)"
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Scientific research is vital for the development of new and improved treatments for secondary breast cancer. But what’s it like to be a scientist working in this area? Dr Hannah Harrison received her PhD in breast cancer research from the University of Manchester in 2009 and has since worked as a breast cancer research scientist in the Manchester Cancer Research Centre. Here, Hannah tells us about her work.
 
@@ -41,12 +41,12 @@ sections:
       *I hope that we can move towards a world where secondary breast cancer is a chronic disease which we know how to treat in a way which allows those living with it to live long and live well.*
 
       Thanks Hannah! We look forward to hearing more about your research in the future.
-  - type: "image"
+  - _template: "image"
     src: "/media/2020/01/Rachel_Photo-819x1024.jpg"
     alt: "Rachel"
     width: 640
     height: 800
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: "Dr Hannah Harrison was interviewed by our METUPUK member and advocate Dr Rachel Eyre."
 ---

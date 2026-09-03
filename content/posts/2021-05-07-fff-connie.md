@@ -10,14 +10,14 @@ categories:
   - "living-with-mbc"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       MetUpUK member Connie sat down, on zoom, with some of her oldest friends to talk to them about their understanding of her life with MBC.
 
       They discuss cancer types, treatment lines, tumor profiling, trials, survival rates, progressions, drug lines, and how all of this makes them feel.
 
       It&#8217;s a really moving video, especially as they come to realise what her life entails and how hard it can be to access the drugs that she needs. But it also highlights how, even her best friends, get confused about the world that people with MBC are navigating.
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "https://www.youtube-nocookie.com/embed/5ggIb0szq5o"
     title: "YouTube video"

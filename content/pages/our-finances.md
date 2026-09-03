@@ -5,7 +5,7 @@ date: "2024-02-27T11:16:55"
 modified: "2025-02-02T00:13:57"
 parent: "about-us"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Annual report**
 

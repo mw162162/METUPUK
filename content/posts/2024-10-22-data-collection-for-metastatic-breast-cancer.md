@@ -10,7 +10,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       *Kat wrote this blog for Metastatic May but we feel it should be shared again for Breast Cancer Awareness Month as data is a major problem and something that really needs to be addressed.*
 

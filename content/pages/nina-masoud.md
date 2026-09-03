@@ -7,7 +7,7 @@ image: "/media/2021/10/FB-1920x1080-21.Nina-Masoud-1024x576.png"
 imageAlt: "FB-1920×1080-21.Nina-Masoud"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name: Nina Masoud**
 
@@ -22,11 +22,11 @@ sections:
       Treatment -FEC Docetaxel Chemotherapy May 2016. 15 rounds of Radiotherapy . Adjuvant Tamoxifen September 2016
 
       Diagnosed with Metastatic Breast cancer in June 2021. ER positive HER2 negative. Treatment &#8211; Palliative Zoladex, Letrozole and Palbociclib. Yet to have the Denusomab injection!
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#nina-masoud"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I have been married for 14 years to My husband Firas, we have two beautiful children Lyanne 13 and Faris 9. I was first diagnosed with Primary in 2016, My daughter Lyanne was 7 and my son was 4.
 

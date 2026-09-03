@@ -10,7 +10,7 @@ categories:
   - "member-stories"
   - "patient-advocacy"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       We are heartbroken to share the news that Tassia Haines has died.
 

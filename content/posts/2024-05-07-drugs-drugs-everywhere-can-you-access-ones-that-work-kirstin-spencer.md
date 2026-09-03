@@ -12,7 +12,7 @@ categories:
   - "patient-advocacy"
   - "research"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Here at METUPUK, we know drug access is a big issue for all metastatic breast cancer patients. There have been huge leaps and bounds made in terms of research, knowledge and potential treatment pathways but this is not always translating into clinical practice.  One of the biggest issues for both ductal and lobular oestrogen positive (ER+) breast cancer is treatment resistance.  This can happen for some patients within months of their first line of treatment.
 

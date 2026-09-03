@@ -8,7 +8,7 @@ imageAlt: "Photo of Jennifer Young toiletries"
 categories:
   - "press"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Over the past couple of weeks, cancer specialist skincare brand <a href="https://www.beautydespitecancer.com/" rel="noopener" target="_blank">Jennifer Young</a> has featured METUPUK and its founder in a couple of blogs.
 

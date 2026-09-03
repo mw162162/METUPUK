@@ -8,7 +8,7 @@ imageAlt: "Boy shouting into a microphone"
 categories:
   - "patient-advocacy"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       &#8220;*Patient advocacy is an area of specialization in health care concerned with advocacy for patients, survivors, and caregivers. The patient advocate may be an individual or an organization, often, though not always, concerned with one specific group of disorders. The terms patient advocate and patient advocacy can refer both to individual advocates providing services that organizations also provide, and to organizations whose functions extend to individual patients. Some patient advocates work for the institutions that are directly responsible for the patient&#8217;s care.&#8221;*  
 

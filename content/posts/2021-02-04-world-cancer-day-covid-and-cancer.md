@@ -6,24 +6,24 @@ modified: "2023-05-12T10:17:56"
 image: "/media/2021/02/Linkedin-Banner.jpg"
 imageAlt: ""
 sections:
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/Linkedin-Banner-1024x311.jpg"
     alt: "World Cancer Day and Covid"
     width: 640
     height: 194
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       February 4th is World Cancer Day. Except that this February 4th, Cancer isn&#8217;t the only C that MetUpUK members are having to live with.
 
       Some of our team have shared how COVID has affected their life with cancer this last year;
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/unnamed.jpg"
     alt: "Madeleine Meynell"
     width: 1280
     height: 960
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ## Madeleine Meynell
 
@@ -40,21 +40,21 @@ sections:
       Last year I developed a tumour in my left lung, and following radiotherapy I was told that lung lobe would need to be removed. Then COVID struck, and my surgery was delayed by 3 months. I felt very anxious waiting for a new date, knowing that the tumour was growing larger because of the delay.
 
       In the end the surgery went well, but it feels like cancer patients have been seen as expendable, thrown under the bus, during the pandemic.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/lesley-stephens.jpg"
     alt: "lesley stephens"
     width: 374
     height: 368
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: "## Lesley Stephens"
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/tass.jpg"
     alt: "Tassia Haines"
     width: 1078
     height: 1078
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ## Tassia Haines
 
@@ -67,21 +67,21 @@ sections:
       In terms of my cancer treatment, I have been lucky that nothing has really changed. I&#8217;ve still been having my 3 weekly infusions of chemotherapy, and I have still been able to have all my regular injections.
 
       But life during COVID, especially as someone with a terminal disease has changed immeasurably. From the little things &#8211; like I haven&#8217;t been to a supermarket in nearly a year.  To the big &#8211; I spent the last year talking to my Nannan through a window. A window. Because I was scared of giving her something due to my hospital appointments, and she was scared because of her carers. She died last week, and all I can think is how I hadn&#8217;t hugged her in so long.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/emma-1024x891.jpg"
     alt: "emma fisher"
     width: 640
     height: 557
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: "## Emma Fisher"
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/Mizzie.jpg"
     alt: "mir"
     width: 1200
     height: 1600
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ## Mizzie Ashitey
 
@@ -94,21 +94,21 @@ sections:
       Cancer patients need all our treatments, surgeries etc to continue &#8211; we are fed up of being the sacrificial lambs in this pandemic.
 
       #IAmAndIWill #WorldCancerDay
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/Jo-Taylor-1014x1024.jpg"
     alt: "Jo Taylor"
     width: 640
     height: 646
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: "## Jo Taylor"
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/mary-huckle.jpg"
     alt: "mary huckle"
     width: 769
     height: 1024
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ## Mary Huckle
 
@@ -117,21 +117,21 @@ sections:
       I’m not sure what I’m more afraid of &#8230; cancer or Covid? I’m dreading the harsh winter as I want to get through it unscathed
 
       Covid has played havoc with my life in multiple ways this past year. 12 months ago I was NEAD and excitedly packing for a trip to New Zealand. 2 weeks into my trip lockdown commenced, and 2 weeks later I started to get strong chest pains, but was only able to consult on the phone. Eventually I caught a consulate flight, and a large new tumour was discovered in my sternum. Usually I survive new treatment (side effects) with visits to/from others, but right now all I see are my bubble family and medical teams (and I am currently in hospital with breathing difficulties). As I know I have a shortened life expectation, I feel that lockdown is taking away many opportunities, as well as limiting access to treatments such as lymphatic drainage massages which make a huge difference to quality of life.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/bex-1024x768.jpg"
     alt: "bex"
     width: 640
     height: 480
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: "## Dr Bex"
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/Sarah-Hughes-rotated.jpeg"
     alt: "Sarah Hughes"
     width: 480
     height: 640
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ## Sarah Hughes
 
@@ -145,21 +145,21 @@ sections:
       Occasionally the stress spills over and I end up crying down the phone to my elderly mam or screaming at my husband for the smallest mishap.  
       Then the guilt then sets in because I know I’ve broken their hearts.  
       The mental health impact of covid on cancer patients has to be huge.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/angela-oliver.jpg"
     alt: "angela oliver"
     width: 640
     height: 676
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: "## Angela Oliver"
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/connie-Johncock.jpg"
     alt: "connie Johncock"
     width: 853
     height: 853
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ## Connie Johncock
 

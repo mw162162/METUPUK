@@ -8,7 +8,7 @@ imageAlt: "Carole Pollard for MM Blog"
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Do you remember what you were wearing on 1 December 2019? Probably not. I do though. I was wearing a blue Valencia Marathon t-shirt, an exhausted but elated perma-grin and a shiny medal round my sweaty neck. That was the last moment I’d ever feel so carefree and invincible. Later that day, I found the lump that would go on to be diagnosed initially as stage two primary breast cancer, and then two months later, the biggie, the dinner party guest nobody wants: stage four metastatic breast cancer with extensive spread throughout my skeleton. At 38. A broken spine, crutches and a less-than-ideal chemo experience were my new reality while the rest of the country slipped into a dystopian covid nightmare.
 

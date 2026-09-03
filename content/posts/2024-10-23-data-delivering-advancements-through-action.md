@@ -12,7 +12,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **D**elivering **A**dvancements **T**hrough **A**ction
 

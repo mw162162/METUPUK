@@ -11,7 +11,7 @@ categories:
   - "living-with-mbc"
   - "patient-advocacy"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       At the End of May 2024 Madeleine attended an event at the offices of the Economist on **Pioneering person-centred breast cancer care.**  This event was part of a wider project looking at care in Europe with a focus on five countries &#8211; *France, Germany, Italy, Spain and the UK.*
 

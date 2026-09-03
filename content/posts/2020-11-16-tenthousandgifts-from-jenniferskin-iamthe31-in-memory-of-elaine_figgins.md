@@ -8,7 +8,7 @@ imageAlt: "Jennifer Young Gift montage"
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <a href="https://www.beautydespitecancer.com/" rel="noopener" target="_blank">Jennifer Young</a> specialist skincare products are designed to combat some of the side-effects of treatment for cancer: dry, sore, itchy, flaky and sensitive skin. She is gifting 10,000 skincare products from her Beauty Despite Cancer brand, in support of cancer patients and small charities to encourage ongoing breast cancer awareness.
 

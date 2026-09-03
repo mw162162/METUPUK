@@ -8,7 +8,7 @@ imageAlt: "Drug Bottles"
 categories:
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Every patient with metastatic cancer knows that at some point their oncologist will tell them that their treatment must be changed.  This point is normally reached when cancer has progressed on current drugs.  Perhaps symptoms have worsened to show that the treatment isn’t working, or perhaps progression is noted on a routine scan.  Either way, the news of a treatment change is distressing.  **It’s one step closer to the day when we are told there are no more treatment options.** It’s a step closer to the day when we die of cancer.
 

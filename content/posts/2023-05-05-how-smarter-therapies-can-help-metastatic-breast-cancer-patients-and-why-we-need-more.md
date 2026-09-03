@@ -8,7 +8,7 @@ imageAlt: "Why we need MBC research more than ever"
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       At METUPUK, we campaign for new and better therapies for patients with secondary breast cancer. One of our recent campaigns, #TrodelvyNow helped to make a new type of drug, Trodelvy (sacituzumab govitecan) available for SBC patients in the UK. Scientist and METUPUK volunteer, Helen, explains how Trodelvy works and why it’s important that more drugs like this get to patients urgently.
 
@@ -21,13 +21,13 @@ sections:
       We urgently need better and kinder treatments for metastatic TNBC. This is why METUPUK campaigns for more research and improved drug access to allow metastatic breast cancer patients to stay #BusyLivingWithMets.
 
       We need improvement at every stage of the drug development process: more research into metastatic disease to identify targets, faster drug delivery pipelines, more equitable access to clinical trials and a faster approvals process. Metastatic breast cancer patients cannot afford to wait 15 years for the next discovery to become a treatment!”
-  - type: "image"
+  - _template: "image"
     src: "/media/2022/05/Helen-Matthews-headshot.jpg"
     alt: "Helen Matthews headshot"
     width: 559
     height: 667
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       By Helen Steele
 

@@ -6,7 +6,7 @@ modified: "2023-05-26T00:20:16"
 image: "/media/2023/05/Sandys-blog-768x768.jpg"
 imageAlt: "Sandy’s blog"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Sandy Sexton, patient advocate for METUPUK, is campaigning in Scotland on behalf of secondary/metastatic Breast Cancer patients. In October last year, after 18 months of debilitating back pain, Sandy was diagnosed with metastatic breast cancer. At diagnosis, the disease had already spread throughout her skeleton (this is known as a “de novo diagnosis). The cancer had weakened her bone structure and caused six vertebrae to collapse, meaning she lost more than four inches in height. Sandy continues to live with bone pain. She is supporting METUPUK and the promotion of our infographics for use in Scotland. NHS England has adopted them but they are not yet used in Scotland.
 

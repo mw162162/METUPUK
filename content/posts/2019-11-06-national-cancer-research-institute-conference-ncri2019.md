@@ -8,7 +8,7 @@ imageAlt: "NCRI Banners"
 categories:
   - "conferences"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Early start Sunday 3rd November off to Glasgow for a 3 days conference (see <a href="https://www.icr.ac.uk/news-features/ncri-2019" rel="noopener" target="_blank">collected data on the NCRI page</a>).
 

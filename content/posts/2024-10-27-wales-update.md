@@ -12,7 +12,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       As many of you know, our beautiful Welsh dragon, Tassia Haines sadly died in March 2024.
 

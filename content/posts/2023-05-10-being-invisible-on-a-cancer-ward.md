@@ -6,7 +6,7 @@ modified: "2023-05-10T08:05:10"
 image: "/media/2023/05/Tass-MMay-2023.jpg"
 imageAlt: "Tass MMay 2023"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Tassia Haines &#8211; METUPUK (Wales) member, patient advocate &amp; fantastic artist.
 

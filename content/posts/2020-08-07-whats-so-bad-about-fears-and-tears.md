@@ -8,7 +8,7 @@ imageAlt: "metupuk logo icon"
 categories:
   - "quality-of-life"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I&#8217;m 36 years old and I&#8217;m dying of secondary breast cancer. As a result I&#8217;m petrified 24/7. I&#8217;m currently waiting for scan results that will tell me if my current treatment is still working. I&#8217;m scared. But I know that if I post my feelings on Twitter and Facebook that my feelings will be invalidated. Not by mean people, but by people trying to be kind and encouraging me to be **positive**. Oh how I fu\*king hate that word!
 

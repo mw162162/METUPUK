@@ -8,16 +8,16 @@ imageAlt: "FB-1920×1080-11.Sally-Nyland"
 excerpt: "Name: Sally NylandAge: 45Region: Derbyshire Diagnosis: Primary DX June 2019 (Triple Negative). MBC Dx November 2020 Age at Diagnosis: 43 Hi my name is Sally. I live in Derby with my husband, Steve,…"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name:** Sally Nyland **Age:** 45 **Region:** Derbyshire  **Diagnosis:** Primary DX June 2019 (Triple Negative). MBC Dx November 2020
 
       **Age at Diagnosis:** 43
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#sally-nyland"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Hi my name is Sally. I live in Derby with my husband, Steve, and my 2 boys, James and Joseph, and Stanley our black Labrador.
 

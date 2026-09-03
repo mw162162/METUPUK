@@ -11,7 +11,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       *Sadly our Kit @Diamondtrees11 died on Monday 7th May 2023*
 

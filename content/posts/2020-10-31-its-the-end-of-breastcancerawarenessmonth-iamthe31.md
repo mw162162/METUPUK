@@ -8,29 +8,29 @@ imageAlt: "Tassia Cartoon - limited options"
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: "As &#8216;Breast Cancer Awareness Month&#8217; comes to an end, and as we prepare for November in which awareness focuses upon Lung and Pancreatic cancers, we think about the work that we have done with [#IAmThe31](/i-am-the-31/)."
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "https://www.youtube.com/embed/pkvXtQxGTf0"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       We&#8217;ve had a huge amount of [engagement and interaction online](/2020/10/the-pink-positivity-is-exhausting-when-it-ignores-iamthe31/), which is great, but what we really want to see, is 0ur needs (better research, better treatment options, better government policy) making a dent in people&#8217;s consciousness. Much of the month, however, has been a feast of pink, about awareness of new cancers (which is fine/important), with very little focus on secondary breast cancer (you know, the one that kills), even on 13th October, which is the one day designated for awareness for Secondary Breast Cancer.
 
       ## #IAmThe31 Activities
 
       We have been doing a [number of activities](/2020/10/iamthe31-31-days-31-activities-3-1-distances/) around the number 31 (the number of people who die from secondary breast cancer in the UK every day) to raise awareness and <a href="https://www.gofundme.com/f/metupuk" rel="noopener" target="_blank">funds</a>. Bex Lewis aimed to have an average of 3.1km walked per day on her phone &#8211; actually managed 3.2km over the past month (not bad considering she&#8217;s having chemotherapy every week); Joanne Myatt was keeping track of 31 women who are living with, or have died from secondary breast cancer:
-  - type: "quote"
+  - _template: "quote"
     text: "Day 30: #IAmThe31 Today’s post is about mine and my sister’s experience of breast cancer. See post https://t.co/O7Ex9WJgag#IAmThe31 #BCAM #BreastCancerAwarenessMonth #BreastCancer #SecondaryBreastCancer #MetastaticBreastCancer #BusyLivingWithMets@METUPUKorg @abcdiagnosis pic.twitter.com/BbvOBvNMPp — Joanne Myatt (@JoanneMyatt25) October 30, 2020"
     attribution: ""
-  - type: "prose"
+  - _template: "prose"
     body: "Founder Jo Taylor has been out walking 3.1miles per day since the middle of the month, and yesterday went for a walk with friends/supporters Alan and Gaynor Keyne who have been undertaking 31 activities for 31 days to help raise awareness."
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fgaynor.keane%2Fposts%2F10157766064062883&show_text=true&width=552&appId=214530165232352&height=830"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       We&#8217;re incredibly thankful to all those of you who have supported us, liked and shared our content, asked us questions, and <a href="https://www.gofundme.com/f/metupuk" rel="noopener" target="_blank">contributed to our fund</a>.
 

@@ -12,7 +12,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       A friend a few weeks ago recently joined the statistic of 31 women that die every day of metastatic breast cancer, and we just hear the same words and comments.
 

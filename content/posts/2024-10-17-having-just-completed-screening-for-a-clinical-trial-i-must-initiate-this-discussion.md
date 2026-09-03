@@ -12,7 +12,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Having just completed screening for a clinical trial I must initiate this discussion. Trials offer treatments not otherwise available – so with limited treatments available, it’s without question that I consider clinical trials. However, researching, discovering &amp; getting on a trial is not without tribulation. As a nurse I am confident to research &amp; question clinical staff but this shouldn’t be necessary &#8211; clinical trials discussions should be offered as standard. Instead, more often than not, when there is progression, patients are moved onto the next standard treatment. Considering trials have strict eligibility criteria, patients can miss a window of opportunity: by having a specific drug, by having mets in a certain place, having specific side effects, their general health being too poor or having had too many treatments – all of these are reasons you can be rejected for trials. This must change, clinical trials should be considered routinely as options for patients.
 

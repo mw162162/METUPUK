@@ -8,7 +8,7 @@ imageAlt: "metupuk logo icon"
 categories:
   - "fundraising"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Dear Delyth,
 

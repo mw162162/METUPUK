@@ -8,7 +8,7 @@ imageAlt: "Asha blog photo"
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Oh how I wished it was a walking journey! That I could deal with! But in the last 6 months my oncologist’s quest to get me to have this PIKC3A targeted drug, was admirable, and left us on a roller coaster of emotions.
 
@@ -45,13 +45,13 @@ sections:
       METUPUK is constantly striving to bring increased information to the public and campaign for access to more treatments.
 
       I will continue to advocate for them. Please support the charity.
-  - type: "image"
+  - _template: "image"
     src: "/media/2023/04/Asha-blog-photo-768x1024.jpg"
     alt: "Asha blog photo"
     width: 640
     height: 853
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       By MetUpUK Member, Aisha Umrawsingh
 

@@ -9,15 +9,15 @@ excerpt: "MetUpUK Member Tassia discusses “Going Backwards. Cutting Corners fo
 categories:
   - "education"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: "MetUpUK Member Tassia discusses &#8220;Going Backwards. Cutting Corners for Breast Cancer Diagnosis&#8221;"
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "https://www.youtube-nocookie.com/embed/P_XdcEw-j7k"
     title: "YouTube video"
-  - type: "prose"
+  - _template: "prose"
     body: "Find out more about what Tass is discussing below;"
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/03/tass--1024x674.jpg"
     alt: "Tass"
     width: 640

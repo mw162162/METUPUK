@@ -8,7 +8,7 @@ imageAlt: "iamthe31 poster"
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **#IAmThe31**
 

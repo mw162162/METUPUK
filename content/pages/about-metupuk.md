@@ -6,7 +6,7 @@ modified: "2024-06-18T07:22:58"
 image: "/media/2021/09/iStock-145995617-1024x683.jpg"
 imageAlt: "<p>METUPUK is the ONLY patient advocacy group in the UK.</p>"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <a href="#">
 

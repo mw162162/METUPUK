@@ -8,11 +8,11 @@ imageAlt: "Screenshot of METUPUK graphic created by Emma Fisher"
 categories:
   - "education"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: "Today, Wednesday 18 November 2020 , marks a sad milestone for secondary breast cancer this year. It is the day when statistics show that we&#8217;ll reach 10,000 deaths for the year so far. That is 322.5 days of 31 British people (mostly women) a day dying of the pink cancer, the so called &#8216;easy cancer&#8217; (and doesn&#8217;t even include numbers for any other cancers)."
-  - type: "html"
+  - _template: "html"
     html: "<video width=\"640\" height=\"640\" controls playsinline><source type=\"video/mp4\" src=\"http://metupuk.org.uk/wp-content/uploads/2020/11/2020-11-17-18.48.53.mp4?_=1\" ><a href=\"/media/2020/11/2020-11-17-18.48.53.mp4\">http://metupuk.org.uk/wp-content/uploads/2020/11/2020-11-17-18.48.53.mp4</a></video>"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <em>Royalty free music by <a href="https://www.bensound.com/" rel="noopener" target="_blank">BenSound</a></em>
 

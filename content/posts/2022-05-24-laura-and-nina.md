@@ -10,14 +10,14 @@ categories:
   - "education"
   - "living-with-mbc"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Laura has been living with metastatic breast cancer for 14.5 years, and Nina was diagnosed less than a year ago.
 
       They have been friends since they were teenagers.
 
       Join them as they chat about finding out their cancer was incurable, and how they have lived with the knowledge ever since.
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "https://www.youtube-nocookie.com/embed/WEvRKMmS2OU"
     title: "YouTube video"

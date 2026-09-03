@@ -7,7 +7,7 @@ image: "/media/2021/10/FB-1920x1080-27.Helen-Stewart-1024x576.png"
 imageAlt: "FB-1920×1080-27.Helen-Stewart"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name.**  Helen Stewart
 
@@ -16,11 +16,11 @@ sections:
       **Region.** Wirral, Merseyside
 
       **Diagnosis.** Age 54 Primary diagnosis January2020 after finding &#8220;a lump&#8221;,  mastectomy Feb2020, and then followed swiftly by MBC diagnosis March2020 at staging CT/MRI scans). Nodules in lungs, and spine mets. ER+ HER2-
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#helen-stewart"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Hi, I am Helen. I live in Wirral with husband James. We have 5 children, all grownup and left home now, so it has become very quiet here!
 

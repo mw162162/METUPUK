@@ -8,7 +8,7 @@ imageAlt: "METUP Facebook Frame"
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Within your social media profiles, it is possible to add &#8216;frames&#8217; around your picture, to show your affiliation and support for a particular campaign. For Breast Cancer Awareness month, as METUP UK continues to [fight for more attention to be paid to secondary breast cancer](/aims-and-objectives/), we have created a frame that you can add to your Facebook profile picture, and we would really appreciate your support for this. It looks like this:
 

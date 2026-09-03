@@ -8,16 +8,16 @@ imageAlt: "FB-1920×1080-20.Chloe-Franklin"
 excerpt: "Name: Chloe FranklinAge: 28Region: Greater Manchester Diagnosis: De novo ER+ metastatic cancer with spread to liver and bones. Age at Diagnosis: 27 Hi! I’m Chloe and I live in Manchester, working in…"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <strong>Name: Chloe Franklin<br>Age: 28<br>Region: Greater Manchester<br><br>Diagnosis: </strong>*De novo ER+ metastatic cancer with spread to liver and bones.*
 
       **Age at Diagnosis: 27**
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#chloe-franklin"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Hi! I’m Chloe and I live in Manchester, working in the hospitality industry with my boyfriend Alex and our kitten Lafayette (he’s a French revolutionary war hero-the cat, not the the boyfriend).
 

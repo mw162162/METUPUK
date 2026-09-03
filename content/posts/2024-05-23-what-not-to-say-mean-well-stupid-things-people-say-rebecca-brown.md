@@ -13,13 +13,13 @@ categories:
   - "quality-of-life"
   - "social-media-campaign"
 sections:
-  - type: "image"
+  - _template: "image"
     src: "/media/2024/05/23rd-May-Mean-Well-Poem.png"
     alt: "23rd May Mean Well Poem"
     width: 1080
     height: 1080
     caption: ""
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "https://www.youtube.com/embed/-wQ4qOJ6yVU?feature=oembed"
     title: "Mean Well"

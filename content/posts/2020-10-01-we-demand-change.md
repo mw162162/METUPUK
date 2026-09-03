@@ -8,7 +8,7 @@ imageAlt: "METUP UK Demands Change: Infographic highlighting relevant stats and 
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <img src="/media/2020/10/2020-10-01-13.03.17-240x300.jpg" alt="METUP UK Demands Change: Infographic highlighting relevant stats and the changes the METUP is calling for. " width="240" height="300" loading="lazy" decoding="async">Are you wondering what you can do to support <a href="https://www.instagram.com/explore/tags/secondarybreastcancer/" rel="noopener" target="_blank">#SecondaryBreastCancer</a> patients during <a href="https://www.instagram.com/explore/tags/breastcancerawarenessmonth/" rel="noopener" target="_blank">#BreastCancerAwarenessMonth</a>?
 

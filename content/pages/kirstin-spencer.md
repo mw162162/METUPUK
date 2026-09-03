@@ -7,7 +7,7 @@ image: "/media/2021/10/FB-1920x1080-19.Kirstin-Spencer-1024x576.png"
 imageAlt: "FB-1920×1080-19.Kirstin-Spencer"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name:** Kirstin Spencer
 
@@ -20,11 +20,11 @@ sections:
       Breast Cancer grew in mastectomy scar unchecked, so it metastasised to skin, lymph nodes and most bones.
 
       **Age at diagnosis:** 45 (primary breast cancer) and 48 (metastatic breast cancer)
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#kirstin-spencer"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Hi, my name is Kirstin and I live near Cheltenham with my husband, daughter and cat.
 

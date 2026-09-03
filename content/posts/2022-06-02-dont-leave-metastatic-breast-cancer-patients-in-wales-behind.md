@@ -10,7 +10,7 @@ categories:
   - "patient-advocacy"
   - "policy"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       A new campaign in Wales, by MetUpUK member Tassia Haines, aims to draw attention to the fact that Metastatic Breast Cancer (MBC) patients feel that they are being failed by the Welsh Government.
 
@@ -23,32 +23,32 @@ sections:
       There is an open letter to the Welsh minister of health and social services that we are asking all our supporters with MBC or care for those with MBC in Wales to <a href="https://www.mbcwales.co.uk/open-letter" rel="noopener" target="_blank">sign</a> to show that there is a need for a petition.
 
       Tassia was diagnosed with incurable breast cancer in 2020 at just 28 years old, currently she is receiving treatment from two Welsh health boards. She has been supported and has been working with a small team, which includes Marguerite Hollloway, who specialises in improving MBC care in Wales through Macmillan and Ann Baker BEM, now retired MBC Oncology Clinical Nurse Specialist.
-  - type: "image"
+  - _template: "image"
     src: "/media/2022/06/IMG_20220513_171044_250.webp"
     alt: ""
     width: 1080
     height: 592
     caption: ""
-  - type: "image"
+  - _template: "image"
     src: "/media/2022/06/20220512_1657291-498x1024.jpg"
     alt: ""
     width: 498
     height: 1024
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       As part of the campaign Tassia has also created a large piece of street art in Port Talbot, ‘<a href="https://www.mbcwales.co.uk/down-for-maintenance" rel="noopener" target="_blank">The Gammon Dragon’</a>.
 
       Tassia Haines says “The dragon is named after my friend, and MBC campaigner, Carolyn Gammon, who died in September 2020 from her metastatic breast cancer. The pink neon dragon aims to ‘yank’ people from their usual walk into town. It glows as a bright sign to signal action, and has been created to draw attention to the way that the usual pink breast cancer campaigns fail the 31 people who die from metastatic breast cancer every day, and remains the biggest killer of women under 50 in the UK.
 
       **A full update on the progress of ‘The Gammon Dragon’ can be found <a href="https://www.mbcwales.co.uk/down-for-maintenance" rel="noopener" target="_blank">here</a> and Tassia is available for comment or interviews.**
-  - type: "image"
+  - _template: "image"
     src: "/media/2022/06/IMG_20220513_171044_3622.webp"
     alt: ""
     width: 640
     height: 352
     caption: ""
-  - type: "image"
+  - _template: "image"
     src: "/media/2022/06/IMG_20220505_203843_360.jpg"
     alt: ""
     width: 1200

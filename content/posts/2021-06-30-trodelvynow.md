@@ -9,7 +9,7 @@ categories:
   - "research"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Of all the subtypes of metastatic breast cancer, metastatic Triple Negative Breast Cancer (TNBC) is the hardest to treat with the worst prognosis. While new advances in the treatment of hormone positive MBC and Her2 MBC have helped some patients live for a number of years, average life expectancy for someone with metastatic TNBC is just 12-18 months. The only treatment options have traditionally been chemotherapy, with the accompanying harsh side effects and enormous impact on quality of life. About 15% of all MBC diagnoses are Triple Negative. While this may seem a small fraction of patients, given that 11,000 women die of MBC in the UK every year, this is 1650 women dying of metastatic TNBC each year. Given the aggressive nature of the disease, most of them die months, not years, after their advanced diagnosis. Triple Negative breast cancer also disproportionately affects <a href="https://www.medpagetoday.com/reading-room/asco/breast-cancer/82051" rel="noopener" target="_blank">young women</a> and<a href="https://www.futurity.org/triple-negative-breast-cancer-women-of-color-2102542/" rel="noopener" target="_blank"> women of colour.</a>
 
@@ -34,13 +34,13 @@ sections:
       In the meanwhile all UK mTNBC patients who have had at least two prior therapies could be advised to ask their oncologist to contact Gilead to access Trodelvy on a ‘named patient’ basis. As we understand it, Gilead is in the process of setting up a named patient programme and the more patients who contact them regarding access, the better. However, this scheme is not yet running and it too, is taking too long for some patients and **people are dying**. The wheels of change are **too slow** for this aggressive subtype of breast cancer.
 
       If you would like to help, we have designed a template letter for you to write to your MP (Download here).
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/05/laptop-1024x576.jpg"
     alt: "write to your MP"
     width: 640
     height: 360
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       If you would like to help, we have designed a template letter for you to write to your MP ([Download here](/media/2021/06/MP_Lobby_Letter_Sacituzumab.docx)).
 

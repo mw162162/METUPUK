@@ -12,7 +12,7 @@ categories:
   - "policy"
   - "research"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       METUPUK has joined the Northern Ireland Coalition (NICCC) and will work collaboratively with partner charities to improve outcomes for cancer patients in Northern Ireland.
 

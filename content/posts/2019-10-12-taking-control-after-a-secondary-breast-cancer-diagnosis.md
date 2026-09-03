@@ -9,7 +9,7 @@ categories:
   - "diagnosis"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I was diagnosed with primary and secondary breast cancer in March 2015. The first couple of months were spent being directed by medical staff (they were amazing!). I had two operations, a corpectomy and a hip replacement. I was prescribed various medications for cancer, pain relief and to induce menopause. I felt very powerless.
 

@@ -13,7 +13,7 @@ categories:
   - "quality-of-life"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       *METUPUK patient advocate Carole describes her experience of whole brain radiation for suspected leptomeningeal disease (LMD).*
 

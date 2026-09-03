@@ -10,7 +10,7 @@ categories:
   - "patient-advocacy"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I have been living with secondary breast cancer for 7 years, and am very aware that I’m one of the very lucky ones as the median life expectancy is 2-3 years.  The general public perception of breast cancer is that it’s ‘sorted’ – eg if you get it you will be fine.  But few people realise that when it metastases (spreads) to the organs as mine has, it cannot be cured. It is the biggest killer of women under 50 with over 11,000 women dying of it every year in the UK.
 

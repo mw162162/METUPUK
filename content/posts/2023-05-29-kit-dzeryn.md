@@ -11,7 +11,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Sadly our Kit @Diamondtrees11 died on Monday 7th May. Her husband Phillip contacted us with the tragic news.
 

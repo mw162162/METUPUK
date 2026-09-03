@@ -11,7 +11,7 @@ categories:
   - "patient-advocacy"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Under NICE rules, I would not be eligible to receive the medication that I am currently taking for my metastatic breast cancer on the NHS. I have been on my current drug regime since 2017, I am feeling really well, my disease is stable, and my scans are clear.
 
@@ -46,13 +46,13 @@ sections:
       <br>
 
       Over three years of taking this medication, six years on from my metastatic diagnosis, my scans are still clear, my disease is still stable, and my appointments are being spaced further and further apart to enable me to do more living! More than anything, I want other metastatic breast cancer patients to have the opportunity to stay well for longer than this drug combination has given me.
-  - type: "image"
+  - _template: "image"
     src: "/media/2020/09/15994055638803759585079456413478-Littlest-Birds-225x300.jpg"
     alt: "Emma Robertson"
     width: 225
     height: 300
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       By MetUpUK Member, Emma Robertson
 

@@ -12,7 +12,7 @@ categories:
   - "policy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       METUPUK members have done amazing things in the last two years and continue to do so.  Here is an update on the last two months:
 

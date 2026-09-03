@@ -8,7 +8,7 @@ imageAlt: "I Am the 31"
 categories:
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Hi my name is Kit and apparently I&#8217;m a stubborn cow! Now the person who told me that didn&#8217;t think it was a good thing. But for a secondary breast cancer patient it is a vital and life extending skill.
 

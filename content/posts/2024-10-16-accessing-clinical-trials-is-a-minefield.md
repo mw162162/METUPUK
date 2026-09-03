@@ -13,7 +13,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Accessing clinical trials is a minefield: firstly, you need to find a trial that you are eligible for, which can include factors such as your cancer sub-type, the receptors you carry or don’t carry, and the treatment lines you already received or haven’t received. Secondly, once you have identified a trial that you might be eligible for you then need a hospital that is running that trial.
 

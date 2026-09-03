@@ -13,7 +13,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       In our recent Metastatic May campaign, the theme was ‘The Cost of Living’. Living with metastatic breast cancer affects personal finances, careers, and overall income. But we also explored the financial aspects of drug approvals. This an important but challenging topic. Cancer treatments can be prohibitively expensive, because they cost a lot to develop. The NHS will only approve drugs that are deemed to be cost-effective (and of course safe).
 

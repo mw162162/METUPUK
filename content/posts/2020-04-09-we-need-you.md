@@ -8,7 +8,7 @@ imageAlt: "Quote"
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       When I came onto Twitter in the months after my treatment ended, it wasn’t to become an advocate. Honestly, I’m still not sure I’m anything more than an accidental one.
 

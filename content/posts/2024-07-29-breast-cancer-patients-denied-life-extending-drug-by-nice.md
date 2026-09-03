@@ -14,7 +14,7 @@ categories:
   - "research"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **A cancer drug which received standing ovation from the Global Medical Community is being withheld from NHS breast cancer patients.**
 

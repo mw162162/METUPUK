@@ -8,7 +8,7 @@ imageAlt: "Laura Ashurst 2"
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       The human brain is hardwired to seek out danger. It’s part of being human, an inbuilt survival mechanism designed to protect us. Normal functioning of the mind enables us to project our thoughts to things and events in the future, and to past events, things that have already happened. This is an integral part of our survival mechanism, stimulating our stress response, and although it is a normal part of human functioning, it often doesn’t serve us well from a mental health perspective. It can limit our ability to truly enjoy the present moment and means that we miss such a lot of what’s going on around us as our human mind detaches us from our present moment experience.
 

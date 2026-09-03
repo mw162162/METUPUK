@@ -10,7 +10,7 @@ categories:
   - "living-with-mbc"
   - "member-stories"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       31 life size figures of women are now set to tour the UK as an interactive campaign to raise awareness of issues surrounding secondary breast cancer after a small residency with the support of The Corn Exchange in Manchester.
 

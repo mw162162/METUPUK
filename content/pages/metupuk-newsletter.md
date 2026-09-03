@@ -7,7 +7,7 @@ image: "/media/2021/04/cropped-busy-living-with-mets-768x192.png"
 imageAlt: "cropped-busy-living-with-mets.png"
 parent: "help-us"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Sign up to our newsletter and we’ll let you know when we make updates to the website, have a new campaign to launch, or share some of the work we are doing. We won’t be emailing every week and will not share your details with anyone else. Promise.
 

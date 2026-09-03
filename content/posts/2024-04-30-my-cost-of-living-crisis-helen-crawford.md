@@ -6,7 +6,7 @@ modified: "2024-04-30T01:08:44"
 image: "/media/2024/04/IMG-20240427-WA0021.jpg"
 imageAlt: ""
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I was just 39 years old, a mother of three young girls, facing a life expectancy of two to three years post-secondary breast cancer diagnosis. My chance to see my girls grow up and live full lives, obliterated by a few terrifying words from a complete stranger.
 

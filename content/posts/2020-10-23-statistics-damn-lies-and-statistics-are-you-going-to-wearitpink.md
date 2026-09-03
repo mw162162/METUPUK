@@ -8,29 +8,29 @@ imageAlt: "2020-10-21 19.03.50"
 categories:
   - "education"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: "Today is <a href=\"https://twitter.com/hashtag/wearitpink?src=hashtag_click\" rel=\"noopener\" target=\"_blank\">#WearItPink</a> Day headed by <a href=\"https://twitter.com/BreastCancerNow\" rel=\"noopener\" target=\"_blank\">Breast Cancer Now</a>:"
-  - type: "quote"
+  - _template: "quote"
     text: "‘They sat me down and gave me those three horrible words… I went into hospital on Tuesday at 9am and by the Thursday afternoon I’d had a mastectomy.’ Read about Ken’s breast cancer diagnosis and why he’s supporting #wearitpink today @TheSun https://t.co/UY1JjPWfWn — Breast Cancer Now (@BreastCancerNow) October 23, 2020"
     attribution: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ## Do we need trigger warnings?
 
       The question of the [pinkification of breast cancer](/2020/10/the-pink-positivity-is-exhausting-when-it-ignores-iamthe31/), which the breast cancer charities clearly find works in encouraging awareness and fundraising, has got the creative juices going for our resident cartoonist &#8211; Tassia Haines (whose blog is called &#8216;pink is not my colour&#8217;)!
-  - type: "image"
+  - _template: "image"
     src: "/media/2020/10/2020-10-21-19.04.29-727x1024.jpg"
     alt: "Tassia Haines Cartoon - Trigger Warning"
     width: 640
     height: 901
     caption: "Click on image for Tassia’s blog post"
-  - type: "prose"
+  - _template: "prose"
     body: "Tassia was responding to a conversation around a Facebook post by Breast Cancer Now, where they stated that 30% of those who have primary breast cancer are likely to end up with secondary breast cancer. A number of users didn&#8217;t want to see this kind of content (and the stats do appear to have been removed) and complained that trigger warnings were needed:"
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fbreastcancernow%2Fposts%2F10158429456205306&show_text=true&width=552&appId=214530165232352&height=560"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ## Are we statistics?
 
@@ -39,10 +39,10 @@ sections:
       Like everyone, we have decisions to make about how we spend our time &#8211; do we carve out more time to see friends and family.. and do we write our wills and make funeral plans (shouldn&#8217;t we all, regardless)? Life insurance companies currently use statistics to decide whether to pay out. Bex is currently asking questions about whether she should retire early, depending upon <a href="https://drbexl.co.uk/2020/10/20/cancer-scan-results-are-back-and-the-tumours-have-shrunk/" rel="noopener" target="_blank">her prognosis</a> (although her oncologist tends not to talk numbers in relation to the individual!) &#8211; or whether it is more helpful to keep brain active despite the side effects from ongoing treatment.
 
       Another of our members, Emma, recently posted about having to move onto the next treatment line, and the sinking feeling as you realise that&#8217;s another option gone (although we hear from others who were given 6 months, put on a trial drug, and still going 5 years later, so none of us ever &#8216;know&#8217;):
-  - type: "quote"
+  - _template: "quote"
     text: "View this post on Instagram This last week has been somewhat of a cancer reality check. My scan results are in. Things are not as I’d hoped. But are exactly what I knew was coming at some point. Because it’s been coming for a year now – Progression. Not a huge amount. No spread to any new areas, but growth of the cancer in my chest. More than we’re comfortable with. So it means a change. Specifically, a drug change. Line 2 of treatment. Herceptin and TDM1 now. You might not, (if you’re not part of the cancerarti) know this but my treatment options aren’t unlimited. They are, in fact, extremely limited – and when you run out of treatment options, you run out of time. Moving from first line treatment to second is a big step. Because there are probably only about 5 treatment options available to me right now, including trials, so to move from first to second treatments isn’t something I’m taking lightly. But it’s something I’m doing. As of next week. . . ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ .⠀⠀⠀ . . . . . .⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ .⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ #IAmThe31 #secondarybreastcancer #metupuk #cancerthriver #metup #metastaticbreastcancer #breasties #walkingmiracles #dyingforacure #womenwithcancer #stageivneedsmore #researchnotribbons #thriver #secondarysisters #cancersucks #cancerrightnow #fuckcancer #emmaVcancer #ybcn #thegramgang #BreastCancerAwareness #standup2cancer #su2c #breastcancerawareness #busylivingwithmets A post shared by | (@ohgoshem) on Oct 22, 2020 at 8:32am PDT"
     attribution: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ## What are the statistics?
 

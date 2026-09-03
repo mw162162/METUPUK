@@ -8,7 +8,7 @@ imageAlt: "Nurse comforting patient - Paliative Care"
 categories:
   - "quality-of-life"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Hi, I’m Kat, and I’m a nurse at Dr Kershaw’s Hospice in Oldham.  You’ve heard from me before and today I wanted to share with you my experiences of supporting Becky, an incredible woman living with metastatic breast cancer, and my thoughts on what I hope early hospice care was able to contribute to her life.
 
@@ -21,30 +21,30 @@ sections:
       Becky died in the Hospice in September 2021, with her husband by her side and cared for by a clinical team that she knew and, I think, felt safe and comfortable with.  She was busy living with mets all the way to the end of her life—the value she placed on making memories and living well for as long as she could never faltered.  I think about her often—her gentle nature, her kindness, her gratitude for any support I offered, her nerves and uncertainty, her wobbles and her fears, her dignity and courage in advocating for herself and her medical care, her determination to put things in place to support the people she loved after her death.  I feel really lucky to have known her and been able to play a part in her care.
 
       Since her death, and inspired by Becky’s own drive to seek out people with similar experiences and to share her story to support others, we at the Hospice, with the support of Becky’s husband, are in the process of setting up a project to support people affected by metastatic disease and other life-limiting illnesses to share and record their stories.  We hope that this will be a means of bringing people living with mets together and offering support that is not clinically or even necessarily disease-focussed.  In this way, Becky remains very much a part of life here at the Hospice.
-  - type: "image"
+  - _template: "image"
     src: "/media/2022/05/kat-harding.jpg"
     alt: "Kat harding"
     width: 223
     height: 294
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       By Kathryn Harding, Bereavement Support Nurse
 
       <a href="http://www.drkh.org.uk/" rel="noopener" target="_blank">www.drkh.org.uk</a>
-  - type: "image"
+  - _template: "image"
     src: "/media/2022/05/kershaw.png"
     alt: "Kershaw"
     width: 600
     height: 200
     caption: ""
-  - type: "image"
+  - _template: "image"
     src: "/media/2022/05/kershaw-1.png"
     alt: "Kershaw 1"
     width: 162
     height: 50
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <a href="https://www.facebook.com/drkershawshospice/" rel="noopener" target="_blank">
       							<img width="51" height="51" src="/media/2022/05/kershaw-fb.png" alt="Kershaw fb" loading="lazy" decoding="async">								</a>

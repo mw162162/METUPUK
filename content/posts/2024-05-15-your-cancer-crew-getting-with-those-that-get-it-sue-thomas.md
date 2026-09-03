@@ -9,7 +9,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       In April 2021, when I was told that I had de novo (straight to Stage 4) metastatic breast cancer, this rocked our world as a family and changed our lives forever.
 

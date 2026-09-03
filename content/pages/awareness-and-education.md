@@ -7,7 +7,7 @@ image: "/media/2019/10/resources-montage-1024x576.png"
 imageAlt: "resources-montage"
 parent: "aims-and-objectives"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ## MBC is currently incurable. MBC is significantly under-represented in the “pink” celebratory marketing of many breast cancer fundraising campaigns.
 

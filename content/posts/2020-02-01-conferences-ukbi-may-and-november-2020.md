@@ -8,7 +8,7 @@ imageAlt: "Microphone in front of conference crowd"
 categories:
   - "conferences"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       \*\*\*SAVE THE DATES\*\*\*
 

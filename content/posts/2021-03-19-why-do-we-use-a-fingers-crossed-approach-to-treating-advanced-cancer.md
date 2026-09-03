@@ -10,7 +10,7 @@ categories:
   - "research"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I remember first hearing about genomics testing for cancer, about a year after my diagnosis of secondary breast cancer.  I had failed on every line of treatment I’d been given, was fast running out of options and looking for a lifeline.
 
@@ -27,12 +27,12 @@ sections:
       The promise of precision medicine – getting the right medicine to the right patient at the right time – could become a reality and save many cancer lives.  But it depends on genomic testing becoming routine.  We need to test patients as soon as their cancer becomes metastatic, and every time it progresses to see how the cancer DNA has mutated and what their next best treatment option is.  This would deliver a sea change in survival.
 
       So let’s get rid of the fingers crossed, lucky 4 leaf clover approach to people’s lives and use science instead.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/lesley-stephens.jpg"
     alt: "lesley stephens"
     width: 374
     height: 368
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: "By MetUpUK Member, Lesley Stephens"
 ---

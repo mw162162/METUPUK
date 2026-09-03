@@ -10,7 +10,7 @@ categories:
   - "living-with-mbc"
   - "quality-of-life"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I think sometimes when those outside the cancer world imagine what treatment is like they think we go in, have some chemo, take some photos dancing around our IV pole and then go home and rest for a few days…. And don’t get me wrong I’m one of those people who have taken a cheeky chemo selfie and donned numerous items of leopard print to get me through those loooooooong days in the chemo ward, it&#8217;s like armour for what is essentially ritual poisoning!
 
@@ -25,12 +25,12 @@ sections:
       Cancer treatment is no fun. but needs must, right??  As someone with stage 4 cancer, what choice do we have?
 
       Take all the drugs and hope for the best…. And keep patching up those holes.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/12/IMG-20211217-WA0008-1024x1024.jpg"
     alt: ""
     width: 640
     height: 640
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: "By MetUpUK Member, Emma Hillier"
 ---

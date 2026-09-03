@@ -7,7 +7,7 @@ image: "/media/2021/10/FB-1920x1080-14.Emily-Roberts-1024x576.png"
 imageAlt: "FB-1920×1080-14.Emily-Roberts"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name:** Emily Roberts
 
@@ -18,11 +18,11 @@ sections:
       **Diagnosis**: two types of cancer in breast diagnosed in July 2020 diagnosed with mets after scans couple of weeks after primary diagnosis HER2+ one of my cancers is ER- one is ER+.Mets to spine and liver
 
       **Age at Diagnosis:** 29
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#emily-roberts"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       After finding a lump in my breast I went to the doctors right in the middle of the first covid lockdown. I was sent to the hospital and at this point one lump had changed to two lumps.
 

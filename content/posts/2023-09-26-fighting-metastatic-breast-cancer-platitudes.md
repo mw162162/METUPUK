@@ -4,7 +4,7 @@ url: "/2023/09/fighting-metastatic-breast-cancer-platitudes/"
 date: "2023-09-26T19:08:55"
 modified: "2023-09-26T19:10:27"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Seagen Biotech company asked two metastatic breast cancer (MBC) advocates Eva Schumacher from Mamma Mia online German cancer magazine and patient living with MBC and myself Jo Taylor founder of After Breast Cancer Diagnosis and METUPUK to be involved in a campaign about “platitudes” ie about what you DON’T want to hear and what you DO want to hear from family members, friends etc when you are living with an incurable disease.
 

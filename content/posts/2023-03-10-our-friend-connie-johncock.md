@@ -8,7 +8,7 @@ imageAlt: "IMG-20201002-WA0006"
 categories:
   - "member-stories"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       METUPUK are devastated by the news that one of our Trustees and friend Connie Johncock has died.
 

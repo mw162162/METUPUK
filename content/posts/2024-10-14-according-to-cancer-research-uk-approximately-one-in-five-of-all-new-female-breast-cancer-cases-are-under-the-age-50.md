@@ -12,7 +12,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       According to Cancer Research UK, approximately one in five of all new female breast cancer cases are under the age 50 and around half are between 35 – 64 (<a href="https://www.cancerresearchuk.org/health-professional/cancer-statistics/statistics-by-cancer-type/breast-cancer/incidence-invasive" rel="noopener" target="_blank">https://www.cancerresearchuk.org/health-professional/cancer-statistics/statistics-by-cancer-type/breast-cancer/incidence-invasive</a>). These women are of working age and they are often at a stage of their lives when their career dominates. Many have caring commitments, either their own children under the age of 18, elderly parents or perhaps grandchildren. Often a breast cancer diagnosis will be their first experience of a severe disease.
 

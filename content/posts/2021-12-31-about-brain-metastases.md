@@ -10,7 +10,7 @@ categories:
   - "diagnosis"
   - "education"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       To follow on from the post about the death of [Leila](/2021/12/remembering-leila-asoko/), I would like to highlight some information about brain metastases and just a quick look on google provided this information.
 

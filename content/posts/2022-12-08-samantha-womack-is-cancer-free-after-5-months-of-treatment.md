@@ -7,7 +7,7 @@ image: "/media/2022/12/Cancerfree-1024x683.png"
 imageAlt: "<p>If a person has a heart attack, do they get told that they will never have a heart attack again and they are free of heart disease?</p>"
 excerpt: "If a person has a heart attack, do they get told that they will never have a heart attack again and they are free of heart disease?"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <a href="https://www.ok.co.uk/celebrity-video/samantha-womack-opens-up-really-28640632" rel="noopener" target="_blank">“Samantha Womack opens up to really difficult cancer journey in emotional video”</a>
 
@@ -24,13 +24,13 @@ sections:
       Therefore awareness is key for patients with a history of breast cancer. Knowledge of the red flag signs and symptoms of stage 4 breast cancer is as important as regularly checking for new lumps. Any red flag symptoms that last for more than 3 weeks should be reported to your surgeon or oncologist, or your GP if you are no longer under your hospital.
 
       [View the red flag infographics for the full details on the signs of MBC](/about-us/red-flag-sbcinfographic/)
-  - type: "image"
+  - _template: "image"
     src: "/media/2019/10/SBC-infographics-header-1024x499.png"
     alt: "Secondary Breast Cancer Infographics"
     width: 640
     height: 312
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       FYI breast cancer is lethal when it turns into Stage 4, secondary, metastatic, advanced breast cancer only. Primary BC does NOT kill anyone.
 
@@ -41,12 +41,12 @@ sections:
       The only thing a patient can control is their lifestyle, by eating well and taking regular physical activity in whatever form they can to support rehabilitation going forward. And even with all of this, there are no guarantees of your outcome.
 
       We. Demand. Change.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/06/jo-thank-you.jpg"
     alt: "Jo thank you"
     width: 330
     height: 558
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: "By MetUpUK Founder, Jo Taylor."
 ---

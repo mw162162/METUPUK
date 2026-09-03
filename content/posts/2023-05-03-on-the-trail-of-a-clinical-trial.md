@@ -11,7 +11,7 @@ categories:
   - "research"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       *First Published May 9th 2022*
 
@@ -58,13 +58,13 @@ sections:
       \*\*EU Clinical trials register – after a cursory 30 mins of varying methods to search I abandoned as it was possibly the least user-friendly site I had dealt with.
 
       \*\*WHO International Clinical Trials Registry Platform aggregates data from ClinicalTrials.gov, EU Clinical Trials Register (EU-CTR) and ISRCTN so wasn’t reviewed. The ‘recruiting’ filter didn’t work as expected either.
-  - type: "image"
+  - _template: "image"
     src: "/media/2022/05/kat-lee-734x1024.jpg"
     alt: "kat lee"
     width: 640
     height: 893
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       By MetUpUK Member, Katherine Lee.
 

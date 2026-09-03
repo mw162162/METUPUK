@@ -9,7 +9,7 @@ categories:
   - "patient-advocacy"
   - "quality-of-life"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       My **lymphoedema** started very abruptly. One night, I developed unbelievably bad pain in my arm and shoulder.  It was awful.  I showered, tried to rub it better.  When I went to bed, I stretched both arms out before me (as my left was still very painful) and realised that the painful arm was suddenly much bigger than the other.
 
@@ -34,7 +34,7 @@ sections:
       I co-presented at Imperial College’s Bio-Medical Research Centre about this project in November 2023, with Academic Researcher/Bioengineer Arushri Swarup, PhD.  The project could make such a difference to patients going forward and it seems to be going from strength to strength.
 
       It is a reminder to all of us, wherever we are, that there are many scientists and researchers with activist genes within their DNA who work hard to help us and are passionate about making a difference, to interweave their golden thread of hope into our lives so that many a tired soul may be comforted.
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "https://www.youtube.com/embed/0Zr7jmtrkOg?feature=oembed"
     title: "Lymphoedema Awareness"

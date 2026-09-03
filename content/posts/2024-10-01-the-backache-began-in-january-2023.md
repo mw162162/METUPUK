@@ -12,7 +12,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       The backache began in January 2023: I went to my GP and red flagged that I had had breast cancer (due to METUPUK infographics I knew of the warning signs), but I wasn&#8217;t referred for a scan.  It was treated like standard backache perhaps from stress, as I was already off-sick from work due to stress, exhaustion and PTSD.
 

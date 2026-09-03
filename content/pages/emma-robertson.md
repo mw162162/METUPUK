@@ -8,7 +8,7 @@ imageAlt: "FB-1920×1080-7.Emma-Robertson"
 excerpt: "Name: Emma RobertsonAge: 40Region: London Diagnosis: ER/PR+ HER2 – mixed lobular and ductal Age at Diagnosis: 31 at primary and 33 at secondary I was living on a narrowboat, continuously cruising…"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name:** Emma Robertson  
       **Age:** 40  
@@ -17,11 +17,11 @@ sections:
       **Diagnosis:** *ER/PR+ HER2 &#8211; mixed lobular and ductal*
 
       **Age at Diagnosis:** 31 at primary and 33 at secondary
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#emma-robertson"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I was living on a narrowboat, continuously cruising around London and working as a freelance electronics technician when I was diagnosed with breast cancer in 2013.
 

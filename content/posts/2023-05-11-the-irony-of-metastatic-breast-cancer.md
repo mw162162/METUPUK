@@ -12,7 +12,7 @@ categories:
   - "quality-of-life"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <table>
       <tbody>

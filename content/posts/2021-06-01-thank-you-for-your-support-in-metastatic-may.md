@@ -5,10 +5,10 @@ date: "2021-06-01T14:30:50"
 modified: "2023-05-12T10:15:49"
 excerpt: "Thank you so much to everyone who shared our messages this month. We hope that you learnt a few things on the way too. MetUpUk are the only patient advocacy group to address the issues we’ve been…"
 sections:
-  - type: "quote"
+  - _template: "quote"
     text: "View this post on Instagram A post shared by MET UP UK (@metupuk)"
     attribution: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Thank you so much to everyone who shared our messages this month.
 

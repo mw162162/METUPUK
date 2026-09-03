@@ -6,7 +6,7 @@ modified: "2024-11-05T17:03:10"
 image: "/media/2021/10/darker-pink-bg-1024x576.jpg"
 imageAlt: "THE DARKER SIDE OF PINK: UK-WIDE CAMPAIGN REVEALS THE REALITY OF LIVING WITH SECONDARY BREAST CANCER"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **THE DARKER SIDE OF PINK** WAS THE FOCUS OF OUR CAMPAIGN DURING CANCER AWARENESS MONTH 2021.
 

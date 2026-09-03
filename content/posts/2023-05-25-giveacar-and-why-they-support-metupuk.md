@@ -10,7 +10,7 @@ categories:
   - "member-stories"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <img src="/media/2023/05/Louise-Furneaux-263x300.jpg" alt="Louise Furneaux" width="263" height="300" loading="lazy" decoding="async">
 

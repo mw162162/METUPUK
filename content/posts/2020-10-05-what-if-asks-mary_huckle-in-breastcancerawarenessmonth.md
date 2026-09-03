@@ -8,7 +8,7 @@ imageAlt: "Mary Huckle, with METUP-UK frame, on Facebook"
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Mary Huckle, one of our members living with secondary breast cancer, shared an <a href="https://www.facebook.com/photo?fbid=10221382385981390&set=a.10207065308503401" rel="noopener" target="_blank">excellent Facebook post</a>, drawing out many of the themes that METUP-UK is concerned with. We bring you the text here:
 

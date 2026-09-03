@@ -9,7 +9,7 @@ excerpt: "METUPUK are very proud to announce their registration with the Charity
 categories:
   - "news"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ## METUPUK Announces Charity Status
 

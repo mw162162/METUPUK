@@ -8,7 +8,7 @@ categories:
   - "press"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ### The Scottish Medicines Consortium (SMC) has approved today:
 

@@ -13,7 +13,7 @@ categories:
   - "research"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Clinical trials are one of those things that no one really cares about until you need to. In the UK we have a pretty impressive cancer trial landscape that’s recognised as being in the top tier in the world. It’s also something which patients and the general public are proud of and keen to support; just think of all of the marathons, dances, cake sales and other activities over the course of a year that people do for charities to fund research. We’re all of the same belief that research is what will one day enable us to live a very long time with, or hopefully without, cancer.
 

@@ -7,7 +7,7 @@ image: "/media/2021/10/FB-1920x1080-28.Sarah-Barber-1024x576.png"
 imageAlt: "FB-1920×1080-28.Sarah-Barber"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name:** Sarah Walton
 
@@ -18,11 +18,11 @@ sections:
       **Diagnosis:**  Primary DX &#8211; December 2019 MBC DX denovo &#8211; March 2020   ER+ Metastatic Breast Cancer to the liver
 
       **Age at Diagnosis:** 42
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#sarah-barber"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Hello my name is Sarah and I live in Hull with my husband Tony and our son Jake who is 9.
 

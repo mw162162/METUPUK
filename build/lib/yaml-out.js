@@ -42,10 +42,52 @@ function yamlObject(obj, indent) {
     .join('\n');
 }
 
+// Which component a block is has two names, and this is the seam between them.
+//
+// On disk it is `_template`, because that is what Tina reads and the key is
+// hardcoded in its GraphQL layer. Everywhere in this codebase it is `type`,
+// because that is what a renderer, a splitter and an importer have always
+// called it and renaming it in all of them would be a large change to satisfy
+// a detail of one editor.
+//
+// So the translation happens here, at the one point where blocks become a file
+// and back. Reading tolerates either spelling, which is what lets the
+// migration run in any order without a broken build in between.
+const BLOCK_KEY_ON_DISK = '_template';
+
+function toDisk(front) {
+  if (!front || !Array.isArray(front.sections)) return front;
+  const sections = front.sections.map((b) => {
+    if (!b || typeof b !== 'object' || b.type === undefined) return b;
+    const out = {};
+    for (const [k, v] of Object.entries(b)) {
+      if (k === 'type') out[BLOCK_KEY_ON_DISK] = v;
+      else out[k] = v;
+    }
+    return out;
+  });
+  return { ...front, sections };
+}
+
+function fromDisk(front) {
+  if (!front || !Array.isArray(front.sections)) return front;
+  const sections = front.sections.map((b) => {
+    if (!b || typeof b !== 'object') return b;
+    if (b[BLOCK_KEY_ON_DISK] === undefined) return b;   // already `type`
+    const out = {};
+    for (const [k, v] of Object.entries(b)) {
+      if (k === BLOCK_KEY_ON_DISK) out.type = v;
+      else out[k] = v;
+    }
+    return out;
+  });
+  return { ...front, sections };
+}
+
 // The whole file: front matter and nothing else. A page's body lives in its
 // sections, not below the fence, so there is no third part to write.
 function contentFile(front) {
-  return `---\n${yamlObject(front, 0)}\n---\n`;
+  return `---\n${yamlObject(toDisk(front), 0)}\n---\n`;
 }
 
-module.exports = { contentFile, yamlObject, yamlValue, scalar };
+module.exports = { contentFile, toDisk, fromDisk, yamlObject, yamlValue, scalar };

@@ -8,16 +8,16 @@ imageAlt: "FB-1920×1080-22.Carole-Pollard"
 excerpt: "Name: Carole PollardAge: 39Region: Manchester Diagnosis: Stage 3, grade 3 HER2+ primary breast cancer diagnosed in December 2019. Bone mets diagnosed in February 2020 (likely there since diagnosis).…"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <strong>Name: Carole Pollard<br>Age: 39<br>Region: Manchester<br><br>Diagnosis: </strong>Stage 3, grade 3 HER2+ primary breast cancer diagnosed in December 2019. Bone mets diagnosed in February 2020 (likely there since diagnosis). Brain mets diagnosed in March 2021. Leptomeningeal disease diagnosed in April 2021.
 
       **Age at Diagnosis: 38**
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#carole-pollard"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       My name is Carole and I live in Manchester with my husband, Andy, and my tiny ginger cat, Flo.
 

@@ -9,7 +9,7 @@ categories:
   - "living-with-mbc"
   - "member-stories"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       One of the feelings I remember most about my treatment for primary breast cancer in 2013 is my strength leaving me… I was on my lunch break after starting chemotherapy (yes I worked through treatment – I was 31 and freelance) and it felt like my stomach muscles just turned to jelly and tumbled out onto the pavement (invisibly – nobody else had a clue what was going on).
 
@@ -40,13 +40,13 @@ sections:
       Distraction is my favourite strategy for dealing with the strange shadow cast by the metastatic cancer diagnosis. I’m still standing and I intend to make the most of it by staying #busylivingwithmets.
 
       You can read more about some of my adventures (in advocacy, beekeeping, on my bike, and in permaculture) on my infrequently updated<a href="https://littleemmabird.wordpress.com" rel="noopener" target="_blank"> blog</a>.
-  - type: "image"
+  - _template: "image"
     src: "/media/2019/10/Emma.png"
     alt: ""
     width: 400
     height: 400
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       By MetUpUK Member, Emma Robertson
 

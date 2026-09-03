@@ -11,7 +11,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I was just 39 years old, a mother of three young girls, facing a life expectancy of two to three years post metastatic (secondary) breast cancer diagnosis. My chance to see my girls grow up and live full lives, obliterated by a few terrifying words from a complete stranger.
 

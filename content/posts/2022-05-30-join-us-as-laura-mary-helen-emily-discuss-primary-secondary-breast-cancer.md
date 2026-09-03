@@ -11,11 +11,11 @@ categories:
   - "member-stories"
   - "patient-advocacy"
 sections:
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "https://www.youtube-nocookie.com/embed/RhQXBtf9uvM"
     title: "YouTube video"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Have you ever wondered what the relationship is like between primary and secondary breast cancer patients when they are talking about cancer?
 

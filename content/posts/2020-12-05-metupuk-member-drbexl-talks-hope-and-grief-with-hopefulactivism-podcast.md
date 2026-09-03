@@ -8,7 +8,7 @@ imageAlt: "The Hopeful Activists Podcast Logo"
 categories:
   - "press"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Last week METUPUK activist Bex Lewis spoke to Abigail Thomas for the Christian podcast &#8211; &#8216;<a href="https://hopefulactivists.captivate.fm/listen" rel="noopener" target="_blank">The Hopeful Activists</a>&#8216; &#8211; around the theme of grief and h0pe within the cancer experience:
 

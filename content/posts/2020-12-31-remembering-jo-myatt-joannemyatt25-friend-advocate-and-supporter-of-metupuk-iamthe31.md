@@ -8,7 +8,7 @@ imageAlt: "Jo Myatt (RIP)"
 categories:
   - "member-stories"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I met Jo 3 years ago at the Conservative Party conference as we were both involved with the Breast Cancer Care (BCC) conference stand.  When we met we realised we shared a passion to improve things for secondary breast cancer (SBC) patients.  The BCC stand had a very odd visual with a “hump bridge” for problems ahead – this looked like breasts (some people only have one or some have no breasts) and it **didn’t capture the loneliness, fear, isolation and the feel of being written off and ignored,** and the fact that there is so little data on SBC patients and little awareness of it as a killer disease.  A few of us in the initial discussions of the concept on the stand complained about this and another idea by the patient group was discussed and this new concept was approved instead.
 

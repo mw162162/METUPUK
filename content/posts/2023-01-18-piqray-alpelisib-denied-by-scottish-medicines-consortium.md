@@ -10,7 +10,7 @@ categories:
   - "patient-advocacy"
   - "policy"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       The Scottish Medicines Consortium (SMC) have decided against funding the metastatic breast cancer drug alpelisib (Piqray).  Piqray is a targeted metastatic breast cancer drug to be used in combination with fulvestrant for the treatment of postmenopausal women, and men, with hormone receptor (HR)-positive, human epidermal growth factor receptor 2 (HER2)-negative, locally advanced or metastatic breast cancer with a PIK3CA mutation after disease progression following endocrine-based therapy.
 
@@ -33,13 +33,13 @@ sections:
       We Demand Change.
 
       Kirstin Spencer METUPUK
-  - type: "image"
+  - _template: "image"
     src: "/media/2023/01/kirsten-spencer.jpg"
     alt: "Kirstin spencer"
     width: 600
     height: 600
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       By MetUpUK Member, Kirsten Spencer.
 

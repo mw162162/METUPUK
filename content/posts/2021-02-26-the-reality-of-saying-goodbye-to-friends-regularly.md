@@ -8,7 +8,7 @@ imageAlt: "The reality of living with death"
 categories:
   - "member-stories"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       There is a natural instinct when you are diagnosed with something like cancer to seek out like-minded folk. I assume it probably applies to a lot of situations. But the people you seek out when you have metastatic cancer are different from those you seek out when you’ve bought a classic car. Because whilst you’re all going to be very different in many ways, here’s the one thing you all have in common &#8211; You are all dying.
 
@@ -31,13 +31,13 @@ sections:
       It’s hard to explain to the healthy people in your life what living in a world so surrounded by death is like. And how, every time another one of your friends dies it means you have to shout a little bit louder, try a little bit harder to be heard. And it&#8217;d be easy for someone on the outside of cancer to ask why I&#8217;m still making friends with people with a MBC diagnosis if it&#8217;s so heartbreaking when they die, but think for a second about what that means&#8230;&#8230;because having cancer is incredibly lonely. Even your closest friends on the outside of cancer can&#8217;t begin to understand what it&#8217;s like. And now, just think about the most stressful situation in your life, and think about it if you didn&#8217;t have any friends who understood what you&#8217;re going through.
 
       So those of us, young or old, with metastatic breast cancer cling together in a common solidarity of understanding how it feels to be dying, slowly, too soon. Getting angrier and angrier, as our friends die around us. Wondering when, not if, it&#8217;s going to be our time, but also hoping for a miracle before that moment comes!
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/emma-1024x891.jpg"
     alt: "emma fisher"
     width: 640
     height: 557
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       By MetUpUK Member, Emma Fisher.
 

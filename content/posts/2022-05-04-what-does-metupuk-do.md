@@ -9,7 +9,7 @@ excerpt: "METUPUK is now 5 years old. In those 5 years there haven’t been many
 categories:
   - "news"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ### METUPUK is now 6 years old.
 
@@ -51,7 +51,7 @@ sections:
       We work with other advocates, campaigners, policy people, local and national government and those charities who have the foresight to work together to address our problems, and to hopefully create solutions.  We want to address transparency that is lacking in areas of research.  We strive to downgrade this disease from an incurable one to a chronic one – we want a disease that you can live with for 20+ years instead of being given a 2-3 year median life expectancy.
 
       Please **help support METUPUK** by **sharing our social media messages** and if possible to **additionally fundraise** so we can continue this important work on behalf of all breast cancer patients.
-  - type: "gallery"
+  - _template: "gallery"
     images:
       - src: "/media/2022/05/1.png"
         alt: "1"

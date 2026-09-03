@@ -8,7 +8,7 @@ imageAlt: "Screenshot of ECPC Website Header"
 categories:
   - "conferences"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Some of our team are planning on attending this (free) event (later this week), run by the <a href="https://ecpc.org/" rel="noopener" target="_blank">European Cancer Patient Coalition</a>.
 

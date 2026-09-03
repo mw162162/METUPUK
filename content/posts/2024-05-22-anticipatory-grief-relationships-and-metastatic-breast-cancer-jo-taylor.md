@@ -9,7 +9,7 @@ categories:
   - "member-stories"
   - "patient-advocacy"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I first came across “anticipatory grief” whilst friends with Sarah Illingsworth, who had metastatic breast cancer and was a Trustee for Breast Cancer Now.  She was bold and forthright and did not shy away from saying just how metastatic breast cancer (MBC) was affecting her.
 

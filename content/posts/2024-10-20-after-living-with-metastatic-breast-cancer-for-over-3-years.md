@@ -11,7 +11,7 @@ categories:
   - "member-stories"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Stage 4 shouldn&#8217;t be a label that says &#8220;treat differently&#8221;**
 

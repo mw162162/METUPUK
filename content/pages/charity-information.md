@@ -5,7 +5,7 @@ date: "2021-11-10T11:13:27"
 modified: "2026-01-08T17:06:53"
 parent: "about-us"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       METUPUK is the UK&#8217;s only metastatic breast cancer advocacy group. We are a registered charity. Our aim is the relief of patients in the UK who have or are at risk of metastatic breast cancer (MBC); in particular (but not exclusively) through raising awareness about MBC by the provision of information and education, working with stakeholders to increase MBC research and access to drugs and ensuring for the public benefit that MBC patient treatment and care remains a national priority.
 

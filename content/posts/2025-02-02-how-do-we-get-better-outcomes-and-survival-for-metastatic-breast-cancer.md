@@ -11,7 +11,7 @@ categories:
   - "patient-advocacy"
   - "research"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I watched with interest the phenomenal feat by Lucy Gossage founder of 5K Your Way (Move Against Cancer podcast) and winner of the 2025 Spine Race which is an ultra endurance run from Edale, Derbyshire right up the country on the Pennine Way to Kirk Yetholm in the Scotland Borders.  268 miles!
 

@@ -7,13 +7,13 @@ image: "/media/2021/10/FB-1920x1080-9.Jane-Greenwood-1024x576.png"
 imageAlt: "FB-1920×1080-9.Jane-Greenwood"
 parent: "darker-pink"
 sections:
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/10/FB-1920x1080-9.Jane-Greenwood.png"
     alt: "FB 1920×1080 9.Jane Greenwood"
     width: 1920
     height: 1080
     caption: ""
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#jan-greenwood"
     title: "Embedded media"

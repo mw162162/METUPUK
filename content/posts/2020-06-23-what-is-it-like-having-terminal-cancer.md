@@ -8,7 +8,7 @@ imageAlt: "Kit"
 categories:
   - "quality-of-life"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I&#8217;ve been asked this question a lot. I&#8217;m very open about my diagnosis and don&#8217;t mind people asking me questions, but I never know how to answer this one.
 

@@ -4,7 +4,7 @@ url: "/mbc-manchester-conference/"
 date: "2023-09-26T18:07:57"
 modified: "2023-09-29T22:27:12"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       From the first idea of holding an MBC conference in Manchester we knew this needed to be different. Rather than a get together that might only happen once a year, we wanted the conference to act as a impetus for a set of &#8216;calls to action&#8217; that could be worked through and implemented across the Greater Manchester Alliance and beyond. The idea of a Taskforce was formed, with the conference set to outline and commit to action. Our MBC Manchester conference took place on 13<sup>th</sup> June 2023 and the post conference write up is available here [Metastatic Breast Cancer &#8211; Manchester Conference Report](/media/2023/09/Metastatic-Breast-Cancer-Manchester-Conference-Report.pdf)
 

@@ -7,18 +7,18 @@ image: "/media/2021/10/FB-1920x1080-30.Michelle-Townsend-1024x576.png"
 imageAlt: "FB-1920×1080-30.Michelle-Townsend"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name:** Michelle Townsend
 
       **Region:** West Yorkshire
 
       **Diagnosis:** August 2016 I was diagnosed with her2+ breast cancer in my right breast. In August 2018 I was diagnosed with another primary breast cancer. This time is was triple negative breast cancer. In January 2020, I was diagnosed with triple negative MBC with multiple tumours in and around the lungs and thorax
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#michelle-townsend"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Hi my name is Michelle
 

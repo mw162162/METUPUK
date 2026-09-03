@@ -8,7 +8,7 @@ imageAlt: "FB-1920×1080-4.Emma-Fisher"
 excerpt: "Name: Emma FisherAge: 40Region: Yorkshire Diagnosis: Primary DX – July 2016. MBC DX – Feb 2018. HER2 & ER+ Metastatic Breast Cancer to the bones and lymph nodes, HER2 & ER+ Age at Diagnosis:…"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name: Emma Fisher**  
       **Age: 40**  
@@ -28,11 +28,11 @@ sections:
       Since my metastatic diagnosis, I have had another six months of chemotherapy to keep the tumour at bay, then I had 21 months of IV treatment of Herceptin and Perjeta, every three weeks. After the H&amp;P stopped working I have moved on to my second-line treatment of Herceptin and Kadcyla, which I have been on for almost a year. Unfortunately, the cancer is starting to grow again, so I think I’ll be changing treatment again soon. I am also on a multitude of medications to keep the treatment side effects at bay and have Zoladex and Denusomab injections too.
 
       **Why you wanted to be involved with the MetUpUK campaign:** The voices of people with MBC need to be heard. We can no longer be invisible. We matter. And MetUpUk is the voice we need to make this happen.
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#emma-fisher"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Twitter: @oh\_gosh
 

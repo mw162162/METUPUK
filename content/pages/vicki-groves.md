@@ -8,16 +8,16 @@ imageAlt: "FB-1920×1080-29.Victoria-Groves"
 excerpt: "Name: Vicki GrovesAge: 42Region: West Yorkshire Diagnosis: Secondary breast cancer denovo Oct-18 with metastases to bone. HER2+ ER+ Age at Diagnosis: 39 My name is Vicki, I live in Leeds with my 2…"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name:** Vicki Groves **Age:** 42 **Region:** West Yorkshire **Diagnosis:** Secondary breast cancer denovo Oct-18 with metastases to bone. HER2+ ER+
 
       **Age at Diagnosis:** 39
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#victoria-groves"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       My name is Vicki, I live in Leeds with my 2 young children and new puppy Roly.
 

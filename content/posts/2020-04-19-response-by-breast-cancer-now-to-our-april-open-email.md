@@ -8,7 +8,7 @@ imageAlt: "Photo of French letter box"
 categories:
   - "patient-advocacy"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Our [April email](/2020/04/open-email-to-breast-cancer-now-re-covid19-letter-for-your-mp/).
 

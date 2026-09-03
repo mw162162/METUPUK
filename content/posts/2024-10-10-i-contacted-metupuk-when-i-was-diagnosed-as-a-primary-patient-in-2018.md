@@ -11,7 +11,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I contacted METUPUK when I was diagnosed as a primary patient in 2018. Even though my mum died of Metastatic Breast Cancer (MBC) in 2015, I had no real understanding of the “metastatic disease” and the challenges patients face getting access to the treatment they need.
 

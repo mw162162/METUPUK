@@ -8,7 +8,7 @@ imageAlt: "Beth swim"
 categories:
   - "alternative-therapies"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Wim Hof**
 

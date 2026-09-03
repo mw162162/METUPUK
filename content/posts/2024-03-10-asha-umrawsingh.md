@@ -9,7 +9,7 @@ categories:
   - "member-stories"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       METUPUK are saddened by the news that one of our members and friend Asha Umrawsingh has died.
 

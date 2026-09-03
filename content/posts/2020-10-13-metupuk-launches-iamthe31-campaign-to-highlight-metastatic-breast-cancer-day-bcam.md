@@ -8,7 +8,7 @@ imageAlt: "email header (2)"
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       13th October is officially Secondary Breast Cancer day – the only day in Breast Cancer Awareness Month that officially recognises secondary (metastatic) breast cancer ([download as PDF](/media/2020/10/I-Am-The-31-press-release.pdf)).
 

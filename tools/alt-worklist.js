@@ -19,6 +19,7 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
+const { fromDisk } = require('../build/lib/yaml-out');
 
 const ROOT = path.join(__dirname, '..');
 const CONTENT = path.join(ROOT, 'content');
@@ -101,7 +102,7 @@ function main() {
     const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
     if (!m) continue;
     let front;
-    try { front = yaml.load(m[1]); } catch { continue; }
+    try { front = fromDisk(yaml.load(m[1])); } catch { continue; }
     if (!front) continue;
 
     const title = String(front.title || path.basename(file, '.md'));

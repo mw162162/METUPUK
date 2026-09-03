@@ -10,7 +10,7 @@ categories:
   - "help-us"
   - "patient-advocacy"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I was diagnosed with Grade 3 primary breast cancer in my left breast in January 2016 and am now cancer free. That sounds great to me. I’m one of the lucky ones. My cancer was detected at my second routine mammogram when I was 54 and hadn’t spread outside of my breast. My lymph nodes were clear. The pathology of my tumour was oestrogen, progesterone and HER2 positive. The timing of that mammogram possibly saved my life, as did the makeup of my tumour and my treatments – mastectomy, four doses of Taxotere and Cyclophosphamide and a year’s worth of Herceptin injections. I feel incredibly lucky.
 
@@ -34,13 +34,13 @@ sections:
       This is why I support METUP UK and why I hope that more and more primary breast cancer patients will get behind the group and join me in advocating for MBC patients. Now that it’s October, which is Breast Cancer Awareness Month, the focus will be on the prevention of breast cancer. Of course this is important and we all need to know how to self check, which can mean finding tumours earlier. But I would like to see more than the current one day in the month devoted to Metastatic Breast Cancer. Let’s all get behind METUP UK in its campaign to educate, and advocate and increase access to life extending drugs.
 
       Women living with MBC are working hard to ensure that the landscape will be greatly improved for the women diagnosed with MBC in the future. I thank and salute them all.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/10/JP.jpg"
     alt: ""
     width: 594
     height: 540
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       By MetUpUK Member, Juliet FitzPatrick
 

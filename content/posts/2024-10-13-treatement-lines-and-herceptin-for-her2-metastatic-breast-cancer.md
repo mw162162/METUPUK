@@ -14,7 +14,7 @@ categories:
   - "social-media-campaign"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Any patient with metastatic breast cancer (MBC) will be familiar with the concept of ‘treatment lines’. Unlike primary breast cancer, where you undergo chemotherapy for a fixed time period, after diagnosis with metastatic disease you will usually be offered treatment that will continue indefinitely&#8230;until it stops working. This is your first treatment line. You’ll be monitored with regular scans and when they show that the cancer is growing, you’ll be switched to the next treatment line and so on and so on&#8230;.until you run out of options.
 

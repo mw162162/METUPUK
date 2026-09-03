@@ -10,7 +10,7 @@ categories:
   - "policy"
   - "research"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       We started our campaign in Metastatic May with some information about [treatment lines](/treatment-lines/) and it really caused a bit of a stir, especially on <a href="https://www.instagram.com/metupuk/" rel="noopener" target="_blank">Instagram</a>.
 
@@ -31,13 +31,13 @@ sections:
       Yes there have been improvements in primary breast cancer and people are living longer with *some* better drugs but there is still that 30% who will (at some point and this can be up to 20 years later) metastatize and develop metastatic breast cancer.  **We don&#8217;t know who that will be.  That is a problem.**  Everyone with primary BC are constantly worried with Fear of Cancer Recurrence.
 
       If you look at the data I am sharing here, you will see that ER+HER2- and TNBC have poor outcomes.  The main advances have been in HER2+ disease and that is really all due to Herceptin/Traztuzamab 20 years ago.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/05/PHOTO-2021-05-07-12-40-57.jpg"
     alt: ""
     width: 640
     height: 490
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <a href="https://bmccancer.biomedcentral.com/articles/10.1186/s12885-019-6311-z" rel="noopener" target="_blank">https://bmccancer.biomedcentral.com/articles/10.1186/s12885-019-6311-z</a>
 
@@ -56,13 +56,13 @@ sections:
       Until then please support METUPUK in our quest to make this disease a **chronic** disease &#8211; a disease where we are living 20 years + after a diagnosis but we can only do that with everyone&#8217;s help and we want everyone with every disease type to be living like this, not just a few.
 
       WE DEMAND CHANGE.
-  - type: "image"
+  - _template: "image"
     src: "/media/2019/10/jo-taylor.jpg"
     alt: ""
     width: 279
     height: 280
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       By MetUpUK Founder, Jo Taylor
 

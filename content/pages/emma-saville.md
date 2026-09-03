@@ -7,7 +7,7 @@ image: "/media/2021/10/FB-1920x1080-23.Emma-Saville-1024x576.png"
 imageAlt: "FB-1920×1080-23.Emma-Saville"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name:** Emma Saville
 
@@ -18,11 +18,11 @@ sections:
       **Diagnosis:** Primary diagnosis April 2018, Metastatic diagnosis December 2020. ER+ HER2-  metastatic cancer to the spine
 
       **Age at diagnosis:** 39 (primary breast cancer), 42 (secondary breast cancer
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#emma-saville"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Hi I’m Emma I live in Wakefield with my husband Chris, our 3 year old daughter Erin, Travis the dog and our cat Lizzie
 

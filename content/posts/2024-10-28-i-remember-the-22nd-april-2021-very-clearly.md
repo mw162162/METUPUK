@@ -10,7 +10,7 @@ categories:
   - "member-stories"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Non dying quick enough for Personal Independence Payment (PIP)**
 

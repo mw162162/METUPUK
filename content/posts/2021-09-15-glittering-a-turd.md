@@ -9,7 +9,7 @@ excerpt: "I’ve followed the work of Kris Hallenga since I was first diagnosed 
 categories:
   - "reviews"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ### I’ve followed the work of <a href="https://www.patreon.com/howtoglitteraturd" rel="noopener" target="_blank">Kris Hallenga</a> since I was first diagnosed with cancer and became aware of enthusiastic students bouncing around in giant boob costumes.
 
@@ -18,32 +18,32 @@ sections:
       When I heard youngsters on a bus chatting about what they had learned about breast cancer in school that day, I silently thanked Kris and CoppaFeel for finally putting cancer awareness on the national curriculum so that all young people would have the chance to be educated about how to advocate for their health.
 
       Naturally when Kris published a book, <a href="https://www.amazon.co.uk/Glittering-a-Turd/dp/B09BK16ZD2/ref=sr_1_1?dchild=1&keywords=how+to+glitter+a+turd&qid=1631708612&sr=8-1" rel="noopener" target="_blank">&#8220;Glittering A Turd&#8221;</a>, I bought it, and would have been glad to read whatever she fancied writing in it!
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/09/Screenshot-2021-09-15-130709.jpg"
     alt: ""
     width: 476
     height: 595
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <a href="https://www.patreon.com/howtoglitteraturd" rel="noopener" target="_blank">Hallenga</a> is a slightly controversial figure in the world of secondary breast cancer. She was diagnosed de novo with the disease at a scarily young age even for those of us who faced a diagnosis in our thirties, and yet she’s known for loudly banging the “early diagnosis saves lives” drum. Statistics aren’t exactly uncomplicated supporters of that statement… Around 30% of patients go on to receive a metastatic/incurable diagnosis and breast cancer is still the biggest killer of women under the age of fifty.
 
       I’ve also heard whispers of exasperation from medical professionals who don’t have any screening tests to offer younger women and girls presenting with these concerns and in many cases feel that there isn’t the capacity to investigate every hormonally lumpy chest!
 
       And yet I cannot argue with the fierce determination to equip young people with the tools to go back and ask repeatedly for help when they need it, which is at the core of CoppaFeel’s messaging. We all need the necessary resilience to be able to stay seated in A&amp;E late at night, despite the call of a warm bed at home, when we know that there is something wrong. We all need to be aware that our healthcare professionals are not gifted with divine powers, that they do get it wrong and make mistakes, and that where our own health is concerned, the buck stops with us. This book contextualises and explains why knowing your own body is so important.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/09/Screenshot-2021-09-15-130839.jpg"
     alt: ""
     width: 594
     height: 552
     caption: ""
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/09/Screenshot-2021-09-15-130627.jpg"
     alt: ""
     width: 411
     height: 477
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Kris doesn’t just stop at talking us through her own shocking diagnosis, sharing intimate details about her personal life that could potentially have contributed to steering her onto the path her life has taken. She goes on to explain how learning about her own body and gaining a better understanding of what she wants for herself has helped her to make difficult treatment decisions as a metastatic cancer patient.
 
@@ -54,13 +54,13 @@ sections:
       I rushed through it wrapped in my duvet and accompanied by mugs of instant coffee, and couldn’t wait to pass it on to a friend. Kris’s generosity of spirit is clearly contagious!
 
       *(All images from the &#8216;<a href="https://www.instagram.com/howtoglitteraturd/?hl=en" rel="noopener" target="_blank">How to Glitter a Turd</a>&#8216; Instagram account)*
-  - type: "image"
+  - _template: "image"
     src: "/media/2019/10/Emma.png"
     alt: ""
     width: 400
     height: 400
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       By MetUpUK Member, Emma Robertson
 

@@ -10,7 +10,7 @@ categories:
   - "living-with-mbc"
   - "patient-advocacy"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Living with an incurable form of cancer presents lots of physical, emotional and mental challenges not least of which are the expectations and pressures associated with annual celebrations and milestones; Christmas is a time that can feel emotionally challenging for so many of us. The joy of the season sits alongside uncertainty about what the future holds and can be often be accompanied by feelings of sadness and overwhelm.
 

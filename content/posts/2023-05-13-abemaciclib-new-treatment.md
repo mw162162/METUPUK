@@ -8,7 +8,7 @@ imageAlt: "Ailsa photo"
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Starting a new medication can be a daunting experience, especially if the medication is still fairly new to the market. Abemaciclib may not be a household name, but for those who are living with advanced breast cancer, this drug may be the key to controlling their disease.
 

@@ -8,7 +8,7 @@ categories:
   - "alternative-therapies"
   - "living-with-mbc"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       *Originally posted May 10th 2021*
 
@@ -19,7 +19,7 @@ sections:
       So we asked Louisa from <a href="https://www.breathebalancebe.com/" rel="noopener" target="_blank">@breathebalancebe</a> to create a breathwork session that you can come back to if you are feeling like you need a minute to recentre yourself.
 
       Louisa knows what we are going through, having being diagnosed with MBC herself in 2017. And at the start of lockdown, Louisa did some breathing sessions, and the techniques she taught are something I&#8217;ve come back to every time I have a scan or I get overwhelmed during treatment. We highly recommend trying the techniques today and then saving this video for the moments you are feeling like you need some help.
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "https://www.youtube-nocookie.com/embed/MSjQhrGEh1U"
     title: "YouTube video"

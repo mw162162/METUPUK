@@ -10,7 +10,7 @@ categories:
   - "policy"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       METUPUK welcome the National Institute of Clinical Excellence (NICE) decision to accept Tucatinib with trastuzumab and capecitabine for treating HER2-positive unresectable locally advanced or metastatic breast cancer after 2 or more anti-HER2 therapies for routine commissioning use in NHS in England and Wales.
 
@@ -23,13 +23,13 @@ sections:
       Improved drug access allows us to stay #BusyLivingWithMets and increase our survival outcomes.
 
       We demand change.
-  - type: "image"
+  - _template: "image"
     src: "/media/2022/02/NEJMdo005662_600x400.jpg"
     alt: "Tucatinib"
     width: 640
     height: 427
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Additional notes
 

@@ -8,7 +8,7 @@ imageAlt: "Cancer Poverty: The financial burden of metastatic breast cancer… E
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       As a partner of someone with metastatic cancer, it can be very difficult to know what the right amount of paid work is to do. Sometimes it feels like I could work a full-time job but other times like one day a week would be too much with all the caring and support needed.
 

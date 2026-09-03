@@ -13,7 +13,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       *Clinical trials are essential for testing new treatments for metastatic breast cancer (MBC). For patients, they represent hope – the chance to get access to a new potential treatment before it is licenced. However, accessing clinical trials can be challenging: many trials are restricted to certain locations and have restrictive exclusion criteria (for example only accepting patients on a certain treatment line or without brain metastases). There’s also a lack of comprehensive information about MBC trials in the UK, with patients relying on their oncologist being informed of the latest developments.*
 

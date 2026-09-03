@@ -6,13 +6,13 @@ modified: "2022-08-15T13:53:17"
 image: "/media/2022/08/conflict-of-interest.png"
 imageAlt: ""
 sections:
-  - type: "image"
+  - _template: "image"
     src: "/media/2022/08/conflict-of-interest-724x1024.png"
     alt: "Conflict of interest"
     width: 640
     height: 905
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Download the document here
 

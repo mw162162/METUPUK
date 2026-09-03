@@ -12,7 +12,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Easter 2017, I went for a mammogram as my GP had referred me by the 2-week rule to have investigation work on a fatty mass I had felt.  This was like a small, cooked chicken fillet with a dimple (alarm bells should have rung).
 

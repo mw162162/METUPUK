@@ -8,7 +8,7 @@ imageAlt: "FB-1920×1080-13.Laura-Ashurst"
 excerpt: "Name: Laura Ashurst Age: 53Region: Stokesley, North Yorkshire. Diagnosis: Two primary DX: September 2001 and September 2004 ER+ MBC DX: December 2007 Lungs and pleural lining ER+ Age at Diagnosis:…"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name:** Laura Ashurst
 
@@ -18,11 +18,11 @@ sections:
       **Diagnosis:** Two primary DX: September 2001 and September 2004 ER+ MBC DX: December 2007 Lungs and pleural lining ER+
 
       **Age at Diagnosis:** First primary breast cancer: 34, Second primary breast cancer: 37, Metastatic Breast Cancer: 40
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#laura-ashurst"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Hi my name is Laura. I am married to Paul for almost 30 years. We have two children. Megan is 23 and Jack is 20.
 

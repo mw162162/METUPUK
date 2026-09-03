@@ -7,7 +7,7 @@ image: "/media/2021/10/FB-1920x1080-18.Tracey-Davies-1024x576.png"
 imageAlt: "FB-1920×1080-18.Tracey-Davies"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name:** Tracey Heslin
 
@@ -18,11 +18,11 @@ sections:
       **Diagnosis;** denovo Her2 ,ER, PR in one breast and ER PR in other secondary in spine and sternum only
 
       **Age at diagnosis:** 32
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#tracey-davies"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Hi my name is Tracey. I live in Wigan with my husband Ben, and my two sons Nathan, 16, and Charlie, 10. In Feb 2020 I went to doctors with lump and a pain in my armpit.
 

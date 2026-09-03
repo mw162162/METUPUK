@@ -8,7 +8,7 @@ imageAlt: "Screenshot of organisations involved in ECPC Roundtable"
 categories:
   - "conferences"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       We mentioned that the European Cancer Patient Coalition was undertaking a &#8216;Virtual Roundtable&#8217;. Bex Lewis attended the event (and contributed quite a bit to the chat, including questions about <a href="https://www.theguardian.com/society/2020/oct/29/watching-cancer-patients-treatment-alone-heartbreaking" rel="noopener" target="_blank">how having to attend appointments alone is perceived by oncologists</a>), and captured a few slides from the conference:
 

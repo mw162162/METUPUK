@@ -16,6 +16,7 @@ const path = require('path');
 const yaml = require('js-yaml');
 const { renderBlocks } = require('./torender');
 const { toText } = require('./clean');
+const { fromDisk } = require('./yaml-out');
 
 const ROOT = path.join(__dirname, '..', '..');
 const CONTENT = path.join(ROOT, 'content');
@@ -25,7 +26,7 @@ function readDoc(file) {
   const m = /^---\r?\n([\s\S]*?)\r?\n---/.exec(raw);
   if (!m) return null;
   try {
-    return yaml.load(m[1]);
+    return fromDisk(yaml.load(m[1]));
   } catch (err) {
     // A file the parser cannot read is a file the CMS cannot open either, so
     // it is a build failure rather than something to skip quietly.

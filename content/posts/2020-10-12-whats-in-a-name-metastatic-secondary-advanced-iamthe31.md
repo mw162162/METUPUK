@@ -8,7 +8,7 @@ imageAlt: "Google Search for metastatic, secondary cancer"
 categories:
   - "education"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       The terminology around cancer can be confusing, and no more so than for Stage IV cancer. The terms &#8216;secondary&#8217;, &#8216;advanced&#8217; and &#8216;metastatic&#8217; seem to be used fairly interchangeably, along with &#8216;Stage IV&#8217; and &#8216;incurable&#8217;, and sometimes &#8216;terminal cancer&#8217;.
 

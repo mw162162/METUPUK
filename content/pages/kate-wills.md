@@ -8,7 +8,7 @@ imageAlt: "FB-1920×1080-16.Kate-Wills-Berger"
 excerpt: "Name: Kate Wills Age: 46Region: London – Finchley Diagnosis: (i.e When diagnosed primary, When diagnosed mets, Or denovo, What disease type – HER2+/- ER-/ER+ or TNBC or IBC) I was diagnosed with…"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name:** Kate Wills  **Age:**  46 **Region:** London &#8211; Finchley **Diagnosis:** (i.e When diagnosed primary, When diagnosed mets, Or denovo, What disease type &#8211; HER2+/- ER-/ER+ or TNBC or IBC)
 
@@ -21,11 +21,11 @@ sections:
       After 10 days in hospital having a rod put in my leg, I returned to recover for 2 weeks then started a weeks radiotherapy on my leg.  Holding other radiotherapy back for later.  I am currently on zoladex giving me a medical menopause, letrozole, ribocyclib and denosumab.
 
       9 months on I&#8217;ve had two scans showing stability.
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#kate-wills-berger"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I am 46 live in North London with my husband, 16 yr old son and 12 yr old daughter &#8211; dog Juno, senile aged cat Buzz who I am proud is 24!  and youngster cat Cotton who is 2.
 

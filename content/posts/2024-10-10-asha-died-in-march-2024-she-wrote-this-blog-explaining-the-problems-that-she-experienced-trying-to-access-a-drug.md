@@ -11,7 +11,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       *Asha died in March 2024. She wrote this blog, explaining the problems that she experienced trying to access a drug that she was ineligible for, because she fell outside of the treatment lines guidance.*
 

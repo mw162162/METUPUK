@@ -4,7 +4,7 @@ url: "/2022/10/pembrolizumab-approved-by-the-smc-scottish-medicines-consortium/"
 date: "2022-10-10T19:40:30"
 modified: "2022-12-20T08:54:24"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       *METUPUK welcomes the Scottish Medicines Consortium (SMC) decision to accept pembrolizumab (Keytruda, Merck Sharp and Dohme) plus chemotherapy (paclitaxel or nab-paclitaxel) for use on the NHS in Scotland.  Pembrolizumab is indicated for treating triple-negative, locally recurrent unresectable or metastatic breast cancer in adults whose tumours express PD-L1 with a CPS ≥ 10 and who have not received prior chemotherapy for metastatic disease.*
 

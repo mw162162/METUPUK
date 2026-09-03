@@ -10,7 +10,7 @@ categories:
   - "news"
   - "patient-advocacy"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       The week of 4-8 November 2024 is set aside to celebrate the work of nearly 1 million trustees volunteering for charities across the UK. Trustees are individuals responsible for the governance of a charity. They make decisions collectively as a board and are guided by charity law and the constitution of the charity.
 

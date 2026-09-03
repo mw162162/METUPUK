@@ -12,7 +12,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       We had all plunged into a big black hole of despair in the days which followed my sister Helen’s metastatic breast cancer (MBC) diagnosis.  Two and a half years on and now on her second line of treatment, there have been many more frightening and uncertain times for Helen and us all.  Throughout it all, METUPUK has been a constant source of support, comfort and hope.  That&#8217;s why we got involved, because when nobody else was there, METUPUK was &#8211; advising, caring, advocating.  Fuelling hope, connecting people who understand, fighting for change.  Here I share things from &#8220;a sister’s perspective&#8221; of how life is and how life has changed so dramatically.   
          

@@ -8,7 +8,7 @@ imageAlt: "IMG_1883"
 categories:
   - "conferences"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I was invited by **Ann Baker** to attend the Secondary Breast Cancer Awareness Conference 2019 in Swansea. Unbelievably she is the ONLY Clinical Nurse Specialist in Wales!
 

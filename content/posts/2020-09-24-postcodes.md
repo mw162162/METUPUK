@@ -8,7 +8,7 @@ imageAlt: "2_metupuk"
 categories:
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       What&#8217;s your postcode and what does that say about you? If I asked a healthy person about the importance of their postcode I suspect they&#8217;d tell me about local schools, crime rates and jobs. If I asked a stage 4 cancer patient, their postcode has a very different meaning. It can literally mean the difference between life and death.
 

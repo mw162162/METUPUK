@@ -9,7 +9,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I was diagnosed with hormone positive primary breast cancer in February 2022. I had a lumpectomy, chemotherapy, radiotherapy and am now on 10 years of reduce risking hormone repressing therapy.
 

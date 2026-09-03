@@ -9,7 +9,7 @@ categories:
   - "living-with-mbc"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Last Autumn, Jo Taylor founder of After Breast Cancer Diagnosis and METUPUK and Eva Schumacher from Mamma Mia, an online German cancer magazine, (Eva is a patient living with MBC), were asked to be involved in a campaign about “platitudes”. What you DON’T want to hear and what you DO want to hear from family members, friends, colleagues and even random strangers, when you are living with an incurable disease. The results of this work have been presented in a poster session at ESMO (European Society for Medical Oncology) Breast 24bthis week and has won the best poster award! The findings were based on a survey of 249 people living with metastatic breast cancer. This report was initiated and funded by Seagen now part of Pfizer.
 

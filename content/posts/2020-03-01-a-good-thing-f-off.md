@@ -8,7 +8,7 @@ imageAlt: "metupuk logo icon"
 categories:
   - "quality-of-life"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Soon after my diagnosis with secondary breast cancer aged 33 someone tried to explain to me that my diagnosis could be viewed as a good thing. I don&#8217;t know why they thought that as I promptly blocked them. Seriously being told you&#8217;ll never reach 40 is not a good thing. It&#8217;s shit. Pardon my language but it&#8217;s a head fuck and a shitty bloody nightmare that you can&#8217;t wake up from. But that&#8217;s not what people want to hear. They want to hear the positive. If you dare to try and speak about the negatives of dying in your 30s, far too many people comment about how morbid and depressing you are. So this blog is me giving positivity the middle finger. This blog will be about how secondary breast cancer makes me feel and my list of four deadly emotions I get thanks to cancer. It won&#8217;t be positive and it won&#8217;t be polite. If you can accept that then read on.
 

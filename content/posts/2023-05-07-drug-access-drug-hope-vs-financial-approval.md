@@ -8,7 +8,7 @@ imageAlt: "Lisa"
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I contacted METUPUK when I was diagnosed as a primary patient in 2018. Even though my mum died of secondary breast cancer in 2015 I had no real understanding of the metastatic disease and the challenges patients face getting access to the treatment they need.
 
@@ -33,12 +33,12 @@ sections:
       I’ve worked in the pharma industry for over twenty years. How do I feel about my role now? Conflicted, confused, and angry. Will there be a day when I will release a batch of a new drug product, knowing that it is not available to my friends as it is not deemed value for money?
 
       Drug development is expensive and many new drug candidates fail in clinical trials. The development costs combined with the pharmaceutical industry’s need to make a profit can have a detrimental impact on access to new drugs where an assessment needs to be made on cost-effectiveness. All I know is at the end of every decision there are real people, not numbers. Secondary breast cancer patients need better treatment, more options, and quicker decisions.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/03/Lisa-and-Gizmo.jpg"
     alt: "Lisa and Gizmo"
     width: 640
     height: 427
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: "Lisa Ford &#8211; METUPUK member and patient advocate."
 ---

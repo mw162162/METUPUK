@@ -7,7 +7,7 @@ image: "/media/2021/10/FB-1920x1080-3.Mary-Huckle-1024x576.png"
 imageAlt: "FB-1920×1080-3.Mary-Huckle"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name: Mary Huckle**
 
@@ -20,11 +20,11 @@ sections:
       MBC DX &#8211; July 2014. I’ve been low HER2 expression since.
 
       **Age at Diagnosis:** 41 Primary &amp; 48 Secondary
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#mary-huckle"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I’m Mary Huckle, a personal trainer and Pilates instructor from Enfield, North London. I’m married to Phil and we have 3 grown up children, Robert, Lauren, and Ellie.
 

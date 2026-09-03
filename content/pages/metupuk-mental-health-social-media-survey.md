@@ -6,15 +6,15 @@ modified: "2024-06-18T07:25:04"
 image: "/media/2021/05/Untitled-1survey-page-heaer-1024x500.jpg"
 imageAlt: "Untitled-1survey page heaer"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: "## Welcome to the MetUpUK Mental Health &amp; Social Media Survey"
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/05/MetUpUK-Survey-Final-Front-Cover-768x1086.png"
     alt: "MetUpUK Survey Final Front Cover"
     width: 640
     height: 905
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **MetUpUK wanted to investigate the ways that people with Metastatic Breast Cancer are using social media, how the different social platforms are used, and how it affects their mental health.**
 

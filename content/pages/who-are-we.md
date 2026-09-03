@@ -5,7 +5,7 @@ date: "2019-10-11T11:07:11"
 modified: "2024-10-13T14:40:47"
 parent: "about-us"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ### **Our Mission Statement**
 

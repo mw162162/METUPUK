@@ -10,7 +10,7 @@ categories:
   - "living-with-mbc"
   - "member-stories"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       *Originally posted May 11th 2021*
 
@@ -41,12 +41,12 @@ sections:
       Birthday and cancerversaries became bittersweet as I was dealing with the realities of cancer, the side effects, the constant fear of the unknown, the helplessness, the indignity of losing who you are, who you were, even losing things you take for granted in your early 30&#8217;s &#8211; like walking up your own stairs or getting out the bath (because the treatment has made you weak).
 
       And so, I feel with every year I am living with MBC, with every new treatment and with every progression, I am like a china doll. Leaving broken pieces of me behind.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/connie-Johncock.jpg"
     alt: "connie Johncock"
     width: 640
     height: 640
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: "By MetUpUK Member, Connie Johncock."
 ---

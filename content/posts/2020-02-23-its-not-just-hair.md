@@ -8,7 +8,7 @@ imageAlt: "Jo Taylor and Jo Myatt"
 categories:
   - "quality-of-life"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Anger sometimes comes in waves, but I try to take my mind off things with work, outdoor activities and of course day to day life with my husband and two children helps immensely. Switching off from the fact I have incurable secondary breast cancer is no easy task and I’ve now been living with Secondary Breast Cancer (SBC) for six years. When I began treatment for SBC in 2014 (7 years after my primary diagnosis), I looked at myself in the mirror without any hair and thought “is this the last memory that my children, husband and friends will have?” I hated being bald and to date I have lost my hair four times.
 

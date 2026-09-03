@@ -8,7 +8,7 @@ imageAlt: "Rachel"
 categories:
   - "research"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **We thought you would like to hear about what it is like to work in metastatic breast cancer research. Here, we chat to <a href="https://www.research.manchester.ac.uk/portal/rachel.eyre.html" rel="noopener" target="_blank">Dr Rachel Eyre</a> who works at The Manchester Cancer Research Centre about her life as a research scientist.**
 

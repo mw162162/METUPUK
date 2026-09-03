@@ -7,7 +7,7 @@ image: "/media/2021/10/louis-reed-pwcKF7L4-no-unsplash-1024x683.jpg"
 imageAlt: "louis-reed-pwcKF7L4-no-unsplash"
 parent: "aims-and-objectives"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ## METUPUK will advocate with life science companies to increase the number of MBC trials to a level reflective of the proportion of MBC patients within the breast cancer population. Trials offer real potential to save and extend lives. We want this to be recognised and participation encouraged.
 

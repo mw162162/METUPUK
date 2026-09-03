@@ -8,7 +8,7 @@ imageAlt: "metupuk logo"
 categories:
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       10th July 2020
 

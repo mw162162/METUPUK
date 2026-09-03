@@ -9,31 +9,31 @@ categories:
   - "patient-advocacy"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ***METUPUK welcomes the Scottish Medicines Consortium (SMC) acceptance of Trodelvy® (sacituzumab govitecan) for use within NHSScotland.***
 
       Trodelvy is an innovative drug which has been accepted for the treatment metastatic triple-negative breast cancer (mTNBC) within NHSScotland.  Metastatic triple-negative breast cancer is a challenging disease to treat, and an even more devastating disease to live with.  It is an aggressive subtype which is more prevalent in younger premenopausal women and black and Hispanic women.  The five year survival rate is just 12%, compared to 28% for all breast cancer types.  Triple negative breast cancer has limited treatment options because it cannot be treated with targeted hormonal or anti HER2-therapies.  Only 20% of patients with mTNBC can be treated with immunotherapy in the first line, with the majority of patients relying on chemotherapy regimens often with harsh side effects which reduce quality of life.
 
       Trodelvy is a step change treatment for all patients with mTNBC because it directly targets a protein found on TNBC cells to deliver chemotherapy.  It is less toxic to healthy cells and more specific to cancer cells.  In clinical trials has been shown to increase overall survival, giving patients valuable more time to spend with their loved ones.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/07/45559567-9798075-image-a-2_1626531478996.jpg"
     alt: "Philipa Heatherington"
     width: 634
     height: 845
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Dr Philippa Hetherington is a METUPUK patient advocate who is living with mTNBC and has been key to the campaign for the drug and the subsequent approval.  Philippa commented:  &#8220;*Trodelvy is the first drug that is considered a targeted therapy for triple-negative breast cancer. The clinical trials show that it is much more effective than some of the chemotherapies they put you on for triple-negative breast cancer. Crucially, it is also effective for patients who are heavily pre-treated. Often, when you have had a number of treatments, each one has less and less likelihood of working, whereas Trodelvy can work very well on people who have had a number of chemotherapies already.  A treatment like Trodelvy is everything for young women who should have decades left to live.&#8221;*
 
       Jo Taylor, founder of METUP UK said: *&#8220;The authorisation of Trodelvy is a welcome advance for patients with metastatic triple negative breast cancer living in Scotland.  The drug is proven to increase overall survival in an aggressive disease subtype, and addresses an important unmet need.  Metastatic triple negative breast cancer often progresses very quickly, and we urgently need new and better treatments.  Too many patients have died during delays enrolling in trials or managed access schemes with pharmaceutical companies.  Now in Scotland, oncologists will be able to prescribe Trodelvy to NHS patients with metastatic triple negative breast cancer when they need it.&#8221;*
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/06/jo-thank-you.jpg"
     alt: "Jo thank you"
     width: 330
     height: 558
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       We now call on NICE to approve Trodelvy in England and subsequently in Wales and Northern Ireland once the NICE guidance is published.  All patients across the UK who could benefit from this treatment should be able to access it.  As a high income country, the public expect the NHS to fund innovative cancer treatments.  Restrictive drug access contributes to UK cancer survival comparing poorly to similar income countries.
 
@@ -57,7 +57,7 @@ sections:
       									Download the  document here
 
       					</a>
-  - type: "image"
+  - _template: "image"
     src: "/media/2022/03/trodelvy.jpg"
     alt: "Trodelvy"
     width: 633

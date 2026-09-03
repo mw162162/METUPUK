@@ -6,7 +6,7 @@ modified: "2024-11-01T09:01:44"
 image: "/media/2024/09/Who-Really-Cares-Graphic-1024x709.png"
 imageAlt: "Who Really Cares Graphic"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       &#8220;**WHO REALLY CARES?**&#8221; is our hard hitting campaign for BCAM 2024.  A provocative digital and social campaign designed to raise awareness about the devastating impact of MBC. By using a seemingly apathetic question, the campaign aims to jolt the audience out of complacency and force them to confront the lack of attention this critical issue receives.
 

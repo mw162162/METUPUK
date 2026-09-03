@@ -8,7 +8,7 @@ imageAlt: "Tassia Haines Illustration - first Day of Christmas"
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Keep an eye on <a href="https://www.instagram.com/metupukorg/" rel="noopener" target="_blank">our Instagram account</a> where Tassia will be posting a new cartoon every day, for the first 12 days of December, as a tweak on &#8216;The 12 Days of Christmas&#8217;. Here is today&#8217;s cartoon:  
 

@@ -8,7 +8,7 @@ imageAlt: "FB-1920×1080-8.Madeline-Meynell"
 excerpt: "Name: Madeleine MeynellAge: 49Region: London Diagnosis: (i.e When diagnosed primary, When diagnosed mets, Or denovo, What disease type – HER2+/- ER-/ER+ or TNBC or IBC) Age at Diagnosis: 43 Hi my…"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name:** Madeleine Meynell  
       **Age:** 49  
@@ -17,11 +17,11 @@ sections:
       **Diagnosis:** *(i.e When diagnosed primary, When diagnosed mets, Or denovo, What disease type &#8211; HER2+/- ER-/ER+ or TNBC or IBC)*
 
       **Age at Diagnosis:** 43
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#madeline-meynell"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Hi my name is Madeleine.  I’m married and live with my husband, two young adult children who are at Uni and my cockapoo Patch.
 

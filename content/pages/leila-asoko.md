@@ -8,7 +8,7 @@ imageAlt: "FB-1920×1080-10.JLeila-Asoko"
 excerpt: "Name: Leila AsokoAge:41Region: Merseyside Diagnosis: Oct 2006, primary dx. ER+Oct 2016, secondary dx, metastases to bones. Assumed to still be ER+, HER2-Spread to Liver metastases summer 2019. Age at…"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name:** Leila Asoko  
       **Age**:41  
@@ -19,11 +19,11 @@ sections:
       Spread to Liver metastases summer 2019.
 
       **Age at Diagnosis:** 26 (primary) and 36 (secondary)
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#leila-asoko"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Oct 2006, still in my 20s. I found a lump in my left breast one day. The size of a peanut, but flat, abut 2.4cm across and disc-shaped. There was disbelief that I&#8217;d managed to find it.   
       I had a mastectomy just before Xmas day 2006, then months of chemotherapy and radiotherapy followed finally by hormone therapy for 5 years, from 2007 to 2012.  

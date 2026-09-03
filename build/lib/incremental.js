@@ -21,6 +21,7 @@ const { buildFromContent } = require('./model');
 const ex = require('./exhibition');
 const { createResolver } = require('./links');
 const { enrich } = require('./enrich');
+const { fromDisk } = require('./yaml-out');
 
 const ROOT = path.join(__dirname, '..', '..');
 const CONTENT = path.join(ROOT, 'content');
@@ -73,7 +74,7 @@ class PageBuilder {
       const raw = fs.readFileSync(key, 'utf8');
       const m = /^---\r?\n([\s\S]*?)\r?\n---/.exec(raw);
       if (!m) return null;
-      front = yaml.load(m[1]);
+      front = fromDisk(yaml.load(m[1]));
     } catch {
       // A half-written file mid-save. The caller falls back to a full build,
       // which will either succeed later or report the error properly.

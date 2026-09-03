@@ -11,7 +11,7 @@ categories:
   - "patient-advocacy"
   - "research"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       We had to confirm back on the 5th November the heartbreaking news that the wonderful Philippa Hetherington had died ![💔](https://s.w.org/images/core/emoji/14.0.0/svg/1f494.svg)
 

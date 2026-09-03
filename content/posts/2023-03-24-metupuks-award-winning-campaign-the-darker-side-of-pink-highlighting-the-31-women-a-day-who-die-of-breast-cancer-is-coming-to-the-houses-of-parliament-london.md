@@ -6,7 +6,7 @@ modified: "2023-04-25T16:08:20"
 image: "/media/2023/03/cambridge-1-712x1024.jpg"
 imageAlt: "cambridge 1"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ‘The Darker Side of Pink’ was launched in Breast Cancer Awareness Month 2021 by  
 

@@ -7,7 +7,7 @@ image: "/media/2021/10/FB-1920x1080-25.Kelly-Griffin-1024x576.png"
 imageAlt: "FB-1920×1080-25.Kelly-Griffin"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name:** Kelly Griffin
 
@@ -16,11 +16,11 @@ sections:
       **Region:** North west- Manchester
 
       **Diagnosis:** Her2+, ER &amp; PR neg invasive ductal carcinoma. Secondaries to liver and possible sternum mets. All confirmed 2/3 weeks after original diagnosis.
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#kelly-griffin"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I initially went to GP on 1/11/2011 after a bang to the chest when my son was getting down off my lap. I noticed a lump/swelling but when it didn’t go down I contacted GP. Referred to breast unit but assured as no family history and very young (30) that it was just precautionary.
 

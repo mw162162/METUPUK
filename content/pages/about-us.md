@@ -6,7 +6,7 @@ modified: "2024-09-25T11:39:48"
 image: "/media/2021/10/iStock-145995617-scaled-dark-1024x554.png"
 imageAlt: "iStock-145995617-scaled-dark"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **METUPUK** is the ONLY metastatic breast cancer patient advocacy group in the UK.
 

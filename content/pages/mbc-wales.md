@@ -7,7 +7,7 @@ image: "/media/2023/09/Tassia-2.jpeg"
 imageAlt: ""
 parent: "metupuk-around-the-uk"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <img src="/media/2023/09/Tassia-2-300x161.jpeg" alt="Tassia 2" width="300" height="161" loading="lazy" decoding="async">METUPUK works with the ***Welsh***  Government, the ***Welsh*** Assembly and its 60 Members to ensure that Metastatic Breast Cancer (*MBC*) patients&#8230;. (content temporarily missing).  
 

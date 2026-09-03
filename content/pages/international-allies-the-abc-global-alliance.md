@@ -5,7 +5,7 @@ date: "2019-10-11T12:21:29"
 modified: "2020-11-02T19:28:06"
 parent: "about-us"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       “Improving and extending the lives of women and men living with advanced breast cancer (ABC) in all countries worldwide and fighting for a cure.”
 

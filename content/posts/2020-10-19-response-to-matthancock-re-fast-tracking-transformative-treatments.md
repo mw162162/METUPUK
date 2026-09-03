@@ -8,12 +8,12 @@ imageAlt: "Image of man taking drugs from a shelf in the National Cancer Institu
 categories:
   - "news"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: "METUPUK are looking for ACTION not just words on this new initiative that was released last week by Matt Hancock the Health Secretary."
-  - type: "quote"
+  - _template: "quote"
     text: "I’m delighted the UK will be teaming up with some of the world’s best regulators to put patients first by fast-tracking cutting-edge medicines. The UK is leading the world with research into the most transformative treatments 🇬🇧https://t.co/n0F9xwRGr0 pic.twitter.com/lbxMVYqSI2 — Matt Hancock (@MattHancock) October 14, 2020"
     attribution: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       We are constantly pushing for access to better and more transformative treatments, better access to existing drugs and a quicker approval &amp; acceptance process for new leading edge medicines, all through <a href="https://www.england.nhs.uk/participation/why/nhse/" rel="noopener" target="_blank">NHS-England</a>. We know that there are **so many positive improvements to process that could be made**, and made quickly, that would make a huge difference to so many people.
 

@@ -6,7 +6,7 @@ modified: "2022-05-26T09:33:24"
 image: "/media/2022/05/iStock-1291749291-1024x578.jpg"
 imageAlt: "Sex and Intimacy"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       A diagnosis of cancer is a major life event. None of us is immune to the  
       potential of developing the disease. It doesn’t discriminate by age, gender,  
@@ -49,13 +49,13 @@ sections:
       A breast cancer diagnosis is multi-faceted whether it’s a primary or a  
       secondary diagnosis. Each one has far-reaching effects on all aspects of our lives. A large part of finding our way around our new ‘normal’ is support,  
       whether we are in a sexual relationship or not, around how well we are able to thrive when it comes to our sex life.
-  - type: "image"
+  - _template: "image"
     src: "/media/2022/05/laura-ashurts-819x1024.png"
     alt: "Laura ashurts"
     width: 640
     height: 800
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Part of Metastatic May is about generating discussions around the taboos and myths that exist surrounding a diagnosis of secondary breast cancer. This includes eradicating the narrative about a sex life not being important  
       following a secondary breast cancer diagnosis. It goes without saying that we are grateful for every day that we have but it needs to be said that our ability to regain our confidence and enjoy a sex life, is an area with which we need help and support to realise. Sex and intimacy plays an important role in  
@@ -73,13 +73,13 @@ sections:
 
       The most difficult conversations are always are the most important ones to  
       have but with empathy and support, we can be helped to navigate through our diagnosis and for that we will be grateful too.
-  - type: "image"
+  - _template: "image"
     src: "/media/2019/10/Laura-Ashurst.jpg"
     alt: ""
     width: 640
     height: 800
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       By MetUpUK Member, Laura Ashurst
 

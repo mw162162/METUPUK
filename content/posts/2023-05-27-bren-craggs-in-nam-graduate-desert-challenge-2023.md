@@ -8,7 +8,7 @@ imageAlt: "Bren photo"
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Back in the summer of 2022, our daughter’s partner, Bren, talked to me about the IN NAM Graduate Desert challenge that he had signed up to.  When he explained what the challenge involved and the preparation for it, I was emotionally moved by the intensity of what it would entail for Bren and his fellow graduate colleagues. Then Bren told me, that of all the charities that he could have chosen, he’d selected METUPUK as the charity for which he would be fundraising as part of the challenge. He set his fundraising target at £4,000.
 

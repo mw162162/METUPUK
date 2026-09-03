@@ -9,7 +9,7 @@ categories:
   - "living-with-mbc"
   - "member-stories"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       When I was first diagnosed with cancer, my primary cancer, at 35 in July 2016 I was determined that I wouldn’t let cancer take over my life.  I sat in a chair and thought I&#8217;d have 8 months of treatment and be done with it. Oh. What a fool I was.
 
@@ -48,13 +48,13 @@ sections:
       I already know that my life won’t be as long as it should be, but without proper access to more drugs, trials, my life won’t be as long as it could be. I have dreams of visiting mates in Canada, snowboarding in Japan, watching my nephews grow up, seeing friends get married, witnessing the clematis take over the garden wall, and having a thousand beautiful moments with friends, the dogs, and family that will make every single one of my treatments worth it!
 
       I guess what I am trying to get at here is that a life with cancer is still a life. And can be a great life with the right access to drugs, treatments and support.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/emma-1024x891.jpg"
     alt: "emma fisher"
     width: 640
     height: 557
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       By MetUpUK Member, Emma Fisher.
 

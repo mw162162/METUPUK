@@ -8,7 +8,7 @@ imageAlt: "FB-1920×1080-1.Jo-Taylor"
 excerpt: "Name: Jo Taylor Age: 52Region: Manchester Diagnosis: Primary diagnosis 2007 HER2+ right breast – 2014 diagnosed with MBC in neck nodes and oligomets in the sternum, since then mets in the humerus,…"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name: Jo Taylor               
       Age:  52  
@@ -17,11 +17,11 @@ sections:
       **Diagnosis:** Primary diagnosis 2007 HER2+ right breast &#8211; 2014 diagnosed with MBC in neck nodes and oligomets in the sternum, since then mets in the humerus, left axilla clearance, brain met in the cerebellum<u></u><u></u>
 
       **Age at Diagnosis: 42**
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#jo-taylor"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Hi, I’m Jo and live in Saddleworth with my husband of 30 years Jeff and our 2 teenagers 17 and 15.<u></u>
 

@@ -11,7 +11,7 @@ categories:
   - "research"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ***METUPUK are delighted for the approval of Trastuzumab deruxtecan (Enhertu) for treating HER2-positive unresectable or metastatic breast cancer in adults who have received one or more prior anti-HER2 based therapies approved for use through the Cancer Drugs Fund in NHS in England.***
 

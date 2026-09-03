@@ -7,7 +7,7 @@ image: "/media/2021/10/FB-1920x1080-24.Joanne-Addis-1024x576.png"
 imageAlt: "FB-1920×1080-24.Joanne-Addis"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name**: Joanne Addis
 
@@ -18,11 +18,11 @@ sections:
       **Diagnosis:** Primary DX &#8211; February 2017. MBC DX &#8211; April 2017. HER2- &amp; ER+ PR+ Invasive Lobular Metastatic Breast Cancer to the bones
 
       **Age at Diagnosis:** 51
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#joanne-addis"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I&#8217;m Joanne. I live in Stockport near Manchester with my husband Volkan, George and Valerie, our dogs and various children, stepchildren, boyfriends, girlfriends &#8211; you get the picture!
 

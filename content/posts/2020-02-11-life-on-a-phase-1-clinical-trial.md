@@ -6,7 +6,7 @@ modified: "2023-05-12T10:20:07"
 categories:
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       When I was told in late 2015 that I’d secured the last place on a phase 1 clinical trial, I didn’t in my wildest dreams think I’d end up still on that trial almost 4 years later.
 

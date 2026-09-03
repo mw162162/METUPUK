@@ -7,15 +7,15 @@ excerpt: "Last year Nick rode 310 miles through Wales to raise money for MetUpUK
 categories:
   - "fundraising"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Last year Nick rode 310 miles through Wales to raise money for MetUpUK.
 
       You can follow his whole journey and find out more about why he wanted to do the ride in the first place in this video.
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "https://www.youtube-nocookie.com/embed/HNwtbbcFycE"
     title: "YouTube video"
-  - type: "prose"
+  - _template: "prose"
     body: "If you would like to fundraise for MetUpUK please get in touch so we can find out how we can support you in your efforts."
 ---

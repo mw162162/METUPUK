@@ -6,7 +6,7 @@ modified: "2026-05-23T22:59:18"
 image: "/media/2021/04/iStock-1141655038-1024x683.jpg"
 imageAlt: "<p>Teamwork couple helping hand, trust in mountains. Team of climbers man and woman hiking, help each other on top of mountain, climbing together, inspiring sunset on Elbrus, Russia.</p>"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       There are four ways in which you can help&#8230;
 

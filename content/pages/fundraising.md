@@ -7,7 +7,7 @@ image: "/media/2019/10/Every-month-is-breast-cancer-awareness-month-1024x901.jpg
 imageAlt: "Every month is breast cancer awareness month"
 parent: "help-us"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       We all have busy lives and we do this work freely in our own time.
 

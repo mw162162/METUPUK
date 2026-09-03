@@ -13,7 +13,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I was diagnosed with ER/PR+ HER- primary breast cancer in February 2022.  I was treated with a lumpectomy followed by 12 sessions of chemotherapy and 24 sessions of radiotherapy; I am now on a 10-year course of hormone therapy.  None of this was easy and I didn’t want to do this, but it was all necessary.
 

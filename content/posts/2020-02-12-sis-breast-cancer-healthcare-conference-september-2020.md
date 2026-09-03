@@ -8,7 +8,7 @@ imageAlt: "Open air arena in Athens"
 categories:
   - "conferences"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <a href="https://www.sisbreastcancerhealthcarecongress.org/congress-information/welcome-letter/?mkt_tok=eyJpIjoiTWpKaVlUVmxORGt6WXpndyIsInQiOiJGVUdNRDFTNVFGeE54Mlg2bjdQVStmZ1hzUjVWYTRoU2VqcDVFaG1uRzlaazRYb0xmWmFRTFlhbDJodDRTMmRKZlhyK2RwYnlJTFNaK3g3ZDlIekoyVVwvR3NHYU1MK2dBWEFrVXAwa0FnS1lQMDBjMHlSeitOOXRvQkZYbVJJQzYifQ%3D%3D" rel="noopener" target="_blank">SIS Breast Cancer Health Care Congress 2020</a>
 

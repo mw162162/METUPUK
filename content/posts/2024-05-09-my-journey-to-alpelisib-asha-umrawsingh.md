@@ -9,7 +9,7 @@ categories:
   - "drug-approval"
   - "patient-advocacy"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       *Asha died in March this year. She wrote this blog explaining the problems that she experienced trying to access a drug that she was ineligible for because she fell outside of the treatment lines guidance.*
 

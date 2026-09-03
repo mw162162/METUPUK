@@ -8,12 +8,12 @@ imageAlt: "Mary Huckle and Jen Cronje on ITV Lorraine"
 categories:
   - "press"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       This morning METUP-UK members appeared on ITV Lorraine, to discuss #BreastCancerAwarenessMonth, talking about the impact of COVID-19 on (secondary) cancer treatment, as Health Secretary Matt Hancock says that cancer treatment could be delayed until Covid is brought under control.
 
       Lorraine has been running a <a href="http://how to check for the signs and symptoms of breast cancer" rel="noopener" target="_blank">Change and Check campaign</a>, which particularly focuses upon early diagnosis of primary breast cancer, so it was good to see some focus on  living with Secondary Breast Cancer (see the [red flag infographics](/about-us/red-flag-sbcinfographic/), for change and check for potential secondary cancer).
-  - type: "image"
+  - _template: "image"
     src: "/media/2020/10/mary-huckle-jen-cronje-on-itv-lorraine-secondary-breast-cancer.png"
     alt: "Screenshot of ITV page containing video"
     width: 823

@@ -7,7 +7,7 @@ image: "/media/2023/09/Tassia-1.jpeg"
 imageAlt: ""
 parent: "mbc-wales"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <img src="/media/2023/09/Tassia-1-300x200.jpeg" alt="Tassia 1" width="300" height="200" loading="lazy" decoding="async">Meet the *Wales* Executive. My name is Tassia and I was diagnosed with metastatic breast cancer age 28 years old.
 

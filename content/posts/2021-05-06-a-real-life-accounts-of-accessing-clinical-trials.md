@@ -10,7 +10,7 @@ categories:
   - "quality-of-life"
   - "research"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       In 2018 I was diagnosed with secondary breast cancer in my liver, I was 44.
 
@@ -65,12 +65,12 @@ sections:
       What the future holds for me now is uncertain, but I won’t give up searching for a trial that will accept me. I’ve changed oncologists to one who has more contacts and seems to know a lot more about what new drugs are in the pipeline. Maybe he can find me a decent phase 1.
 
       I live in hope.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/angela-oliver.jpg"
     alt: "angela oliver"
     width: 640
     height: 676
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: "By MetUpUK Member, Angela Oliver."
 ---

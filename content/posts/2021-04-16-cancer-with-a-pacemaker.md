@@ -12,7 +12,7 @@ categories:
   - "research"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Stage 4 breast cancer with a pacemaker**
 
@@ -75,12 +75,12 @@ sections:
       ICDs are used to treat dangerously fast heart rhythms and cause significant pain to patients when they deliver a shock.  Patients who are at end of life may receive repeated shocks from their ICD causing distress to them and their families.  Many doctors recommend that terminally ill patients elect to have their ICD turned off, but keep the pacemaker function of the device on.  Any decision to deactivate an ICD should be made with the consent of the patient, or the patient’s carers, in conjunction with their medical team.
 
       **At METUPUK we hope that all discussions about end of life are carried out sensitively, and timed appropriately taking into account the patient’s preferences and their likely disease course.**
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/unnamed-1024x768.jpg"
     alt: "Madeleine Meynell"
     width: 640
     height: 480
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: "By MetUpUK Member, Madeleine Meynell."
 ---

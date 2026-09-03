@@ -8,7 +8,7 @@ imageAlt: "Kate and husband"
 categories:
   - "member-stories"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       My name is Kate Gross, And I’m a 3 x cancer survivor.
 

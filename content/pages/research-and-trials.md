@@ -6,7 +6,7 @@ modified: "2024-11-02T21:47:43"
 image: "/media/2019/10/drugs-header-1024x370.png"
 imageAlt: "drugs-header"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       It is important to try to stay up to date with research and trials, as this is often the only way that we may access new and innovative drugs. It can be a minefield to wade through all of this research, so we are trying to make it easier for you by disseminating the information via social media. We have active advocates that share the latest research on twitter and Facebook.
 
@@ -25,7 +25,7 @@ sections:
       **Glasgow Cancer Test** &#8211; was developed by scientists at the University of Glasgow to capture all the important information found in a cancer’s DNA to guide a patient’s treatment plan.  More information here on the test, which we are campaigning to make available in the NHS [GCT Advanced Breast Cancer Short &#8211; LS May2020](/media/2020/05/GCT-Advanced-Breast-Cancer-Short-LS-May2020.pdf)
 
       Below is a podcast created with an organisation called The Conversation below which tells you more about the test.
-  - type: "embed"
+  - _template: "embed"
     variant: "audio"
     src: "https://anchor.fm/clare-english/embed/episodes/Welcome-to-Ripples-Podcast-ec876c#?secret=Edr9BVTN5C"
     title: "Welcome to Ripples Podcast!  by Ripples"

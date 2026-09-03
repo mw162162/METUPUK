@@ -6,7 +6,7 @@ modified: "2022-02-25T08:13:30"
 image: "/media/2022/02/World-Cancer-Day-logo.jpg"
 imageAlt: ""
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Before I was diagnosed with metastatic breast cancer (also called secondary / advanced / stage 4 breast cancer) I was aware that there was a huge lack of awareness of this disease for patients from clinical staff in the NHS, as well as from charities.
 
@@ -50,7 +50,7 @@ sections:
       See my ABCD website <a href="https://www.abcdiagnosis.co.uk/resources/infographics/" rel="noopener" target="_blank">https://www.abcdiagnosis.co.uk/resources/infographics/</a> for the infographics
 
       METUPUK share the infographics on here [Red flag #SBCinfographic &#8211; MET UP UK &#8211; #BusyLivingWithMets](/about-us/red-flag-sbcinfographic/) and of course we support advocacy and campaigning for MBC patients.
-  - type: "image"
+  - _template: "image"
     src: "/media/2022/02/World-Cancer-Day-logo.jpg"
     alt: "World Cancer Day logo"
     width: 640

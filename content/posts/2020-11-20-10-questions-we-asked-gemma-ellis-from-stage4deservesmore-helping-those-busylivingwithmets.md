@@ -8,7 +8,7 @@ imageAlt: "Gemma Ellis, Stage 4 Deserves More"
 categories:
   - "organisations"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       We&#8217;re keen to highlight the work of other organisations who work in areas related to our core mission (helping those with metastatic breast cancer), and delighted to talk to Gemma, from <a href="https://www.stage4deservesmore.com/" rel="noopener" target="_blank">Stage 4 Deserves More</a> this week.
 
@@ -25,13 +25,13 @@ sections:
       I set up Stage 4 Deserves More as I felt there was far less support when diagnosed as secondary than there was when I was a primary patient, I felt really alone at first.
 
       ## What is the heart of what you do, and how many people are involved in your team?
-  - type: "image"
+  - _template: "image"
     src: "/media/2020/11/stage-4-deserves-more-pack-300x269.jpg"
     alt: "Stage 4 Deserves More (examples of pack contents)"
     width: 300
     height: 269
     caption: "Example of pack contents."
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I raise money with my 2 daughters 10 and 8 who are very much involved in fundraising and help me to make up the support packs I send out to people in the UK living with secondary breast cancer.
 

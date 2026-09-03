@@ -8,9 +8,9 @@ imageAlt: "METUP Member Kit appearing on BBC News"
 categories:
   - "press"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: "The coronavirus outbreak has had a serious impact on the treatment of other seriously ill people. Cancer care has been badly affected, with some screening, treatments and trials postponed or delayed. METUP-UK member Kit appeared on the BBC earlier today talking about the impact of COVID-19 on her cancer treatment:"
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "https://www.youtube.com/embed/RiGdXC_NzYI"
     title: "Embedded media"

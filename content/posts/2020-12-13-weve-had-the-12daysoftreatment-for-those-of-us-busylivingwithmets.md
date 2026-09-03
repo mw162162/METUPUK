@@ -8,7 +8,7 @@ imageAlt: "Screengrab of 12th Day of Christmas"
 categories:
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Thanks for following our #12DaysOfTreatment  
 
@@ -45,7 +45,7 @@ sections:
       2 &#8216;Dema gloves &#x1f450;  
 
       And a nurse who can&#8217;t cannulate me &#x1f489; &#x1f3b5;&#x1f3b6;
-  - type: "quote"
+  - _template: "quote"
     text: "View this post on Instagram A post shared by MET UP UK (@metupukorg)"
     attribution: ""
 ---

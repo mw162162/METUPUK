@@ -10,7 +10,7 @@ categories:
   - "research"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       *METUPUK are disappointed by the National Institute of Clinical Excellence (NICE) decision to not recommend talazoparib (Talzenna ®, Pfizer Ltd.) for treating HER2-negative, locally advanced or metastatic breast cancer with germline BRCA1 or BRCA2 mutations for routine use on the NHS in England.*
 

@@ -7,7 +7,7 @@ image: "/media/2026/02/ABCD-Ductal-Breast-Cancer-v9-20200224-1.png"
 imageAlt: ""
 parent: "help-us"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ## Metastatic Breast Cancer Infographics
 

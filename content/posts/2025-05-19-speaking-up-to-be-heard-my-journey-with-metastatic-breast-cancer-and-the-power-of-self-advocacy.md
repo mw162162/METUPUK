@@ -11,7 +11,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       When people talk about fighting cancer, they often speak in terms of courage, strength, and resilience. But one word I wish we talked about more—especially in the beginning—is *self-advocacy*. Because before I could even *begin* to face metastatic breast cancer, I had to fight just to be taken seriously.
 

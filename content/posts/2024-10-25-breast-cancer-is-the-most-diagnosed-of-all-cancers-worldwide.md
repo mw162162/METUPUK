@@ -14,7 +14,7 @@ categories:
   - "research"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **We are very much minding the gap!**
 

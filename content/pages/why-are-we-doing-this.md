@@ -5,7 +5,7 @@ date: "2019-10-11T11:18:55"
 modified: "2021-04-10T16:46:52"
 parent: "about-us"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Metastatic Breast Cancer (MBC)** is when the cancer has travelled from the primary breast site through the blood or lymphatic system to **a distant area of the body**.
 

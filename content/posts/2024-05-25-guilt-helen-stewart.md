@@ -10,7 +10,7 @@ categories:
   - "patient-advocacy"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       As mothers, we have a strong biological urge to protect our offspring. To protect them and keep them safe from harm. That urge starts at their birth and continues as they grow from vulnerable new-born&#8217;s, through their toddler years, teens and even into adulthood.
 

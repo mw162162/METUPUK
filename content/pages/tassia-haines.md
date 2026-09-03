@@ -7,7 +7,7 @@ image: "/media/2021/10/FB-1920x1080-2.Tassia-Haines-1024x576.png"
 imageAlt: "FB-1920×1080-2.Tassia-Haines"
 parent: "darker-pink"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Name:** Tassia Haines
 
@@ -18,11 +18,11 @@ sections:
       **Diagnosis:** March 2016 diagnosed with primary BC, Stage 3, Grade 3, HER2-&amp; ER+, BRCA-.January 2020diagnosed with MBC, Stage 4, Grade 3, same sample switches between HER2+&amp;HER2-, Although I do not respond well to trastuzumab. ER+.
 
       **Age at Diagnosis:** 24 Primary &amp; 28 Secondary
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "/darker-side-of-pink/#tassia-haines"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Despite having previously &#8220;got over&#8221; primary Breast cancer at the age of 24, and having had the pleasure of being chopped up (Mastectomy), poisoned (chemo), and burned alive (radiotherapy), the insidious killer slowly spent the last 3 years developing inside and manifested itself into inconceivable hip, rib and back pain.
 
@@ -43,6 +43,6 @@ sections:
       Metastatic Breast Cancer is not pink, fluffy, and fun. It stalks, grinds then takes. I have lost 17 friends in a year, they deserved better, we all do&#8230;
 
       **Why you wanted to be involved with the MetUpUK campaign:** There is not enough being done to understand and treat the biggest killer of women under 50 in the UK. MetUpUK is the only advocacy group for MBC that runs purely by unpaid volunteers and the group works tirelessly to empower patients into being their own advocates. It is a realistic group, which parks toxic positivity and focuses on the real matters at hand-Diagnosis, patient care, and clinical trials. my thoughts-it hangs around in the back of your mind during the good times, forever wondering if this will be your last. Metastatic Breast Cancer is not pink, fluffy, and fun. It stalks, grinds then takes. I have lost 17 friends in a year, they deserved better, we all do&#8230;&#8230;
-  - type: "prose"
+  - _template: "prose"
     body: "<p><b>Twitter: @TassiaHaines<br>Instagram: @TassiaHaines<br>Blog/website: <a href=\"http://pinkisnotmycolour.weebly.com/\" rel=\"noopener\" target=\"_blank\">pinkisnotmycolour.weebly.com</a><br>Tiktok: @malbec1991   <wbr>     </b></p>"
 ---

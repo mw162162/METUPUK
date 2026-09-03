@@ -8,7 +8,7 @@ imageAlt: "1"
 categories:
   - "fundraising"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **We attach an email complaint from METUP UK to CRUK**  
 

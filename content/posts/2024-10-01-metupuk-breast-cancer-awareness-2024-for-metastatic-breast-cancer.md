@@ -16,7 +16,7 @@ categories:
   - "social-media-campaign"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **METUPUK’ Breast Cancer Awareness Month campaign for October across the UK and on social media channels. Continuing the synergy with The Darker Side of Pink travelling campaign highlighting the 31 women a day who die of Metastatic Breast Cancer.**
 

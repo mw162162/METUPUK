@@ -9,18 +9,18 @@ categories:
   - "education"
   - "treatment-options"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       When I first started volunteering with METUPUK, I wasn’t really sure what I would do.  For a few months, I sat on the sides to get a feel for the organisation.  I shared METUPUK links on social media, but I don’t have much of a social media presence, and Instagram is a bit of a mystery to me.  I’ve never figured out how to do makeup, plus my hair is a non-event after chemo.  I thought I wanted to help with drug access or access to clinical trials, but I was flexible and wanted to see what was needed.
 
       Improving access to innovative drugs is one of the main objectives of METUPUK.  The National Institute of Clinical Excellence (NICE) is a vital part of the drug approval process, and it’s important for patient advocates to get involved with their public engagement teams.  NICE evaluate new technologies for use in the NHS in England, with Wales and Northern Ireland usually following their decisions.  Scottish drug approvals are independent of NICE and are appraised by the SMC.  Scrutiny of NICE decisions requires sifting through and selecting evidence and a lot of form filling.  The day after we received confirmation of charitable status, we started work on our first response for tucatinib.  The drug had been provisionally rejected by NICE, and the decision was out for consultation
-  - type: "image"
+  - _template: "image"
     src: "/media/2022/05/NICE-approvals.png"
     alt: "NICE approvals"
     width: 500
     height: 768
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       The tucatinib consultation was open to any individual or organisation to comment, and indeed NICE encourages public and patient involvement.  They have an excellent department of people who work in public engagement, and they are incredibly helpful.  However, commenting on technology appraisals is not particularly easy for lay people, because the technology is well…. technical and also commercially sensitive.  The background reading committee papers were 489 pages long, and large portion of them looked like this.
 
@@ -39,13 +39,13 @@ sections:
       Unfortunately she died before she was able to attempt to get access to this drug.
 
       *&#8220;As a secondary Breast Cancer patient with mixed profile, aggressive Cancer that has an abnormally high tumour mutation burden I have been through 4 failed treatment lines and am about to complete my 5th &#8211; in less than 18 months&#8221;*
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/12/IMG-20211217-WA0010-768x1024.jpg"
     alt: "Emma Hillier"
     width: 640
     height: 853
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       *&#8220;Bar one attempt at targeted treatment all lines have been standard chemotherapy based treatments which have been both gruelling and affected the quality of life I am able to achieve whilst managing side effects. I had genetic testing via the Foundation One test which identified I have a PIK3CA mutation and recommended the drug combination of alpelisib (Piqray) and fulvestrant as a good option for me.*
 
@@ -60,13 +60,13 @@ sections:
       Sometimes NICE decisions seem like an unpleasant aspect of British Exceptionalism (arguably English Exceptionalism although occasionally the SMC come up with disappointing decisions too).
 
       If you are interested in helping us to address drug access and approvals, please contact us.  We need a team of people working on NICE and SMC consultations to get the best outcomes for every patient with metastatic breast cancer in each of the four nations of the UK.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/02/unnamed-1024x768.jpg"
     alt: "Madeleine Meynell"
     width: 640
     height: 480
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       By MetUpUK Member, Madeleine Meynell.
 

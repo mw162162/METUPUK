@@ -8,7 +8,7 @@ imageAlt: "the-climate-reality-project-Hb6uWq0i4MI-unsplash"
 categories:
   - "conferences"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       The below are links to details of introduction to trials and how to interpret trials.
 

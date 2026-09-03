@@ -11,7 +11,7 @@ categories:
   - "quality-of-life"
   - "social-media-campaign"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       I have always participated in some kind of form of physical activity.
 

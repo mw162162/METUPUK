@@ -8,7 +8,7 @@ imageAlt: "Photo of a woman reaching out for a helping hand"
 categories:
   - "organisations"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       ## **Raise awareness of secondary breast cancer**
 

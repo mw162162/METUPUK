@@ -9,7 +9,7 @@ categories:
   - "education"
   - "patient-advocacy"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       In November 2023 METUPUK trustee Madeleine Meynell was a panel member at the event Optimising NICE outcomes: Policy roundtable on the evolution of NICE methodology and how patient organisations can best engage with appraisals. She was joined by Sheela Upadhyaya who is a Life Sciences Consultant specialising in rare diseases, who has previously worked at NICE. Adding to the lively discussion were representatives from a number of patient groups including large charities and small grass roots organisations.
 

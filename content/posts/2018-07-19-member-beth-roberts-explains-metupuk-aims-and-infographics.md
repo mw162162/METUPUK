@@ -8,13 +8,13 @@ imageAlt: "Screenshot of Beth Roberts"
 categories:
   - "press"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: "METUPUK member Beth Roberts gives a really clear overview of the aims of METUPUK, and explains the importance of the red flag infographics, whilst attending an oncology conference as a patient advocate."
-  - type: "embed"
+  - _template: "embed"
     variant: "video"
     src: "https://www.youtube.com/embed/dK9nagt3Bdg"
     title: "Embedded media"
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <br>
 

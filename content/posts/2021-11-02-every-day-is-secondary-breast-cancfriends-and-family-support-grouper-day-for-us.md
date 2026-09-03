@@ -9,7 +9,7 @@ excerpt: "Breast Cancer Awareness Month has come and gone again with one day, Tu
 categories:
   - "living-with-mbc"
 sections:
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Breast Cancer Awareness Month has come and gone again with one day, Tuesday 13th set aside for Secondary Breast Cancer. For us “Every day is secondary breast cancer day”.**
 
@@ -22,13 +22,13 @@ sections:
       									Join our friends and family support group here
 
       					</a>
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/11/7958ef1c-f4f8-4f7a-b98c-fd55302591e0.jpeg"
     alt: ""
     width: 640
     height: 394
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       **Everyone’s story will be different, but each story around secondary breast cancer will tragically one day end the same way.**
 
@@ -45,13 +45,13 @@ sections:
       									Join our friends and family support group here
 
       					</a>
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/11/IMG_4062-576x1024.jpeg"
     alt: ""
     width: 576
     height: 1024
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       Elaine passed away on June 29th 2020, two years and three weeks after her secondary diagnosis. In 2018 I would have given anything for Elaine to get the two years but even having made it to two years we felt cheated and that it was so unfair that someone who gave so much to so many had been taken far too soon and at the tender age of 55. Some eight hours later, on the same day, Elaine’s mum Helen passed away from a massive heart attack brought on by the stress of losing her daughter. Secondary breast cancer took two lives that day and shattered the lives of a family and so many of Elaine’s friends and colleagues.
 
@@ -60,13 +60,13 @@ sections:
       Secondary breast cancer always impacts on me and my children. There is never a day passes where there are no tears. I am not ashamed of this; this is just how I feel. I miss her terribly and I still talk to Elaine, share my thoughts throughout the day and say her name regularly but every day is tough and not what we had hoped for or dreamed of when we got together in 1985. I don’t feel down but I do feel sad and am still grieving the loss of my best friend, my soul mate, my wife, my queen, our families mum, a wonderful and very special human being. Last week I went out for lunch with two couples who Elaine and I had known for many years, and it was the first time I had been with them without her, it was lovely being with friends but so hard knowing she would have loved to be there. Growing up I had never been an animal person, but within months of being married, we had two dogs and by 2018 having had 9 dogs, 7 cats and 4 horses, we still had 2 horses, 2 dogs and 2 cats. Most of the pets we had were from rescue centres and even one of the horses was an abandoned pony, Elaine was a rescuer of animals and people. Being rescued by Elaine was just a brilliant outcome, a real blessing. Having the animals has been so important for me. They make you get up and face the day as they rely on you and give you so much. Elaine had said to feel free to rehome the horses, but I can’t bring myself to do it as they were a connection to her and are so happy and content here. They don’t deserve to be uprooted at their stage of life.
 
       Elaine and I were very fortunate to travel a lot with our jobs and we were always thrilled for each other when we had an opportunity to go to new places, but we were even more thrilled when the other one came back. There is a huge difference knowing that someone is away but returning in a few weeks and someone being away and not coming back. Life can be lonely and every day has challenges. People say to me that you must have great memories, and there are great memories of fantastic times and shared experiences and events, but they are bittersweet and cannot be enjoyed as we used to together. Now they are reminders of the things that we will never have in the future or share again.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/11/IMG_0031-768x1024.jpeg"
     alt: ""
     width: 640
     height: 853
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <a href="https://www.facebook.com/groups/1087903931949449/" rel="noopener" target="_blank">
 
@@ -77,13 +77,13 @@ sections:
       There are days when the seas feel calm, and life is ok but other days when there are waves which can crash over you. There are also many things which can creep up on you. It can be a photo, a document such as a pet adoption paper, a concert ticket, an item of clothing from a picture, a song or something about to happen that you shared together in the past, like going to see the Bond films. On Sunday I went back to the church where Elaine and I first met, got to know each other through Youth Fellowship and started going out. We got married and started our life together there. We were privileged to have 35 years together, but it never felt like enough, how could it. Elaine did not fear death, she just wanted more time with her family and to help more people through her work.
 
       I have tried to look after myself physically and mentally. My friends have been a huge blessing to me, they have walked with me remotely every week or fortnight over the last year, Gordon Glasgow and Elaine Murdoch in Edinburgh, Karen Taylor and Stuart Campbell in London and there’s my weekly call with Ivy Young. My average step count is over 12,500, up by more than 5,000 a day on last year and it has been great to be back coaching regularly with my colleagues at EKASC. The three ministers who conducted Elaine’s and her mum’s services have been incredible and I am indebted to David Childs, John MacKinnon and especially Edwin Gunn who also married us.
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/11/IMG_3409-1024x768.jpeg"
     alt: ""
     width: 640
     height: 480
     caption: ""
-  - type: "prose"
+  - _template: "prose"
     body: |-
       <a href="https://www.facebook.com/groups/1087903931949449/" rel="noopener" target="_blank">
 
@@ -106,7 +106,7 @@ sections:
       									Join our friends and family support group here
 
       					</a>
-  - type: "image"
+  - _template: "image"
     src: "/media/2021/11/IMG_0032-865x1024.jpeg"
     alt: ""
     width: 640
