@@ -497,7 +497,7 @@ const COMPONENTS = [
     summary: "Text · {{fields.body | truncate(64)}}",
     // Ordinary flowing copy is gathered by the splitter across many elements
     // rather than matched one at a time, so it has no match() of its own.
-    fields: [{ label: 'Body', name: 'body', widget: 'markdown' }],
+    fields: [{ label: 'Body', name: 'body', widget: 'markdown', modes: ['raw'] }],
     render: (b) => fromMarkdown(b.body || ''),
   },
   {
@@ -507,7 +507,7 @@ const COMPONENTS = [
     summary: "Expandable · {{fields.summary | truncate(28)}} — {{fields.body | truncate(38)}}",
     fields: [
       { label: 'Heading', name: 'summary', widget: 'string' },
-      { label: 'Body', name: 'body', widget: 'markdown' },
+      { label: 'Body', name: 'body', widget: 'markdown', modes: ['raw'] },
     ],
     match: (el, { tag, has }) => tag === 'details' || has('c-disclosure'),
     read: readDisclosure,
@@ -540,7 +540,7 @@ const COMPONENTS = [
       { label: 'Image', name: 'image', widget: 'image', required: false },
       { label: 'Alt text', name: 'imageAlt', widget: 'string', required: false },
       { label: 'Link', name: 'href', widget: 'string', required: false },
-      { label: 'Body', name: 'body', widget: 'markdown', required: false },
+      { label: 'Body', name: 'body', widget: 'markdown', modes: ['raw'], required: false },
     ],
     match: (el, { has }) => has('c-card'),
     read: readCard,
@@ -573,7 +573,7 @@ const COMPONENTS = [
         fields: [
           { label: 'Name', name: 'name', widget: 'string' },
           { label: 'Role', name: 'role', widget: 'string', required: false },
-          { label: 'About', name: 'body', widget: 'markdown', required: false },
+          { label: 'About', name: 'body', widget: 'markdown', modes: ['raw'], required: false },
           { label: 'Links', name: 'links', widget: 'list', required: false,
             field: { label: 'Address', name: 'href', widget: 'string' } },
         ] },
@@ -632,7 +632,7 @@ const COMPONENTS = [
         options: ['equal', 'wide-left', 'wide-right'],
         hint: 'Columns stack into one on a phone whichever you choose.' },
       { label: 'Columns', name: 'columns', widget: 'list', label_singular: 'Column',
-        fields: [{ label: 'Body', name: 'body', widget: 'markdown' }] },
+        fields: [{ label: 'Body', name: 'body', widget: 'markdown', modes: ['raw'] }] },
     ],
     match: (el, { has }) => has('c-columns'),
     read: readColumns,

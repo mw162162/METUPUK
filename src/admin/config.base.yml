@@ -17,9 +17,9 @@ backend:
   branch: main
   # Sveltia talks to GitHub directly; no OAuth server of your own is needed.
 
-# Lets you run the editor against local files while developing:
-#   npx @sveltia/cms-proxy-server   then open /admin
-local_backend: true
+# No local_backend here: Sveltia ignores that option and warns about it on
+# every load. Editing local files is its own "Work with Local Repository"
+# button, which asks for the project folder and needs no server.
 
 # The originals only, not the WordPress renditions. Pointing this at
 # _scrape/assets meant the editor walked 5,436 files and 1.1 GB before it could
@@ -68,6 +68,7 @@ collections:
       - label: "Sections"
         name: sections
         widget: list
+        required: false
         label_singular: "Section"
         # @component-types
 
@@ -106,6 +107,7 @@ collections:
       - label: "Sections"
         name: sections
         widget: list
+        required: false
         label_singular: "Section"
         # @component-types
 
