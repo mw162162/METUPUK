@@ -101,6 +101,53 @@ function makeRenditions(jobs) {
   return jobs.filter((j) => fs.existsSync(j.dst)).length;
 }
 
+// Put a content hash in the stylesheet and script filenames, and point every
+// page at the hashed name.
+//
+// These were served as /assets/css/site.css with a seven-day cache and a name
+// that never changed. So a returning visitor kept the old stylesheet for a
+// week: a fix could be deployed, be verifiably present in the file on the
+// server, and still be invisible on the phone that reported the bug. That is
+// exactly what happened with the mobile header — deployed, correct, and
+// unseen.
+//
+// Hashing the name makes the two rules consistent: the URL changes when the
+// bytes change, so a long cache is safe and an update is immediate.
+function fingerprintAssets() {
+  const crypto = require('crypto');
+  const renames = [];
+
+  for (const rel of ['assets/css/site.css', 'assets/js/site.js']) {
+    const file = path.join(OUT, rel);
+    if (!fs.existsSync(file)) continue;
+    const body = fs.readFileSync(file);
+    const hash = crypto.createHash('sha1').update(body).digest('hex').slice(0, 8);
+    const ext = path.extname(rel);
+    const hashed = rel.slice(0, -ext.length) + '.' + hash + ext;
+    fs.writeFileSync(path.join(OUT, hashed), body);
+    fs.rmSync(file, { force: true });
+    renames.push(["/" + rel, "/" + hashed]);
+  }
+  if (!renames.length) return 0;
+
+  // Every page, and the editor page too — it loads the same stylesheet.
+  const rewrite = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) { rewrite(full); continue; }
+      if (!/.(html|xml|js|json|css)$/i.test(entry.name)) continue;
+      let text = fs.readFileSync(full, 'utf8');
+      let touched = false;
+      for (const [from, to] of renames) {
+        if (text.includes(from)) { text = text.split(from).join(to); touched = true; }
+      }
+      if (touched) fs.writeFileSync(full, text);
+    }
+  };
+  rewrite(OUT);
+  return renames.length;
+}
+
 function copyReferencedMedia() {
   const wanted = new Set();
   const addRef = (u) => {
@@ -1124,6 +1171,10 @@ function run() {
   const assetCount = copyDir(path.join(ROOT, 'src', 'assets'), path.join(OUT, 'assets'));
   // Host config (_redirects, _headers) copied to the root of the deploy.
   copyDir(path.join(ROOT, 'src', 'static'), OUT);
+
+  // Must run after every page is written and after the assets are copied:
+  // it renames the files and rewrites the references in one pass.
+  const fingerprinted = fingerprintAssets();
 
   const media = copyReferencedMedia();
 
