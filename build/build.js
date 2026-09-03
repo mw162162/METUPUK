@@ -6,8 +6,6 @@ const ex = require('./lib/exhibition');
 const { createResolver } = require('./lib/links');
 const { enrich } = require('./lib/enrich');
 const articleLayout = require('./lib/layout');
-const { buildPreviewBundle } = require('./lib/preview-bundle');
-const { build: makeAdminConfig } = require('./make-admin-config');
 const T = require('./lib/templates');
 
 const ROOT = path.join(__dirname, '..');
@@ -1122,19 +1120,11 @@ function run() {
   fs.writeFileSync(path.join(OUT, 'robots.txt'),
     `User-agent: *\nAllow: /\n\nSitemap: ${T.SITE_URL}/sitemap.xml\n`);
 
-  // The editor offers exactly the components the build can render, because
-  // both come from the same registry. Regenerated here so the two can never
-  // drift apart between a component being added and somebody remembering.
-  makeAdminConfig();
-
   // Static assets
   const assetCount = copyDir(path.join(ROOT, 'src', 'assets'), path.join(OUT, 'assets'));
   // Host config (_redirects, _headers) copied to the root of the deploy.
   copyDir(path.join(ROOT, 'src', 'static'), OUT);
 
-  // The editor's preview pane renders with the same code as the build, so it
-  // cannot show the client one thing and publish another.
-  fs.writeFileSync(path.join(OUT, 'admin', 'preview-render.js'), buildPreviewBundle());
   const media = copyReferencedMedia();
 
   // A token the editor's preview polls. Changing it is how the iframe knows to

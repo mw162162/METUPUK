@@ -18,15 +18,14 @@
     "publish": "node build/pull.js && node build/make-renditions.js && node build/build.js && node build/verify.js && node build/optimise-images.js && node tools/webaudit dist",
     "migrate": "node build/export-content.js --force && node build/verify-roundtrip.js",
     "retype": "node build/retype-blocks.js",
-    "admin": "node build/make-admin-config.js",
-    "deploy": "node build/build.js && node build/verify.js && node build/optimise-images.js && npx --yes netlify-cli deploy --dir=dist --prod",
-    "deploy:draft": "node build/build.js && node build/optimise-images.js && npx --yes netlify-cli deploy --dir=dist",
-    "cms": "npx --yes decap-server",
+    "deploy": "node build/build.js && node build/verify.js && npx tinacms build && node build/optimise-images.js && npx --yes netlify-cli deploy --dir=dist --prod",
+    "deploy:draft": "node build/build.js && npx tinacms build && node build/optimise-images.js && npx --yes netlify-cli deploy --dir=dist",
     "verify:roundtrip": "node build/verify-roundtrip.js",
     "watch": "node build/watch.js",
     "dev": "node build/watch.js",
     "import": "node build/import-site.js",
-    "media": "node build/make-media-library.js"
+    "media": "node build/make-media-library.js",
+    "admin": "npx tinacms build"
   },
   "dependencies": {
     "js-yaml": "^5.4.1",
