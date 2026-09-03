@@ -47,9 +47,27 @@ function inline(text) {
 
     // An escape consumes the next character verbatim, so syntax cannot be
     // matched inside it.
-    if (ch === '\\' && i + 1 < text.length && /[\\`*_[\]]/.test(text[i + 1])) {
+    //
+    // The set is both of the escaper's, not just the inline one. A heading
+    // written "### 1. Awareness" is stored as "### \1. Awareness", because at
+    // the point tomarkdown escaped it that "1." began a line and would have
+    // been read as a numbered list. By the time it gets here the "### " has
+    // been stripped, so the line-start unescape no longer matches and the
+    // backslash reached the reader — five pages of the site carried a visible
+    // "\1." in their text.
+    //
+    // Extending the set is safe because a literal backslash is itself escaped
+    // on the way out: any lone backslash in stored Markdown was put there by
+    // the escaper, so removing it can only restore what was written.
+    if (ch === '\\' && i + 1 < text.length && /[\\`*_[\]#>+-]/.test(text[i + 1])) {
       out += text[i + 1];
       i += 2;
+      continue;
+    }
+
+    // The same, for the numbered-list escape: a digit run followed by a dot.
+    if (ch === '\\' && /^\d+\./.test(text.slice(i + 1))) {
+      i += 1;
       continue;
     }
 
