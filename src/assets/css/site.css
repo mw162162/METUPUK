@@ -2386,3 +2386,105 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
    text starts hard against the edge of the tap target. */
 .drawer .drawer__sub { padding-left: var(--sp-5); }
 .drawer .drawer__sub .is-child a { padding-left: var(--sp-4); }
+
+/* --- Mobile: nothing worth reading is hidden ----------------------------- */
+
+/* Below 1100px the whole artwork layer was display:none, and Jo Taylor went
+   with it — her name, the sentence saying she recorded her own film, and the
+   link to it. A phone visitor never knew that page existed.
+   The thirty-one faces are decoration and genuinely need the width they do not
+   have here, so they stay behind. What was never decoration is the woman the
+   panel is about, so on a phone she comes out from behind the picture and sits
+   under the copy as an ordinary card. */
+@media (max-width: 1099.98px) {
+  .scrolly__art {
+    display: block;
+    position: static;
+    inset: auto;
+    padding: 0;
+    pointer-events: auto;
+  }
+  .scrolly__faces { display: none; }
+  .scrolly__kept {
+    position: static;
+    opacity: 1;
+    transform: none;
+    transition: none;
+    max-width: none;
+    margin-top: var(--sp-5);
+    padding: var(--sp-5);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: var(--radius-lg);
+    background: rgba(28, 3, 16, 0.42);
+  }
+  .scrolly__kept .btn { margin-top: var(--sp-4); }
+}
+
+/* Tap targets. A link in a list was 22px tall — half the 44px a finger needs,
+   and the rows sat close enough together that the wrong one was easy to hit.
+   Padding rather than height, so the text stays where the design put it and
+   only the target around it grows. */
+@media (max-width: 48em) {
+  .link-list a,
+  .route a,
+  .prose > ul > li > a:only-child,
+  .footer__nav a,
+  .site-footer a { padding-block: 0.55rem; display: inline-block; }
+}
+
+/* --- On this page, on a phone -------------------------------------------- */
+
+/* The contents rail was display:none below 1024px. On /i-am-the-31/ that is a
+   hundred and thirty-eight sections with no way to reach any of them except by
+   scrolling past all of them.
+   It is a <details> now, so the same markup is a rail on a desktop and a
+   disclosure on a phone. Closed to begin with, because opened it would push the
+   article off the screen. */
+@media (max-width: 1023.98px) {
+  .toc {
+    display: block;
+    /* .layout-aside is a grid with the article first, so in one column the
+       contents landed under all 138 sections — 39,000px down, which is not
+       navigation, it is an afterword. */
+    order: -1;
+    margin: 0 0 var(--sp-6);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-sunken);
+    overflow: hidden;
+  }
+  .toc > summary {
+    cursor: pointer; list-style: none;
+    padding: var(--sp-4) var(--sp-5);
+    min-height: 2.75rem;
+    display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3);
+    font-family: var(--font-display); font-weight: 700;
+    font-size: var(--step--1); text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--text-muted); margin: 0;
+  }
+  .toc > summary::-webkit-details-marker { display: none; }
+  /* One glyph for both states, turned rather than swapped — the same idea the
+     expandable sections use, so the page has one language for opening things. */
+  .toc > summary::after {
+    content: "+"; font-size: 1.25rem; line-height: 1; color: var(--text-faint);
+    transition: transform var(--dur-2) var(--ease);
+  }
+  .toc[open] > summary::after { transform: rotate(45deg); }
+  .toc > ol {
+    max-height: 55vh; overflow-y: auto;
+    margin: 0; padding: 0 var(--sp-5) var(--sp-4);
+    border-left: 0;
+  }
+  .toc a { padding-block: 0.5rem; display: block; }
+}
+
+/* On a desktop it is the rail it always was: the summary is not a control, and
+   the list shows whether or not the element is open. */
+@media (min-width: 1024px) {
+  .toc > summary { list-style: none; }
+  .toc > summary::-webkit-details-marker { display: none; }
+  .toc:not([open]) > ol { display: block; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .toc > summary::after { transition: none; }
+}

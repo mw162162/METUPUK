@@ -401,12 +401,20 @@ function tableOfContents(html) {
     items.push({ level: +m[1], id: m[2], text });
   }
   if (items.length < 3) return '';
-  return `<aside class="toc" aria-labelledby="toc-heading">
-      <h2 id="toc-heading">On this page</h2>
+  // A <details>, not an <aside>, so the same markup can be a rail on a desktop
+  // and a disclosure on a phone. It was display:none below 1024px, which on a
+  // page like /i-am-the-31/ — a hundred and thirty-eight sections — left a
+  // phone with no way to reach anything but by scrolling the lot.
+  //
+  // Closed by default, because open it would push the article off the screen.
+  // The desktop rail forces it open in CSS instead of relying on the attribute,
+  // which is what lets one element be both.
+  return `<details class="toc">
+      <summary id="toc-heading">On this page</summary>
       <ol>
         ${items.map((i) => `<li${i.level === 3 ? ' class="is-sub"' : ''}><a href="#${i.id}">${esc(i.text)}</a></li>`).join('\n        ')}
       </ol>
-    </aside>`;
+    </details>`;
 }
 
 module.exports = {
