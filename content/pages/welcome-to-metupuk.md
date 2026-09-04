@@ -4,7 +4,7 @@ url: "/about-us/welcome-to-metupuk/"
 date: "2016-05-10T03:48:21"
 modified: "2024-08-17T11:24:26"
 image: "/media/2019/10/Jo-and-beth.jpg"
-imageAlt: ""
+imageAlt: "Jo and Beth together at an evening event, one of them in a Make Herstory sweatshirt."
 parent: "about-us"
 sections:
   - _template: "prose"

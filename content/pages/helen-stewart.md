@@ -4,7 +4,7 @@ url: "/darker-pink/helen-stewart/"
 date: "2021-10-22T11:28:12"
 modified: "2021-10-22T11:30:46"
 image: "/media/2021/10/FB-1920x1080-27.Helen-Stewart-1024x576.png"
-imageAlt: "FB-1920×1080-27.Helen-Stewart"
+imageAlt: "A Darker Side of Pink campaign card: Helen Stewart beside her words, It is not fun knowing that I only have a limited amount of time left and the pandemic has eaten up chunks of that precious time."
 parent: "darker-pink"
 sections:
   - _template: "prose"

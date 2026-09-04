@@ -4,7 +4,7 @@ url: "/2024/04/how-much-is-a-year-of-life-worth-madeleine-meynell/"
 date: "2024-04-30T01:27:04"
 modified: "2024-05-07T15:38:22"
 image: "/media/2020/09/2217911D-11BF-4FC5-9692-045DFA0A877F-Madeleine-Meynell.jpeg"
-imageAlt: ""
+imageAlt: "Madeleine Meynell, photographed at home in a green jumper."
 sections:
   - _template: "prose"
     body: |-

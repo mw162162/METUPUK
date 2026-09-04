@@ -22,7 +22,7 @@ sections:
 
       Jo Taylor’s infographic on the red flag signs for metastatic breast cancer is a brilliant resource and one that should be shared&#8230; [read more](/2024/10/the-backache-began-in-january-2023/)
 
-      [<img src="/media/2020/06/Kit-150x150.jpg" alt width="150" height="150" loading="lazy" decoding="async">](/2024/10/the-backache-began-in-january-2023/)[**Soon after my diagnosis with metastatic breast cancer age 33, someone tried to explain&#8230;** ](/2024/10/the-backache-began-in-january-2023/)October 3, 2024 &#8211; **Kit Dzeryn**
+      [<img src="/media/2020/06/Kit-150x150.jpg" alt="Kit in a bright blue woolly hat, laughing into the camera at a funfair with a friend just behind." width="150" height="150" loading="lazy" decoding="async">](/2024/10/the-backache-began-in-january-2023/)[**Soon after my diagnosis with metastatic breast cancer age 33, someone tried to explain&#8230;** ](/2024/10/the-backache-began-in-january-2023/)October 3, 2024 &#8211; **Kit Dzeryn**
 
       Sadly our Kit @Diamondtrees11 died on Monday 7th May 2023 We will miss her voice as she wasn’t scared of speaking out&#8230; [read more](/2024/10/soon-after-my-diagnosis-with-metastatic-breast-cancer-age-33-someone-tried-to-explain/)
 
@@ -82,7 +82,7 @@ sections:
 
       Having just completed screening for a clinical trial I must initiate this discussion. Trials offer treatments not otherwise available&#8230; [read more](/2024/10/having-just-completed-screening-for-a-clinical-trial-i-must-initiate-this-discussion/)
 
-      [<img src="/media/2019/10/kit-dzeryn-150x150.jpg" alt width="150" height="150" loading="lazy" decoding="async">](/2024/10/it-shouldnt-be-this-hard-that-was-a-comment-on-my-twitter-thread/)
+      [<img src="/media/2019/10/kit-dzeryn-150x150.jpg" alt="Kit Dzeryn smiling into the camera in a sunlit garden." width="150" height="150" loading="lazy" decoding="async">](/2024/10/it-shouldnt-be-this-hard-that-was-a-comment-on-my-twitter-thread/)
 
       [**&#8220;It shouldn’t be this hard&#8221;. That was a comment on my Twitter thread…**](/2024/10/it-shouldnt-be-this-hard-that-was-a-comment-on-my-twitter-thread/)  
 
@@ -182,5 +182,5 @@ sections:
 
       And look out around the UK &#8211; we have some specially targeted digital boards in bus shelters and impactful high-traffic roadside locations across the major cities in the UK including London, Bristol, Cardiff, Swansea, Birmingham, Nottingham, Manchester, Liverpool, Leeds, Newcastle, Edinburgh, Glasgow, and Belfast.
 
-      <img src="/media/2024/09/1800-X-450-Campaign-Ad-1.png" alt="1800 X 450 Campaign Ad 1" width="1800" height="450" loading="lazy" decoding="async">
+      <img src="/media/2024/09/1800-X-450-Campaign-Ad-1.png" alt="A METUPUK campaign banner headed Who really cares?, over a crowd in silhouette: another 31 women will die today and tomorrow and the next and the next, of metastatic breast cancer. We do. Scan here to find out more about our work." width="1800" height="450" loading="lazy" decoding="async">
 ---

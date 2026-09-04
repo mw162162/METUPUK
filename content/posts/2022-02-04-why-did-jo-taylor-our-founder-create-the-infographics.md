@@ -4,7 +4,7 @@ url: "/2022/02/why-did-jo-taylor-our-founder-create-the-infographics/"
 date: "2022-02-04T00:24:33"
 modified: "2022-02-25T08:13:30"
 image: "/media/2022/02/World-Cancer-Day-logo.jpg"
-imageAlt: ""
+imageAlt: "The World Cancer Day logo, dated 4 February."
 sections:
   - _template: "prose"
     body: |-

@@ -75,7 +75,7 @@ sections:
       have but with empathy and support, we can be helped to navigate through our diagnosis and for that we will be grateful too.
   - _template: "image"
     src: "/media/2019/10/Laura-Ashurst.jpg"
-    alt: ""
+    alt: "Laura Ashurst smiling into the camera."
     width: 640
     height: 800
     caption: ""

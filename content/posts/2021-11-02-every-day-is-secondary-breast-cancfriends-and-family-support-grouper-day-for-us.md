@@ -24,7 +24,7 @@ sections:
       					</a>
   - _template: "image"
     src: "/media/2021/11/7958ef1c-f4f8-4f7a-b98c-fd55302591e0.jpeg"
-    alt: ""
+    alt: "A family of four, two parents and two teenagers, arm in arm for a portrait."
     width: 640
     height: 394
     caption: ""
@@ -47,7 +47,7 @@ sections:
       					</a>
   - _template: "image"
     src: "/media/2021/11/IMG_4062-576x1024.jpeg"
-    alt: ""
+    alt: "A couple at a party, arms round each other."
     width: 576
     height: 1024
     caption: ""
@@ -62,7 +62,7 @@ sections:
       Elaine and I were very fortunate to travel a lot with our jobs and we were always thrilled for each other when we had an opportunity to go to new places, but we were even more thrilled when the other one came back. There is a huge difference knowing that someone is away but returning in a few weeks and someone being away and not coming back. Life can be lonely and every day has challenges. People say to me that you must have great memories, and there are great memories of fantastic times and shared experiences and events, but they are bittersweet and cannot be enjoyed as we used to together. Now they are reminders of the things that we will never have in the future or share again.
   - _template: "image"
     src: "/media/2021/11/IMG_0031-768x1024.jpeg"
-    alt: ""
+    alt: "A woman holding a baby in a hay field at golden hour, a small girl in a red coat beside her."
     width: 640
     height: 853
     caption: ""
@@ -79,7 +79,7 @@ sections:
       I have tried to look after myself physically and mentally. My friends have been a huge blessing to me, they have walked with me remotely every week or fortnight over the last year, Gordon Glasgow and Elaine Murdoch in Edinburgh, Karen Taylor and Stuart Campbell in London and there’s my weekly call with Ivy Young. My average step count is over 12,500, up by more than 5,000 a day on last year and it has been great to be back coaching regularly with my colleagues at EKASC. The three ministers who conducted Elaine’s and her mum’s services have been incredible and I am indebted to David Childs, John MacKinnon and especially Edwin Gunn who also married us.
   - _template: "image"
     src: "/media/2021/11/IMG_3409-1024x768.jpeg"
-    alt: ""
+    alt: "A couple hugging, both smiling for the camera."
     width: 640
     height: 480
     caption: ""
@@ -108,7 +108,7 @@ sections:
       					</a>
   - _template: "image"
     src: "/media/2021/11/IMG_0032-865x1024.jpeg"
-    alt: ""
+    alt: "An old photograph of a young woman at an event, wearing a name badge."
     width: 640
     height: 758
     caption: ""

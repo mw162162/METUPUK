@@ -4,7 +4,7 @@ url: "/treatment-lines/"
 date: "2021-05-04T10:49:52"
 modified: "2025-05-21T08:15:08"
 image: "/media/2025/05/2.png"
-imageAlt: ""
+imageAlt: "The METUPUK ER positive treatment lines chart, listing the drugs given at each of the four lines of treatment."
 sections:
   - _template: "prose"
     body: |-
@@ -26,17 +26,17 @@ sections:
 
       <a>ER+</a>
 
-      <img src="/media/2025/05/2-240x300.png" alt width="653" height="816" loading="lazy" decoding="async">
+      <img src="/media/2025/05/2-240x300.png" alt="The METUPUK ER positive treatment lines chart, listing the drugs given at each of the four lines of treatment, from CDK4/6 inhibitors first to chemotherapy later." width="653" height="816" loading="lazy" decoding="async">
 
       HER2+
 
-      <img src="/media/2025/05/3-240x300.png" alt width="652" height="815" loading="lazy" decoding="async">
+      <img src="/media/2025/05/3-240x300.png" alt="The METUPUK HER2 positive treatment lines chart, listing the drugs given at each of the five lines of treatment, beginning with Phesgo." width="652" height="815" loading="lazy" decoding="async">
 
       <a>TNBC</a>
 
-      <img src="/media/2025/05/4-240x300.png" alt width="649" height="811" loading="lazy" decoding="async">
+      <img src="/media/2025/05/4-240x300.png" alt="The METUPUK triple negative treatment lines chart, listing the drugs given at each of the three lines of treatment." width="649" height="811" loading="lazy" decoding="async">
 
       <a>Internationally Approved but not a</a><a>vailable on the NHS</a>
 
-      <img src="/media/2025/05/5-240x300.png" alt width="646" height="808" loading="lazy" decoding="async">
+      <img src="/media/2025/05/5-240x300.png" alt="The METUPUK chart of treatments approved internationally or still in development, listed by breast cancer subtype, with the promising drugs in clinical trials for each." width="646" height="808" loading="lazy" decoding="async">
 ---

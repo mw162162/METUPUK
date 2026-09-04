@@ -4,7 +4,7 @@ url: "/write-to-your-mp-for-metupuk/"
 date: "2021-05-06T18:05:33"
 modified: "2024-06-18T07:26:07"
 image: "/media/2021/10/laptop-scaled-pink-1024x576.png"
-imageAlt: "laptop-scaled-pink"
+imageAlt: "Hands typing on a laptop keyboard, the photograph tinted pink."
 sections:
   - _template: "prose"
     body: |-

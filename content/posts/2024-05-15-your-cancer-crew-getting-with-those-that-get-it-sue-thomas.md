@@ -111,5 +111,5 @@ sections:
 
       **Get with those who get it!**
 
-      <img src="/media/2024/05/IMG_1399-225x300.jpg" alt width="225" height="300" loading="lazy" decoding="async">
+      <img src="/media/2024/05/IMG_1399-225x300.jpg" alt="Sue Thomas in a pink fascinator, outside a ruined abbey." width="225" height="300" loading="lazy" decoding="async">
 ---

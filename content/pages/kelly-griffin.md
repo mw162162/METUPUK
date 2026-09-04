@@ -4,7 +4,7 @@ url: "/darker-pink/kelly-griffin/"
 date: "2021-10-22T11:45:44"
 modified: "2021-10-22T11:50:10"
 image: "/media/2021/10/FB-1920x1080-25.Kelly-Griffin-1024x576.png"
-imageAlt: "FB-1920×1080-25.Kelly-Griffin"
+imageAlt: "A Darker Side of Pink campaign card: Kelly Griffin beside her words, It is not fun knowing that our friends die as a result of secondary breast cancer, you live with a kind of guilt alongside a gratitude."
 parent: "darker-pink"
 sections:
   - _template: "prose"

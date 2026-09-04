@@ -4,7 +4,7 @@ url: "/darker-pink/mary-huckle/"
 date: "2021-10-16T16:17:56"
 modified: "2021-10-22T11:26:50"
 image: "/media/2021/10/FB-1920x1080-3.Mary-Huckle-1024x576.png"
-imageAlt: "FB-1920×1080-3.Mary-Huckle"
+imageAlt: "A Darker Side of Pink campaign card: Mary Huckle beside her words, It is not fun knowing that so many of us are unaware of the red flags symptoms."
 parent: "darker-pink"
 sections:
   - _template: "prose"

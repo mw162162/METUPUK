@@ -4,7 +4,7 @@ url: "/2023/12/mindfulness-and-metastatic-breast-cancer-at-christmas/"
 date: "2023-12-16T01:04:48"
 modified: "2023-12-16T01:04:48"
 image: "/media/2023/04/Laura-Ashurst-2.jpg"
-imageAlt: ""
+imageAlt: "Laura Ashurst in a METUPUK Busy Living With Mets T-shirt, sitting in a conservatory."
 categories:
   - "education"
   - "living-with-mbc"

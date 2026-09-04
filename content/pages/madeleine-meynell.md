@@ -4,7 +4,7 @@ url: "/darker-pink/madeleine-meynell/"
 date: "2021-10-22T12:18:56"
 modified: "2021-10-22T12:20:56"
 image: "/media/2021/10/FB-1920x1080-8.Madeline-Meynell-1024x576.png"
-imageAlt: "FB-1920×1080-8.Madeline-Meynell"
+imageAlt: "A Darker Side of Pink campaign card: Madeline Meynell beside her words, It is not fun knowing that I am less likely to access clinical trials because I take other medication."
 excerpt: "Name: Madeleine MeynellAge: 49Region: London Diagnosis: (i.e When diagnosed primary, When diagnosed mets, Or denovo, What disease type – HER2+/- ER-/ER+ or TNBC or IBC) Age at Diagnosis: 43 Hi my…"
 parent: "darker-pink"
 sections:

@@ -4,7 +4,7 @@ url: "/darker-pink/anne-cargill/"
 date: "2021-10-22T10:46:19"
 modified: "2021-10-22T10:48:51"
 image: "/media/2021/10/FB-1920x1080-12.Anne-Cargill-1024x576.png"
-imageAlt: "FB-1920×1080-12.Anne-Cargill"
+imageAlt: "A Darker Side of Pink campaign card: Anne Cargill beside her words, It is not fun knowing that some drugs can take up to 2 years to be approved as we play a waiting game."
 parent: "darker-pink"
 sections:
   - _template: "prose"

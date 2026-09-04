@@ -4,7 +4,7 @@ url: "/darker-pink/connie-johncock/"
 date: "2021-10-16T16:45:28"
 modified: "2021-10-22T09:27:50"
 image: "/media/2021/10/FB-1920x1080-5.Connie-Johncock-1024x576.png"
-imageAlt: "FB-1920×1080-5.Connie-Johncock"
+imageAlt: "A Darker Side of Pink campaign card: Connie Johncock beside her words, It is not fun knowing that toxic positivity makes me feel I should wear pink tutus whilst trying to kick cancer."
 excerpt: "Name: Connie JohncockAge: 32Region: Kent Diagnosis: Her2+ denovo December 2012 age 23 (non invasive ductal carcinoma) Age at Diagnosis: 23 Hi I’m Connie. I was diagnosed denovo her2+ breast cancer at…"
 parent: "darker-pink"
 sections:

@@ -82,8 +82,15 @@ function renderDisclosure(b) {
 }
 
 function renderCard(b) {
+  // Described, or declared decorative — the same two answers the image
+  // component gives, for the same reason. A portrait on a card whose heading
+  // is already that person's name is decoration: a screen reader would
+  // otherwise announce the name, the picture, and the name again.
+  const cardAlt = b.imageDecorative === true
+    ? ' alt="" role="presentation"'
+    : attr('alt', b.imageAlt);
   const media = b.image
-    ? `<div class="c-card__media"><img src="${esc(b.image)}"${attr('alt', b.imageAlt)}></div>`
+    ? `<div class="c-card__media"><img src="${esc(b.image)}"${cardAlt}></div>`
     : '';
   const headingText = b.heading ? esc(b.heading) : '';
   // A card that carries a link wraps its heading in it, which is where
@@ -570,7 +577,10 @@ const COMPONENTS = [
     fields: [
       { label: 'Heading', name: 'heading', widget: 'string' },
       { label: 'Image', name: 'image', widget: 'image', required: false },
-      { label: 'Alt text', name: 'imageAlt', widget: 'string', required: false },
+      { label: 'Describe this picture', name: 'imageAlt', widget: 'string', required: false,
+        hint: 'What the picture shows, for anyone who cannot see it.' },
+      { label: 'This picture is decorative', name: 'imageDecorative', widget: 'boolean', default: false,
+        hint: 'Tick when the heading already says what the picture shows — a portrait above the name it belongs to, for instance.' },
       { label: 'Link', name: 'href', widget: 'string', required: false },
       { label: 'Body', name: 'body', widget: 'markdown', modes: ['raw'], required: false },
     ],

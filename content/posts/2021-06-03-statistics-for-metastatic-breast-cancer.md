@@ -33,7 +33,7 @@ sections:
       If you look at the data I am sharing here, you will see that ER+HER2- and TNBC have poor outcomes.  The main advances have been in HER2+ disease and that is really all due to Herceptin/Traztuzamab 20 years ago.
   - _template: "image"
     src: "/media/2021/05/PHOTO-2021-05-07-12-40-57.jpg"
-    alt: ""
+    alt: "Four survival charts from the study, one for each breast cancer subtype, plotting overall survival over seventy months by the part of the body the cancer has spread to."
     width: 640
     height: 490
     caption: ""
@@ -58,7 +58,7 @@ sections:
       WE DEMAND CHANGE.
   - _template: "image"
     src: "/media/2019/10/jo-taylor.jpg"
-    alt: ""
+    alt: "Jo Taylor, who founded METUPUK, smiling at an evening event."
     width: 279
     height: 280
     caption: ""

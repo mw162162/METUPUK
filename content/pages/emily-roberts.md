@@ -4,7 +4,7 @@ url: "/darker-pink/emily-roberts/"
 date: "2021-10-22T11:02:16"
 modified: "2021-10-22T11:05:13"
 image: "/media/2021/10/FB-1920x1080-14.Emily-Roberts-1024x576.png"
-imageAlt: "FB-1920×1080-14.Emily-Roberts"
+imageAlt: "A Darker Side of Pink campaign card: Emily Roberts beside her words, It is not fun knowing that living from scan to scan means not being able to look too far forward."
 parent: "darker-pink"
 sections:
   - _template: "prose"

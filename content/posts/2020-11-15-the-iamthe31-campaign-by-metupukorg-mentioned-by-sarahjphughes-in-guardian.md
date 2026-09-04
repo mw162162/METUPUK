@@ -4,7 +4,7 @@ url: "/2020/11/the-iamthe31-campaign-by-metupukorg-mentioned-by-sarahjphughes-in
 date: "2020-11-15T14:28:54"
 modified: "2023-05-12T10:18:22"
 image: "/media/2020/11/2020-11-15-14.24.28-547x1024.jpg"
-imageAlt: "2020-11-15 14.24.28"
+imageAlt: "A Guardian article headed: Find a part of each day to relish — coping with cancer and Covid, illustrated with a figure standing at a sunlit window."
 categories:
   - "press"
 sections:

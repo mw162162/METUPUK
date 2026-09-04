@@ -4,7 +4,7 @@ url: "/metupuk-in-the-news/"
 date: "2021-10-26T10:31:34"
 modified: "2024-06-18T07:24:37"
 image: "/media/2021/10/New-York-Times-MetUpUK-Article.jpg"
-imageAlt: ""
+imageAlt: "A New York Times article headed: For Some Breast Cancer Survivors, October Is the Cruelest Month. Pink ribbons can be a tough reminder for many breast cancer survivors."
 sections:
   - _template: "prose"
     body: |-

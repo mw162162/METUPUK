@@ -4,7 +4,7 @@ url: "/2023/05/kit-dzeryn/"
 date: "2023-05-29T07:00:17"
 modified: "2023-05-29T08:07:35"
 image: "/media/2019/10/kit-dzeryn.jpg"
-imageAlt: ""
+imageAlt: "Kit Dzeryn smiling into the camera in a sunlit garden."
 categories:
   - "education"
   - "living-with-mbc"
@@ -45,5 +45,5 @@ sections:
 
       We love you Kit. Our thoughts are with Phillip and all Kit’s family and friends at this very sad time and we won&#8217;t ever forget you.
 
-      <img src="/media/2019/10/kit-dzeryn-300x300.jpg" alt width="172" height="172" loading="lazy" decoding="async">
+      <img src="/media/2019/10/kit-dzeryn-300x300.jpg" alt="Kit Dzeryn smiling into the camera in a sunlit garden." width="172" height="172" loading="lazy" decoding="async">
 ---

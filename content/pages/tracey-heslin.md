@@ -4,7 +4,7 @@ url: "/darker-pink/tracey-heslin/"
 date: "2021-10-24T11:13:04"
 modified: "2021-10-24T11:16:48"
 image: "/media/2021/10/FB-1920x1080-18.Tracey-Davies-1024x576.png"
-imageAlt: "FB-1920×1080-18.Tracey-Davies"
+imageAlt: "A Darker Side of Pink campaign card: Tracey Davies beside her words, It is not fun knowing that Metastatic Breast Cancer is all-consuming, I just want quality time with family and friends."
 parent: "darker-pink"
 sections:
   - _template: "prose"

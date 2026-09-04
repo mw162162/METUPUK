@@ -4,7 +4,7 @@ url: "/2021/12/remembering-leila-asoko/"
 date: "2021-12-30T17:05:18"
 modified: "2022-01-12T09:36:45"
 image: "/media/2021/12/IMG-20211201-WA0023-768x1024.jpg"
-imageAlt: "IMG-20211201-WA0023"
+imageAlt: "Leila Asoko behind a bright pink Darker Side of Pink display, holding up a card with a QR code that links to her story."
 categories:
   - "member-stories"
 sections:
@@ -36,13 +36,13 @@ sections:
       At the end of October, she went to see the #DarkerPink campaign installation of the pink figures at The Corn Exchange and shared with the campaign group her photos.  Here are a couple she took and was excited to see her figure with her name on it.  She was proud of the campaign.
   - _template: "image"
     src: "/media/2021/12/IMG-20211201-WA0020-768x1024.jpg"
-    alt: ""
+    alt: "Leila Asoko beside the bright pink mannequins of a Darker Side of Pink display in a shopping centre."
     width: 640
     height: 853
     caption: ""
   - _template: "image"
     src: "/media/2021/12/IMG-20211201-WA0021.jpg"
-    alt: ""
+    alt: "Leila Asoko standing between two bright pink mannequins in a shopping arcade."
     width: 1200
     height: 1600
     caption: ""
@@ -50,7 +50,7 @@ sections:
     body: "She must have made an impression as I went to show my daughter the pink ladies at The Corn Exchange a few weeks ago and one of the security guards saw me taking a photo and talked about Leila and I said her name “you mean Leila” and he said yes, he was articulate about her how she was excited to see them and be photographed and he also took out a piece of paper so he could explain to people what the campaign and installation was all about.  We talked for over 15 minutes, and it really touched me that he was so blown away by it all.  He couldn’t believe these young, vibrant women were actually “dying” and again the injustice of it all."
   - _template: "image"
     src: "/media/2021/10/FB-1920x1080-10.JLeila-Asoko-1024x576.png"
-    alt: ""
+    alt: "A Darker Side of Pink campaign card: Leila Asoko beside her words, It is not fun knowing that we do not even have clinical trials based on black women experiences."
     width: 640
     height: 360
     caption: ""
@@ -76,7 +76,7 @@ sections:
       We won&#8217;t forget you my friend x
   - _template: "image"
     src: "/media/2019/10/jo-taylor.jpg"
-    alt: ""
+    alt: "Jo Taylor, who founded METUPUK, smiling at an evening event."
     width: 279
     height: 280
     caption: ""

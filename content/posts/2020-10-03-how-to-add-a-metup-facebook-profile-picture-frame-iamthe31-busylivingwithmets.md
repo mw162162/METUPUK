@@ -32,7 +32,7 @@ sections:
 
       If you already have a &#8216;frame&#8217; around your existing profile picture, it will try and add the new frame on top of the pre-existing image, so you may need to &#8216;select profile picture or video&#8217;, find an image from photos you have already uploaded, and *then* &#8216;add frame&#8217;:
 
-      <img src="/media/2020/10/2020-10-03-15.33.11-473x1024.png" alt width="473" height="1024" loading="lazy" decoding="async">
+      <img src="/media/2020/10/2020-10-03-15.33.11-473x1024.png" alt="A Facebook profile picture with the METUPUK We Demand Change frame applied, and the menu below showing the Add Frame option." width="473" height="1024" loading="lazy" decoding="async">
 
       You can choose whether to have the image stay there permanently, or just &#8216;temporary&#8217;, such as for a month (when you could <a href="https://www.dummies.com/social-media/facebook/add-frame-facebook-profile-picture/" rel="noopener" target="_blank">find another frame</a>).
 

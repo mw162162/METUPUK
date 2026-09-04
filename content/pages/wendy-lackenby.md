@@ -4,7 +4,7 @@ url: "/darker-pink/wendy-lackenby/"
 date: "2021-10-24T11:59:02"
 modified: "2021-10-24T12:02:36"
 image: "/media/2021/10/FB-1920x1080-31.Wendy-Lackenby-1024x576.png"
-imageAlt: "FB-1920×1080-31.Wendy-Lackenby"
+imageAlt: "A Darker Side of Pink campaign card: Wendy Lackenby beside her words, It is not fun knowing that my GP failed to refer me and if he had diagnosed this earlier I may not be as advanced with the disease."
 excerpt: "Name: Wendy LackenbyAge: 65Region: Essex Diagnosis: Primary DX – March 2012. Left breast IDC ii, ER positive, HER2 negative, node positive (10/20 lymph nodes involved) treated radically with left…"
 parent: "darker-pink"
 sections:

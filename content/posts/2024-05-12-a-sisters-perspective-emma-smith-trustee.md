@@ -4,7 +4,7 @@ url: "/2024/05/a-sisters-perspective-emma-smith-trustee/"
 date: "2024-05-12T22:52:06"
 modified: "2024-05-12T23:57:28"
 image: "/media/2024/05/20190301_133149.jpg"
-imageAlt: ""
+imageAlt: "Three people dressed for a wedding on a staircase, two in fascinators and one in a kilt."
 categories:
   - "diagnosis"
   - "living-with-mbc"
@@ -34,5 +34,5 @@ sections:
 
       We have an incredible network of support in our small hometown and that&#8217;s truly comforting.  Amongst all the &#8220;bad&#8221;, I try harder to see the &#8220;good&#8221; in life.  I appreciate my family more.  I take in all the small, joyful moments.  I try to be present, to listen, to capture as many memories as I can.  Take every little opportunity for adventure and fun.   Life is truly precious and can change in a heartbeat, so enjoy it.  Such a cliché, but so very true.
 
-      <img src="/media/2024/05/20190301_133149-193x300.jpg" alt width="193" height="300" loading="lazy" decoding="async">
+      <img src="/media/2024/05/20190301_133149-193x300.jpg" alt="Three people dressed for a wedding on a staircase, two in fascinators and one in a kilt." width="193" height="300" loading="lazy" decoding="async">
 ---

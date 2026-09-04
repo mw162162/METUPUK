@@ -4,7 +4,7 @@ url: "/darker-pink/emma-fisher/"
 date: "2021-10-16T16:38:25"
 modified: "2021-10-16T16:39:51"
 image: "/media/2021/10/FB-1920x1080-4.Emma-Fisher-1024x576.png"
-imageAlt: "FB-1920×1080-4.Emma-Fisher"
+imageAlt: "A Darker Side of Pink campaign card: Emma Fisher beside her words, It is not fun knowing that pink positivity makes me feel I have to be optimistic and feminine."
 excerpt: "Name: Emma FisherAge: 40Region: Yorkshire Diagnosis: Primary DX – July 2016. MBC DX – Feb 2018. HER2 & ER+ Metastatic Breast Cancer to the bones and lymph nodes, HER2 & ER+ Age at Diagnosis:…"
 parent: "darker-pink"
 sections:

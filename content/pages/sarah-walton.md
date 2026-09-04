@@ -4,7 +4,7 @@ url: "/darker-pink/sarah-walton/"
 date: "2021-10-24T11:06:46"
 modified: "2021-10-24T11:09:16"
 image: "/media/2021/10/FB-1920x1080-28.Sarah-Barber-1024x576.png"
-imageAlt: "FB-1920×1080-28.Sarah-Barber"
+imageAlt: "A Darker Side of Pink campaign card: Sarah Barber beside her words, It is not fun knowing that I am one of the 8 per cent of those who do not find any early stage of primary breast cancer. It is the uncurable that floors you."
 parent: "darker-pink"
 sections:
   - _template: "prose"

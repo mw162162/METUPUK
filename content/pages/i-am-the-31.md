@@ -115,6 +115,7 @@ sections:
       <div class="c-card__media"></div>
 
       <div class="c-card__body"><div class="c-card__text">diagnosed feb 2018</div></div>
+    imageDecorative: true
   - _template: "disclosure"
     summary: "Read about my Diagnosis"
     body: "<div class=\"c-disclosure__body\"><p>In June of 2016 my dog found a painful lump in my boob – I assumed it would be nothing. It was cancer.</p><p>8 months after finishing treatment I broke my sternum snowboarding. It had returned in my bones and in the lymph nodes around my body and is now incurable.</p><p>I’ve had another 6 months of chemotherapy to keep the tumour at bay and I am having IV treatment of Herceptin and Perjeta every 3 weeks, I take tablets every day, and have a series of injections every month too, all to try and keep me alive for as long as possible. Currently, my cancer is growing slowly, so I am being monitored with scans every 3 months.</p></div>"
@@ -175,6 +176,7 @@ sections:
       <div class="c-card__media"></div>
 
       <div class="c-card__body"><div class="c-card__text">diagnosed feb 2018</div></div>
+    imageDecorative: true
   - _template: "disclosure"
     summary: "Read about my Diagnosis"
     body: "<div class=\"c-disclosure__body\"><p>Original DX Her2+ er/pr+ Dec 2012 denovo age 23 with liver mets Treatment hx 6x Docetaxel &amp; Herceptin Surgery (herpectomy) Kadcyla Clinical trials Pipa (palbociclib and taselisib) Tulip Trial (trial drug SYD958) Currently on Capecitabine and compassion access to Neratinib. Denied access to Pertuzumab as had already started herceptin few months before it was approved.</p></div>"
@@ -199,6 +201,7 @@ sections:
       <div class="c-card__media"></div>
 
       <div class="c-card__body"><div class="c-card__text">Diagnosed oct 2017</div></div>
+    imageDecorative: true
   - _template: "disclosure"
     summary: "Read about my Diagnosis"
     body: "<div class=\"c-disclosure__body\"><p>Finished treatment for primary in Jan 2017. I started having rib pain in May 2029. Visited my GP who referred me straight back to the breast surgeon. After a chat and exam he asked for a bone scan and I was told at my next appt that I now had secondaries in my bones. It wasn’t until I saw the Oncologist I realised how widespread they are &#8211; spines, sacrum, pelvis, hips, tops of femurs, a few ribs </p></div>"
@@ -211,6 +214,7 @@ sections:
       <div class="c-card__media"></div>
 
       <div class="c-card__body"><div class="c-card__text">diagnosed march 2019</div></div>
+    imageDecorative: true
   - _template: "disclosure"
     summary: "Read about my Diagnosis"
     body: "<div class=\"c-disclosure__body\"><p>Diagnosed primary breast cancer HER2positive ER/PR+ Oct 2017. Treatment 3 x FEC and 3 x Docetaxel, Herceptin and paid £10.5k for 3×Perjeta (as not approved in Scotland at the time), Lumpectomy and 20 sessions. Radiotherapy. Continued on Herceptin until Dec 2018. Daily letrazole. NHS treatment<br>Diagnosed with secondaries to spine March 2019. 9 x paclitaxol, cyberknife to spine.<br>Herceptin, Perjeta every 3 weeks. Denusamab every 6 weeks. Daily letrazole and adcal.<br>Private Treatment(provide through work)</p></div>"
@@ -223,18 +227,20 @@ sections:
       <div class="c-card__media"></div>
 
       <div class="c-card__body"><div class="c-card__text">Diagnosed Oct 2019</div></div>
+    imageDecorative: true
   - _template: "disclosure"
     summary: "Read about my Diagnosis"
     body: "<div class=\"c-disclosure__body\"><p>I noticed my nipple had become inverted and then found a lump and dimpling. Was diagnosed after mammogram, biopsy and ultrasound. Was told treatment would involve chemo, operation then radiotherapy. I am Hormone receptor negative and HER2 positive. After initial CT scan I was told it had already spread .. extensively to liver and also lymph nodes, lungs and bones. I am now stage 4 and incurable. Treatment plan changed to 6 sessions of Docetaxel with Herceptin and Perjeta. Now on Herceptin and Perjeta with Denosumab . Scans have shown improvement in breast and liver but worsening in bones. I am currently also waiting for radiotherapy and a bone biopsy .</p></div>"
   - _template: "card"
     heading: "Claire"
     image: "/media/2020/09/08BA197C-280A-4FC4-9483-FFFDDBC5E1EB-Claire-Wanless-150x150.jpeg"
-    imageAlt: "08BA197C 280A 4FC4 9483 FFFDDBC5E1EB – Claire Wanless"
+    imageAlt: ""
     href: ""
     body: |-
       <div class="c-card__media"></div>
 
       <div class="c-card__body"><div class="c-card__text">diagnosed aug 2017</div></div>
+    imageDecorative: true
   - _template: "disclosure"
     summary: "Read about my Diagnosis"
     body: "<div class=\"c-disclosure__body\"><p>I was diagnosed August 2017, 6 years post primary. I knew my cancer was back due to constant pain in my femur. It took me 2 years to convince doctors though! Bone mets were confirmed in femur, spine, pelvis, ribs and skull. Further scans showed mets to liver and lungs. I am E.R.+ and HER2- </p></div>"
@@ -259,6 +265,7 @@ sections:
       <div class="c-card__media"></div>
 
       <div class="c-card__body"><div class="c-card__text">diagnosed aug 2019</div></div>
+    imageDecorative: true
   - _template: "disclosure"
     summary: "Read about my Diagnosis"
     body: "<div class=\"c-disclosure__body\"><p>Finished treatment for primary in Jan 2017. I started having rib pain in May 2029. Visited my GP who referred me straight back to the breast surgeon. After a chat and exam he asked for a bone scan and I was told at my next appt that I now had secondaries in my bones. It wasn’t until I saw the Oncologist I realised how widespread they are &#8211; spines, sacrum, pelvis, hips, tops of femurs, a few ribs </p></div>"
@@ -271,6 +278,7 @@ sections:
       <div class="c-card__media"></div>
 
       <div class="c-card__body"><div class="c-card__text">Diagnosed March 2018</div></div>
+    imageDecorative: true
   - _template: "disclosure"
     summary: "Read about my Diagnosis"
     body: "<div class=\"c-disclosure__body\"><p>I was diagnosed in March 2018, following a routine scan, several years after my primary diagnosis of Er+ breast cancer. I was found to have mets to my liver and bones, I am currently stable on first line treatment and have regular maintenance scans to monitor for new areas of metastases.</p></div>"
@@ -283,18 +291,20 @@ sections:
       <div class="c-card__media"></div>
 
       <div class="c-card__body"><div class="c-card__text">Diagnosed 2020</div></div>
+    imageDecorative: true
   - _template: "disclosure"
     summary: "Read about my Diagnosis"
     body: "<div class=\"c-disclosure__body\"><p>Finished treatment for primary in Jan 2017. I started having rib pain in May 2029. Visited my GP who referred me straight back to the breast surgeon. After a chat and exam he asked for a bone scan and I was told at my next appt that I now had secondaries in my bones. It wasn’t until I saw the Oncologist I realised how widespread they are &#8211; spines, sacrum, pelvis, hips, tops of femurs, a few ribs </p></div>"
   - _template: "card"
     heading: "Helen Pike"
     image: "/media/2020/09/0068C7F6-00CA-47C6-BB19-1EFD89BDB11D-Violette-Lafleurry-150x150.jpeg"
-    imageAlt: "0068C7F6 00CA 47C6 BB19 1EFD89BDB11D – Violette Lafleurry"
+    imageAlt: ""
     href: ""
     body: |-
       <div class="c-card__media"></div>
 
       <div class="c-card__body"><div class="c-card__text">diagnosed feb 2019</div></div>
+    imageDecorative: true
   - _template: "disclosure"
     summary: "Read about my Diagnosis"
     body: "<div class=\"c-disclosure__body\"><p>Following an irregular mammogram in Feb 2019 I was diagnosed with de novo metastic ER positive HER 2 negative breast cancer with nodal liver and bone mets. Started on Palbociclib/ Letrozole with goserelin &amp; denosumab. Then progression in liver changed treatment to a trial in Nov 2019 more recently the bone mets are attacking and am now as of Aug 2020 on Placlitaxel. </p></div>"
@@ -307,6 +317,7 @@ sections:
       <div class="c-card__media"></div>
 
       <div class="c-card__body"><div class="c-card__text">diagnosed sept 2019</div></div>
+    imageDecorative: true
   - _template: "disclosure"
     summary: "Read about my Diagnosis"
     body: "<div class=\"c-disclosure__body\"><p>First diagnosed with primary cancer in 2004 at 26, I had surgery, chemo, and rads. My secondary diagnosis was in September 2019, aged 41. This followed a year of pain and repeated visits to my GP. I have mets in my right lungs and bones (sternum, ribs and pelvis). I am doing well on Palbociclib, denusomab, letrazole and zoladex. I continue to work, and enjoy getting into the Peak District with my dogs.</p></div>"
@@ -349,12 +360,13 @@ sections:
   - _template: "card"
     heading: "Christine O'Connell"
     image: "/media/2020/09/RML04915-1-1-Christine-OConnell-1-150x150.jpg"
-    imageAlt: "RML04915 1 (1) – Christine O’Connell (1)"
+    imageAlt: ""
     href: ""
     body: |-
       <div class="c-card__media"></div>
 
       <div class="c-card__body"><div class="c-card__text">diagnosed april 2015</div></div>
+    imageDecorative: true
   - _template: "disclosure"
     summary: "Read about my Diagnosis"
     body: "<div class=\"c-disclosure__body\"><p>Diagnosed 5 years after primary diagnosis. ER PR +, HER2 Neg, No symptoms until lost consciousness while cycling and woke up in an ambulance. Led to discovery of a brain tumour. PET scans also revealed 2 bone lesions. Following surgery and cyberknife, I was put on Letrozole and Palbociclib.</p></div>"
@@ -451,6 +463,7 @@ sections:
       <div class="c-card__media"></div>
 
       <div class="c-card__body"><div class="c-card__text">diagnosed July 2017</div></div>
+    imageDecorative: true
   - _template: "disclosure"
     summary: "Read about my Diagnosis"
     body: "<div class=\"c-disclosure__body\"><p>Diagnosed with primary breast cancer in December 15 aged 45. Then I was diagnosed with secondary breast cancer in July 2017. I am now stable.</p></div>"
@@ -691,6 +704,7 @@ sections:
       <div class="c-card__media"></div>
 
       <div class="c-card__body"><div class="c-card__text">diagnosed 2018</div></div>
+    imageDecorative: true
   - _template: "disclosure"
     summary: "Read about my Diagnosis"
     body: "<div class=\"c-disclosure__body\"><p>In early 2018 I was suffering from an extremely painful back. In March I noticed changes to my left breast. It took only 2 weeks to get an appointment at the breast clinic. That day I was told I had a mass in my left breast. My surgeon noticed my bad back and within 2 weeks I&#8217;d had 2 MRIs, a CT scan and a bone scan. I was then told that the cancer was throughout my body but especially concentrated in my ribs, a hip and lungs. My cancer is hormone related and genetic testing has revealed a gene mutation in our family. </p></div>"
@@ -703,6 +717,7 @@ sections:
       <div class="c-card__media"></div>
 
       <div class="c-card__body"><div class="c-card__text">diagnosed oct 2015</div></div>
+    imageDecorative: true
   - _template: "disclosure"
     summary: "Read about my Diagnosis"
     body: "<div class=\"c-disclosure__body\"><p>In September 2015 I became breathless after having reconstruction further to primary breast cancer in 2013. The CT scan revealed blood clots in lungs and liver portal vein, I was advised that this was a Tamoxifen side effect. Unfortunately after further investigation I was diagnosed mets in lungs and bones. Receptor status: ER+ PR+ HER2 &#8211; </p></div>"
@@ -721,12 +736,13 @@ sections:
   - _template: "card"
     heading: "Helen Munro"
     image: "/media/2020/09/3BD69D68-DE2B-4F9A-AA8D-2D687ECEBE91-Helen-Munro-150x150.jpeg"
-    imageAlt: "3BD69D68 DE2B 4F9A AA8D 2D687ECEBE91 – Helen Munro"
+    imageAlt: ""
     href: ""
     body: |-
       <div class="c-card__media"></div>
 
       <div class="c-card__body"><div class="c-card__text">diagnosed sept 2017</div></div>
+    imageDecorative: true
   - _template: "disclosure"
     summary: "Read about my Diagnosis"
     body: "<div class=\"c-disclosure__body\"><p>I found a lump whilst trying on swimming costumes in August 2017. I was convinced it would be nothing but during an ultrasound the radiologist said “I’m not sure what that is” and suddenly I was having a mammogram and a biopsy. A week later I was told I had stage 2 breast cancer. Two scans and two weeks later, it was stage 4. Incurable. I didn’t even really know what that meant or I couldn’t even process it. My biggest fear was chemo and losing my hair. So I was relieved to start with a relatively “nice treatment”. It’s now been nearly 3 years and it’s been a rollercoaster of treatments, side effects, emotions, highs, lows, breakthroughs and nearly dying. The hardest part is knowing I’ll leave my kids without a mother. I’d give anything to be there for them and watch them turn into whoever they’re going to be. But I can’t dwell on that, it’s too painful. So for now I make the best of whatever I can. I hate that it holds me back and I miss out. However it’s not all bad. We still have great times and I’m lucky to have such incredible friends and family to love and support us. </p></div>"
@@ -751,6 +767,7 @@ sections:
       <div class="c-card__media"></div>
 
       <div class="c-card__body"><div class="c-card__text">diagnosed june 2020</div></div>
+    imageDecorative: true
   - _template: "disclosure"
     summary: "Read about my Diagnosis"
     body: "<div class=\"c-disclosure__body\"><p>I was diagnosed with stage 3 breast cancer in May 2020. My CT scan was clear for spread-yay! My first chemotherapy was in June 2020 just 5 weeks after diagnosis, which was great during COVID-19. Just before I had my first chemo my oncologist said he would like me to have a PET scan as in internal mammory lymph nodes looked inflamed on my CT scan. I was then told on the phone after my initial chemo that my cancer had spread to my liver and bones and that I have metastatic breast cancer or stage 4 or secondary breast cancer-they all mean the same. They all mean I am no longer curable but “treatable” being the only option. Devastated beyond belief I had to tell my family that the scan giving me the clear for spread was wrong and that I do have breast cancer spread. I had to tell my children this will kill me but we just don’t know when. </p></div>"

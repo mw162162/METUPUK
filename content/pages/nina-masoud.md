@@ -4,7 +4,7 @@ url: "/darker-pink/nina-masoud/"
 date: "2021-10-24T10:16:04"
 modified: "2021-10-24T10:21:09"
 image: "/media/2021/10/FB-1920x1080-21.Nina-Masoud-1024x576.png"
-imageAlt: "FB-1920×1080-21.Nina-Masoud"
+imageAlt: "A Darker Side of Pink campaign card: Nina Masoud beside her words, It is not fun knowing that the community you live in do not support you and want to hide from any awareness."
 parent: "darker-pink"
 sections:
   - _template: "prose"

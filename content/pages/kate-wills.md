@@ -4,7 +4,7 @@ url: "/darker-pink/kate-wills/"
 date: "2021-10-24T12:12:29"
 modified: "2021-10-24T12:18:59"
 image: "/media/2021/10/FB-1920x1080-16.Kate-Wills-Berger-1024x576.png"
-imageAlt: "FB-1920×1080-16.Kate-Wills-Berger"
+imageAlt: "A Darker Side of Pink campaign card: Kate Wills Berger beside her words, It is not fun knowing that people at the Department of Health do not seem to recognise what a progressive disease Metastatic Breast Cancer is."
 excerpt: "Name: Kate Wills Age: 46Region: London – Finchley Diagnosis: (i.e When diagnosed primary, When diagnosed mets, Or denovo, What disease type – HER2+/- ER-/ER+ or TNBC or IBC) I was diagnosed with…"
 parent: "darker-pink"
 sections:

@@ -34,7 +34,7 @@ sections:
       Stop putting a price on our lives.
   - _template: "image"
     src: "/media/2019/10/Emily-Howell.jpg"
-    alt: ""
+    alt: "A woman with long dark hair, looking into the camera."
     width: 399
     height: 399
     caption: ""

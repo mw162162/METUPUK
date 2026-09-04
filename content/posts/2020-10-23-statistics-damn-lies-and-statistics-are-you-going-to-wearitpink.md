@@ -4,7 +4,7 @@ url: "/2020/10/statistics-damn-lies-and-statistics-are-you-going-to-wearitpink/"
 date: "2020-10-23T13:14:30"
 modified: "2023-05-12T10:18:29"
 image: "/media/2020/10/2020-10-21-19.03.50-1024x685.jpg"
-imageAlt: "2020-10-21 19.03.50"
+imageAlt: "A cartoon: three women in pink ask passers-by to donate, sponsor and volunteer, while a fourth, attached to a drip, is slumped on the floor beneath a sign reading, you cannot expect me to take that without a warning first."
 categories:
   - "education"
 sections:
@@ -46,7 +46,7 @@ sections:
     body: |-
       ## What are the statistics?
 
-      [<img src="/media/2020/09/3-410x1024.jpg" alt width="250" height="625" loading="lazy" decoding="async">](/media/2020/09/3.jpg)We have been having a conversation in our WhatsApp group this morning about the stats around secondary breast cancer. Most commonly we hear that 2-3 years is the median life expectancy (despite all the talk of extended life spans, it seems that this can often be measured in extra weeks and months, rather than years), although sometimes we hear 3-5 years&#8230; and this mix of numbers is confusing. We think overall it&#8217;s still **median** 2-3 years.
+      [<img src="/media/2020/09/3-410x1024.jpg" alt="The METUPUK metastatic breast cancer infographic: 31 people die every day in the UK from metastatic breast cancer, 11,500 women and 80 men a year, one every 45 minutes. Breast cancer is the leading cause of death in women under 50 in the UK. Around 30 per cent of primary breast cancer diagnoses will metastasise at some point, and only 12 to 20 per cent of breast cancer fundraising is spent on metastatic research. There has been no improvement in survival rates for metastatic cancer in the last ten years." width="250" height="625" loading="lazy" decoding="async">](/media/2020/09/3.jpg)We have been having a conversation in our WhatsApp group this morning about the stats around secondary breast cancer. Most commonly we hear that 2-3 years is the median life expectancy (despite all the talk of extended life spans, it seems that this can often be measured in extra weeks and months, rather than years), although sometimes we hear 3-5 years&#8230; and this mix of numbers is confusing. We think overall it&#8217;s still **median** 2-3 years.
 
       Much as this is terrifying to hear (and we all hold onto the stories of those we know who have lived 10+ years) it pushes those of us living with the disease to fight for better research, better treatment options, and better access to treatment &#8211; extending both the quantity and quality of our lives.
 

@@ -4,7 +4,7 @@ url: "/2022/05/improving-access-to-new-breast-cancer-drugs/"
 date: "2022-05-11T08:08:04"
 modified: "2022-05-09T20:44:06"
 image: "/media/2022/05/NICE-approvals.png"
-imageAlt: ""
+imageAlt: "Pages from a drug company evidence submission to NICE, with most of the overall survival results blacked out."
 categories:
   - "education"
   - "treatment-options"

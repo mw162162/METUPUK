@@ -4,7 +4,7 @@ url: "/2024/05/drugs-drugs-everywhere-can-you-access-ones-that-work-kirstin-spen
 date: "2024-05-07T01:58:56"
 modified: "2024-05-29T02:01:42"
 image: "/media/2023/01/kirsten-spencer.jpg"
-imageAlt: ""
+imageAlt: "Kirstin Spencer smiling into the camera in a garden."
 categories:
   - "conferences"
   - "drug-approval"

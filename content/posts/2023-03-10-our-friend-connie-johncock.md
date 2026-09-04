@@ -4,7 +4,7 @@ url: "/2023/03/our-friend-connie-johncock/"
 date: "2023-03-10T18:56:23"
 modified: "2023-04-25T16:08:01"
 image: "/media/2020/10/IMG-20201002-WA0006-768x792.jpg"
-imageAlt: "IMG-20201002-WA0006"
+imageAlt: "Connie, with red hair, on the phone and smiling over her shoulder."
 categories:
   - "member-stories"
 sections:
@@ -32,5 +32,5 @@ sections:
 
       <img src="/media/2021/02/connie-Johncock-300x300.jpg" alt="connie Johncock" width="257" height="257" loading="lazy" decoding="async">
 
-      <img src="/media/2021/05/WhatsApp-Image-2021-05-06-at-14.35.56-300x300.jpeg" alt width="261" height="261" loading="lazy" decoding="async">
+      <img src="/media/2021/05/WhatsApp-Image-2021-05-06-at-14.35.56-300x300.jpeg" alt="Five friends together on a night out, arms round each other." width="261" height="261" loading="lazy" decoding="async">
 ---

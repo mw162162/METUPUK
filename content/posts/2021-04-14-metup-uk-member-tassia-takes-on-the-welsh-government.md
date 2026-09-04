@@ -44,7 +44,7 @@ sections:
     caption: ""
   - _template: "image"
     src: "/media/2021/04/Screen-Shot-2021-04-07-at-20.14.59.png"
-    alt: ""
+    alt: "A Facebook post by Tassia Haines saying Wales has no concrete cancer strategy, that patients have been left on their own with delays and DNRs, and that around 9,000 people a year dying of cancer in Wales deserve a plan."
     width: 501
     height: 529
     caption: ""
@@ -63,7 +63,7 @@ sections:
       a few weeks prior got released, discussing the major issues around &#8216;hiding&#8217; from the realities of SBC and we discussed all the issues from data, to how little representation SBC gets. This podcast caught the attention of a journalist from Wales online who knows my partner, and he wanted to cover &#8216;my story&#8217;. But I only agreed if I could use it as a platform for spreading awareness on what was going on in Wales not having a CDP. He agreed and to my absolute amazement, I discovered whole story was picked up by the Mirror and MSN news. The next day I absolutely burst out laughing when I seen my picture on the front of our local paper.  The exposure has been very helpful and along with my digging and being referred here and there, I have manged to make some very useful alliances with MacMillan.
   - _template: "image"
     src: "/media/2021/04/169151547_896437247871072_7466965327937611109_n-779x1024.jpg"
-    alt: ""
+    alt: "The front page of the South Wales Evening Post."
     width: 640
     height: 841
     caption: ""

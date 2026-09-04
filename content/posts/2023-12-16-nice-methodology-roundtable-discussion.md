@@ -4,7 +4,7 @@ url: "/2023/12/nice-methodology-roundtable-discussion/"
 date: "2023-12-16T01:21:13"
 modified: "2023-12-16T01:21:13"
 image: "/media/2019/10/Medeleine-Hunter.jpeg"
-imageAlt: ""
+imageAlt: "Madeleine, photographed at home in a green jumper."
 categories:
   - "education"
   - "patient-advocacy"
@@ -25,7 +25,7 @@ sections:
 
       At the very centre of this is the patient, and at METUPUK we will always remember who we are advocating for.
 
-      <img src="/media/2019/10/Medeleine-Hunter-225x300.jpeg" alt width="225" height="300" loading="lazy" decoding="async">
+      <img src="/media/2019/10/Medeleine-Hunter-225x300.jpeg" alt="Madeleine, photographed at home in a green jumper." width="225" height="300" loading="lazy" decoding="async">
 
       Madeleine Meynell Trustee METUPUK
 ---

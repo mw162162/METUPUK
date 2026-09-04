@@ -119,7 +119,7 @@ function main() {
       if (b.type === 'image' && b.src && !b.alt && b.decorative !== true) {
         items.push({ where: `Section ${i + 1}`, field: 'alt', src: b.src, context: b.caption ? strip(b.caption) : nearby(sections, i) });
       }
-      if (b.type === 'card' && b.image && !b.imageAlt) {
+      if (b.type === 'card' && b.image && !b.imageAlt && b.imageDecorative !== true) {
         items.push({ where: `Section ${i + 1} (card)`, field: 'imageAlt', src: b.image, context: strip(b.heading) });
       }
       if (b.type === 'gallery' && Array.isArray(b.images)) {

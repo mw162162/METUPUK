@@ -4,7 +4,7 @@ url: "/darker-pink/sally-nyland/"
 date: "2021-10-24T10:37:02"
 modified: "2021-10-24T10:41:15"
 image: "/media/2021/10/FB-1920x1080-11.Sally-Nyland-1024x576.png"
-imageAlt: "FB-1920×1080-11.Sally-Nyland"
+imageAlt: "A Darker Side of Pink campaign card: Sally Nyland beside her words, It is not fun knowing that when I am dead what support will be there for my children? That is another worry."
 excerpt: "Name: Sally NylandAge: 45Region: Derbyshire Diagnosis: Primary DX June 2019 (Triple Negative). MBC Dx November 2020 Age at Diagnosis: 43 Hi my name is Sally. I live in Derby with my husband, Steve,…"
 parent: "darker-pink"
 sections:

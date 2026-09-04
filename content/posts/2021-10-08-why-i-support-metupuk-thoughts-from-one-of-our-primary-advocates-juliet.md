@@ -36,7 +36,7 @@ sections:
       Women living with MBC are working hard to ensure that the landscape will be greatly improved for the women diagnosed with MBC in the future. I thank and salute them all.
   - _template: "image"
     src: "/media/2021/10/JP.jpg"
-    alt: ""
+    alt: "A black and white portrait: a woman with cropped hair holding a white chrysanthemum against her chest."
     width: 594
     height: 540
     caption: ""

@@ -4,7 +4,7 @@ url: "/darker-pink/michelle-townsend/"
 date: "2021-10-24T12:28:32"
 modified: "2021-10-24T12:31:23"
 image: "/media/2021/10/FB-1920x1080-30.Michelle-Townsend-1024x576.png"
-imageAlt: "FB-1920×1080-30.Michelle-Townsend"
+imageAlt: "A Darker Side of Pink campaign card: Michelle Townsend beside her words, It is not fun knowing that some women with Metastatic triple negative breast cancer do not even live for 2 years."
 parent: "darker-pink"
 sections:
   - _template: "prose"

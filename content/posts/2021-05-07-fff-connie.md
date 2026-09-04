@@ -4,7 +4,7 @@ url: "/2021/05/fff-connie/"
 date: "2021-05-07T07:25:22"
 modified: "2023-05-12T10:17:10"
 image: "/media/2021/05/WhatsApp-Image-2021-05-06-at-14.35.56.jpeg"
-imageAlt: "WhatsApp Image 2021-05-06 at 14.35.56"
+imageAlt: "Five friends together on a night out, arms round each other."
 categories:
   - "education"
   - "living-with-mbc"

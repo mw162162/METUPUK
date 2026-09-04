@@ -71,10 +71,12 @@ function run() {
       if (!fs.existsSync(path.join(OUT, decodeURIComponent(src.replace(/^\//, '').split('?')[0])))) {
         problems.missingImages.push(`${rel} -> ${src}`);
       }
-      // An image with no alt at all is a gap. An image with alt="" and
-      // role="presentation" is a decision someone made, and is not counted.
+      // An image with no alt at all is a gap. An image with alt="" and either
+      // role="presentation" or aria-hidden is a decision someone made, and is
+      // not counted — the page-head backgrounds are the second kind.
       if (img.rawTagName === 'img' && !img.getAttribute('alt')
-        && img.getAttribute('role') !== 'presentation') {
+        && img.getAttribute('role') !== 'presentation'
+        && img.getAttribute('aria-hidden') !== 'true') {
         problems.emptyAlt++;
         if (problems.emptyAltPages.length < 12) {
           const src = img.getAttribute('src') || '?';

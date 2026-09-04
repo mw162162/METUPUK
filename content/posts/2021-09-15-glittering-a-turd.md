@@ -4,7 +4,7 @@ url: "/2021/09/glittering-a-turd/"
 date: "2021-09-15T13:28:09"
 modified: "2021-09-15T13:43:22"
 image: "/media/2021/09/Screenshot-2021-09-15-130944.jpg"
-imageAlt: "Screenshot 2021-09-15 130944"
+imageAlt: "The cover of the book Glittering a Turd by Kris Hallenga: how surviving the unsurvivable taught me to live."
 excerpt: "I’ve followed the work of Kris Hallenga since I was first diagnosed with cancer and became aware of enthusiastic students bouncing around in giant boob costumes."
 categories:
   - "reviews"
@@ -20,7 +20,7 @@ sections:
       Naturally when Kris published a book, <a href="https://www.amazon.co.uk/Glittering-a-Turd/dp/B09BK16ZD2/ref=sr_1_1?dchild=1&keywords=how+to+glitter+a+turd&qid=1631708612&sr=8-1" rel="noopener" target="_blank">&#8220;Glittering A Turd&#8221;</a>, I bought it, and would have been glad to read whatever she fancied writing in it!
   - _template: "image"
     src: "/media/2021/09/Screenshot-2021-09-15-130709.jpg"
-    alt: ""
+    alt: "Kris Hallenga in a pink dress against a pink background, pulling a face for the camera."
     width: 476
     height: 595
     caption: ""
@@ -33,13 +33,13 @@ sections:
       And yet I cannot argue with the fierce determination to equip young people with the tools to go back and ask repeatedly for help when they need it, which is at the core of CoppaFeel’s messaging. We all need the necessary resilience to be able to stay seated in A&amp;E late at night, despite the call of a warm bed at home, when we know that there is something wrong. We all need to be aware that our healthcare professionals are not gifted with divine powers, that they do get it wrong and make mistakes, and that where our own health is concerned, the buck stops with us. This book contextualises and explains why knowing your own body is so important.
   - _template: "image"
     src: "/media/2021/09/Screenshot-2021-09-15-130839.jpg"
-    alt: ""
+    alt: "Kris Hallenga lying back across an inflatable flamingo in a pink dress and white boots."
     width: 594
     height: 552
     caption: ""
   - _template: "image"
     src: "/media/2021/09/Screenshot-2021-09-15-130627.jpg"
-    alt: ""
+    alt: "A Polaroid held up in somebody hand, showing a woman kissing a copy of the book Glittering a Turd."
     width: 411
     height: 477
     caption: ""
@@ -56,7 +56,7 @@ sections:
       *(All images from the &#8216;<a href="https://www.instagram.com/howtoglitteraturd/?hl=en" rel="noopener" target="_blank">How to Glitter a Turd</a>&#8216; Instagram account)*
   - _template: "image"
     src: "/media/2019/10/Emma.png"
-    alt: ""
+    alt: "Emma laughing, wearing a crown of peonies and foliage."
     width: 400
     height: 400
     caption: ""

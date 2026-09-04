@@ -4,7 +4,7 @@ url: "/2021/12/a-new-beginning-charity-single-from-here-to-there/"
 date: "2021-12-21T10:40:55"
 modified: "2021-12-21T11:07:57"
 image: "/media/2021/12/here-to-there-768x352-1.png"
-imageAlt: "here-to-there–768×352"
+imageAlt: "A graphic for the charity single A New Beginning by Here to There, in aid of the Royal United Hospitals Bath, showing two musicians performing."
 sections:
   - _template: "prose"
     body: |-
@@ -13,7 +13,7 @@ sections:
       As part of Breast Cancer Awareness month I was delighted to be interviewed by Radio Bath to raise awareness of secondary Breast Cancer and the amazing work the METUP UK were doing during October to highlight the reality of living with secondary Breast Cancer amongst the &#8216;pink fluff&#8217; usually applied to Breast Cancer campaigns.
   - _template: "image"
     src: "/media/2021/12/IMG-20211217-WA0008-1024x1024.jpg"
-    alt: ""
+    alt: "A woman in a patterned headscarf, cheek to cheek with her small son."
     width: 640
     height: 640
     caption: ""

@@ -4,7 +4,7 @@ url: "/darker-pink/carole-pollard/"
 date: "2021-10-22T10:51:39"
 modified: "2021-10-22T10:55:03"
 image: "/media/2021/10/FB-1920x1080-22.Carole-Pollard-1024x576.png"
-imageAlt: "FB-1920×1080-22.Carole-Pollard"
+imageAlt: "A Darker Side of Pink campaign card: Carole Pollard beside her words, It is not fun knowing that I am planning my funeral. It is not something that someone at 39 years old should be doing."
 excerpt: "Name: Carole PollardAge: 39Region: Manchester Diagnosis: Stage 3, grade 3 HER2+ primary breast cancer diagnosed in December 2019. Bone mets diagnosed in February 2020 (likely there since diagnosis).…"
 parent: "darker-pink"
 sections:

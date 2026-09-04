@@ -4,7 +4,7 @@ url: "/darker-pink/sara-halpern/"
 date: "2021-10-24T10:47:42"
 modified: "2021-10-24T10:50:59"
 image: "/media/2021/10/FB-1920x1080-15.Sara-Halpern-1024x576.png"
-imageAlt: "FB-1920×1080-15.Sara-Halpern"
+imageAlt: "A Darker Side of Pink campaign card: Sara Halpern beside her words, It is not fun knowing that eventually the drugs will stop working."
 excerpt: "Name: Sara HalpernAge: 36Region: North WestDiagnosis: DeNovo – ER + / Her2 negative Age at Diagnosis: 35 I went to my local gps about 1.5 years before my official diagnosis to have a lump on my…"
 parent: "darker-pink"
 sections:

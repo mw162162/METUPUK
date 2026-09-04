@@ -4,7 +4,7 @@ url: "/metupuk-around-the-uk/mbc-wales/mbc-wales-about-us/"
 date: "2023-09-26T18:50:27"
 modified: "2023-10-19T20:05:27"
 image: "/media/2023/09/Tassia-1.jpeg"
-imageAlt: ""
+imageAlt: "Two campaigners on a street, laughing, holding up ABC Diagnosis leaflets about ductal and lobular breast cancer."
 parent: "mbc-wales"
 sections:
   - _template: "prose"

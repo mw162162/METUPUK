@@ -4,7 +4,7 @@ url: "/2022/07/targeted-treatment-piqray-with-fulvestrant-is-approved/"
 date: "2022-07-14T19:49:01"
 modified: "2022-07-14T19:52:42"
 image: "/media/2021/12/IMG-20211217-WA0010.jpg"
-imageAlt: ""
+imageAlt: "A woman in a white T-shirt printed with a line drawing, standing against a plain wall."
 categories:
   - "education"
   - "living-with-mbc"

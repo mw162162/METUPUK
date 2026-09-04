@@ -4,7 +4,7 @@ url: "/2024/10/after-living-with-metastatic-breast-cancer-for-over-3-years/"
 date: "2024-10-20T23:32:01"
 modified: "2024-10-21T08:34:46"
 image: "/media/2024/05/IMG_1399-768x1024.jpg"
-imageAlt: "IMG_1399"
+imageAlt: "Sue Thomas in a pink fascinator, outside a ruined abbey."
 categories:
   - "education"
   - "living-with-mbc"

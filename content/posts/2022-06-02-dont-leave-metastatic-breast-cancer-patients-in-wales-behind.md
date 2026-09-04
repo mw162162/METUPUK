@@ -25,13 +25,13 @@ sections:
       Tassia was diagnosed with incurable breast cancer in 2020 at just 28 years old, currently she is receiving treatment from two Welsh health boards. She has been supported and has been working with a small team, which includes Marguerite Hollloway, who specialises in improving MBC care in Wales through Macmillan and Ann Baker BEM, now retired MBC Oncology Clinical Nurse Specialist.
   - _template: "image"
     src: "/media/2022/06/IMG_20220513_171044_250.webp"
-    alt: ""
+    alt: "The Gammon Dragon: a large pink line-drawn dragon painted across the gable end of a house, signed MetUpUK, with the words Sign our petition, mbcwales.co.uk."
     width: 1080
     height: 592
     caption: ""
   - _template: "image"
     src: "/media/2022/06/20220512_1657291-498x1024.jpg"
-    alt: ""
+    alt: "Tassia Haines sitting beneath the mural, beside the painted words Sign our petition, mbcwales.co.uk."
     width: 498
     height: 1024
     caption: ""
@@ -44,13 +44,13 @@ sections:
       **A full update on the progress of ‘The Gammon Dragon’ can be found <a href="https://www.mbcwales.co.uk/down-for-maintenance" rel="noopener" target="_blank">here</a> and Tassia is available for comment or interviews.**
   - _template: "image"
     src: "/media/2022/06/IMG_20220513_171044_3622.webp"
-    alt: ""
+    alt: "The group who made the mural posed in front of it on a ladder, with a camera operator filming them."
     width: 640
     height: 352
     caption: ""
   - _template: "image"
     src: "/media/2022/06/IMG_20220505_203843_360.jpg"
-    alt: ""
+    alt: "Tassia Haines in a respirator, up on the scaffolding, part way through chalking out the dragon."
     width: 1200
     height: 1314
     caption: ""

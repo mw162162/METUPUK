@@ -377,7 +377,9 @@ function renderHome(model, exhibition) {
         const img = pageImage(a.url);
         return `<article class="card card--feature">
         ${img ? `<div class="card__media card__media--tinted">${responsiveImg(img, {
-          alt: '', width: 640, height: 400, maxWidth: 1024,
+          // The card says all three things — heading, text, and where it goes.
+          // The tinted picture behind it is a backdrop, and says so.
+          decorative: true, width: 640, height: 400, maxWidth: 1024,
           sizes: '(min-width: 1200px) 380px, (min-width: 700px) 33vw, 100vw',
         })}</div>` : ''}
         <div class="card__body">

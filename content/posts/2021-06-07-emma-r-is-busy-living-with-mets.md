@@ -42,7 +42,7 @@ sections:
       You can read more about some of my adventures (in advocacy, beekeeping, on my bike, and in permaculture) on my infrequently updated<a href="https://littleemmabird.wordpress.com" rel="noopener" target="_blank"> blog</a>.
   - _template: "image"
     src: "/media/2019/10/Emma.png"
-    alt: ""
+    alt: "Emma laughing, wearing a crown of peonies and foliage."
     width: 400
     height: 400
     caption: ""

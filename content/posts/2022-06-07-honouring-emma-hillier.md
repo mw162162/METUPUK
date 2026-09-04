@@ -4,7 +4,7 @@ url: "/2022/06/honouring-emma-hillier/"
 date: "2022-06-07T10:49:59"
 modified: "2022-07-14T19:54:02"
 image: "/media/2021/12/IMG-20211217-WA0009-1024x1024.jpg"
-imageAlt: "IMG-20211217-WA0009"
+imageAlt: "Emma in a hospital treatment chair, hands up and laughing for the camera."
 excerpt: "Today we want to honour our friend and MetUpUK member Emma Hillier."
 sections:
   - _template: "prose"
@@ -28,7 +28,7 @@ sections:
       							<img width="640" height="443" src="/media/2021/04/sinking-boat-1024x708.jpg" alt="Drugs, drugs, drugs, like patching up a sinking boat" loading="lazy" decoding="async">								</a>
 
       <a href="/2021/12/a-new-beginning-charity-single-from-here-to-there/">
-      							<img width="768" height="352" src="/media/2021/12/here-to-there-768x352-1.png" alt="Here to there–768×352" loading="lazy" decoding="async">								</a>
+      							<img width="768" height="352" src="/media/2021/12/here-to-there-768x352-1.png" alt="A graphic for the charity single A New Beginning by Here to There, in aid of the Royal United Hospitals Bath, showing two musicians performing." loading="lazy" decoding="async">								</a>
 
       <a href="/2022/05/improving-access-to-new-breast-cancer-drugs/">
       							<img src="https://metupuk.org.uk/wp-content/uploads/2022/05/drug-access.jpg" alt="Improving access to new breast cancer drugs" loading="lazy" decoding="async">								</a>

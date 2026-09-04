@@ -27,7 +27,7 @@ sections:
       Take all the drugs and hope for the best…. And keep patching up those holes.
   - _template: "image"
     src: "/media/2021/12/IMG-20211217-WA0008-1024x1024.jpg"
-    alt: ""
+    alt: "A woman in a patterned headscarf, cheek to cheek with her small son."
     width: 640
     height: 640
     caption: ""

@@ -4,7 +4,7 @@ url: "/darker-pink/chloe-franklin/"
 date: "2021-10-22T10:57:33"
 modified: "2021-10-22T10:59:32"
 image: "/media/2021/10/FB-1920x1080-20.Chloe-Franklin-1024x576.png"
-imageAlt: "FB-1920×1080-20.Chloe-Franklin"
+imageAlt: "A Darker Side of Pink campaign card: Chloe Franklin beside her words, It is not fun knowing that the physical consequences alongside treatment side effects also affects how we experience the menopause."
 excerpt: "Name: Chloe FranklinAge: 28Region: Greater Manchester Diagnosis: De novo ER+ metastatic cancer with spread to liver and bones. Age at Diagnosis: 27 Hi! I’m Chloe and I live in Manchester, working in…"
 parent: "darker-pink"
 sections:

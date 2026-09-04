@@ -4,7 +4,7 @@ url: "/metupuk-around-the-uk/mbc-wales/"
 date: "2023-09-26T18:39:55"
 modified: "2023-09-26T19:03:04"
 image: "/media/2023/09/Tassia-2.jpeg"
-imageAlt: ""
+imageAlt: "Four campaigners arm in arm on a seafront promenade at dusk."
 parent: "metupuk-around-the-uk"
 sections:
   - _template: "prose"

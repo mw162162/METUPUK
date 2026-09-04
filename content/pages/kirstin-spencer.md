@@ -4,7 +4,7 @@ url: "/darker-pink/kirstin-spencer/"
 date: "2021-10-22T11:51:48"
 modified: "2024-08-13T12:37:07"
 image: "/media/2021/10/FB-1920x1080-19.Kirstin-Spencer-1024x576.png"
-imageAlt: "FB-1920×1080-19.Kirstin-Spencer"
+imageAlt: "A Darker Side of Pink campaign card: Kirstin Spencer beside her words, It is not fun knowing that there does not seem to be a test to show who is, or potentially who is not, going to be cured."
 parent: "darker-pink"
 sections:
   - _template: "prose"

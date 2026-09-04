@@ -48,7 +48,7 @@ sections:
     body: |-
       As with other ductal breast cancers, patients should be aware of the &#8216;red flags&#8217; for metastatic spread, and speak to GP or specialist team sooner rather than later if concerned (typical advice is book an appointment if &#8216;concerning symptoms&#8217; that are not obvious continue to worry you for a fortnight):
 
-      <img src="/media/2020/03/ABCD-Ductal-Breast-Cancer-v9-20200224-1024x576.png" alt="ABCD Ductal Breast Cancer v9 20200224" width="640" height="360" loading="lazy" decoding="async">
+      <img src="/media/2020/03/ABCD-Ductal-Breast-Cancer-v9-20200224-1024x576.png" alt="The ABC Diagnosis infographic on secondary breast cancer, listing the red flag symptoms in five areas of the body: brain, bone, lung, lymph nodes, liver and spinal cord compression." width="640" height="360" loading="lazy" decoding="async">
   - _template: "prose"
     body: "Featured image source: <a href=\"https://www.facebook.com/ImagingandUltrasoundInc/posts/1871857606200925\" rel=\"noopener\" target=\"_blank\">Facebook</a>"
 ---

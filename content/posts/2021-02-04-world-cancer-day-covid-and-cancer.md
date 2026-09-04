@@ -4,7 +4,7 @@ url: "/2021/02/world-cancer-day-covid-and-cancer/"
 date: "2021-02-04T06:43:58"
 modified: "2023-05-12T10:17:56"
 image: "/media/2021/02/Linkedin-Banner.jpg"
-imageAlt: ""
+imageAlt: "A METUPUK banner reading: World Cancer Day and Covid."
 sections:
   - _template: "image"
     src: "/media/2021/02/Linkedin-Banner-1024x311.jpg"

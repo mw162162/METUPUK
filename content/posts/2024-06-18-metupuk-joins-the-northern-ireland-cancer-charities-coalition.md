@@ -4,7 +4,7 @@ url: "/2024/06/metupuk-joins-the-northern-ireland-cancer-charities-coalition/"
 date: "2024-06-18T02:07:15"
 modified: "2024-06-18T07:59:03"
 image: "/media/2024/06/Pic-1-300x206.jpg"
-imageAlt: ""
+imageAlt: "The Northern Ireland Cancer Charities Coalition gathered on the staircase at Parliament Buildings, Stormont."
 categories:
   - "education"
   - "living-with-mbc"

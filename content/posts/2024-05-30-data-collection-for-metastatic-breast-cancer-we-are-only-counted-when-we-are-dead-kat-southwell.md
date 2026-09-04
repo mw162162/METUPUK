@@ -4,7 +4,7 @@ url: "/2024/05/data-collection-for-metastatic-breast-cancer-we-are-only-counted-
 date: "2024-05-30T00:50:38"
 modified: "2024-05-30T09:21:25"
 image: "/media/2023/11/kat-southwell-scaled-e1698867859659.jpg"
-imageAlt: ""
+imageAlt: "Kat Southwell outside, beside a white rose bush."
 categories:
   - "education"
   - "living-with-mbc"

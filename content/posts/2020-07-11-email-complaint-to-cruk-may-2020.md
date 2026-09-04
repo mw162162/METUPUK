@@ -4,7 +4,7 @@ url: "/2020/07/email-complaint-to-cruk-may-2020/"
 date: "2020-07-11T12:33:03"
 modified: "2023-05-12T10:19:32"
 image: "/media/2020/06/1-660x1024.png"
-imageAlt: "1"
+imageAlt: "A tweet praising a Cancer Research UK funded team of virologists for switching from training viruses to attack cancer to making COVID vaccines."
 categories:
   - "fundraising"
 sections:
@@ -60,13 +60,13 @@ sections:
 
       Twitter thread
 
-      <img src="/media/2020/06/1-193x300.png" alt width="240" height="373" loading="lazy" decoding="async">         <img src="/media/2020/06/2-195x300.jpg" alt width="243" height="374" loading="lazy" decoding="async">
+      <img src="/media/2020/06/1-193x300.png" alt="A tweet praising a Cancer Research UK funded team of virologists for switching from training viruses to attack cancer to making COVID vaccines." width="240" height="373" loading="lazy" decoding="async">         <img src="/media/2020/06/2-195x300.jpg" alt="A Twitter exchange: Angela Oliver says cancer has been put on the back burner and that is not something to be celebrated; Alan Parker replies that cancer work continues as best as possible and that the knowledge gained feeds back into cancer work." width="243" height="374" loading="lazy" decoding="async">
 
-      <img src="/media/2020/06/3-197x300.jpg" alt width="245" height="373" loading="lazy" decoding="async">         <img src="/media/2020/06/4-197x300.png" alt width="250" height="380" loading="lazy" decoding="async">
+      <img src="/media/2020/06/3-197x300.jpg" alt="More of the same thread: Alan Parker says only research deemed essential to the pandemic is permitted; Angela Oliver replies that halting cancer research is appalling and the decision should be reversed immediately." width="245" height="373" loading="lazy" decoding="async">         <img src="/media/2020/06/4-197x300.png" alt="Further replies asking whether money donated for cancer research is being redirected, and saying the tweets are not reassuring to someone living with secondary breast cancer." width="250" height="380" loading="lazy" decoding="async">
 
-      <img src="/media/2020/06/5-169x300.png" alt width="241" height="428" loading="lazy" decoding="async">              <img src="/media/2020/06/6-169x300.png" alt width="247" height="438" loading="lazy" decoding="async">
+      <img src="/media/2020/06/5-169x300.png" alt="A tweet from Alan Parker: on the plus side, I have learned today how to block people and mute conversations. Feeling better now." width="241" height="428" loading="lazy" decoding="async">              <img src="/media/2020/06/6-169x300.png" alt="Jo Taylor replying that it was not staring hatred, it was asking questions about publicly funded and redirected research, and that as someone living with stage 4 breast cancer she would hope to be expected to ask these questions rather than be blocked or muted." width="247" height="438" loading="lazy" decoding="async">
 
-      <img src="/media/2020/06/7-169x300.png" alt width="278" height="493" loading="lazy" decoding="async">         <img src="/media/2020/06/8-169x300.png" alt width="258" height="458" loading="lazy" decoding="async">
+      <img src="/media/2020/06/7-169x300.png" alt="A tweet telling Alan Parker not to listen and that he is doing the right thing, with Jo Taylor replying that she will tell her children and husband, tagged dying for a cure." width="278" height="493" loading="lazy" decoding="async">         <img src="/media/2020/06/8-169x300.png" alt="Twitter showing the message: alanlparker blocked you." width="258" height="458" loading="lazy" decoding="async">
 
       **RESPONSE FROM CRUK**
 

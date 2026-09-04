@@ -4,7 +4,7 @@ url: "/2024/06/the-economist-pioneering-person-centred-breast-cancer-care-madele
 date: "2024-06-05T01:42:26"
 modified: "2024-06-05T17:05:34"
 image: "/media/2024/06/Economist-Impact.png"
-imageAlt: ""
+imageAlt: "A METUPUK card quoting Economist Impact, which described METUPUK as a remarkable organization at its workshop on pioneering person-centred breast cancer care."
 categories:
   - "conferences"
   - "education"

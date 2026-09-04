@@ -4,7 +4,7 @@ url: "/2024/01/parp-inhibitor-talazoparib-recommended-by-nice-for-the-treatment-
 date: "2024-01-21T09:28:50"
 modified: "2024-01-21T09:28:50"
 image: "/media/2024/01/Talazaparib-blog.png"
-imageAlt: ""
+imageAlt: "A family gathered under bunting in a garden, one of them holding a baby."
 categories:
   - "drug-approval"
   - "living-with-mbc"

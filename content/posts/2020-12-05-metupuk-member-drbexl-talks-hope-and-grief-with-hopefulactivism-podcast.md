@@ -12,5 +12,5 @@ sections:
     body: |-
       Last week METUPUK activist Bex Lewis spoke to Abigail Thomas for the Christian podcast &#8211; &#8216;<a href="https://hopefulactivists.captivate.fm/listen" rel="noopener" target="_blank">The Hopeful Activists</a>&#8216; &#8211; around the theme of grief and h0pe within the cancer experience:
 
-      <a href="https://podcasts.apple.com/gb/podcast/hope-and-grief-with-bex-lewis/id1462312758?i=1000501307614" rel="noopener" target="_blank"><img src="https://drbexl.co.uk/wp-content/uploads/2020/12/hopeful-activists-700x267.png" alt width="640" height="244" loading="lazy" decoding="async"></a>
+      <a href="https://podcasts.apple.com/gb/podcast/hope-and-grief-with-bex-lewis/id1462312758?i=1000501307614" rel="noopener" target="_blank"><img src="https://drbexl.co.uk/wp-content/uploads/2020/12/hopeful-activists-700x267.png" alt="The Hopeful Activists podcast banner." width="640" height="244" loading="lazy" decoding="async"></a>
 ---

@@ -4,7 +4,7 @@ url: "/darker-pink/jo-taylor/"
 date: "2021-10-16T15:18:35"
 modified: "2021-10-22T11:38:10"
 image: "/media/2021/10/FB-1920x1080-1.Jo-Taylor-1024x576.png"
-imageAlt: "FB-1920×1080-1.Jo-Taylor"
+imageAlt: "A Darker Side of Pink campaign card: Jo Taylor beside her words, It is not fun knowing that we feel invisible and that no one is listening to us."
 excerpt: "Name: Jo Taylor Age: 52Region: Manchester Diagnosis: Primary diagnosis 2007 HER2+ right breast – 2014 diagnosed with MBC in neck nodes and oligomets in the sternum, since then mets in the humerus,…"
 parent: "darker-pink"
 sections:

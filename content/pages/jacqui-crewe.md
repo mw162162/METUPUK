@@ -4,7 +4,7 @@ url: "/darker-pink/jacqui-crewe/"
 date: "2021-10-22T11:33:10"
 modified: "2021-10-22T11:36:53"
 image: "/media/2021/10/FB-1920x1080-17.Jacqui-Crewe-1024x576.png"
-imageAlt: "FB-1920×1080-17.Jacqui-Crewe"
+imageAlt: "A Darker Side of Pink campaign card: Jacqui Crewe beside her words, It is not fun knowing that we have not had kinder treatments that will truly give us a longer survival time before it kills us."
 excerpt: "Name: Jacqui Crewe Age: 63Region: Shropshire Age at Diagnosis: 48 Hi my name is Jacqui. I’m from Shropshire. I was diagnosed with primary breast cancer in 2006. I was 48. The treatment plan was…"
 parent: "darker-pink"
 sections:

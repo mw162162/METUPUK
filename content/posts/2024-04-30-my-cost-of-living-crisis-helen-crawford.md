@@ -4,7 +4,7 @@ url: "/2024/04/my-cost-of-living-crisis-helen-crawford/"
 date: "2024-04-30T01:08:44"
 modified: "2024-04-30T01:08:44"
 image: "/media/2024/04/IMG-20240427-WA0021.jpg"
-imageAlt: ""
+imageAlt: "Helen Crawford in a formal portrait, in black lace with long gloves."
 sections:
   - _template: "prose"
     body: |-

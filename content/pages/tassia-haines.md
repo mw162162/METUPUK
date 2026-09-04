@@ -4,7 +4,7 @@ url: "/darker-pink/tassia-haines/"
 date: "2021-10-16T16:01:02"
 modified: "2021-10-22T11:23:31"
 image: "/media/2021/10/FB-1920x1080-2.Tassia-Haines-1024x576.png"
-imageAlt: "FB-1920×1080-2.Tassia-Haines"
+imageAlt: "A Darker Side of Pink campaign card: Tassia Haines beside her words, It is not fun knowing that I do not feel like the same person I once was anymore."
 parent: "darker-pink"
 sections:
   - _template: "prose"

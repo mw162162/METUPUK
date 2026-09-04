@@ -4,7 +4,7 @@ url: "/darker-pink/emma-robertson/"
 date: "2021-10-22T11:07:23"
 modified: "2021-10-22T11:10:42"
 image: "/media/2021/10/FB-1920x1080-7.Emma-Robertson-1024x576.png"
-imageAlt: "FB-1920×1080-7.Emma-Robertson"
+imageAlt: "A Darker Side of Pink campaign card: Emma Robertson beside her words, It is not fun knowing that many women who have had primary breast cancer can still be at risk."
 excerpt: "Name: Emma RobertsonAge: 40Region: London Diagnosis: ER/PR+ HER2 – mixed lobular and ductal Age at Diagnosis: 31 at primary and 33 at secondary I was living on a narrowboat, continuously cruising…"
 parent: "darker-pink"
 sections:

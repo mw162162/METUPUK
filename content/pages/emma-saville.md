@@ -4,7 +4,7 @@ url: "/darker-pink/emma-saville/"
 date: "2021-10-22T11:13:02"
 modified: "2021-10-22T11:17:03"
 image: "/media/2021/10/FB-1920x1080-23.Emma-Saville-1024x576.png"
-imageAlt: "FB-1920×1080-23.Emma-Saville"
+imageAlt: "A Darker Side of Pink campaign card: Emma Saville beside her words, It is not fun knowing that my little girl will be without her Mummy, that breaks my heart but I have to accept it."
 parent: "darker-pink"
 sections:
   - _template: "prose"

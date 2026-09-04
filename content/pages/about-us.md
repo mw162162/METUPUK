@@ -4,7 +4,7 @@ url: "/about-us/"
 date: "2019-10-11T11:14:02"
 modified: "2024-09-25T11:39:48"
 image: "/media/2021/10/iStock-145995617-scaled-dark-1024x554.png"
-imageAlt: "iStock-145995617-scaled-dark"
+imageAlt: "A line of women in silhouette, holding hands against an evening sky."
 sections:
   - _template: "prose"
     body: |-

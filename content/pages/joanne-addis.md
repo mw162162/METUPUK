@@ -4,7 +4,7 @@ url: "/darker-pink/joanne-addis/"
 date: "2021-10-22T11:40:19"
 modified: "2021-10-22T11:43:10"
 image: "/media/2021/10/FB-1920x1080-24.Joanne-Addis-1024x576.png"
-imageAlt: "FB-1920×1080-24.Joanne-Addis"
+imageAlt: "A Darker Side of Pink campaign card: Joanne Addis beside her words, It is not fun knowing that we feel we do not get the same respect, dignity, or access to treatment to live the best life we can for as long as possible."
 parent: "darker-pink"
 sections:
   - _template: "prose"

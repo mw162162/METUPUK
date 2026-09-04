@@ -9,7 +9,7 @@ excerpt: "My name is Miranda Ashitey. I’m 38 and I’m from Croydon. I was dia
 sections:
   - _template: "image"
     src: "/media/2019/10/Miranda-1-768x1024.jpg"
-    alt: ""
+    alt: "Miranda Ashitey smiling into the camera, wearing a brightly patterned headscarf."
     width: 640
     height: 853
     caption: ""
@@ -37,7 +37,7 @@ sections:
       .
   - _template: "image"
     src: "/media/2020/09/4B5FF1E2-7ABE-4768-ADEF-EA82241D22FA-Miranda-Ashitey-1024x1024.jpeg"
-    alt: "4B5FF1E2 7ABE 4768 ADEF EA82241D22FA – Miranda Ashitey"
+    alt: "Miranda Ashitey in a hospital chair during treatment, a drip beside her and a small toy moose on her shoulder."
     width: 640
     height: 640
     caption: ""

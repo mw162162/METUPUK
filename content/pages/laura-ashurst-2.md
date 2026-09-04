@@ -4,7 +4,7 @@ url: "/darker-pink/laura-ashurst-2/"
 date: "2021-10-22T12:02:57"
 modified: "2021-10-22T12:13:06"
 image: "/media/2021/10/FB-1920x1080-13.Laura-Ashurst-1024x576.png"
-imageAlt: "FB-1920×1080-13.Laura-Ashurst"
+imageAlt: "A Darker Side of Pink campaign card: Laura Ashurst beside her words, It is not fun knowing that it is a struggle to access any ongoing NHS mental support. That is another worry."
 excerpt: "Name: Laura Ashurst Age: 53Region: Stokesley, North Yorkshire. Diagnosis: Two primary DX: September 2001 and September 2004 ER+ MBC DX: December 2007 Lungs and pleural lining ER+ Age at Diagnosis:…"
 parent: "darker-pink"
 sections:

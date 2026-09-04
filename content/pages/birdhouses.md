@@ -4,7 +4,7 @@ url: "/birdhouses/"
 date: "2021-02-04T20:13:56"
 modified: "2021-02-16T14:58:51"
 image: "/media/2021/02/birdbox-3.jpg"
-imageAlt: ""
+imageAlt: "A handmade oak birdbox with a pitched roof and a round entrance hole, mounted on a post in a garden."
 excerpt: "Bird houses for METUP UK One of our supporters, Jason, is building some stunning handmade birdboxes. All the money is going to METUP UK. Get yours here…. About the bird boxes The Apex is 250mm by…"
 sections:
   - _template: "html"
@@ -57,7 +57,7 @@ sections:
     caption: ""
   - _template: "image"
     src: "/media/2021/02/20200525_164951-scaled.jpg"
-    alt: ""
+    alt: "A garden border of pink roses in full bloom, with a birdbath among them."
     width: 2560
     height: 1153
     caption: ""
@@ -78,7 +78,7 @@ sections:
       Follow Jason on <a href="https://twitter.com/jrrushden" rel="noopener" target="_blank">Twitter.</a>
   - _template: "image"
     src: "/media/2021/02/20201023_173348-scaled.jpg"
-    alt: ""
+    alt: "A garden at sunset, a red telephone box standing among the shrubs under a bank of cloud lit orange."
     width: 2560
     height: 1153
     caption: ""

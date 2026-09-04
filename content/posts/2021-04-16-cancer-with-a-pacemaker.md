@@ -4,7 +4,7 @@ url: "/2021/04/cancer-with-a-pacemaker/"
 date: "2021-04-16T07:23:22"
 modified: "2023-05-12T10:17:14"
 image: "/media/2021/02/unnamed.jpg"
-imageAlt: ""
+imageAlt: "A woman in a cream woolly hat and winter coat, smiling, in a park."
 categories:
   - "education"
   - "member-stories"

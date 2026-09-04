@@ -4,7 +4,7 @@ url: "/darker-pink/vicki-groves/"
 date: "2021-10-24T11:40:51"
 modified: "2021-10-24T11:44:03"
 image: "/media/2021/10/FB-1920x1080-29.Victoria-Groves-1024x576.png"
-imageAlt: "FB-1920×1080-29.Victoria-Groves"
+imageAlt: "A Darker Side of Pink campaign card: Victoria Groves beside her words, It is not fun knowing that with my young children I cannot look too far ahead. The thought of everything I will miss is overwhelming."
 excerpt: "Name: Vicki GrovesAge: 42Region: West Yorkshire Diagnosis: Secondary breast cancer denovo Oct-18 with metastases to bone. HER2+ ER+ Age at Diagnosis: 39 My name is Vicki, I live in Leeds with my 2…"
 parent: "darker-pink"
 sections:
