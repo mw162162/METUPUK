@@ -38,6 +38,7 @@ const run = (label, cmd, opts = {}) => {
 run('Building the site', 'node build/build.js');
 run('Checking nothing was lost', 'node build/verify.js');
 run('Building the editor', 'npx tinacms build --skip-cloud-checks');
+run('Converting images to WebP', 'node build/to-webp.js');
 
 // Committing is allowed to find nothing to commit — a rebuild with no content
 // change is a normal thing to ship.

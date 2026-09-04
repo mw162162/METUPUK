@@ -26,7 +26,8 @@
     "import": "node build/import-site.js",
     "media": "node build/make-media-library.js",
     "admin": "npx tinacms build",
-    "ship": "node build/ship.js"
+    "ship": "node build/ship.js",
+    "webp": "node build/to-webp.js"
   },
   "dependencies": {
     "js-yaml": "^5.4.1",
