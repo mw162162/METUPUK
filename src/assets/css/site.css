@@ -227,7 +227,16 @@ img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto
 :root:not([data-theme="light"]) ::selection { background: var(--plum-700); color: var(--white); }
 input, textarea { caret-color: var(--accent); }
 input, button, textarea, select { font: inherit; color: inherit; }
-p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
+/* Long unbreakable strings — in practice a bare URL pasted in as its own link
+   text, one of which was 518px of "bmccancer.biomedcentral.com/articles/..."
+   inside a 335px column.
+   Set on body because the property inherits, and the old rule naming p and the
+   headings missed exactly the element that carries URLs. `anywhere` rather than
+   `break-word` because only `anywhere` also lowers the element's min-content
+   width: `break-word` wraps the line but still reports the unbroken width to
+   its parent, which is how a single URL can force a grid track wider than the
+   screen. Neither breaks a word that already fits. */
+body { overflow-wrap: anywhere; }
 ul[class], ol[class] { list-style: none; padding: 0; }
 :is(a, button, summary, input, [tabindex]):focus-visible {
   outline: 3px solid var(--focus);
@@ -328,7 +337,7 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
   margin-bottom: var(--sp-3);
 }
 .section--inverse .eyebrow { color: var(--pink-300); }
-.lede { font-size: var(--step-1); line-height: 1.55; color: var(--text-muted); max-width: var(--measure); }
+.lede { font-size: var(--step-1); line-height: 1.55; color: var(--text-muted); max-width: min(var(--measure), 100%); }
 .section--inverse .lede { color: var(--text-inverse-muted); }
 /* --- Buttons -------------------------------------------------------------- */
 .btn {
@@ -949,7 +958,14 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
 .prose { max-width: none; font-size: var(--step-0); }
 /* Text is held to a comfortable line length one element at a time, rather than
    by capping the container — so a full-width child can opt out cleanly. */
-.prose > * { max-width: var(--measure); }
+/* min(), not the measure alone. This selector is more specific than the global
+   `img { max-width: 100% }`, so it replaces that cap rather than adding to it —
+   and a fixed 76ch is no cap at all on a phone. Text did not show it, because a
+   paragraph shrinks to its container anyway; a replaced element does not, so an
+   <img> placed straight into prose sat at 714px inside a 335px column and took
+   the whole page sideways with it. Anything given a measure here has to be able
+   to give it back. */
+.prose > * { max-width: min(var(--measure), 100%); }
 .prose > * + * { margin-top: var(--sp-4); }
 .prose h2 { font-size: var(--step-2); margin-top: var(--sp-7); }
 .prose h3 { font-size: var(--step-1); margin-top: var(--sp-6); }
@@ -963,7 +979,7 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
    deliberate, just enough to look wrong. Flush left is the whole point of a
    left-aligned measure. */
 .prose img { border-radius: var(--radius); }
-.prose figcaption { max-width: var(--measure); }
+.prose figcaption { max-width: min(var(--measure), 100%); }
 .prose figure { margin-block: var(--sp-6); }
 .prose figcaption { font-size: var(--step--1); color: var(--text-faint); margin-top: var(--sp-2); }
 /* A linked image should feel clickable. */
@@ -1233,7 +1249,7 @@ a.tag:hover { border-color: var(--accent); }
    words, so its column sat almost empty beside a full paragraph. A section
    carries one message; the heading leads and the sentence follows it. */
 .section-head { display: grid; gap: var(--sp-4); align-items: start; }
-.section-head > * { max-width: var(--measure); }
+.section-head > * { max-width: min(var(--measure), 100%); }
 .section-head h2 { max-width: 22ch; }
 @media (min-width: 900px) {
   .section-head { gap: var(--sp-4); }
@@ -1526,7 +1542,15 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
   }
 }
 /* --- Table of contents ---------------------------------------------------- */
-.layout-aside { display: grid; gap: var(--sp-7); align-items: start; }
+/* minmax(0, 1fr), not the implicit `auto` track this had.
+   A grid item's automatic minimum size is its min-content, so an auto track
+   never shrinks below the widest thing inside it — and on one page that was a
+   994px column inside a 335px phone, dragging twenty pages sideways. The
+   images were only the visible half of it: capping them at 100% left them
+   filling a container that was itself too wide. A track that can reach zero is
+   what actually holds the page together; the 1024px rules below then take over
+   and add the contents rail. */
+.layout-aside { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sp-7); align-items: start; }
 @media (min-width: 1024px) {
   .layout-aside { grid-template-columns: minmax(0, 1fr) 16rem; }
   /* 289 of the 299 pages using this layout render no contents rail at all, and
@@ -2248,7 +2272,7 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
    lead-paragraph styling below doing the rest of the work. */
 .act { padding-block: var(--sp-5); }
 .act + .act { padding-top: var(--sp-6); }
-.act__inner > * { max-width: var(--measure); }
+.act__inner > * { max-width: min(var(--measure), 100%); }
 .act__inner > * + * { margin-top: var(--sp-4); }
 /* No coloured bands. Blocks of tint were a blunt way to say "you have moved",
    and they made the page look like a stack of boxes. The movement itself says
