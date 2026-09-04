@@ -37,6 +37,53 @@ const norm = (s) => (s || '').replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '')
   .replace(/[–—]/g, '-').replace(/…/g, '...')
   .toLowerCase().trim();
 
+// Text taken off a page on purpose, and the reason for each.
+//
+// The integrity check below compares the built page against the original
+// WordPress export, so anything removed deliberately looks exactly like the
+// build dropping it. That is the check working: a silent omission and a
+// considered edit are indistinguishable from the outside, so the difference
+// has to be written down.
+//
+// Nothing goes in here to make a warning go away. It goes in here when a
+// person decided the text should not be published and said why — which keeps
+// the promise meaningful for the other 5,000 characters on the page and the
+// 375 pages beside it.
+const REMOVED_ON_PURPOSE = [
+  {
+    url: '/about-metupuk/',
+    text: 'Click here',
+    times: 6,
+    why: 'Six empty <a href="#"> links left behind by the WordPress theme. They were '
+      + 'the first words on the page, and because the description is derived from the '
+      + 'opening body text they were also its Google snippet.',
+  },
+  {
+    url: '/about-metupuk/',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, '
+      + 'luctus nec ullamcorper mattis, pulvinar dapibus leo.',
+    times: 1,
+    why: "The theme's placeholder paragraph, published as it came.",
+  },
+];
+
+// Take the sanctioned removals out of the source before comparing, and say so
+// if one no longer matches — an exception that has stopped applying is a line
+// nobody has read since it was written.
+function expected(doc, note) {
+  let text = doc.text || '';
+  for (const r of REMOVED_ON_PURPOSE) {
+    if (r.url !== doc.url) continue;
+    const found = text.split(r.text).length - 1;
+    if (found !== r.times) {
+      note(`${doc.url} :: exception for ${JSON.stringify(r.text.slice(0, 40))} expected ${r.times}, source has ${found}`);
+      continue;
+    }
+    text = text.split(r.text).join(' ');
+  }
+  return text;
+}
+
 function run() {
   const model = buildModel();
   // The editor at /admin is an application shell, not a page of the site: it
@@ -45,7 +92,7 @@ function run() {
   const files = walkFiles(OUT)
     .filter((f) => f.endsWith('.html'))
     .filter((f) => !f.replace(/\\/g, '/').includes('/admin/'));
-  const problems = { deadLinks: [], missingImages: [], noH1: [], noTitle: [], contentLoss: [], emptyAlt: 0, emptyAltPages: [] };
+  const problems = { deadLinks: [], missingImages: [], noH1: [], noTitle: [], contentLoss: [], staleExceptions: [], emptyAlt: 0, emptyAltPages: [] };
   const linkTargets = new Map();
 
   for (const file of files) {
@@ -92,7 +139,7 @@ function run() {
     const file = path.join(OUT, doc.url.replace(/^\//, ''), 'index.html');
     if (!fs.existsSync(file)) { problems.contentLoss.push(`${doc.url} :: page missing`); continue; }
     const rendered = norm(toText(parse(fs.readFileSync(file, 'utf8')).querySelector('main').innerHTML));
-    const source = norm(doc.text);
+    const source = norm(expected(doc, (m) => problems.staleExceptions.push(m)));
     // Every character of the source must appear, in order, in the rendered page.
     // Insertions (navigation, added links) are fine; omissions are not.
     // Whitespace is ignored because block boundaries legitimately reflow.
@@ -149,6 +196,7 @@ function run() {
     `Pages without a <title>: ${problems.noTitle.length}`,
     `Images with empty alt:   ${problems.emptyAlt}`,
     `Content-loss warnings:   ${problems.contentLoss.length}`,
+    `Stale exceptions:        ${problems.staleExceptions.length}`,
     `Original URLs now 404:   ${gone.length}`,
     `Homepage features lost:  ${droppedFromHome.length}`,
   ].join('\n');
@@ -165,6 +213,7 @@ function run() {
   show('Missing local media', problems.missingImages);
   show('Pages without an h1', problems.noH1);
   show('Content-loss warnings', problems.contentLoss);
+  show('Removals that no longer match the source', problems.staleExceptions);
   show('Original URLs now 404', gone);
   show('Homepage no longer links to', droppedFromHome);
 

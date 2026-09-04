@@ -294,8 +294,16 @@ function accessibility(site, add) {
     for (const input of dom.querySelectorAll('input, select, textarea')) {
       const type = (input.getAttribute('type') || '').toLowerCase();
       if (['hidden', 'submit', 'button', 'image', 'reset'].includes(type)) continue;
+      // Something already hidden from assistive technology has no name to
+      // give, and does not need one — a spam honeypot is the usual case.
+      if (input.closest('[aria-hidden="true"]')) continue;
       const id = input.getAttribute('id');
+      // A label wrapped round the control names it just as well as label[for],
+      // and every screen reader honours it. Only checking the explicit form
+      // reported correct markup as an error, which is the expensive kind of
+      // false positive: it teaches people that the report is wrong.
       const labelled = (id && dom.querySelector(`label[for="${id}"]`)) ||
+        input.closest('label') ||
         input.getAttribute('aria-label') || input.getAttribute('aria-labelledby') || input.getAttribute('title');
       if (!labelled) {
         add({ id: 'input-unlabelled', severity: SEV.error, page: url, detail: `Form control (${type || input.rawTagName}) has no label.`, fix: 'Add a <label for> or aria-label.' });

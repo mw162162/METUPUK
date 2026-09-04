@@ -241,10 +241,16 @@ function renderForm(b) {
     <p>Sorry, that did not send. Please email <a href="mailto:contact@metupuk.org.uk">contact@metupuk.org.uk</a> and we will pick it up.</p>
   </div>`;
 
+  // The honeypot is hidden off-screen, which is the technique for hiding
+  // something from sight while keeping it available to a screen reader — the
+  // opposite of what a spam trap wants. Without aria-hidden a blind visitor
+  // meets a field labelled "Leave this empty", and if they fill it in their
+  // message is silently thrown away. tabindex="-1" already keeps it out of the
+  // tab order, so hiding it from assistive technology traps no keyboard focus.
   return done + failed + `<form class="form" id="${id}" name="${esc(b.name || id)}" method="post"${action}${netlifyAttrs}>
   ${b.intro ? `<p class="form__intro">${esc(b.intro)}</p>` : ''}
   ${netlify ? `<input type="hidden" name="form-name" value="${esc(b.name || id)}">
-  <p class="form__pot"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>` : ''}
+  <p class="form__pot" aria-hidden="true"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>` : ''}
   ${fields}
   ${consent}
   <button class="btn btn--primary" type="submit">${esc(b.submit || 'Send')}</button>

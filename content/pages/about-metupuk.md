@@ -4,46 +4,10 @@ url: "/about-metupuk/"
 date: "2024-06-18T07:22:58"
 modified: "2024-06-18T07:22:58"
 image: "/media/2021/09/iStock-145995617-1024x683.jpg"
-imageAlt: "<p>METUPUK is the ONLY patient advocacy group in the UK.</p>"
+imageAlt: "Ten women in silhouette, holding hands in a line against a bright blue sky."
 sections:
   - _template: "prose"
     body: |-
-      <a href="#">
-
-      									Click here
-
-      					</a>
-
-      <a href="#">
-
-      									Click here
-
-      					</a>
-
-      <a href="#">
-
-      									Click here
-
-      					</a>
-
-      <a href="#">
-
-      									Click here
-
-      					</a>
-
-      <a href="#">
-
-      									Click here
-
-      					</a>
-
-      <a href="#">
-
-      									Click here
-
-      					</a>
-
       **METUPUK** is the ONLY patient advocacy group in the UK.
 
       We are here to push and promote issues with secondary/metastatic breast cancer. Our [objectives](/aims-and-objectives/) and strategy focus on the key areas that need to change.
@@ -61,8 +25,6 @@ sections:
       Please support us in achieving our aims and objectives.
 
       Help to keep us enjoying life and **#BusyLivingWithMets**
-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
 
       METUP was created in America to change the landscape of metastatic cancer through patient advocacy and direct action.
 
