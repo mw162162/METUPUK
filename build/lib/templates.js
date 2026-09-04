@@ -5,6 +5,27 @@ const SITE_URL = 'https://metupuk.org.uk';
 const CHARITY_NO = '1196494';
 const LOGO = '/brand/metupuk-logo.png';
 
+// Cloudflare Web Analytics. Paste the token from the Cloudflare dashboard
+// (Analytics & Logs -> Web Analytics -> Add a site -> Manage site) between the
+// quotes and the beacon starts on the next publish. Empty means no analytics
+// and no third-party request at all, which is the state the site ships in.
+//
+// Chosen over Google Analytics deliberately. It sets no cookies, so the site
+// needs no consent banner under PECR; it collects no per-visitor identity; and
+// it does not tie what somebody reads about metastatic breast cancer to an
+// advertising profile. The token below is not a secret — it appears in the
+// page source of every site that uses it, which is why it can live in the repo.
+const ANALYTICS_TOKEN = '';
+
+// Honour Do Not Track and Global Privacy Control before loading it.
+//
+// Cloudflare has no setting for this, so the beacon is appended by a few lines
+// of script that check first. Nobody makes us — DNT is unenforced and GPC only
+// binds under some US state laws — but a visitor who has said "do not track
+// me" has said it, and the readers of this particular site have more reason
+// than most to mean it. The cost is one aggregate pageview.
+const analyticsBeacon = () => (ANALYTICS_TOKEN ? `<script>(function(){try{var n=navigator;if(n.doNotTrack==='1'||n.globalPrivacyControl===true||window.doNotTrack==='1')return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token":"${ANALYTICS_TOKEN}"}');document.head.appendChild(s);}catch(e){}})();</script>` : '');
+
 // The full-size mark is 512px and 219KB, and it was being served into a 44px
 // slot twice on every page — 62% of the homepage's entire weight, for a logo
 // the size of a thumbnail. The 96 and 180 crops were already sitting beside
@@ -326,6 +347,7 @@ ${socialRail}
 ${footer()}
 ${searchDialog}
 <script src="/assets/js/site.js" defer></script>
+${analyticsBeacon()}
 </body>
 </html>`;
 }

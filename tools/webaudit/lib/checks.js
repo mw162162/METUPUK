@@ -442,9 +442,9 @@ function infrastructure(site, add) {
 
   // Analytics: you cannot grow what you do not measure.
   const anyAnalytics = site.pages.some((p) =>
-    /gtag\(|googletagmanager|plausible|umami|fathom|matomo|_paq|counter\.dev|simpleanalytics/i.test(p.html));
+    /gtag\(|googletagmanager|plausible|umami|fathom|matomo|_paq|counter\.dev|simpleanalytics|cloudflareinsights|beacon\.min\.js/i.test(p.html));
   if (!anyAnalytics) {
-    add({ id: 'analytics-missing', severity: SEV.warning, page: '(site)', detail: 'No analytics detected on any page.', fix: 'Without measurement you cannot tell which content earns reach. A privacy-friendly option (Plausible, Fathom, Umami) avoids a cookie banner entirely.' });
+    add({ id: 'analytics-missing', severity: SEV.warning, page: '(site)', detail: 'No analytics detected on any page.', fix: 'Without measurement you cannot tell which content earns reach. A cookieless option (Cloudflare Web Analytics, Plausible, Fathom, Umami) avoids a consent banner entirely.' });
   }
 }
 

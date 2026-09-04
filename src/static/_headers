@@ -9,6 +9,16 @@
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
 
-# A preview copy of a charity's site should not be indexed under our domain.
+# DELETE THIS BLOCK BEFORE POINTING metupuk.org.uk AT THIS SITE.
+#
+# A preview copy of a charity's site should not be indexed under someone else's
+# domain, so every page says noindex. Leave it in place after the domain moves
+# and the site goes live invisible: 376 pages, none of which can rank, and
+# nothing on the site itself to show why. robots.txt already says the opposite,
+# which is the giveaway that this line is about where the site is hosted rather
+# than what it wants.
+#
+# build/verify.js prints the current state on every build, so this cannot go
+# unnoticed — but it can only report the setting, not decide it.
 /*
   X-Robots-Tag: noindex

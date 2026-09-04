@@ -84,6 +84,22 @@ function expected(doc, note) {
   return text;
 }
 
+// Is this build visible to search engines?
+//
+// src/static/_headers currently sends X-Robots-Tag: noindex on every path,
+// which is correct while the site is a preview under someone else's domain and
+// catastrophic the day it is not: the pages would be live, linked and indexed
+// by nobody. robots.txt says the opposite, so the two cannot both be read as
+// intent. Reported on every build so that switching the domain and forgetting
+// this cannot happen quietly.
+function indexingState() {
+  const file = path.join(ROOT, 'src', 'static', '_headers');
+  if (!fs.existsSync(file)) return { blocked: false, why: 'no _headers file' };
+  const text = fs.readFileSync(file, 'utf8');
+  const blocked = /^[ 	]*X-Robots-Tag:.*noindex/im.test(text);
+  return { blocked, why: blocked ? 'X-Robots-Tag: noindex in src/static/_headers' : '' };
+}
+
 function run() {
   const model = buildModel();
   // The editor at /admin is an application shell, not a page of the site: it
@@ -188,6 +204,7 @@ function run() {
   const originalPaths = [...model.pages, ...model.posts].map((d) => d.url);
   const gone = originalPaths.filter((u) => !resolves(u));
 
+  const indexing = indexingState();
   const report = [
     `HTML pages built:        ${files.length}`,
     `Dead internal links:     ${problems.deadLinks.length}`,
@@ -199,6 +216,7 @@ function run() {
     `Stale exceptions:        ${problems.staleExceptions.length}`,
     `Original URLs now 404:   ${gone.length}`,
     `Homepage features lost:  ${droppedFromHome.length}`,
+    `Search engines:          ${indexing.blocked ? 'BLOCKED — ' + indexing.why : 'allowed'}`,
   ].join('\n');
 
   console.log(report + '\n');
@@ -212,6 +230,14 @@ function run() {
   show('Dead internal links', problems.deadLinks);
   show('Missing local media', problems.missingImages);
   show('Pages without an h1', problems.noH1);
+  if (indexing.blocked) {
+    console.log('--- Search engines are blocked ---');
+    console.log('  Every page sends X-Robots-Tag: noindex, so none of this site can rank.');
+    console.log('  Correct for a preview on netlify.app. Before pointing metupuk.org.uk');
+    console.log('  here, delete the "/*  X-Robots-Tag: noindex" rule at the end of');
+    console.log('  src/static/_headers — otherwise the site goes live invisible.');
+    console.log();
+  }
   show('Content-loss warnings', problems.contentLoss);
   show('Removals that no longer match the source', problems.staleExceptions);
   show('Original URLs now 404', gone);
