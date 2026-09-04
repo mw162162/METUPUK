@@ -86,12 +86,16 @@ function expected(doc, note) {
 
 // Is this build visible to search engines?
 //
-// src/static/_headers currently sends X-Robots-Tag: noindex on every path,
-// which is correct while the site is a preview under someone else's domain and
-// catastrophic the day it is not: the pages would be live, linked and indexed
-// by nobody. robots.txt says the opposite, so the two cannot both be read as
-// intent. Reported on every build so that switching the domain and forgetting
-// this cannot happen quietly.
+// A site-wide X-Robots-Tag is the cheapest line in a repository to write and
+// the most expensive to forget. One kept this build out of the index while it
+// lived under netlify.app, and would have taken the real site with it the day
+// the domain moved: 376 pages live, linked, and ranking for nothing, with
+// nothing on the site itself to show why. It is gone, and this reports the
+// state on every build so that its return cannot be silent.
+//
+// It reads the header file rather than the built pages because that is where
+// the decision lives. Per-page noindex is a different thing and is left alone:
+// the paginated news archives carry one on purpose.
 function indexingState() {
   const file = path.join(ROOT, 'src', 'static', '_headers');
   if (!fs.existsSync(file)) return { blocked: false, why: 'no _headers file' };
