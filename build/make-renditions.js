@@ -19,6 +19,12 @@ const ASSETS = path.join(SCRAPE, 'assets');
 // (~780px) and full-bleed banner (~1600px), each at 1x and 2x. Anything wider
 // than the original is skipped rather than upscaled — we cannot invent detail.
 const TARGETS = [780, 1200, 1440, 1560, 1920];
+
+// A body image is painted into the reading column, not across the window, so
+// it wants a shorter ladder: the column at 1x and 2x, the phone at 2x, and one
+// step between. 1560 is the ceiling because nothing in prose is ever drawn
+// wider than 780 CSS pixels.
+const BODY_TARGETS = [390, 780, 1170, 1560];
 const FORCE = process.argv.includes('--force');
 
 // A rendition path follows WordPress's own convention so srcset picks it up.
@@ -45,14 +51,54 @@ function bannerImages() {
     .map((u) => toOriginal(u.replace('/media/', '')));
 }
 
+// Pictures inside the body of a page that are much wider than the column and
+// have no smaller copy to offer. Seventeen of them, each downloaded whole —
+// up to 878KB for something painted 780px wide.
+//
+// Everything else was already covered: for 130 of the 137 oversized body
+// images WordPress had made the smaller files years ago and simply never
+// referenced them, which build/lib/responsive-inline.js now does. This is the
+// remainder, where the smaller file genuinely does not exist yet.
+function bodyImages() {
+  const { build } = require('./lib/model');
+  const { srcsetFor } = require('./lib/srcset');
+  const model = build();
+  const found = new Set();
+
+  for (const doc of [...model.pages, ...model.posts]) {
+    for (const b of doc.sections || []) {
+      const body = String((b && (b.body || b.html)) || '');
+      if (!body.includes('<img')) continue;
+      for (const m of body.matchAll(/<img[^>]*>/g)) {
+        const tag = m[0];
+        if (/\ssrcset=/.test(tag)) continue;
+        const src = (tag.match(/src="([^"]+)"/) || [])[1];
+        if (!src || !src.startsWith('/media/')) continue;
+        const w = parseInt((tag.match(/width="(\d+)"/) || [])[1], 10);
+        if (!(w > 800)) continue;
+        // A srcset it can already build needs nothing generating.
+        if (srcsetFor(src, { maxWidth: 1560 })) continue;
+        found.add(toOriginal(src.replace('/media/', '')));
+      }
+    }
+  }
+  return [...found];
+}
+
 (async () => {
-  const originals = [...new Set(bannerImages())];
+  const banners = [...new Set(bannerImages())];
+  const body = [...new Set(bodyImages())].filter((r) => !banners.includes(r));
+  const work = [
+    ...banners.map((rel) => ({ rel, targets: TARGETS })),
+    ...body.map((rel) => ({ rel, targets: BODY_TARGETS })),
+  ];
+  const originals = work.map((w) => w.rel);
   let made = 0;
   let skipped = 0;
   let tooSmall = 0;
   const limited = [];
 
-  for (const rel of originals) {
+  for (const { rel, targets } of work) {
     const src = path.join(ASSETS, rel);
     if (!fs.existsSync(src)) continue;
 
@@ -61,7 +107,7 @@ function bannerImages() {
     if (!meta.width || !meta.height) continue;
     if (meta.width < 780) limited.push({ rel, w: meta.width });
 
-    for (const width of TARGETS) {
+    for (const width of targets) {
       if (meta.width <= width) { tooSmall++; continue; }
       const height = Math.round((width / meta.width) * meta.height);
       const destRel = renditionPath(rel, width, height);

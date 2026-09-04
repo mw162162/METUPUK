@@ -9,11 +9,16 @@
   function applyTheme(value) {
     if (value === 'light' || value === 'dark') root.setAttribute('data-theme', value);
     else root.removeAttribute('data-theme');
-    var btn = document.querySelector('[data-theme-toggle]');
-    if (btn) {
-      var dark = value === 'dark' || (!value && window.matchMedia('(prefers-color-scheme: dark)').matches);
-      btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
-      btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+    // Every toggle, not the first one. There are two now — the header keeps
+    // one on a wide screen and the drawer carries one on a phone — and
+    // labelling only one of them leaves the other announcing the opposite of
+    // what it does.
+    var toggles = document.querySelectorAll('[data-theme-toggle]');
+    var dark = root.getAttribute('data-theme') === 'dark' ||
+      (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    for (var t = 0; t < toggles.length; t++) {
+      toggles[t].setAttribute('aria-pressed', dark ? 'true' : 'false');
+      toggles[t].setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
     }
   }
 

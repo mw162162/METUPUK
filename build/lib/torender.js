@@ -19,6 +19,7 @@
 
 const { parse } = require('node-html-parser');
 const { COMPONENTS } = require('./components');
+const { responsiveInline } = require('./responsive-inline');
 
 const RENDERERS = {};
 for (const c of COMPONENTS) {
@@ -51,7 +52,10 @@ function renderBlocks(sections, { mark = false } = {}) {
   if (!Array.isArray(sections)) return '';
   return sections.map((b, i) => {
     const fn = RENDERERS[b && b.type];
-    const html = fn ? fn(b) : (b && (b.html || b.body) ? String(b.html || b.body) : '');
+    const raw = fn ? fn(b) : (b && (b.html || b.body) ? String(b.html || b.body) : '');
+    // Body images arrive from WordPress as a bare src. Give them the smaller
+    // copies that already exist before anything else looks at the markup.
+    const html = responsiveInline(raw);
     return mark ? stamp(html, i) : html;
   }).filter(Boolean).join('\n');
 }

@@ -221,9 +221,17 @@ function header(current) {
         ${brandMark()}
         <span><span class="brand__name">MET UP UK</span></span>
       </a>
-      <button class="icon-btn" type="button" data-drawer-close aria-label="Close menu">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
-      </button>
+      <div class="drawer__tools">
+        <button class="icon-btn" type="button" data-search-open aria-label="Search the site">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+        </button>
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        </button>
+        <button class="icon-btn" type="button" data-drawer-close aria-label="Close menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+        </button>
+      </div>
     </div>
     <nav aria-label="Main menu">
       <ul class="drawer__list">

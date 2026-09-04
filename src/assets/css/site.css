@@ -230,13 +230,17 @@ input, button, textarea, select { font: inherit; color: inherit; }
 /* Long unbreakable strings — in practice a bare URL pasted in as its own link
    text, one of which was 518px of "bmccancer.biomedcentral.com/articles/..."
    inside a 335px column.
-   Set on body because the property inherits, and the old rule naming p and the
-   headings missed exactly the element that carries URLs. `anywhere` rather than
-   `break-word` because only `anywhere` also lowers the element's min-content
-   width: `break-word` wraps the line but still reports the unbroken width to
-   its parent, which is how a single URL can force a grid track wider than the
-   screen. Neither breaks a word that already fits. */
-body { overflow-wrap: anywhere; }
+   `anywhere` rather than `break-word` because only `anywhere` also lowers the
+   element's min-content width: `break-word` wraps the line but still reports
+   the unbroken width to its parent, which is how a single URL can force a grid
+   track wider than the screen.
+   Scoped to prose rather than set on body, and that scope is the point. On
+   body it inherits into every control on the site, and "Donate" — one word, in
+   the primary button, on every page — came out over three lines on a phone.
+   `anywhere` is right for text somebody pasted in and wrong for a label we
+   chose the width of. */
+.prose, .lede, .card__excerpt, figcaption, dd, blockquote { overflow-wrap: anywhere; }
+p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
 ul[class], ol[class] { list-style: none; padding: 0; }
 :is(a, button, summary, input, [tabindex]):focus-visible {
   outline: 3px solid var(--focus);
@@ -2387,6 +2391,11 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
   .brand { flex: 0 1 auto; min-width: 0; gap: var(--sp-2); }
   .brand > span { min-width: 0; }
   .brand__name {
+    /* display: block is what makes the two lines below do anything at all.
+       overflow and text-overflow have no effect on a non-replaced inline box,
+       so this rule was inert: the wordmark kept its full width and simply ran
+       underneath the search button — 24px of overlap at 320px. */
+    display: block;
     font-size: 1rem;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
@@ -2396,6 +2405,24 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
   .site-header__actions { gap: 4px; min-width: 0; }
   .site-header__actions .btn { padding-inline: var(--sp-3); font-size: 0.72rem; }
   .icon-btn { width: 2.5rem; height: 2.5rem; }
+  /* Search and the theme switch move into the drawer.
+     Four controls plus a wordmark do not fit beside each other on a phone, and
+     the ways of forcing them to all cost something real: shrinking the buttons
+     took the smallest tap target to 24px, and hiding the wordmark gave up the
+     name of the charity. Neither is worth it for a search button, because the
+     menu is where a phone user looks for one anyway.
+     What is left in the bar is what a visitor came for — the charity, Donate,
+     and the way into everything else. Nothing is removed: both controls are in
+     the drawer, driven by the same delegated handlers, one tap further away. */
+  .site-header__actions [data-search-open],
+  .site-header__actions [data-theme-toggle] { display: none; }
+}
+
+/* The drawer's own row: the two that moved, plus close. */
+.drawer__tools { display: flex; align-items: center; gap: var(--sp-2); margin-left: auto; }
+@media (min-width: 40.0625em) {
+  .drawer__tools [data-search-open],
+  .drawer__tools [data-theme-toggle] { display: none; }
 }
 
 /* Belt and braces, at every width: the header is never the reason the page
