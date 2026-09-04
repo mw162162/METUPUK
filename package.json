@@ -8,6 +8,7 @@
     "optimise": "node build/optimise-images.js",
     "verify": "node build/verify.js",
     "audit": "node tools/webaudit dist",
+  "lowres": "node tools/lowres-worklist.js",
     "audit:live": "node tools/webaudit https://metupuk.org.uk --max 150",
     "serve": "npx --yes serve dist -l 4321",
     "check": "node build/build.js && node build/verify.js && node tools/webaudit dist",

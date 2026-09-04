@@ -90,7 +90,7 @@ const NAV = [
   { title: 'News', url: '/latest-news/' },
 ];
 
-const { srcsetFor } = require('./srcset');
+const { srcsetFor, sourceWidth } = require('./srcset');
 
 // Build a responsive <img> from a local media path, using the renditions
 // WordPress already generated.
@@ -343,10 +343,22 @@ function breadcrumb(trail, current) {
     </nav>`;
 }
 
+// A card paints its picture 390px wide. Below about four fifths of that the
+// browser is enlarging the file, and an enlarged photograph on a news index
+// looks like a mistake rather than a photograph. The design already has an
+// answer for a post with no usable picture, so use it: a text-led card is
+// honest, where a stretched 205px portrait is not.
+//
+// It is a rule rather than a list because the charity uploads its own images
+// now. A small one gets the text card automatically, and the day a better
+// original replaces it the picture comes back with no code change.
+const CARD_WIDTH = 390;
+const usableInCard = (src) => !src || sourceWidth(src) >= CARD_WIDTH * 0.8;
+
 function articleCard(doc, opts = {}) {
   // 27 posts genuinely have no image — no featured image, none in the body.
   // These get a text-led card rather than a stand-in graphic.
-  const img = doc.image
+  const img = doc.image && usableInCard(doc.image)
     ? `<div class="card__media">${responsiveImg(doc.image, {
         alt: doc.imageAlt || '',
         sizes: '(min-width: 1200px) 380px, (min-width: 700px) 33vw, 100vw',

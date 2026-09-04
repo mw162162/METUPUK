@@ -21,6 +21,10 @@ const { imageSize } = require('./imagesize');
 const DEFAULT_PROFILE = [
   { match: (el) => el.classList.contains('hero__bg'), width: 1600, fluid: true, label: 'full-bleed hero' },
   { match: (el) => el.classList.contains('page-head__bg'), width: 1600, fluid: true, label: 'page banner' },
+  // Most specific first: the face tiles sit *inside* the pinned media, so the
+  // full-bleed rule would otherwise claim them and report a crisp 323px tile as
+  // a 0.20x disaster. Any nested slot has to be listed above its container.
+  { match: (el) => el.classList.contains('scrolly__face'), width: 112, fluid: true, label: 'portrait tile' },
   { match: (el) => el.closest('.scrolly__media'), width: 1600, fluid: true, label: 'pinned background' },
   // A deliberately contained hero keeps the image at its own size, so it is
   // measured like body content rather than a full-width slot.
@@ -37,9 +41,16 @@ const DEFAULT_PROFILE = [
   { match: (el) => el.closest('.prose'), width: 700, fluid: false, label: 'article body' },
 ];
 
-// Below 1.0 the browser is stretching the file. 2.0 is what a retina screen
-// wants; between the two is acceptable but not crisp.
-const UPSCALED = 1.0;
+// Below 1.0 the browser is enlarging the file — but enlargement only becomes
+// visible somewhere around a tenth. Compared side by side, a 0.96x hero is
+// indistinguishable from the same region at twice the pixels, while a 0.75x
+// banner turns 8pt infographic text to mush. So 0.9 is where the report calls
+// something stretched; between 0.9 and 1.5 it is merely short of retina.
+//
+// Fine text is the worst case and soft-focus photography the mildest, which no
+// ratio can tell apart — treat a flagged infographic as more urgent than a
+// flagged portrait.
+const UPSCALED = 0.9;
 const SOFT = 1.5;
 
 function widestSource(el, root, resolveFile) {
@@ -152,11 +163,23 @@ function check(site, add, { profile = DEFAULT_PROFILE, root } = {}) {
       let id;
       let severity;
       let fix;
-      if (!couldBeBigger) {
+      if (!couldBeBigger && ratio < UPSCALED) {
+        // The layout is enlarging the file. Visible on any screen, and only a
+        // better photograph fixes it.
         id = 'image-source-lowres';
         severity = 'warning';
         fix = 'The original upload is this size, so no rendition can be sharper. ' +
           'Re-upload a higher-resolution original, or present the image smaller.';
+      } else if (!couldBeBigger) {
+        // Between 1x and 2x: correct on an ordinary screen, short of crisp on a
+        // dense one. Reported apart from the case above, because filing the two
+        // together turns a handful of real defects into a hundred-item list
+        // nobody reads — which is how the real ones stay unfixed.
+        id = 'image-source-not-retina';
+        severity = 'note';
+        fix = 'Sharp on a standard screen but not on a dense one. Worth acting on only ' +
+          'where the image carries the page — a hero or a banner — and then only by ' +
+          're-uploading a larger original.';
       } else if (ratio >= UPSCALED) {
         id = 'image-soft';
         severity = 'warning';

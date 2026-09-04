@@ -130,4 +130,27 @@ function srcsetFor(localPath, { maxWidth = 2048 } = {}) {
   };
 }
 
-module.exports = { srcsetFor };
+/**
+ * How wide the widest available source actually is, in pixels — 0 when nothing
+ * on disk can be measured.
+ *
+ * A slot that is wider than this number is asking the browser to stretch the
+ * file, and no markup fixes that. Callers use it to choose a different layout
+ * rather than publish something soft.
+ */
+function sourceWidth(localPath) {
+  const set = srcsetFor(localPath, { maxWidth: Infinity });
+  if (set && set.widest) return set.widest;
+  if (!localPath || !localPath.startsWith('/media/')) return 0;
+
+  const rel = decodeURIComponent(localPath.split('?')[0].replace('/media/', ''));
+  const dirRel = path.dirname(rel) === '.' ? '' : path.dirname(rel);
+  const name = path.basename(rel);
+  const m = name.match(SIZED);
+  // A -WxH name states its own width; anything else has to be measured.
+  if (m) return +m[2];
+  const size = readSize(path.join(ASSETS, rel));
+  return size ? size.w : 0;
+}
+
+module.exports = { srcsetFor, sourceWidth };
