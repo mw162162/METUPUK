@@ -243,6 +243,9 @@ function copyReferencedMedia() {
   // has to forget as well as remember, or "unpublished" stops meaning gone.
   let pruned = 0;
   const mediaRoot = path.join(OUT, 'media');
+  // Every referenced picture, minus its extension, so a sibling .webp can be
+  // recognised as belonging to something still in use.
+  const KEEPS_WEBP = new Set([...wanted].map((r) => r.replace(/\.[a-z0-9]+$/i, '')));
   const sweep = (dir) => {
     if (!fs.existsSync(dir)) return;
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -253,7 +256,14 @@ function copyReferencedMedia() {
         continue;
       }
       const rel = path.relative(mediaRoot, full).split(path.sep).join('/');
-      if (!wanted.has(rel)) { fs.rmSync(full, { force: true }); pruned++; }
+      if (wanted.has(rel)) continue;
+      // A .webp sitting beside a picture this build wants is not leftovers —
+      // it is the file the page will point at as soon as build/to-webp.js has
+      // run, and re-encoding seventeen hundred photographs on every build to
+      // replace something we just deleted is a minute nobody gets back.
+      if (rel.endsWith('.webp') && KEEPS_WEBP.has(rel.replace(/\.webp$/, ''))) continue;
+      fs.rmSync(full, { force: true });
+      pruned++;
     }
   };
   sweep(mediaRoot);

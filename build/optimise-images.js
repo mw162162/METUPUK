@@ -2,6 +2,17 @@
 // so the HTML needs no changes: same filenames, smaller files.
 //
 //   node build/optimise-images.js [--max-width 2000] [--kb 400] [--dry]
+//
+// No longer part of publishing, and deliberately so. build/to-webp.js takes
+// 467 MB of pictures to 107 MB where this takes a few per cent, and it covers
+// everything a page actually shows. The two also fight: this rewrites files in
+// place, which resets the timestamps the WebP pass reads to decide what it
+// already did, so running both means re-encoding seventeen hundred photographs
+// on every publish.
+//
+// Kept for the case it is still good at — one oversized upload that wants
+// capping at a sane pixel width before anything else touches it. Run it before
+// to-webp, never after.
 const fs = require('fs');
 const path = require('path');
 

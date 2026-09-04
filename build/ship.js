@@ -9,10 +9,16 @@
 // itself clears dist and throws the admin away again.
 //
 //   1  build          the site from content/
-//   2  verify         refuses to go further if content was lost
-//   3  tinacms build  the editor, into dist/admin
-//   4  commit + push  so TinaCloud re-indexes and the repo matches what is live
-//   5  deploy         prebuilt, with --no-build so nothing overwrites step 3
+//   2  webp           re-encode the pictures and point the pages at them
+//   3  verify         refuses to go further if content was lost
+//   4  tinacms build  the editor, into dist/admin
+//   5  commit + push  so TinaCloud re-indexes and the repo matches what is live
+//   6  deploy         prebuilt, with --no-build so nothing overwrites step 4
+//
+// Verify runs after the image pass, not before, so what it checks is the thing
+// that gets deployed rather than an earlier draft of it. The conversion only
+// touches pictures the second time round — a few seconds — because it leaves
+// the originals in place and finds its own output still there.
 //
 // Nothing is deployed if verify fails. A site that is wrong everywhere is
 // worse than a site that is briefly out of date.
@@ -36,9 +42,9 @@ const run = (label, cmd, opts = {}) => {
 };
 
 run('Building the site', 'node build/build.js');
+run('Converting images to WebP', 'node build/to-webp.js');
 run('Checking nothing was lost', 'node build/verify.js');
 run('Building the editor', 'npx tinacms build --skip-cloud-checks');
-run('Converting images to WebP', 'node build/to-webp.js');
 
 // Committing is allowed to find nothing to commit — a rebuild with no content
 // change is a normal thing to ship.

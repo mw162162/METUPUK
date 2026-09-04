@@ -327,8 +327,56 @@ function accessibility(site, add) {
 
 /* --- Performance ---------------------------------------------------------- */
 
+// Every asset a page actually asks the browser to fetch.
+//
+// The weight checks used to measure the deploy directory, which answers a
+// different question. A file sitting in the deploy that no page references
+// costs no visitor anything, and a site may keep one on purpose — this one
+// keeps its JPEGs beside the WebP so that inbound links to a picture still
+// resolve. Reporting those as page weight reports a decision as a defect,
+// which is how a report loses the reader.
+function requestedAssets(site) {
+  const used = new Set();
+  const add = (url) => {
+    if (!url) return;
+    const clean = decodeURIComponent(String(url).trim().split('#')[0].split('?')[0]);
+    if (clean.startsWith('/')) used.add(clean);
+  };
+  const fromSrcset = (v) => {
+    if (!v) return;
+    for (const part of v.split(',')) add(part.trim().split(/\s+/)[0]);
+  };
+
+  for (const page of site.pages) {
+    for (const el of page.dom.querySelectorAll('[src], [srcset], [href], [style]')) {
+      add(el.getAttribute('src'));
+      fromSrcset(el.getAttribute('srcset'));
+      // Stylesheets and preloads are fetched; ordinary links are navigation.
+      const rel = (el.getAttribute('rel') || '').toLowerCase();
+      if (rel.includes('stylesheet') || rel.includes('preload') || rel.includes('icon')) add(el.getAttribute('href'));
+      const style = el.getAttribute('style');
+      if (style) for (const m of style.matchAll(/url\(\s*['"]?([^'")]+)/g)) add(m[1]);
+    }
+  }
+
+  // A background-image named in a stylesheet is fetched too, and nothing in
+  // the DOM mentions it.
+  if (site.root) {
+    const fs = require('fs');
+    for (const file of site.assets.keys()) {
+      if (!/\.css$/i.test(file)) continue;
+      try {
+        const css = fs.readFileSync(path.join(site.root, file.replace(/^\//, '')), 'utf8');
+        for (const m of css.matchAll(/url\(\s*['"]?([^'")]+)/g)) add(m[1]);
+      } catch { /* unreadable */ }
+    }
+  }
+  return used;
+}
+
 function performance(site, add, opts = {}) {
   const heavyImageKb = opts.heavyImageKb || 400;
+  const requested = requestedAssets(site);
 
   for (const page of site.pages) {
     if (page.bytes > 250 * 1024) {
@@ -348,6 +396,7 @@ function performance(site, add, opts = {}) {
   if (site.assets && site.assets.size) {
     const heavy = [...site.assets.entries()]
       .filter(([f, size]) => /\.(jpe?g|png|gif|webp|avif)$/i.test(f) && size > heavyImageKb * 1024)
+      .filter(([f]) => requested.has(f))
       .sort((a, b) => b[1] - a[1]);
     for (const [file, size] of heavy.slice(0, 25)) {
       add({ id: 'image-heavy', severity: SEV.warning, page: file, detail: `Image is ${(size / 1024 / 1024).toFixed(2)} MB.`, fix: `Resize and re-compress; anything over ${heavyImageKb} KB on a web page is usually avoidable. Convert to WebP/AVIF for roughly 30–50% smaller files.` });
@@ -356,8 +405,8 @@ function performance(site, add, opts = {}) {
       add({ id: 'image-heavy-more', severity: SEV.notice, page: '(site)', detail: `${heavy.length - 25} further images over ${heavyImageKb} KB not listed.`, fix: 'Run an image optimisation pass across the whole media library.' });
     }
 
-    const legacy = [...site.assets.keys()].filter((f) => /\.(jpe?g|png)$/i.test(f)).length;
-    const modern = [...site.assets.keys()].filter((f) => /\.(webp|avif)$/i.test(f)).length;
+    const legacy = [...requested].filter((f) => /\.(jpe?g|png)$/i.test(f)).length;
+    const modern = [...requested].filter((f) => /\.(webp|avif)$/i.test(f)).length;
     if (legacy > 20 && modern / Math.max(1, legacy) < 0.1) {
       add({ id: 'image-format-legacy', severity: SEV.notice, page: '(site)', detail: `${legacy} JPEG/PNG images and only ${modern} in a modern format.`, fix: 'Serving WebP or AVIF typically cuts image bytes by a third or more.' });
     }
