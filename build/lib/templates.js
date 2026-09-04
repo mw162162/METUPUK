@@ -5,6 +5,16 @@ const SITE_URL = 'https://metupuk.org.uk';
 const CHARITY_NO = '1196494';
 const LOGO = '/brand/metupuk-logo.png';
 
+// The full-size mark is 512px and 219KB, and it was being served into a 44px
+// slot twice on every page — 62% of the homepage's entire weight, for a logo
+// the size of a thumbnail. The 96 and 180 crops were already sitting beside
+// it, unused. A 44px slot needs 88px on a 2x screen and 132px on a 3x, so
+// those two cover every phone made, at 11KB and 36KB instead of 219.
+const LOGO_SMALL = '/brand/metupuk-logo-96.png';
+const LOGO_TOUCH = '/brand/metupuk-logo-180.png';
+const brandMark = () =>
+  `<img src="${LOGO_SMALL}" srcset="${LOGO_SMALL} 96w, ${LOGO_TOUCH} 180w" sizes="44px" alt="" role="presentation" width="44" height="44">`;
+
 const SOCIAL = [
   { name: 'Facebook', url: 'https://www.facebook.com/METUPUK/', icon: 'M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z' },
   { name: 'X (Twitter)', url: 'https://twitter.com/metupukorg', icon: 'M18.9 2H22l-6.8 7.8L23 22h-6.3l-4.9-6.4L6.2 22H3l7.3-8.3L2.4 2h6.4l4.4 5.8L18.9 2Zm-1.1 18h1.7L8.3 3.8H6.5L17.8 20Z' },
@@ -157,7 +167,7 @@ function header(current) {
   return `<header class="site-header">
   <div class="wrap site-header__bar">
     <a class="brand" href="/">
-      <img src="${LOGO}" alt="" role="presentation" width="44" height="44">
+      ${brandMark()}
       <span>
         <span class="brand__name">MET UP UK</span>
         <span class="brand__tag">${esc(SITE_TAGLINE)}</span>
@@ -187,7 +197,7 @@ function header(current) {
   <div class="wrap">
     <div class="drawer__top">
       <a class="brand" href="/">
-        <img src="${LOGO}" alt="" role="presentation" width="44" height="44">
+        ${brandMark()}
         <span><span class="brand__name">MET UP UK</span></span>
       </a>
       <button class="icon-btn" type="button" data-drawer-close aria-label="Close menu">
@@ -297,7 +307,7 @@ ${noindex ? '<meta name="robots" content="noindex,follow">' : ''}
 <meta name="twitter:site" content="@metupukorg">
 <meta name="theme-color" content="#440729">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="${LOGO}">
+<link rel="apple-touch-icon" href="${LOGO_TOUCH}">
 <link rel="alternate" type="application/rss+xml" title="${SITE_NAME} news" href="/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
