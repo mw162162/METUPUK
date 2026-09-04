@@ -95,10 +95,35 @@ function renderCard(b) {
   return `<div class="c-card">${media}<div class="c-card__body">${heading}${body}</div></div>`;
 }
 
+// Which service a link points at, read from the address. Only the four that
+// actually appear on these pages; anything else is honestly "the web", which
+// still gives the anchor a name a screen reader can announce.
+const SOCIAL_SITES = [
+  { test: /twitter\.com|(^|[/.])x\.com/i, name: "X (Twitter)", icon: "M18.9 2H22l-6.8 7.8L23 22h-6.3l-4.9-6.4L6.2 22H3l7.3-8.3L2.4 2h6.4l4.4 5.8L18.9 2Zm-1.1 18h1.7L8.3 3.8H6.5L17.8 20Z" },
+  { test: /instagram\.com/i, name: "Instagram", icon: "M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.3-.1 1.7-.1 4.9-.1Zm0 3.8a6 6 0 1 0 0 12 6 6 0 0 0 0-12Zm0 9.9a3.9 3.9 0 1 1 0-7.8 3.9 3.9 0 0 1 0 7.8Zm7.6-10.1a1.4 1.4 0 1 1-2.8 0 1.4 1.4 0 0 1 2.8 0Z" },
+  { test: /facebook\.com/i, name: "Facebook", icon: "M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z" },
+  { test: /youtube\.com|youtu\.be/i, name: "YouTube", icon: "M21.6 7.2s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16 4.1 12 4.1 12 4.1s-4 0-6.8.2c-.4.1-1.2.1-2 .9-.6.6-.8 2-.8 2S2.2 8.8 2.2 10.4v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.8 2.2.9 1.6.1 6.6.2 6.6.2s4 0 6.8-.2c.4-.1 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5c0-1.6-.2-3.2-.2-3.2ZM9.9 14.3V8.8l5.2 2.8-5.2 2.7Z" },
+];
+const GENERIC_LINK = "M10.6 13.4a1 1 0 0 1 0-1.4l3-3a3 3 0 1 1 4.2 4.2l-1.3 1.3a1 1 0 0 1-1.4-1.4l1.3-1.3a1 1 0 0 0-1.4-1.4l-3 3a1 1 0 0 1-1.4 0Zm2.8-2.8a1 1 0 0 1 0 1.4l-3 3a3 3 0 1 1-4.2-4.2l1.3-1.3a1 1 0 1 1 1.4 1.4L7.6 12.2a1 1 0 0 0 1.4 1.4l3-3a1 1 0 0 1 1.4 0Z";
+
+const socialSite = (href) => SOCIAL_SITES.find((s) => s.test.test(String(href)));
+const socialName = (href) => (socialSite(href) || {}).name || "the web";
+const socialIcon = (href) => {
+  const site = socialSite(href);
+  return `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="${site ? site.icon : GENERIC_LINK}"/></svg>`;
+};
 function renderProfiles(b) {
   const people = (b.people || []).map((p) => {
+    // These rendered as <a href="..."></a> — an anchor with nothing inside it.
+    // Invisible, unclickable, and removed by the passes that clear empty links,
+    // so twenty-six social accounts disappeared off the page. On Our Friends
+    // Not Forgotten that is not a broken link: it is how a visitor reaches the
+    // account of the woman being remembered.
     const links = (p.links || []).length
-      ? `<div class="tmm_scblock">${p.links.map((h) => `<a href="${esc(h)}"></a>`).join('')}</div>`
+      ? `<div class="tmm_scblock">${p.links.map((h) => {
+          const label = esc(p.name + ' on ' + socialName(h));
+          return `<a href="${esc(h)}" rel="noopener" target="_blank" aria-label="${label}">${socialIcon(h)}<span class="visually-hidden">${label}</span></a>`;
+        }).join('')}</div>`
       : '';
     return `<div class="tmm_member">
       <div class="tmm_names">${esc(p.name)}</div>
