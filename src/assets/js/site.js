@@ -505,7 +505,14 @@
     // alone: prose that fades in as you reach it is slower to read, not more
     // engaging, and this is a site people read while they are unwell.
     var blocks = document.querySelectorAll([
-      'main .section > .wrap > *', 'main .hero__copy', 'main .hero__stat',
+      // .hero__stat is deliberately not here. The generic pass reveals anything
+      // sitting above 90% of the viewport at load — and on a phone the card's
+      // top edge is at 80%, so it was shown before the reader had scrolled a
+      // pixel. It belongs to the counter's observer instead, which waits until
+      // the figure is properly on screen, so the card and the count arrive
+      // together. Two systems revealing one element is how it ended up visible
+      // with a rule that said opacity: 0.
+      'main .section > .wrap > *', 'main .hero__copy',
       'main .card', 'main .portrait', 'main .route',
       'main .act',
       'main .prose > figure', 'main .prose > .c-embed', 'main .prose > blockquote',
@@ -580,10 +587,22 @@
   if (counter && 'IntersectionObserver' in window &&
       !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     var target = parseInt(counter.getAttribute('data-count-to'), 10);
+    var statCard = counter.closest('.hero__stat');
     if (target > 0) {
+      // The card arrives with the count rather than sitting there through the
+      // headline. On a phone its top edge peeks above the fold, so the finished
+      // "31" was the second thing on the page — answering a question the
+      // headline had only just asked, and reading as a stray number.
+      //
+      // Hidden by a class this file adds, never by the stylesheet alone: if
+      // IntersectionObserver is missing, or the reader has asked for reduced
+      // motion, neither this branch nor the class runs and the card is simply
+      // there. Nothing can leave it hidden with no way back.
+      if (statCard) document.documentElement.classList.add('js-stat-reveal');
       new IntersectionObserver(function (entries, obs) {
         if (!entries[0].isIntersecting) return;
         obs.disconnect();
+        if (statCard) statCard.classList.add('is-revealed');
 
         // Every number is held a constant fraction less than the one before, so
         // the count keeps accelerating the whole way instead of reaching a

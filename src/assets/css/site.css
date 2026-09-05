@@ -471,6 +471,30 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
    rise into place a beat behind the strike. Their travel is transform only, so
    the text keeps its full contrast throughout: nothing here is ever dimmed for
    the sake of an effect. Stagger 90ms then 170ms, inside the 300ms cap. */
+/* The figure card arrives when you reach it.
+   It used to be on screen from the moment the page opened — on a phone its top
+   edge sits just above the fold — so the finished "31" answered the headline
+   before the headline had finished asking. The number read as loose furniture
+   rather than as the point.
+   It is revealed by the same observer that starts the count, so the card and
+   the number arrive together: 60% of the figure on screen and clear of the
+   bottom quarter, which on a phone means you have actually scrolled to it.
+   The gate is js-stat-reveal, added by site.js only when it is definitely
+   going to run — no script, no IntersectionObserver, or reduced motion, and
+   the card never hides in the first place. */
+.js-stat-reveal .hero__stat { opacity: 0; transform: translateY(18px); }
+/* The transition lives on the revealed state, not the hidden one. On the
+   hidden rule it also animates the hiding — the card fades *out* over half a
+   second the moment the gate class lands, which is both a visible blink and,
+   while it runs, a computed opacity that is not what the rule says. */
+.js-stat-reveal .hero__stat.is-revealed {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--dur-4) var(--ease-out),
+    transform var(--dur-4) var(--ease-out);
+}
+
 .hero__stat.is-counting .hero__stat-label,
 .hero__stat.is-counting .hero__stat-note { transform: translateY(6px); }
 .hero__stat.is-landed .hero__stat-label { animation: follow-rise var(--dur-3) var(--ease-out) 90ms both; }
@@ -2451,11 +2475,18 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
 
 /* Below 1100px the whole artwork layer was display:none, and Jo Taylor went
    with it — her name, the sentence saying she recorded her own film, and the
-   link to it. A phone visitor never knew that page existed.
-   The thirty-one faces are decoration and genuinely need the width they do not
-   have here, so they stay behind. What was never decoration is the woman the
-   panel is about, so on a phone she comes out from behind the picture and sits
-   under the copy as an ordinary card. */
+   link to it. A phone visitor never knew that page existed. So the layer comes
+   out from behind the picture and sits under the copy in the ordinary flow.
+   The thirty-one faces come with her. They were left out as decoration needing
+   width a phone does not have, and that was the wrong reading of them: the
+   count is the argument the whole section makes, and a paragraph about
+   thirty-one women with no thirty-one under it is the argument with its
+   evidence removed. What they need is not width but arrangement — eight to a
+   row as on desktop, so thirty-one lands as four rows and a short one.
+   At 39px a face is not a portrait you study, it is one of a crowd, which is
+   the point. They sit still here rather than arriving one by one: the stagger
+   belongs to a pinned section you scroll through, and this is a block you
+   scroll past. */
 @media (max-width: 1099.98px) {
   .scrolly__art {
     display: block;
@@ -2463,8 +2494,18 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
     inset: auto;
     padding: 0;
     pointer-events: auto;
+    /* Whatever eight columns and their gaps can have of the screen, capped so
+       a tablet does not grow them into portraits. */
+    --cell: min(3.25rem, calc((100vw - 2 * var(--sp-5) - 7 * 5px) / 8));
   }
-  .scrolly__faces { display: none; }
+  .scrolly__faces {
+    display: flex;
+    max-width: calc(8 * var(--cell) + 7 * 5px);
+    margin-inline: auto;
+  }
+  /* Present, not performing. The per-face reveal is driven by the pinned
+     section's panel state, which does not apply once this is ordinary flow. */
+  .scrolly__face { opacity: 1; transform: none; transition: none; }
   .scrolly__kept {
     position: static;
     opacity: 1;

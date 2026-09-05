@@ -343,6 +343,12 @@ ${noindex ? '<meta name="robots" content="noindex,follow">' : ''}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css">
 <script>(function(){try{var t=localStorage.getItem('metupuk-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<!-- Hides the hero figure card before the first paint, so it can arrive when
+     the reader reaches it rather than flashing on and fading out. Set here
+     rather than in site.js because that file is deferred: by the time it runs
+     the card has already been painted, and taking it away afterwards is a
+     visible blink. Same two guards as the counter it belongs to. -->
+<script>(function(){try{if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js-stat-reveal');}catch(e){}})();</script>
 ${jsonLd.length ? `<script type="application/ld+json">${JSON.stringify(jsonLd.length === 1 ? jsonLd[0] : jsonLd)}</script>` : ''}
 </head>
 <body${bodyClass ? ` class="${bodyClass}"` : ''}>
