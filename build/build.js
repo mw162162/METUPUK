@@ -231,6 +231,17 @@ function copyReferencedMedia() {
       continue;
     }
 
+    // A picture whose WebP is already here and no older than the source does
+    // not need its JPEG copied at all. build/prune-originals.js removes the
+    // WordPress renditions before publishing, and without this the next build
+    // faithfully copies all 358 MB of them back so the same pass can delete
+    // them again — sixteen seconds of a rebuild spent undoing itself.
+    if (/\.(jpe?g|png)$/i.test(rel)) {
+      let webp = null;
+      try { webp = fs.statSync(dst.replace(/\.(jpe?g|png)$/i, '.webp')); } catch { /* none yet */ }
+      if (webp && webp.mtimeMs >= stat.mtimeMs) { skipped++; continue; }
+    }
+
     fs.mkdirSync(path.dirname(dst), { recursive: true });
     fs.copyFileSync(src, dst);
     copied++;

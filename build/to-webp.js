@@ -18,13 +18,12 @@
 // break a measure or a margin silently. WebP has been supported by every
 // browser since 2020; the fallback buys nothing and costs that risk.
 //
-// It keeps the original file. Deleting it saves 360 MB of hosting and breaks
-// every inbound link to a picture — Google Images results, the red-flag
-// infographic other organisations have embedded, anything anyone hotlinked.
-// This rebuild went to considerable trouble to keep every page URL working,
-// and an image URL is a URL. Netlify uploads only files whose contents
-// changed, so the originals are already up there: keeping them costs one
-// upload, not one per deploy.
+// It keeps the original file, and build/prune-originals.js then decides which
+// of them are worth publishing — the upload somebody might have linked stays,
+// the WordPress -1024x683 renditions do not. Keeping all of them cost 515 MB
+// against the 126 MB visitors actually download, which is what ran the hosting
+// allowance out. Keeping none would break every inbound link to a picture.
+// The split is in that file, with the reasoning.
 //
 // Social cards keep the original too. Facebook and X read WebP; LinkedIn and a
 // scattering of chat clients have been unreliable about it, and a share
@@ -116,13 +115,27 @@ async function main() {
   // Built from what is on disk rather than from what this run converted, so a
   // rebuild that regenerated the HTML is still pointed at WebP even when every
   // encode was a cache hit. That is what makes the pass idempotent.
+  //
+  // Keyed off the WebP files that exist, not from the JPEGs — because after
+  // build/prune-originals.js has run once, the JPEG is gone and the build no
+  // longer copies it back. Keying off the originals meant 405 references to
+  // pictures that were no longer there.
+  //
+  // Every plausible spelling of the original is mapped without checking
+  // whether it ever existed: rewriting a reference to a name nothing uses
+  // costs nothing, and the alternative is a filesystem probe per candidate.
   const toWebp = new Map();
   const toOriginal = new Map();
-  for (const file of files) {
-    const target = file.replace(CONVERTIBLE, '.webp');
-    if (!fs.existsSync(target)) continue;
-    toWebp.set(siteUrl(file), siteUrl(target));
-    toOriginal.set(siteUrl(target), siteUrl(file));
+  for (const target of walk(MEDIA)) {
+    if (!/\.webp$/i.test(target)) continue;
+    const webpUrl = siteUrl(target);
+    for (const ext of ['.jpg', '.jpeg', '.png', '.JPG', '.JPEG', '.PNG']) {
+      const candidate = target.replace(/\.webp$/i, ext);
+      toWebp.set(siteUrl(candidate), webpUrl);
+      // The reverse map is only for the social tags, which have to name a file
+      // that is actually deployed.
+      if (fs.existsSync(candidate)) toOriginal.set(webpUrl, siteUrl(candidate));
+    }
   }
 
   let touched = 0;
@@ -170,7 +183,7 @@ async function main() {
       + `  (${Math.round(saved / before * 100)}% smaller, ${(saved / 1024 / 1024).toFixed(1)} MB saved)`);
   }
   if (!DRY) {
-    console.log(`  ${toWebp.size} pictures served as WebP; the originals stay, so old links still work`);
+    console.log(`  ${toOriginal.size ? toWebp.size / 6 : 0} pictures served as WebP` + `; ${toOriginal.size} still have their original beside them`);
     console.log(`  rewrote      ${touched} files to match`);
     if (missed) console.log(`  MISSED       ${missed} reference(s) still point at the original`);
   }

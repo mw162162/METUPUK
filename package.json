@@ -19,7 +19,7 @@
     "publish": "node build/pull.js && node build/make-renditions.js && node build/build.js && node build/to-webp.js && node build/verify.js && node tools/webaudit dist",
     "migrate": "node build/export-content.js --force && node build/verify-roundtrip.js",
     "retype": "node build/retype-blocks.js",
-    "deploy": "node build/build.js && node build/to-webp.js && node build/verify.js && npx tinacms build --skip-cloud-checks && npx --yes netlify-cli deploy --dir=dist --prod --no-build",
+    "deploy": "node build/build.js && node build/to-webp.js && node build/verify.js && npx tinacms build --skip-cloud-checks && node build/prune-originals.js && npx --yes netlify-cli deploy --dir=dist --prod --no-build",
     "deploy:draft": "node build/build.js && node build/to-webp.js && npx tinacms build --skip-cloud-checks && npx --yes netlify-cli deploy --dir=dist --no-build",
     "verify:roundtrip": "node build/verify-roundtrip.js",
     "watch": "node build/watch.js",
@@ -28,7 +28,9 @@
     "media": "node build/make-media-library.js",
     "admin": "npx tinacms build",
     "ship": "node build/ship.js",
-    "webp": "node build/to-webp.js"
+    "webp": "node build/to-webp.js",
+  "prune": "node build/prune-originals.js",
+  "deploy:cf": "node build/build.js && node build/to-webp.js && node build/verify.js && npx tinacms build --skip-cloud-checks && node build/prune-originals.js && npx --yes wrangler pages deploy dist --project-name=metupuk --branch=main"
   },
   "dependencies": {
     "js-yaml": "^5.4.1",
