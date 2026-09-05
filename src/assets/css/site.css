@@ -164,13 +164,22 @@
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 1rem); }
-/* The closed drawer is parked at translateX(100%), a full viewport width past
-   the right edge. A fixed element sitting out there still counts toward the
-   scrollable area, so without this the whole site gains a horizontal scrollbar
-   and the header's right edge (the donate button) scrolls out of reach.
-   `clip` rather than `hidden`: hidden would make this a scroll container and
-   break the sticky header and contents rail. */
-html { overflow-x: clip; }
+/* There is deliberately no overflow-x on the root.
+   There used to be: `html { overflow-x: clip }`, to stop the closed drawer —
+   parked a full viewport width past the right edge — adding a horizontal
+   scrollbar. The comment on it noted that `hidden` would break the sticky
+   header and chose `clip` to avoid that. `clip` breaks it too, in WebKit: on
+   iOS the header simply did not stick, so the site opened with no menu on
+   screen. Chrome pinned it correctly, which is why it survived this long.
+   It is gone rather than replaced because it was treating a symptom. The real
+   causes of sideways scroll were a grid track that could not shrink and a
+   reading measure applied as a fixed max-width to images; both are fixed
+   above, and all 303 pages now measure clean at 375px and 320px with no clip
+   at all. The closed drawer contributes nothing to the scrollable width on its
+   own — it is position: fixed, and that was verified rather than assumed.
+   If a horizontal scrollbar ever comes back, find what is actually wide.
+   Do not reach for overflow on html or body: everything above the fold hangs
+   off that header staying put. */
 /* Reduced motion means fewer and gentler animations, not none. Killing every
    transition also kills the ones that explain state — a dropdown fading in, a
    focus ring arriving, a card acknowledging a hover. Those help. What has to
