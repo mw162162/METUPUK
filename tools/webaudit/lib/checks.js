@@ -390,8 +390,13 @@ function performance(site, add, opts = {}) {
     if (page.bytes > 250 * 1024) {
       add({ id: 'page-heavy', severity: SEV.warning, page: page.url, detail: `HTML is ${(page.bytes / 1024).toFixed(0)} KB before assets.`, fix: 'Large HTML delays first paint. Trim inline styles/scripts or split the page.' });
     }
+    // hasAttribute, not getAttribute. A bare boolean attribute parses to an
+    // empty string, and an empty string is falsy — so `!getAttribute('defer')`
+    // was true for every correctly deferred script, and this reported blocking
+    // scripts on pages that had none. A false positive in an audit is worse
+    // than a missing check: it sends someone to fix code that is already right.
     const blocking = page.dom.querySelectorAll('head script[src]')
-      .filter((s) => !s.getAttribute('defer') && !s.getAttribute('async') && s.getAttribute('type') !== 'module');
+      .filter((s) => !s.hasAttribute('defer') && !s.hasAttribute('async') && s.getAttribute('type') !== 'module');
     if (blocking.length) {
       add({ id: 'script-blocking', severity: SEV.warning, page: page.url, detail: `${blocking.length} render-blocking script(s) in <head>.`, fix: 'Add defer or move to the end of body.' });
     }
