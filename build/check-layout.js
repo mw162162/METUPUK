@@ -188,18 +188,45 @@ check(
 );
 
 check(
-  'the studio is given the site’s own tokens',
-  'the promise the social studio makes is that it cannot go off-brand, and that only holds while the colours come out of site.css rather than being typed again.',
+  'every brand file keeps the contract',
+  'the studio can draw nothing that is not in a brand file, so a brand missing its colours, its grounds or its templates is a studio that silently falls back to defaults nobody chose.',
   () => {
-    const file = path.join(OUT, 'social', 'data.json');
-    if (!fs.existsSync(file)) return true;      // studio not in this build
-    let d;
-    try { d = JSON.parse(fs.readFileSync(file, 'utf8')); }
-    catch (err) { return 'social/data.json does not parse'; }
-    const want = ['--plum-900', '--magenta-500', '--pink-300'];
-    const missing = want.filter((k) => !d.tokens || !d.tokens[k]);
-    if (missing.length) return missing.map((k) => `no ${k} in social/data.json`);
-    if (!d.people || !d.people.length) return 'no portraits reached the studio';
+    const dir = path.join(OUT, 'social', 'brands');
+    if (!fs.existsSync(dir)) return true;             // studio not in this build
+    const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
+    if (!files.length) return 'no brand files at all';
+    const faults = [];
+    for (const name of files) {
+      let b;
+      try { b = JSON.parse(fs.readFileSync(path.join(dir, name), 'utf8')); }
+      catch (err) { faults.push(`${name} does not parse`); continue; }
+      // The contract, checked on every brand rather than only the generated one:
+      // a studio that can draw nothing off-brand needs all of this present.
+      for (const key of ['id', 'name', 'colour', 'grounds', 'templates', 'type']) {
+        if (!b[key]) faults.push(`${name} has no ${key}`);
+      }
+      if (b.grounds && !b.grounds.length) faults.push(`${name} declares no grounds`);
+      if (b.templates && !b.templates.length) faults.push(`${name} declares no templates`);
+      for (const role of ['figure', 'rule', 'heading']) {
+        if (b.colour && !b.colour[role]) faults.push(`${name} has no colour.${role}`);
+      }
+      // A template may name a library, and the library has to be there.
+      for (const t of b.templates || []) {
+        if (t.library && !(b.libraries && b.libraries[t.library])) {
+          faults.push(`${name}: template ${t.key} wants library ${t.library}, which is absent`);
+        }
+      }
+    }
+    if (faults.length) return faults;
+    // And METUPUK's must still be the generated one, or the promise that it
+    // cannot drift from the stylesheet is no longer being kept.
+    const mu = path.join(dir, 'metupuk.json');
+    if (fs.existsSync(mu)) {
+      const b = JSON.parse(fs.readFileSync(mu, 'utf8'));
+      if (!b.libraries || !b.libraries.people || !b.libraries.people.length) {
+        return 'metupuk.json carries no portraits — it is not being generated from the content';
+      }
+    }
     return true;
   }
 );

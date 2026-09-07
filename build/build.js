@@ -1277,18 +1277,31 @@ function run() {
   // same goes for the thirty-one and the venue list — they come from the
   // content the site is built from, so a new portrait or a new venue appears
   // in the studio without anyone editing it.
-  (function writeSocialData() {
+  // METUPUK, expressed as a brand file.
+  //
+  // The studio reads one of these and can draw nothing that is not in it: the
+  // colours, the type, the marks, which templates exist, what their fields are
+  // called and what they open with, and the picture libraries they may choose
+  // from. Everything the studio knows about a brand arrives this way.
+  //
+  // This one is generated rather than written, which is what keeps it true: the
+  // palette is read out of :root in site.css, and the libraries out of the same
+  // content the site is built from. Change a brand colour in the stylesheet, or
+  // add a woman to the exhibition, and the next post made here uses it.
+  //
+  // A second brand is a second file. See social/brands/ for one that is written
+  // by hand instead, to prove nothing METUPUK-shaped is baked into the studio.
+  (function writeBrand() {
     const cssFile = path.join(ROOT, 'src', 'assets', 'css', 'site.css');
-    const tokens = {};
+    const tok = {};
     if (fs.existsSync(cssFile)) {
       const css = fs.readFileSync(cssFile, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
       const root = css.match(/:root\s*\{([\s\S]*?)\}/);
       if (root) {
-        for (const m of root[1].matchAll(/(--[a-z0-9-]+)\s*:\s*([^;]+);/gi)) {
-          tokens[m[1]] = m[2].trim();
-        }
+        for (const m of root[1].matchAll(/(--[a-z0-9-]+)\s*:\s*([^;]+);/gi)) tok[m[1]] = m[2].trim();
       }
     }
+    const c = (name, fallback) => tok[name] || fallback;
 
     let venues = [];
     const exFile = path.join(ROOT, 'content', 'exhibition.yml');
@@ -1299,22 +1312,79 @@ function run() {
       } catch (err) { /* the page build already reports a bad file */ }
     }
 
-    const people = exhibition.portraits.map((p) => ({
-      name: p.name,
-      slug: p.slug,
-      image: p.image,
-    }));
-
-    const dir = path.join(OUT, 'social');
-    fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, 'data.json'), JSON.stringify({
-      built: new Date().toISOString().slice(0, 10),
-      tokens,
-      people,
-      venues,
+    const brand = {
+      schema: 1,
+      id: 'metupuk',
+      name: 'MET UP UK',
       site: T.SITE_URL.replace(/^https?:\/\//, ''),
+      built: new Date().toISOString().slice(0, 10),
+
+      type: {
+        display: '"Archivo","Arial Narrow",system-ui,sans-serif',
+        body: '"Inter",-apple-system,"Segoe UI",sans-serif',
+        // Loaded before anything is drawn: canvas does not wait for a webfont,
+        // it draws in whatever it has.
+        preload: ['900 100px Archivo', '700 60px Archivo', '800 30px Archivo',
+                  '600 30px Inter', '400 40px Inter'],
+        webfonts: 'https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap',
+      },
+
+      colour: {
+        figure: c('--pink-300', '#ff6fb5'),   // the number, and the rule under it
+        rule: c('--magenta-500', '#d2246f'),
+        heading: '#ffffff',
+        soft: c('--pink-100', '#ffdcec'),      // secondary lines
+        tag: c('--pink-300', '#ff6fb5'),
+        chip: c('--magenta-500', '#d2246f'),
+        signature: '#ffffff',
+      },
+
+      grounds: [
+        { key: 'plum', label: 'Plum', from: c('--plum-900', '#2b0519'), to: c('--plum-800', '#440729') },
+        { key: 'deep', label: 'Deep plum', from: c('--plum-950', '#1c0310'), to: c('--plum-900', '#2b0519') },
+        { key: 'magenta', label: 'Magenta', from: c('--magenta-600', '#b52b65'), to: c('--plum-800', '#440729') },
+      ],
+
+      mark: { image: '/brand/metupuk-logo-180.png', wordmark: 'MET UP UK' },
+      // The exhibition's own duotone, taken from the stylesheet as one string
+      // rather than reproduced as maths, so the two cannot drift.
+      duotone: 'grayscale(1) contrast(1.06) sepia(1) hue-rotate(276deg) saturate(1.7) brightness(0.92)',
       tags: ['#BusyLivingWithMets', '#IAmThe31', '#DarkerPink', '#DyingForACure'],
-    }, null, 1));
+
+      libraries: {
+        people: exhibition.portraits.map((p) => ({ label: p.name, image: p.image })),
+        venues: venues.map((v) => ({
+          label: v.city + ' — ' + v.venue,
+          image: v.image || '',
+          fields: {
+            city: v.city,
+            venue: v.venue,
+            dates: v.dates,
+            status: v.status === 'current' ? 'Showing now'
+              : v.status === 'coming' ? 'Coming soon' : 'Finished',
+          },
+        })),
+      },
+
+      templates: [
+        { key: 'figure', label: 'The figure', defaults: {
+          number: '31',
+          headline: 'women in the UK die every day from metastatic breast cancer',
+          note: 'It is the biggest cancer killer of women under 50.' } },
+        { key: 'person', label: 'One of the 31', library: 'people', imageField: 'personImage',
+          labels: { pick: 'Who', name: 'Name', line: 'Her line' },
+          defaults: { line: 'She recorded her own film for the exhibition.' } },
+        { key: 'venue', label: 'Venue', library: 'venues', imageField: 'venueImage',
+          labels: { pick: 'Venue' }, defaults: {} },
+        { key: 'quote', label: 'Quote', defaults: {
+          who: 'METUPUK',
+          quote: 'Give us a chance to live and don’t write us off.' } },
+      ],
+    };
+
+    const dir = path.join(OUT, 'social', 'brands');
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, 'metupuk.json'), JSON.stringify(brand, null, 1));
   }());
 
   // Static assets
