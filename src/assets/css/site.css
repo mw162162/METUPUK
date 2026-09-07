@@ -1715,6 +1715,45 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
   margin: var(--sp-3) 0 0;
 }
 .film__story { margin: var(--sp-1) 0 0; font-size: var(--step--1); }
+/* Twenty-two venues, as a record rather than a timetable. A four-column table
+   of city/venue/dates reads like train times; this is where the figures have
+   stood, and each one deserves to be a place rather than a row. */
+.venues {
+  list-style: none; padding: 0;
+  margin-top: var(--sp-7);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
+  gap: var(--sp-4);
+}
+.venue {
+  margin: 0; min-width: 0;
+  padding: var(--sp-4) var(--sp-4) var(--sp-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+/* The one showing now is the only thing on this list anybody can act on, so it
+   is the only one given weight. */
+.venue--current {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+.venue--finished { opacity: 0.72; }
+.venue--finished:hover, .venue--finished:focus-within { opacity: 1; }
+.venue__status { margin: 0 0 var(--sp-3); }
+.venue__city {
+  font-size: var(--step-1); line-height: 1.15; letter-spacing: -0.01em;
+  margin: 0;
+}
+.venue__place { margin: var(--sp-1) 0 0; color: var(--text-muted); }
+.venue__dates {
+  margin: var(--sp-2) 0 0;
+  font-size: var(--step--1); color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .venue { transition: opacity var(--dur-2) var(--ease); }
+}
 /* --- Pagination + prev/next ---------------------------------------------- */
 .pagination { display: flex; flex-wrap: wrap; gap: var(--sp-2); justify-content: center; align-items: center; margin-top: var(--sp-7); }
 .pagination a, .pagination span {

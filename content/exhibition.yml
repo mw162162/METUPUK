@@ -1,0 +1,71 @@
+# The Darker Side of Pink — the exhibition's own words and its tour history.
+#
+# This page was missing from the WordPress export, so the build had been
+# generating a paraphrase of it. This file is the charity's actual copy, taken
+# from the live page, so the page says what they wrote rather than what the
+# build guessed. Editable here without touching a template.
+#
+# Two obvious spelling slips in the source are corrected: "awarentess" and
+# "Cental Library". Nothing else is reworded.
+
+intro:
+  eyebrow: "Fact"
+  heading: "Every day, 31 women lose their lives to metastatic breast cancer."
+  body:
+    - "‘The Darker Side of Pink’ is a physical interactive mobile experience that helps create awareness of Metastatic Breast Cancer, the biggest cancer killer of women under the age of 50 in the UK."
+    - "It features 31 transparent figures – one for each woman who dies every day from Metastatic or secondary breast cancer – each with an individual QR code that plays a video from breast cancer patients who have lived and living with this death sentence."
+
+sections:
+  - eyebrow: "Our mission"
+    heading: "Campaigning for awareness, and to push policy to change for the better."
+    body:
+      - "METUPUK is the ONLY patient advocacy group in the UK. It is a self funded charity focusing on Metastatic Breast Cancer. MBC is the somewhat invisible side of cancer, especially as it is the biggest killer of women under the age of fifty here in the UK."
+      - "The volunteer-led organisation works to promote the issues affecting those with secondary and/or metastatic breast cancer, with a particular focus on working to improve outcomes for those living with MBC and tackling the backlog of care for patients."
+      - "We ultimately work towards the day when MBC will be cured."
+    link:
+      text: "Find out more"
+      url: "/about-us/"
+
+  - eyebrow: "Raise awareness of MBC"
+    heading: "Campaigning for awareness, equal priority for funding, research and innovation."
+    body:
+      - "Give metastatic (secondary) breast cancer patients a chance to live and don’t write us off. We can be #BusyLivingWithMets, even those on The Darker Side of Pink."
+      - "Tag METUPUK into your tweet, Instagram, Facebook share."
+    link:
+      text: "Find out how you can help"
+      url: "/help-us/"
+
+tour:
+  eyebrow: "Spreading awareness throughout the UK"
+  heading: "To help push policy to change for the better."
+  body:
+    - "Our figures will be displayed in various locations around the UK from galleries, to public libraries and shopping centres to help promote the issues affecting those with secondary and/or metastatic breast cancer."
+  enquiry: "If you would like to discuss the opportunity to display our campaign figures in your venue, please do get in touch."
+  enquiryLink:
+    text: "Get in touch"
+    url: "/help-us/"
+
+# status: current | coming | finished
+venues:
+  - { status: current,  city: "Liverpool",       venue: "Liverpool Central Library",           dates: "17 Nov 2025 – 12 Dec 2025" }
+  - { status: coming,   city: "More locations coming 2026", venue: "Watch this space",         dates: "To be announced" }
+  - { status: finished, city: "Newcastle",       venue: "Newcastle City Library",              dates: "30 Sep 2025 – 16 Nov 2025" }
+  - { status: finished, city: "Oxford",          venue: "Westgate Library",                    dates: "3 Mar 2025 – 31 Mar 2025" }
+  - { status: finished, city: "Reading",         venue: "University of Reading Library",       dates: "14 Feb 2025 – 3 Mar 2025" }
+  - { status: finished, city: "Brighton",        venue: "Jubilee Library",                     dates: "9 Dec 2024 – 5 Jan 2025" }
+  - { status: finished, city: "Northallerton",   venue: "Centres for Digital Innovation",      dates: "17 May 2024 – 2 Aug 2024" }
+  - { status: finished, city: "London",          venue: "Business Design Centre",              dates: "19 Jul 2023 – 31 Aug 2023" }
+  - { status: finished, city: "Rochester",       venue: "Rochester Cathedral",                 dates: "4 May 2023 – 10 Jul 2023" }
+  - { status: finished, city: "London",          venue: "Palace of Westminster (UK Parliament)", dates: "24 Mar 2023 – 31 Mar 2023" }
+  - { status: finished, city: "Hull",            venue: "St Stephens & Hull Truck Theatre",    dates: "3 Mar 2023 – 23 Mar 2023" }
+  - { status: finished, city: "Halifax",         venue: "Central Library",                     dates: "6 Feb 2023 – 2 Mar 2023" }
+  - { status: finished, city: "Edinburgh",       venue: "Gyle Shopping Centre",                dates: "4 Jan 2023 – 5 Feb 2023" }
+  - { status: finished, city: "Glasgow",         venue: "Mitchell Library",                    dates: "26 Nov 2022 – 4 Jan 2023" }
+  - { status: finished, city: "Tunbridge Wells", venue: "The Amelia",                          dates: "21 Oct 2022 – 25 Nov 2022" }
+  - { status: finished, city: "Cambridge",       venue: "Grand Arcade",                        dates: "7 Oct 2022 – 21 Oct 2022" }
+  - { status: finished, city: "Peterborough",    venue: "Queensgate Centre",                   dates: "5 Sep 2022 – 6 Oct 2022" }
+  - { status: finished, city: "Doncaster",       venue: "Danum Art Gallery",                   dates: "1 Aug 2022 – 2 Sep 2022" }
+  - { status: finished, city: "Manchester",      venue: "Central Library",                     dates: "18 Jun 2022 – 1 Aug 2022" }
+  - { status: finished, city: "Sheffield",       venue: "Winter Gardens",                      dates: "8 Jun 2022 – 17 Jun 2022" }
+  - { status: finished, city: "Manchester",      venue: "The Corn Exchange",                   dates: "15 Oct 2021 – 19 May 2022" }
+  - { status: finished, city: "Manchester",      venue: "Bonded Warehouse",                    dates: "10 Oct 2021 – 15 Oct 2021" }

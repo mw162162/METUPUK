@@ -873,7 +873,20 @@ function renderNewsIndex(posts, model, { page = 1, total = 1, base = '/latest-ne
   });
 }
 
+// The exhibition's own words live in content/exhibition.yml. The page was
+// missing from the WordPress export, so this used to be a paraphrase written
+// here — close to theirs, but ours. It is the charity's copy now, and their
+// full tour history: the extractor could only see the four venues the live
+// carousel happens to show, where the page itself lists twenty-two.
+function loadExhibitionContent() {
+  const file = path.join(ROOT, 'content', 'exhibition.yml');
+  if (!fs.existsSync(file)) return null;
+  try { return require('js-yaml').load(fs.readFileSync(file, 'utf8')); }
+  catch (err) { console.warn('  exhibition.yml did not parse:', err.message); return null; }
+}
+
 function renderExhibition(exhibition, model) {
+  const copy = loadExhibitionContent();
   // Written stories that live as their own pages, matched to the films by name.
   const storyPages = model.pages.filter((p) => p.url.startsWith('/darker-pink/') && p.url !== '/darker-pink/');
   const norm = (s) => s.toLowerCase().replace(/[^a-z]/g, '');
@@ -909,17 +922,43 @@ function renderExhibition(exhibition, model) {
         ${storyByName.get(norm(p.name)) ? `<p class="film__story"><a href="${storyByName.get(norm(p.name)).url}">Read ${esc(p.name.split(' ')[0])}’s full story →</a></p>` : ''}
       </li>`).join('\n      ');
 
-  const tourRows = exhibition.tour.map((t) => {
-    const dates = (t.dates || '').split(/Click here/i)[0].replace(/\b(20\d\d\s*)+$/, '').trim();
-    const current = /current/i.test(t.status);
-    const state = current ? 'Now showing' : /coming/i.test(t.status) ? 'Coming soon' : 'Finished';
-    return `<tr>
-        <td><span class="tag${current ? ' tag--current' : ''}">${esc(state)}</span></td>
-        <td><strong>${esc(t.city)}</strong></td>
-        <td>${esc(t.venue)}</td>
-        <td>${esc(dates)}</td>
-      </tr>`;
-  }).join('\n      ');
+  // Cards, not a four-column table. Twenty-two rows of city/venue/dates reads
+  // as a timetable, and a timetable is the one thing this is not: the list is a
+  // record of where the figures have stood. The one showing now leads, marked.
+  const venues = (copy && copy.venues && copy.venues.length)
+    ? copy.venues
+    : exhibition.tour.map((t) => ({
+      status: /current/i.test(t.status) ? 'current' : /coming/i.test(t.status) ? 'coming' : 'finished',
+      city: t.city,
+      venue: t.venue,
+      dates: (t.dates || '').split(/Click here/i)[0].replace(/\b(20\d\d\s*)+$/, '').trim(),
+    }));
+  const LABEL = { current: 'Showing now', coming: 'Coming soon', finished: 'Finished' };
+  const venueCards = venues.map((v) => `<li class="venue venue--${esc(v.status)}">
+        <p class="venue__status"><span class="tag${v.status === 'current' ? ' tag--current' : ''}">${esc(LABEL[v.status] || v.status)}</span></p>
+        <h3 class="venue__city">${esc(v.city)}</h3>
+        <p class="venue__place">${esc(v.venue)}</p>
+        <p class="venue__dates">${esc(v.dates)}</p>
+      </li>`).join('\n      ');
+
+  // One shape for every statement on the page: the claim on the left, the
+  // charity's own explanation beside it. Repeating it is the point — it is what
+  // makes four separate assertions read as one argument.
+  const statement = (block, id) => `<section class="section">
+  <div class="wrap dsop-split">
+    <div class="dsop-split__lead">
+      <p class="eyebrow">${esc(block.eyebrow)}</p>
+      <h2${id ? ` id="${id}"` : ''}>${esc(block.heading)}</h2>
+    </div>
+    <div class="dsop-split__body prose">
+      ${(block.body || []).map((t) => `<p>${esc(t)}</p>`).join('')}
+      ${block.link ? `<p><a class="btn btn--ghost" href="${esc(block.link.url)}">${esc(block.link.text)}</a></p>` : ''}
+    </div>
+  </div>
+</section>`;
+
+  const intro = copy && copy.intro ? statement(copy.intro, 'about') : '';
+  const statements = copy && copy.sections ? copy.sections.map((b) => statement(b)).join('\n') : '';
 
   const body = `<section class="hero">
   <div class="wrap">
@@ -933,19 +972,8 @@ function renderExhibition(exhibition, model) {
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap dsop-split">
-    <div class="dsop-split__lead">
-      <p class="eyebrow">Fact</p>
-      <h2 id="about">Every day, 31 women lose their lives to metastatic breast cancer.</h2>
-    </div>
-    <div class="dsop-split__body prose">
-      <p>‘The Darker Side of Pink’ is a physical, interactive, mobile experience that creates awareness of metastatic breast cancer — the biggest cancer killer of women under the age of 50 in the UK.</p>
-      <p>It features 31 transparent figures – one for each woman who dies every day from metastatic or secondary breast cancer – each with an individual QR code that plays a video from breast cancer patients who have lived and are living with this diagnosis.</p>
-      <p>The figures are displayed in locations around the UK, from galleries to public libraries and shopping centres, to help promote the issues affecting those with secondary and/or metastatic breast cancer.</p>
-    </div>
-  </div>
-</section>
+${intro}
+${statements}
 
 <section class="section section--sunken">
   <div class="wrap">
@@ -960,16 +988,19 @@ function renderExhibition(exhibition, model) {
 
 <section class="section">
   <div class="wrap">
-    <h2 id="tour">Where can I see the figures?</h2>
-    <p class="lede" style="margin-top:var(--sp-4)">Spreading awareness throughout the UK, to help push policy to change for the better.</p>
-    <div class="table-scroll" style="margin-top:var(--sp-6)">
-      <table class="prose" style="width:100%;border-collapse:collapse">
-        <thead><tr><th scope="col">Status</th><th scope="col">City</th><th scope="col">Venue</th><th scope="col">Dates</th></tr></thead>
-        <tbody>
-      ${tourRows}
-        </tbody>
-      </table>
+    <div class="dsop-split">
+      <div class="dsop-split__lead">
+        <p class="eyebrow">${copy && copy.tour ? esc(copy.tour.eyebrow) : 'Spreading awareness throughout the UK'}</p>
+        <h2 id="tour">${copy && copy.tour ? esc(copy.tour.heading) : 'Where can I see the figures?'}</h2>
+      </div>
+      <div class="dsop-split__body prose">
+        ${copy && copy.tour ? (copy.tour.body || []).map((t) => `<p>${esc(t)}</p>`).join('') : ''}
+        ${copy && copy.tour && copy.tour.enquiry ? `<p>${esc(copy.tour.enquiry)}${copy.tour.enquiryLink ? ` <a href="${esc(copy.tour.enquiryLink.url)}">${esc(copy.tour.enquiryLink.text)}</a>.` : ''}</p>` : ''}
+      </div>
     </div>
+    <ul class="venues">
+      ${venueCards}
+    </ul>
   </div>
 </section>
 
