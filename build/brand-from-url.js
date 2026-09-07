@@ -322,11 +322,51 @@ function tags(html) {
     tags: tags(page.html),
     libraries: {},
 
+    // Two templates to start with, described in full. A draft that renders is
+    // worth more than a draft that needs a developer before it draws anything.
     templates: [
-      { key: 'figure', label: 'The figure', defaults: {
-        number: '100', headline: 'change this to the sentence that matters', note: '' } },
-      { key: 'quote', label: 'Quote', defaults: {
-        quote: 'Change this to something somebody said.', who: name(page.html, url) } },
+      {
+        key: 'figure', label: 'The figure', stem: 'number',
+        start: { story: 0.24, wide: 0.10, other: 0.13 },
+        fields: [
+          { name: 'number', label: 'Figure' },
+          { name: 'headline', label: 'Sentence', type: 'textarea' },
+          { name: 'note', label: 'Smaller line (optional)', type: 'textarea' },
+        ],
+        blocks: [
+          { type: 'figure', from: 'number', colour: 'figure', take: 0.42 },
+          { type: 'rule', colour: 'rule' },
+          { type: 'heading', from: 'headline', colour: 'heading', take: 0.66 },
+          { type: 'body', from: 'note', colour: 'soft' },
+        ],
+        caption: '{number} {headline} {note}',
+        alt: 'The figure {number} set large, over the words: {headline}.',
+        defaults: {
+          number: '100',
+          headline: 'change this to the sentence that matters',
+          note: '',
+        },
+      },
+      {
+        key: 'quote', label: 'Quote', stem: 'key',
+        start: { story: 0.22, wide: 0.10, other: 0.14 },
+        fields: [
+          { name: 'quote', label: 'Quote', type: 'textarea' },
+          { name: 'who', label: 'Who said it' },
+        ],
+        blocks: [
+          { type: 'quoteMark', colour: 'rule' },
+          { type: 'heading', from: 'quote', colour: 'heading', size: 84, min: 26,
+            weight: '700', lh: 1.2, take: 0.8, after: 32 },
+          { type: 'attribution', from: 'who', colour: 'figure' },
+        ],
+        caption: '“{quote}” — {who}',
+        alt: 'A quotation set large: “{quote}”, {who}.',
+        defaults: {
+          quote: 'Change this to something somebody said.',
+          who: name(page.html, url),
+        },
+      },
     ],
   };
 

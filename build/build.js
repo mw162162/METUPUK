@@ -1366,19 +1366,90 @@ function run() {
         })),
       },
 
+      // A template is a background, an ordered list of blocks, the fields it
+      // asks for, and the words that go with the picture. All of it is here
+      // rather than in the studio, so a fifth template is a fifth entry.
       templates: [
-        { key: 'figure', label: 'The figure', defaults: {
-          number: '31',
-          headline: 'women in the UK die every day from metastatic breast cancer',
-          note: 'It is the biggest cancer killer of women under 50.' } },
-        { key: 'person', label: 'One of the 31', library: 'people', imageField: 'personImage',
-          labels: { pick: 'Who', name: 'Name', line: 'Her line' },
-          defaults: { line: 'She recorded her own film for the exhibition.' } },
-        { key: 'venue', label: 'Venue', library: 'venues', imageField: 'venueImage',
-          labels: { pick: 'Venue' }, defaults: {} },
-        { key: 'quote', label: 'Quote', defaults: {
-          who: 'METUPUK',
-          quote: 'Give us a chance to live and don’t write us off.' } },
+        {
+          key: 'figure', label: 'The figure', stem: 'number',
+          start: { story: 0.24, wide: 0.10, other: 0.13 },
+          fields: [
+            { name: 'number', label: 'Figure' },
+            { name: 'headline', label: 'Sentence', type: 'textarea' },
+            { name: 'note', label: 'Smaller line (optional)', type: 'textarea' },
+          ],
+          blocks: [
+            { type: 'figure', from: 'number', colour: 'figure', take: 0.42 },
+            { type: 'rule', colour: 'rule' },
+            { type: 'heading', from: 'headline', colour: 'heading', take: 0.66 },
+            { type: 'body', from: 'note', colour: 'soft' },
+          ],
+          caption: '{number} {headline} {note}',
+          alt: 'The figure {number} set large, over the words: {headline}.',
+          defaults: {
+            number: '31',
+            headline: 'women in the UK die every day from metastatic breast cancer',
+            note: 'It is the biggest cancer killer of women under 50.',
+          },
+        },
+        {
+          key: 'person', label: 'One of the 31', library: 'people',
+          imageField: 'personImage', stem: 'name',
+          labels: { pick: 'Who' },
+          background: { duotone: true, height: 0.68, wide: 'side' },
+          fields: [
+            { name: 'name', label: 'Name' },
+            { name: 'line', label: 'Her line', type: 'textarea' },
+          ],
+          blocks: [
+            { type: 'heading', from: 'name', colour: 'heading', size: 84, take: 0.55, after: 18 },
+            { type: 'body', from: 'line', colour: 'soft', size: 38 },
+          ],
+          caption: '{name} — {line}',
+          alt: 'A tinted portrait of {name}. Beside it: {line}',
+          defaults: { line: 'She recorded her own film for the exhibition.' },
+        },
+        {
+          key: 'venue', label: 'Venue', library: 'venues',
+          imageField: 'venueImage', stem: 'city',
+          labels: { pick: 'Venue' },
+          background: { fit: 'full' },
+          start: { story: 0.30, wide: 0.12, other: 0.17 },
+          fields: [
+            { name: 'status', label: 'Status' },
+            { name: 'city', label: 'City' },
+            { name: 'venue', label: 'Venue' },
+            { name: 'dates', label: 'Dates' },
+          ],
+          blocks: [
+            { type: 'chip', from: 'status', colour: 'chip' },
+            { type: 'heading', from: 'city', colour: 'heading', size: 150, min: 44, lh: 1.02, take: 0.5, after: 18 },
+            { type: 'body', from: 'venue', colour: 'soft', size: 44, weight: '600', lh: 1.3, take: 0.55, after: 14 },
+            { type: 'attribution', from: 'dates', colour: 'figure', size: 34 },
+          ],
+          caption: '{status} · {city} · {venue} · {dates}',
+          alt: 'A photograph of {venue} in {city}, {dates}.',
+          defaults: {},
+        },
+        {
+          key: 'quote', label: 'Quote', stem: 'key',
+          start: { story: 0.22, wide: 0.10, other: 0.14 },
+          fields: [
+            { name: 'quote', label: 'Quote', type: 'textarea' },
+            { name: 'who', label: 'Who said it' },
+          ],
+          blocks: [
+            { type: 'quoteMark', colour: 'rule' },
+            { type: 'heading', from: 'quote', colour: 'heading', size: 84, min: 26, weight: '700', lh: 1.2, take: 0.8, after: 32 },
+            { type: 'attribution', from: 'who', colour: 'figure' },
+          ],
+          caption: '“{quote}” — {who}',
+          alt: 'A quotation set large: “{quote}”, {who}.',
+          defaults: {
+            who: 'METUPUK',
+            quote: 'Give us a chance to live and don’t write us off.',
+          },
+        },
       ],
     };
 

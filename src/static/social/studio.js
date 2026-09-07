@@ -165,6 +165,16 @@
      three sizes at once is another, and a second brand would be a third. The
      size is an argument rather than read from the page, which is the whole
      reason a post can be produced at a size nobody is currently looking at. */
+  /* A template is a background and a list of blocks, and both come from the
+     brand file. The vocabulary is deliberately small and closed — figure, rule,
+     heading, body, chip, quote mark, attribution — because a general layout
+     language would be a worse CSS that nobody can debug, while seven named
+     blocks describe every template here and leave room for the next one.
+
+     Each block says which field it draws, which colour role it wears, and at
+     most what share of the space still left it may take. Sizing against what
+     remains rather than a fraction of the canvas is what stops a long sentence
+     running under the signature. */
   function paint(g, S) {
     if (!brand) return;
     /* One unit of type per size, so the same template reads the same on a
@@ -173,6 +183,8 @@
     var pad = Math.round(Math.min(S.w, S.h) * 0.085);
     var colW = S.w - pad * 2;
     var f = state.fields;
+    var t = template(state.template);
+    var wide = state.size === 'wide';
 
     g.clearRect(0, 0, S.w, S.h);
     g.textBaseline = 'top'; g.textAlign = 'left';
@@ -183,129 +195,120 @@
     g.fillStyle = bg; g.fillRect(0, 0, S.w, S.h);
 
     /* Each template keeps its own picture. One shared slot meant switching from
-       a woman to a venue left her face behind the venue's name — the words said
-       Liverpool Central Library over a portrait. */
-    var src = state.template === 'person' ? f.personImage
-      : state.template === 'venue' ? f.venueImage : '';
-    var picture = images[src] || null;
-    var mark = (brand && brand.mark && brand.mark.image) ? images[brand.mark.image] : null;
-    var wide = state.size === 'wide';
-    var y = pad;
-    /* Where the words have to stop. Every block below sizes itself against the
-       space actually left rather than a fraction of the canvas: at fixed
-       fractions a long sentence ran under the signature and the line beneath it
-       fell off the bottom edge entirely, on the one size nobody checks because
-       the preview looked fine at another. */
+       a woman to a venue left her face behind the venue's name. */
+    var picture = t.imageField ? images[f[t.imageField]] : null;
+    var mark = (brand.mark && brand.mark.image) ? images[brand.mark.image] : null;
     var footH = Math.round(104 * u);
     var safeB = S.h - pad - footH;
+    var boxW = colW;
+    var y = pad;
 
-    if (state.template === 'person' && picture) {
-      if (wide) {
-        photo(g, picture, S.w * 0.42, 0, S.w * 0.58, S.h, true);
+    var bgSpec = t.background;
+    if (bgSpec && picture) {
+      if (bgSpec.fit === 'full') {
+        photo(g, picture, 0, 0, S.w, S.h, !!bgSpec.duotone);
+        scrim(g, 0, 0, S.w, S.h, 'rgba(0,0,0,0.5)', 'rgba(0,0,0,0.93)');
+      } else if (wide && bgSpec.wide === 'side') {
+        /* Landscape has width and no height: the picture takes the right of the
+           frame and the words the left, rather than both fighting for the middle. */
+        photo(g, picture, S.w * 0.42, 0, S.w * 0.58, S.h, !!bgSpec.duotone);
         var side = g.createLinearGradient(0, 0, S.w, 0);
-        side.addColorStop(0, ground[0]); side.addColorStop(0.6, ground[0]); side.addColorStop(1, 'rgba(43,5,25,0)');
+        side.addColorStop(0, ground[0]); side.addColorStop(0.6, ground[0]);
+        side.addColorStop(1, 'rgba(0,0,0,0)');
         g.fillStyle = side; g.fillRect(0, 0, S.w, S.h);
+        boxW = Math.round(colW * 0.5);
       } else {
-        var ph = Math.round(S.h * 0.68);
-        photo(g, picture, 0, 0, S.w, ph, true);
-        scrim(g, 0, ph - Math.round(340 * u), S.w, Math.round(340 * u), 'rgba(28,3,16,0)', ground[0]);
+        var ph = Math.round(S.h * (bgSpec.height || 0.68));
+        photo(g, picture, 0, 0, S.w, ph, !!bgSpec.duotone);
+        scrim(g, 0, ph - Math.round(340 * u), S.w, Math.round(340 * u),
+              'rgba(0,0,0,0)', ground[0]);
       }
     }
 
-    if (state.template === 'venue' && picture) {
-      photo(g, picture, 0, 0, S.w, S.h, false);
-      scrim(g, 0, 0, S.w, S.h, 'rgba(28,3,16,0.5)', 'rgba(28,3,16,0.93)');
+    /* Where the words start. A template with a picture behind them begins lower
+       down, so they sit in the part of it the scrim has darkened. */
+    var startAt = t.start;
+    if (typeof startAt === 'object' && startAt) startAt = startAt[state.size] || startAt.other;
+    if (typeof startAt === 'number') y = Math.round(S.h * startAt);
+    else if (bgSpec && bgSpec.fit !== 'full' && !(wide && bgSpec.wide === 'side')) {
+      y = Math.round(S.h * (bgSpec.height || 0.68)) - Math.round(200 * u);
     }
+    if (wide && bgSpec && bgSpec.wide === 'side') y = Math.round(S.h * 0.28);
 
-    var boxW = (state.template === 'person' && wide) ? Math.round(colW * 0.5) : colW;
+    var room = function () { return Math.max(0, safeB - y); };
 
-    if (state.template === 'figure') {
-      var num = String(f.number || '31');
-      g.font = '900 ' + Math.round(400 * u) + 'px ' + DISPLAY;
-      y = Math.round(S.h * (state.size === 'story' ? 0.24 : wide ? 0.10 : 0.13));
-      /* The figure takes the width it can, and no more than a third of the
-         room between here and the signature. */
-      var numSize = Math.round(Math.min(
-        400 * u * Math.min(1, (colW * 0.95) / g.measureText(num).width),
-        (safeB - y) * 0.42
-      ));
-      g.font = '900 ' + numSize + 'px ' + DISPLAY;
-      g.fillStyle = tok('figure', '#ff6fb5');
-      g.fillText(num, pad, y);
-      y += numSize * 0.97;
-      g.fillStyle = tok('rule', '#d2246f');
-      g.fillRect(pad, y + Math.round(16 * u), Math.round(150 * u), Math.round(10 * u));
-      y += Math.round(58 * u);
-      var noteRoom = f.note ? Math.round((safeB - y) * 0.34) : 0;
-      y = draw(g, fit(g, f.headline, colW, safeB - y - noteRoom, '900', DISPLAY,
-                   Math.round(96 * u), Math.round(30 * u), 1.06),
-               pad, y, tok('heading', '#fff')) + Math.round(24 * u);
-      if (f.note) {
-        draw(g, fit(g, f.note, colW, Math.max(0, safeB - y), '400', BODY,
-                 Math.round(40 * u), Math.round(18 * u), 1.4),
-             pad, y, tok('soft', '#ffdcec'));
+    (t.blocks || []).forEach(function (block) {
+      var text = block.from ? f[block.from] : block.text;
+      if (block.from && !String(text || '').trim()) return;
+      var colour = tok(block.colour || 'heading', '#ffffff');
+      var take = block.take == null ? 1 : block.take;
+
+      if (block.type === 'figure') {
+        var num = String(text || '');
+        g.font = '900 ' + Math.round(400 * u) + 'px ' + DISPLAY;
+        var size = Math.round(Math.min(
+          400 * u * Math.min(1, (boxW * 0.95) / g.measureText(num).width),
+          room() * take
+        ));
+        g.font = '900 ' + size + 'px ' + DISPLAY;
+        g.fillStyle = colour;
+        g.fillText(num, pad, y);
+        y += size * 0.97;
+        return;
       }
-    }
 
-    if (state.template === 'person') {
-      var top = wide ? Math.round(S.h * 0.28) : Math.round(S.h * 0.68) - Math.round(210 * u);
-      var lineRoom = f.line ? Math.round((safeB - top) * 0.45) : 0;
-      y = draw(g, fit(g, f.name || '', boxW, Math.max(0, safeB - top - lineRoom), '900', DISPLAY,
-                   Math.round(84 * u), Math.round(34 * u), 1.05),
-               pad, top, tok('heading', '#fff')) + Math.round(18 * u);
-      if (f.line) {
-        draw(g, fit(g, f.line, boxW, Math.max(0, safeB - y), '400', BODY,
-                 Math.round(38 * u), Math.round(18 * u), 1.42),
-             pad, y, tok('soft', '#ffdcec'));
+      if (block.type === 'rule') {
+        g.fillStyle = colour;
+        g.fillRect(pad, y + Math.round(16 * u), Math.round((block.width || 150) * u),
+                   Math.round((block.height || 10) * u));
+        y += Math.round(58 * u);
+        return;
       }
-    }
 
-    if (state.template === 'venue') {
-      var status = (f.status || 'Showing now').toUpperCase();
-      g.font = '800 ' + Math.round(24 * u) + 'px ' + DISPLAY;
-      var sw = g.measureText(status).width;
-      var chipH = Math.round(56 * u), px = Math.round(26 * u);
-      y = Math.round(S.h * (state.size === 'story' ? 0.30 : wide ? 0.12 : 0.17));
-      g.fillStyle = tok('chip', '#d2246f');
-      if (g.roundRect) { g.beginPath(); g.roundRect(pad, y, sw + px * 2, chipH, chipH / 2); g.fill(); }
-      else g.fillRect(pad, y, sw + px * 2, chipH);
-      g.fillStyle = tok('heading', '#fff');
-      g.textBaseline = 'middle';
-      g.fillText(status, pad + px, y + chipH / 2);
-      g.textBaseline = 'top';
-      y += chipH + Math.round(38 * u);
-      var datesRoom = Math.round(60 * u);
-      var venueRoom = Math.round((safeB - y - datesRoom) * 0.34);
-      y = draw(g, fit(g, f.city || '', colW, safeB - y - datesRoom - venueRoom, '900', DISPLAY,
-                   Math.round(150 * u), Math.round(44 * u), 1.02),
-               pad, y, tok('heading', '#fff')) + Math.round(18 * u);
-      y = draw(g, fit(g, f.venue || '', colW, Math.max(0, safeB - y - datesRoom), '600', BODY,
-                   Math.round(44 * u), Math.round(20 * u), 1.3),
-               pad, y, tok('soft', '#ffdcec')) + Math.round(14 * u);
-      g.font = '600 ' + Math.round(34 * u) + 'px ' + BODY;
-      g.fillStyle = tok('figure', '#ff6fb5');
-      g.fillText(f.dates || '', pad, y);
-    }
-
-    if (state.template === 'quote') {
-      y = Math.round(S.h * (state.size === 'story' ? 0.22 : wide ? 0.10 : 0.14));
-      g.font = '900 ' + Math.round(190 * u) + 'px ' + DISPLAY;
-      g.fillStyle = tok('rule', '#d2246f');
-      g.fillText('“', pad - Math.round(12 * u), y - Math.round(46 * u));
-      y += Math.round(105 * u);
-      var whoRoom = f.who ? Math.round(70 * u) : 0;
-      y = draw(g, fit(g, f.quote || '', colW, Math.max(0, safeB - y - whoRoom), '700', DISPLAY,
-                   Math.round(84 * u), Math.round(26 * u), 1.2),
-               pad, y, tok('heading', '#fff')) + Math.round(32 * u);
-      if (f.who) {
-        g.font = '600 ' + Math.round(32 * u) + 'px ' + BODY;
-        g.fillStyle = tok('figure', '#ff6fb5');
-        g.fillText('— ' + f.who, pad, y);
+      if (block.type === 'chip') {
+        var label = String(text || '').toUpperCase();
+        g.font = '800 ' + Math.round(24 * u) + 'px ' + DISPLAY;
+        var sw = g.measureText(label).width;
+        var chipH = Math.round(56 * u), px = Math.round(26 * u);
+        g.fillStyle = tok(block.colour || 'chip', '#d2246f');
+        if (g.roundRect) { g.beginPath(); g.roundRect(pad, y, sw + px * 2, chipH, chipH / 2); g.fill(); }
+        else g.fillRect(pad, y, sw + px * 2, chipH);
+        g.fillStyle = tok('heading', '#fff');
+        g.textBaseline = 'middle';
+        g.fillText(label, pad + px, y + chipH / 2);
+        g.textBaseline = 'top';
+        y += chipH + Math.round(38 * u);
+        return;
       }
-    }
+
+      if (block.type === 'quoteMark') {
+        g.font = '900 ' + Math.round(190 * u) + 'px ' + DISPLAY;
+        g.fillStyle = colour;
+        g.fillText('“', pad - Math.round(12 * u), y - Math.round(46 * u));
+        y += Math.round(105 * u);
+        return;
+      }
+
+      if (block.type === 'attribution') {
+        g.font = '600 ' + Math.round((block.size || 32) * u) + 'px ' + BODY;
+        g.fillStyle = colour;
+        g.fillText('— ' + text, pad, y);
+        y += Math.round((block.size || 32) * u * 1.5);
+        return;
+      }
+
+      // heading and body: display or body face, fitted to what is left
+      var isHeading = block.type === 'heading';
+      var face = isHeading ? DISPLAY : BODY;
+      var weight = block.weight || (isHeading ? '900' : '400');
+      var blk = fit(g, text, boxW, room() * take, weight, face,
+                    Math.round((block.size || (isHeading ? 96 : 40)) * u),
+                    Math.round((block.min || (isHeading ? 30 : 18)) * u),
+                    block.lh || (isHeading ? 1.06 : 1.4));
+      y = draw(g, blk, pad, y, colour) + Math.round((block.after == null ? 24 : block.after) * u);
+    });
 
     footer(g, S, u, pad, mark);
-    
   }
 
   /* Draw the post the page is showing. */
@@ -343,29 +346,6 @@
     });
   }
 
-  /* Alt text, written from the same fields as the picture.
-     Not an extra: it is the half of a post that gets left blank, because it is
-     normally written separately from everything else and nobody is holding the
-     picture at the time. It describes what is on the canvas, so it says nothing
-     a brand file has not supplied. */
-  function altText() {
-    var f = state.fields;
-    var who = (brand && brand.name) || '';
-    if (state.template === 'figure') {
-      return 'The figure ' + f.number + ' set large, over the words: ' + f.headline + '.';
-    }
-    if (state.template === 'person') {
-      return 'A tinted portrait of ' + (f.name || 'a person')
-        + (f.line ? '. Beside it: ' + f.line : '.');
-    }
-    if (state.template === 'venue') {
-      return 'A photograph of ' + (f.venue || 'the venue')
-        + (f.city ? ' in ' + f.city : '')
-        + (f.dates ? ', ' + f.dates : '') + '.';
-    }
-    return 'A quotation set large: “' + (f.quote || '') + '”, '
-      + (f.who || who) + '.';
-  }
 
   /* What each platform will actually show before it cuts the caption off. */
   var LIMITS = { square: 125, story: 125, wide: 280 };
@@ -473,25 +453,14 @@
       });
     }
 
-    if (key === 'figure') {
-      bind(field(host, 'f-number', label(key, 'number', 'Figure'), f.number, 'text'), 'number');
-      bind(field(host, 'f-headline', label(key, 'headline', 'Sentence'), f.headline, 'textarea'), 'headline');
-      bind(field(host, 'f-note', label(key, 'note', 'Smaller line (optional)'), f.note, 'textarea'), 'note');
-    }
-    if (key === 'person') {
-      bind(field(host, 'f-name', label(key, 'name', 'Name'), f.name, 'text'), 'name');
-      bind(field(host, 'f-line', label(key, 'line', 'Line'), f.line, 'textarea'), 'line');
-    }
-    if (key === 'venue') {
-      bind(field(host, 'f-status', label(key, 'status', 'Status'), f.status, 'text'), 'status');
-      bind(field(host, 'f-city', label(key, 'city', 'City'), f.city, 'text'), 'city');
-      bind(field(host, 'f-venue', label(key, 'venue', 'Venue'), f.venue, 'text'), 'venue');
-      bind(field(host, 'f-dates', label(key, 'dates', 'Dates'), f.dates, 'text'), 'dates');
-    }
-    if (key === 'quote') {
-      bind(field(host, 'f-quote', label(key, 'quote', 'Quote'), f.quote, 'textarea'), 'quote');
-      bind(field(host, 'f-who', label(key, 'who', 'Who said it'), f.who, 'text'), 'who');
-    }
+    /* And the rest of the form is the template's own field list. A new
+       template can declare a field this file has never heard of and it appears,
+       which is the difference between templates as data and four layouts with
+       their forms hard-coded beside them. */
+    (t.fields || []).forEach(function (spec) {
+      bind(field(host, 'f-' + spec.name, spec.label || spec.name,
+                 f[spec.name], spec.type || 'text'), spec.name);
+    });
   }
 
   /* Opening values come from the brand: every template says what it starts
@@ -514,17 +483,38 @@
     state.fields = fields;
   }
 
-  /* The words that go with the picture. A post is both, and the caption is the
-     half that usually gets retyped from memory and drifts. */
+  /* {field} in a pattern is replaced by what is in that field; a pattern with
+     nothing in it disappears rather than leaving a stray dash. Both the caption
+     and the alt text are written this way, in the brand file, because both are
+     the brand's words and not this file's. */
+  function fill(pattern) {
+    if (!pattern) return '';
+    return String(pattern)
+      .replace(/\{([a-z0-9_]+)\}/gi, function (_, key) {
+        if (key === 'site') return (brand && brand.site) || '';
+        if (key === 'brand') return (brand && brand.name) || '';
+        return state.fields[key] == null ? '' : String(state.fields[key]);
+      })
+      .replace(/\s*·\s*(·\s*)+/g, ' · ')
+      .replace(/^[\s·—-]+|[\s·—-]+$/g, '')
+      .replace(/[ 	]{2,}/g, ' ')
+      .trim();
+  }
+
   function caption() {
-    var f = state.fields, site = (brand && brand.site) || '';
-    var body =
-      state.template === 'figure' ? f.number + ' ' + f.headline + (f.note ? ' ' + f.note : '') :
-      state.template === 'person' ? f.name + ' — ' + f.line :
-      state.template === 'venue' ? [f.status, f.city, f.venue, f.dates]
-        .filter(Boolean).join(' · ') :
-      '“' + f.quote + '” — ' + f.who;
-    return body + '\n\n' + site + '\n' + state.tag;
+    var t = template(state.template);
+    var body = fill(t.caption);
+    var site = (brand && brand.site) || '';
+    return [body, '', site, state.tag].filter(function (x, i) {
+      return x !== '' || i === 1;
+    }).join('\n');
+  }
+
+  /* Alt text describes what is on the canvas. It is the half of a post that
+     gets left blank, because it is normally written separately and nobody is
+     holding the picture at the time. */
+  function altText() {
+    return fill(template(state.template).alt);
   }
 
   function say(msg) {
@@ -533,10 +523,8 @@
   }
 
   function filename() {
-    var f = state.fields;
-    var stem = state.template === 'person' ? (f.name || 'portrait')
-      : state.template === 'venue' ? (f.city || 'venue')
-      : state.template === 'quote' ? 'quote' : 'the-figure';
+    var t = template(state.template);
+    var stem = (t.stem && state.fields[t.stem]) || t.key || 'post';
     return ((brand && brand.id) || 'post') + '-' + stem.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
       + '-' + state.size + '.png';
   }
@@ -617,7 +605,8 @@
         var file = picker.files && picker.files[0];
         if (!file) return;
         var url = URL.createObjectURL(file);
-        var key = state.template === 'venue' ? 'venueImage' : 'personImage';
+        var key = template(state.template).imageField;
+        if (!key) { say('This template does not use a picture'); return; }
         load(url).then(function (img) {
           if (!img) { say('That file could not be read as a picture'); return; }
           state.fields[key] = url;

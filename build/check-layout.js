@@ -210,10 +210,29 @@ check(
       for (const role of ['figure', 'rule', 'heading']) {
         if (b.colour && !b.colour[role]) faults.push(`${name} has no colour.${role}`);
       }
-      // A template may name a library, and the library has to be there.
+      // The block vocabulary is closed on purpose. A template naming a block
+      // the studio has never heard of draws nothing at all and says nothing
+      // about it — a blank canvas with no error is the worst failure this can
+      // have, so it is caught here instead.
+      const BLOCKS = ['figure', 'rule', 'heading', 'body', 'chip', 'quoteMark', 'attribution'];
       for (const t of b.templates || []) {
         if (t.library && !(b.libraries && b.libraries[t.library])) {
           faults.push(`${name}: template ${t.key} wants library ${t.library}, which is absent`);
+        }
+        if (!t.blocks || !t.blocks.length) {
+          faults.push(`${name}: template ${t.key} has no blocks, so it draws nothing`);
+          continue;
+        }
+        const declared = new Set((t.fields || []).map((x) => x.name));
+        for (const blk of t.blocks) {
+          if (!BLOCKS.includes(blk.type)) {
+            faults.push(`${name}: template ${t.key} uses block "${blk.type}", which does not exist`);
+          }
+          // A block drawing a field nobody can fill in is a block that is
+          // always empty.
+          if (blk.from && !declared.has(blk.from)) {
+            faults.push(`${name}: template ${t.key} draws {${blk.from}}, which is not one of its fields`);
+          }
         }
       }
     }
