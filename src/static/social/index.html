@@ -50,6 +50,11 @@
        background:var(--magenta-500);color:#fff}
   .btn--ghost{background:transparent;border-color:rgb(255 255 255/.4);color:#f6e9ef}
   .note{color:var(--muted);font-size:.82rem;margin:.25rem 0 0}
+  .note.warn{color:var(--pink-300)}
+  input[type=file]{padding:.45rem;font-size:.82rem}
+  input[type=file]::file-selector-button{font:inherit;font-size:.8rem;font-weight:600;
+    margin-right:.6rem;padding:.4rem .8rem;border-radius:999px;cursor:pointer;
+    border:1px solid var(--line);background:rgb(255 255 255/.06);color:#f6e9ef}
   .count{font-variant-numeric:tabular-nums}
 </style>
 </head>
@@ -58,7 +63,8 @@
   <h1>Social templates</h1>
   <p>Fill in the words, pick a picture, download the post. Colours, type and the
      duotone are taken from the website itself, so anything made here matches it
-     without anyone having to know the hex codes.</p>
+     without anyone having to know the hex codes — and nothing you can do in
+     here can produce something off-brand.</p>
 </header>
 
 <div class="wrap">
@@ -83,17 +89,24 @@
         <option value="deep">Deep plum</option>
         <option value="magenta">Magenta</option>
       </select>
+      <label for="own-image">Use your own picture</label>
+      <input type="file" id="own-image" accept="image/*">
+      <p class="note">Optional. Replaces the portrait or venue photograph on the
+         templates that use one — it is still cropped and tinted to match.</p>
     </fieldset>
   </form>
 
   <div class="stage">
     <div class="frame"><canvas id="art" width="1080" height="1080"></canvas></div>
     <div class="actions">
-      <button class="btn" type="button" id="download">Download PNG</button>
+      <button class="btn" type="button" id="download">Download this size</button>
+      <button class="btn" type="button" id="download-all">Download all three</button>
       <button class="btn btn--ghost" type="button" id="copy">Copy caption</button>
+      <button class="btn btn--ghost" type="button" id="copy-alt">Copy alt text</button>
       <span class="note" id="status">&nbsp;</span>
     </div>
     <p class="note" id="dims"></p>
+    <p class="note" id="caption-count"></p>
   </div>
 </div>
 
