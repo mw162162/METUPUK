@@ -2458,10 +2458,20 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
   .drawer__tools [data-theme-toggle] { display: none; }
 }
 
-/* Belt and braces, at every width: the header is never the reason the page
-   scrolls sideways. */
+/* The header is never the reason the page scrolls sideways — but this is done
+   with max-width alone now.
+   There was an `overflow-x: clip` here too, as belt and braces. The same
+   property on `html` is what stopped the header sticking on iOS once already:
+   WebKit treats `clip` the way it treats `hidden`, and the site opened with no
+   menu on screen. That was removed and the commit warned against reaching for
+   overflow again; this one was left behind because it sits on the header
+   rather than above it.
+   It is gone for the same reason. It was never load-bearing — the actual
+   causes of sideways scroll were a grid track that could not shrink and a
+   reading measure applied to images, both fixed properly — so this was
+   insurance against a problem that no longer exists, written in the one
+   property that is known to break the thing above the fold. */
 .site-header, .site-header__bar { max-width: 100%; }
-.site-header { overflow-x: clip; }
 
 /* --- Drawer submenus ----------------------------------------------------- */
 
