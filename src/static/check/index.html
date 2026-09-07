@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Header check — METUPUK</title>
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.5 -apple-system, "Segoe UI", system-ui, sans-serif;
+         background: #fff; color: #1a1014; }
+  header.bar { position: sticky; top: 0; z-index: 100; background: #440729; color: #fff;
+               padding: 1rem; font-weight: 700; letter-spacing: .04em; }
+  main { padding: 1rem; }
+  h1 { font-size: 1.15rem; margin: 1rem 0 .25rem; }
+  p.note { color: #6b5560; font-size: .9rem; margin: 0 0 1rem; }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  th, td { text-align: left; padding: .5rem .4rem; border-bottom: 1px solid #e2d9dd; vertical-align: top; }
+  th { width: 47%; color: #6b5560; font-weight: 600; }
+  td { font-variant-numeric: tabular-nums; font-weight: 700; }
+  .ok { color: #17734a; } .bad { color: #b0135a; }
+  .tall { height: 220vh; background: linear-gradient(#fbeff4, #fff); margin-top: 1rem;
+          border-radius: 8px; padding: 1rem; color: #6b5560; }
+</style>
+</head>
+<body>
+<header class="bar">STICKY BAR — should stay here</header>
+<main>
+  <h1>Header check</h1>
+  <p class="note">Open this on the phone, screenshot it, send it back. Nothing here is part of the site.</p>
+  <table id="out"></table>
+  <div class="tall">Scroll down — the dark bar above must stay pinned to the top of the screen the whole way.</div>
+</main>
+<script>
+(function () {
+  var rows = [], t0 = Date.now();
+  function snap(label) { rows.push([label, Math.round(window.scrollY)]); }
+  snap('scrollY at script run');
+  document.addEventListener('DOMContentLoaded', function () { snap('scrollY at DOM ready'); });
+  window.addEventListener('load', function () {
+    snap('scrollY at load');
+    setTimeout(function () { snap('scrollY +500ms'); }, 500);
+    setTimeout(function () { snap('scrollY +1500ms'); render(); }, 1500);
+  });
+  function render() {
+    var bar = document.querySelector('header.bar');
+    var cs = getComputedStyle(bar);
+    var r = bar.getBoundingClientRect();
+    var vv = window.visualViewport;
+    var out = document.getElementById('out');
+    var data = rows.concat([
+      ['sticky honoured?', cs.position],
+      ['bar top now (px)', Math.round(r.top)],
+      ['window.innerHeight', window.innerHeight],
+      ['visualViewport height', vv ? Math.round(vv.height) : 'n/a'],
+      ['visualViewport offsetTop', vv ? Math.round(vv.offsetTop) : 'n/a'],
+      ['scrollRestoration', history.scrollRestoration],
+      ['devicePixelRatio', window.devicePixelRatio],
+      ['screen width', screen.width],
+      ['browser', navigator.userAgent.replace(/^Mozilla\/5\.0 \(/, '').slice(0, 60)]
+    ]);
+    out.innerHTML = data.map(function (d) {
+      var cls = '';
+      if (d[0].indexOf('scrollY') === 0) cls = d[1] === 0 ? 'ok' : 'bad';
+      if (d[0] === 'sticky honoured?') cls = d[1] === 'sticky' ? 'ok' : 'bad';
+      return '<tr><th>' + d[0] + '</th><td class="' + cls + '">' + d[1] + '</td></tr>';
+    }).join('');
+  }
+}());
+</script>
+</body>
+</html>
