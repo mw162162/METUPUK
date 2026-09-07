@@ -1911,6 +1911,21 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
 }
 .dsop-chrome__lockup img { display: block; width: 100%; height: auto; }
 
+/* The chrome needs margins to live in, and a phone has none.
+   On a wide screen the words sit in a column with a rail of empty page down
+   the left and space at the bottom right; the ribbon, the section label and
+   the wordmark occupy that emptiness. Narrow the window and there is no
+   emptiness left — so they were laid straight over the paragraphs, which is
+   the one thing on this page that must stay readable.
+   They are decoration here: the site header already carries MET UP UK, and the
+   opening screen carries the wordmark at full size. Nothing is lost by taking
+   them off a phone, and a paragraph is gained. */
+@media (max-width: 59.99em) {
+  .dsop-chrome { display: none; }
+  /* The extra left padding existed only to clear the rail. */
+  .dsop-act { padding-inline: clamp(1.25rem, 5vw, 3rem); }
+}
+
 /* The acts ride over the stage, one screen at a time. */
 .dsop-acts {
   position: relative; z-index: 1;
@@ -2839,22 +2854,63 @@ html:not(.js-reveal) .dsop-act__in { opacity: 1; transform: none; }
     max-width: calc(8 * var(--cell) + 7 * 5px);
     margin-inline: auto;
   }
-  /* Present, not performing. The per-face reveal is driven by the pinned
-     section's panel state, which does not apply once this is ordinary flow. */
-  .scrolly__face { opacity: 1; transform: none; transition: none; }
+  /* The same three beats the desktop gets, driven by this block's own position
+     instead of by which panel is pinned. The panel state is meaningless here —
+     the artwork is an ordinary block a long way below the panels — so it keeps
+     its own: the crowd arrives, then it recedes and one woman stays.
+     Only reachable with script running. Without it the faces are simply there,
+     which is what the html:not(.js-reveal) rule further up guarantees. */
+  .js-reveal .scrolly__face {
+    opacity: 0; transform: scale(0.94) translateY(8px);
+    transition:
+      opacity var(--dur-5) var(--ease-out),
+      transform var(--dur-5) var(--ease-out);
+  }
+  .js-reveal .scrolly__art.is-arrived .scrolly__face { opacity: 1; transform: none; }
+  /* Row by row, as on the desktop: per-face delays draw a diagonal wipe, per
+     row it reads as a group arriving. */
+  .js-reveal .scrolly__art.is-arrived .scrolly__face:nth-child(n+9)  { transition-delay: 80ms; }
+  .js-reveal .scrolly__art.is-arrived .scrolly__face:nth-child(n+17) { transition-delay: 160ms; }
+  .js-reveal .scrolly__art.is-arrived .scrolly__face:nth-child(n+25) { transition-delay: 240ms; }
+  .js-reveal .scrolly__art.is-focused .scrolly__face { opacity: 0.14; transition-delay: 0ms; }
+  .js-reveal .scrolly__art.is-focused .scrolly__face.is-kept {
+    opacity: 1; filter: none; transform: scale(1.14);
+    outline: 2px solid var(--pink-300); outline-offset: 2px;
+  }
   .scrolly__kept {
     position: static;
     opacity: 1;
     transform: none;
     transition: none;
-    max-width: none;
+    /* The same width as the faces above it, and centred the same way. The card
+       is about one of the women in that block, so it should read as belonging
+       to it rather than as the next full-width thing on the page.
+       --cell is set on .scrolly__art and this is inside it, so the arithmetic
+       is the grid's own: eight cells and the seven gaps between them. */
+    max-width: calc(8 * var(--cell) + 7 * 5px);
     margin-top: var(--sp-5);
+    margin-inline: auto;
     padding: var(--sp-5);
     border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: var(--radius-lg);
     background: rgba(28, 3, 16, 0.42);
   }
   .scrolly__kept .btn { margin-top: var(--sp-4); }
+  .js-reveal .scrolly__kept {
+    opacity: 0; transform: translateY(8px);
+    transition:
+      opacity var(--dur-3) var(--ease-out) 250ms,
+      transform var(--dur-3) var(--ease-out) 250ms;
+  }
+  .js-reveal .scrolly__art.is-focused .scrolly__kept { opacity: 1; transform: none; }
+  /* Motion off: all thirty-one present, the card with them, no sequence. */
+  @media (prefers-reduced-motion: reduce) {
+    .js-reveal .scrolly__face,
+    .js-reveal .scrolly__art.is-focused .scrolly__face,
+    .js-reveal .scrolly__kept {
+      opacity: 1; transform: none; transition: none; outline: none;
+    }
+  }
 }
 
 /* Tap targets. A link in a list was 22px tall — half the 44px a finger needs,

@@ -930,3 +930,49 @@
     acts.forEach(function (a) { a.classList.add('is-here'); });
   }, 5000);
 }());
+
+/* --- The thirty-one, on a phone ---------------------------------------------
+   On a desktop this block is pinned and its beats come from which panel is on
+   screen. On a phone it is an ordinary block a long way below those panels, so
+   it keeps its own beats, driven by its own position: the crowd arrives, then
+   it recedes and one woman stays.
+   Two thresholds on one observer rather than a scroll handler — nothing here
+   reads layout while the page is moving. */
+(function () {
+  'use strict';
+  if (!('IntersectionObserver' in window)) return;
+  var art = document.querySelector('.scrolly__art');
+  if (!art) return;
+
+  var pinned = window.matchMedia('(min-width: 1100px)');
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var io = null;
+
+  function start() {
+    if (io || pinned.matches || still.matches) return;
+    io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.intersectionRatio >= 0.55) art.classList.add('is-focused');
+        else if (en.intersectionRatio >= 0.12) art.classList.remove('is-focused');
+        if (en.intersectionRatio >= 0.12) art.classList.add('is-arrived');
+      });
+    }, { threshold: [0, 0.12, 0.55] });
+    io.observe(art);
+  }
+  function stop() {
+    if (io) { io.disconnect(); io = null; }
+    art.classList.remove('is-arrived', 'is-focused');
+  }
+
+  /* The pinned layout owns the block above 1100px, so this hands it back
+     rather than both of them writing the same classes. */
+  function sync() { if (pinned.matches || still.matches) stop(); else start(); }
+  if (pinned.addEventListener) pinned.addEventListener('change', sync);
+  if (still.addEventListener) still.addEventListener('change', sync);
+  sync();
+
+  /* Nothing stays hidden because an observer never fired. */
+  window.setTimeout(function () {
+    if (!pinned.matches) art.classList.add('is-arrived');
+  }, 5000);
+}());
