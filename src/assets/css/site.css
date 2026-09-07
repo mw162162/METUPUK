@@ -1358,7 +1358,16 @@ a.tag:hover { border-color: var(--accent); }
    free. Hidden below 900px, where the copy already takes the full width and
    there is no free half to fill. */
 .scrolly__art {
-  position: absolute; inset: 0; z-index: 2;
+  /* Sticky with a negative top margin, not absolute inside the photograph.
+     The photograph is one viewport tall and pinned; this pulls itself back up
+     over it and pins alongside, so the two occupy the same band and this one
+     contributes nothing to the flow — which is what keeps the panels' own
+     -100svh landing exactly where it did before.
+     It is out here so that a phone can put it in normal flow without it being
+     clipped by a box that stops at one viewport. */
+  position: sticky; top: 0; z-index: 2;
+  height: 100vh; height: 100svh;
+  margin-top: -100vh; margin-top: -100svh;
   display: none;
   align-content: center;
   /* The copy sits in the right half and the artwork is on a separate layer, so
@@ -2498,10 +2507,22 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
    belongs to a pinned section you scroll through, and this is a block you
    scroll past. */
 @media (max-width: 1099.98px) {
+  /* Flex only so the artwork can be ordered last. In source order it sits
+     between the photograph and the panels, which is what the desktop pinning
+     needs; on a phone it belongs after the words that explain it, not between
+     the picture and the heading. */
+  .scrolly { display: flex; flex-direction: column; }
+  .scrolly__media { order: 1; }
+  .scrolly__panels { order: 2; }
   .scrolly__art {
+    order: 3;
     display: block;
     position: static;
     inset: auto;
+    /* Back into the flow: no pull upward, no fixed viewport height. Both exist
+       only to overlay the photograph on a desktop. */
+    margin-top: var(--sp-7);
+    height: auto;
     padding: 0;
     pointer-events: auto;
     /* Whatever eight columns and their gaps can have of the screen, capped so

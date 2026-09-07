@@ -456,6 +456,18 @@ function renderHome(model, exhibition) {
           that already exists rather than the only route to it. Hence
           aria-hidden — a screen reader gets the exhibition page, not
           thirty-one alt strings stacked behind a heading. */''}
+  </div>
+  ${/* The artwork is a sibling of the photograph, not a child of it.
+        It used to sit inside .scrolly__media, which is sticky, exactly one
+        viewport tall, and overflow: hidden. That is fine while the artwork is
+        absolutely positioned over the photograph, which is what the desktop
+        does. On a phone the artwork goes into normal flow — and normal flow put
+        it directly below a full-height image, one viewport down, inside a box
+        that clips at one viewport. It was rendered, sized and visible, and cut
+        off in its entirety. Thirty-one faces, painted into a box nobody can
+        see into.
+        Out here it can be pinned over the photograph on a desktop and simply
+        laid out on a phone, without one arrangement clipping the other. */''}
     ${(() => {
       // The woman who stays sits in the middle of the grid, not at the start.
       // At index 0 she was the top-left face — the first thing the sticky
@@ -480,7 +492,6 @@ function renderHome(model, exhibition) {
       </p>
     </div>`;
     })()}
-  </div>
   <div class="scrolly__panels">
     <div class="scrolly__panel">
       <div class="wrap">
