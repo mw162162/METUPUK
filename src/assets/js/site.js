@@ -936,43 +936,116 @@
    screen. On a phone it is an ordinary block a long way below those panels, so
    it keeps its own beats, driven by its own position: the crowd arrives, then
    it recedes and one woman stays.
-   Two thresholds on one observer rather than a scroll handler — nothing here
-   reads layout while the page is moving. */
+
+   The second beat waits for three things, because it was arriving before any
+   of them: every face decoded, the arrival actually played, and the block
+   properly on screen rather than a third of the way up from the bottom edge.
+   The faces are lazy — they load as you approach — so the ring was going round
+   Jo while the crowd it is meant to recede from was still blank. */
 (function () {
   'use strict';
   if (!('IntersectionObserver' in window)) return;
   var art = document.querySelector('.scrolly__art');
   if (!art) return;
+  var faces = [].slice.call(art.querySelectorAll('.scrolly__face'));
 
   var pinned = window.matchMedia('(min-width: 1100px)');
   var still = window.matchMedia('(prefers-reduced-motion: reduce)');
   var io = null;
+  var arrivedAt = 0;
+  var wanted = false;
+
+  /* The arrival is --dur-5 with up to 240ms of row delay behind it. Focusing
+     before that finishes cuts the one beat it exists to set up. */
+  var HOLD = 1000;
+  /* And a ceiling, so a single portrait that never decodes cannot leave the
+     block stuck on its first beat for ever. */
+  var PATIENCE = 6000;
+
+  function loaded() {
+    for (var i = 0; i < faces.length; i++) {
+      if (!faces[i].complete || !faces[i].naturalWidth) return false;
+    }
+    return true;
+  }
+
+  function focus() {
+    if (!wanted || pinned.matches || still.matches) return;
+    art.classList.add('is-focused');
+  }
+
+  function tryFocus() {
+    if (!wanted) return;
+    var waited = Date.now() - arrivedAt;
+    if (waited >= PATIENCE) { focus(); return; }
+    if (!loaded() || waited < HOLD) {
+      window.setTimeout(tryFocus, Math.max(120, HOLD - waited));
+      return;
+    }
+    focus();
+  }
+
+  function arrive() {
+    if (art.classList.contains('is-arrived')) return;
+    arrivedAt = Date.now();
+    art.classList.add('is-arrived');
+    /* Ask for them now rather than waiting on the lazy heuristic: the whole
+       block is one beat and it should not begin half-decoded. */
+    faces.forEach(function (f) {
+      if (!f.complete) { try { f.loading = 'eager'; } catch (e) {} }
+      if (!f.complete) f.addEventListener('load', tryFocus, { once: true });
+    });
+  }
+
+  /* How much of the block has to be on screen before the second beat. Most of
+     it — but a fixed 0.85 is a threshold a short viewport can never reach, and
+     a threshold that never fires is a beat that never plays. A phone on its
+     side is about 390px tall against a block of 424, so the most it could ever
+     show is nine tenths of it, and any landscape shorter than that would have
+     stranded the crowd on its first state for good. */
+  function focusRatio() {
+    var h = art.offsetHeight || 1;
+    return Math.max(0.35, Math.min(0.85, (window.innerHeight * 0.8) / h));
+  }
 
   function start() {
     if (io || pinned.matches || still.matches) return;
+    var want = focusRatio();
     io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.intersectionRatio >= 0.55) art.classList.add('is-focused');
-        else if (en.intersectionRatio >= 0.12) art.classList.remove('is-focused');
-        if (en.intersectionRatio >= 0.12) art.classList.add('is-arrived');
+        if (en.intersectionRatio >= 0.12) arrive();
+        if (en.intersectionRatio >= want) { wanted = true; tryFocus(); }
+        else if (en.intersectionRatio < 0.12) { wanted = false; art.classList.remove('is-focused'); }
       });
-    }, { threshold: [0, 0.12, 0.55] });
+    }, { threshold: [0, 0.12, want, Math.min(1, want + 0.05), 1] });
     io.observe(art);
   }
+
+  /* Turning the phone changes both numbers the ratio is made of. */
+  var settle;
+  window.addEventListener('resize', function () {
+    window.clearTimeout(settle);
+    settle = window.setTimeout(function () {
+      if (pinned.matches || still.matches) return;
+      var was = art.className;
+      if (io) { io.disconnect(); io = null; }
+      start();
+      art.className = was;
+    }, 200);
+  }, { passive: true });
   function stop() {
     if (io) { io.disconnect(); io = null; }
+    wanted = false;
     art.classList.remove('is-arrived', 'is-focused');
   }
 
-  /* The pinned layout owns the block above 1100px, so this hands it back
-     rather than both of them writing the same classes. */
+  /* The pinned layout owns this block above 1100px, so hand it back rather
+     than have both write the same classes. */
   function sync() { if (pinned.matches || still.matches) stop(); else start(); }
   if (pinned.addEventListener) pinned.addEventListener('change', sync);
   if (still.addEventListener) still.addEventListener('change', sync);
   sync();
 
   /* Nothing stays hidden because an observer never fired. */
-  window.setTimeout(function () {
-    if (!pinned.matches) art.classList.add('is-arrived');
-  }, 5000);
+  window.setTimeout(function () { if (!pinned.matches) arrive(); }, 5000);
 }());

@@ -1537,8 +1537,8 @@ a.tag:hover { border-color: var(--accent); }
   opacity: 0; transform: translateY(6px);
   transition: opacity var(--dur-3) var(--ease-out) 350ms, transform var(--dur-3) var(--ease-out) 350ms;
 }
-.scrolly__kept b { display: block; color: var(--white); font-family: var(--font-display); font-size: 1.15rem; letter-spacing: -0.01em; }
-.scrolly__kept span { display: block; color: #ffd9ec; font-size: 0.9rem; margin-top: 0.25rem; line-height: 1.5; }
+.scrolly__kept b { display: block; color: var(--white); font-family: var(--font-display); font-size: 1.05rem; letter-spacing: -0.01em; line-height: 1.25; }
+.scrolly__kept span { display: block; color: #ffd9ec; font-size: 0.85rem; margin-top: 0.15rem; line-height: 1.45; }
 /* A button, not a QR code. The code is how the figures work in a room; on a
    phone nobody scans the screen they are already holding. The artwork layer
    ignores pointer events so it never sits between the reader and the copy —
@@ -2913,21 +2913,23 @@ html:not(.js-reveal) .dsop-act__in { opacity: 1; transform: none; }
     border-radius: var(--radius-lg);
     background: rgba(28, 3, 16, 0.42);
   }
-  .scrolly__kept .btn { margin-top: var(--sp-4); }
-  /* The card straddles the change of colour rather than stopping dead on it.
-     Its bottom edge landed exactly on the boundary — flush, which reads as the
-     section having been cut off rather than as a card sitting on a ground.
-     A negative bottom margin pulls the next section up under it; positioning
-     lifts it over that section's background, which a later sibling would
-     otherwise paint on top of. 5.5rem is about half the card at phone widths,
-     measured at 178px tall. */
-  .scrolly__art { position: relative; z-index: 1; }
-  .scrolly__kept { margin-bottom: -5.5rem; }
-  /* And the section it hangs into makes room for it. Its 64px of top padding
-     was written for a section that starts at its own edge; half a card now
-     arrives before its heading does, and without this the two met — measured
-     at minus 24px, the card sitting over "31 women, 31 films". */
-  .scrolly + .section { padding-top: calc(4rem + 5.5rem); }
+  /* A compact button inside a card, not a section's call to action. The
+     standard one is sized to be the largest thing in a band of its own; here it
+     is one of three lines in a box under a photograph, and it was setting the
+     height of the whole card.
+     min-height holds the 44px a finger needs, so the padding can come down
+     without the tap target coming with it. */
+  .scrolly__kept .btn {
+    margin-top: var(--sp-3);
+    padding: 0.55rem 1.1rem;
+    min-height: 2.75rem;
+    font-size: 0.85rem;
+  }
+  /* The card sits wholly on the photograph, clear of the change of colour.
+     It was landing flush on the boundary, which reads as the section having
+     been cut off rather than as a card on a ground — so the section gives it
+     room beneath rather than the card hanging into what follows. */
+  .scrolly__art { padding-bottom: var(--sp-6); }
   .js-reveal .scrolly__kept {
     opacity: 0; transform: translateY(8px);
     transition:
