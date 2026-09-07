@@ -935,6 +935,7 @@ function renderExhibition(exhibition, model) {
     }));
   const LABEL = { current: 'Showing now', coming: 'Coming soon', finished: 'Finished' };
   const venueCards = venues.map((v) => `<li class="venue venue--${esc(v.status)}">
+        ${v.image ? `<img class="venue__photo" src="${esc(v.image)}" alt="" role="presentation" loading="lazy" decoding="async" width="640" height="360">` : ''}
         <p class="venue__status"><span class="tag${v.status === 'current' ? ' tag--current' : ''}">${esc(LABEL[v.status] || v.status)}</span></p>
         <h3 class="venue__city">${esc(v.city)}</h3>
         <p class="venue__place">${esc(v.venue)}</p>
@@ -944,36 +945,69 @@ function renderExhibition(exhibition, model) {
   // One shape for every statement on the page: the claim on the left, the
   // charity's own explanation beside it. Repeating it is the point — it is what
   // makes four separate assertions read as one argument.
-  const statement = (block, id) => `<section class="section">
-  <div class="wrap dsop-split">
-    <div class="dsop-split__lead">
-      <p class="eyebrow">${esc(block.eyebrow)}</p>
-      <h2${id ? ` id="${id}"` : ''}>${esc(block.heading)}</h2>
-    </div>
-    <div class="dsop-split__body prose">
-      ${(block.body || []).map((t) => `<p>${esc(t)}</p>`).join('')}
-      ${block.link ? `<p><a class="btn btn--ghost" href="${esc(block.link.url)}">${esc(block.link.text)}</a></p>` : ''}
-    </div>
-  </div>
-</section>`;
+  // The campaign's own presentation: one photograph held still behind the
+  // words while they pass over it, the section's name set down the left edge,
+  // and the lockup in the corner throughout. It is the shape their microsite
+  // already uses, and the reason the page reads as the exhibition rather than
+  // as a page about the exhibition.
+  const acts = [];
+  if (copy && copy.intro) acts.push(Object.assign({ id: 'about' }, copy.intro));
+  if (copy && copy.sections) copy.sections.forEach((b2) => acts.push(b2));
+  if (copy && copy.tour) acts.push(Object.assign({ id: 'tour' }, copy.tour, { isTour: true }));
 
-  const intro = copy && copy.intro ? statement(copy.intro, 'about') : '';
-  const statements = copy && copy.sections ? copy.sections.map((b) => statement(b)).join('\n') : '';
+  // One layer per photograph, stacked and cross-faded. Repeats are dropped so
+  // a background used twice is decoded once.
+  const plates = [];
+  acts.forEach((act) => {
+    if (!act.background) return;
+    if (plates.indexOf(act.background) < 0) plates.push(act.background);
+  });
+  const stage = `<div class="dsop-stage" aria-hidden="true">
+      ${plates.map((src, i) => `<img class="dsop-stage__plate${i === 0 ? ' is-on' : ''}" data-plate="${esc(src)}" src="${esc(src)}" alt="" role="presentation" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`).join('')}
+      <div class="dsop-stage__scrim"></div>
+    </div>`;
 
-  const body = `<section class="hero">
-  <div class="wrap">
-    <p class="hero__eyebrow">A touring exhibition by METUPUK</p>
-    <h1>The Darker <em>Side of Pink</em></h1>
-    <p class="hero__lede">31 transparent figures — one for every woman who dies each day in the UK from metastatic breast cancer. Each figure carries a QR code that plays a film recorded by someone living with the disease.</p>
-    <div class="hero__actions">
-      <a class="btn btn--donate" href="#women">Hear their stories</a>
-      <a class="btn btn--ghost" href="#tour">Where to see it</a>
+  const chrome = `<div class="dsop-chrome">
+      ${copy && copy.art && copy.art.brand ? `<a class="dsop-chrome__brand" href="/"><img src="${esc(copy.art.brand)}" alt="MET UP UK — back to the main site" width="586" height="230"></a>` : ''}
+      <p class="dsop-chrome__rail" id="dsopRail">${acts.length ? esc(acts[0].rail || '') : ''}</p>
+      ${copy && copy.art && copy.art.lockup ? `<div class="dsop-chrome__lockup">
+        <p>${esc(copy.art.lockupAbove || '')}</p>
+        <img src="${esc(copy.art.lockup)}" alt="The Darker Side of Pink" width="420" height="200">
+      </div>` : ''}
+    </div>`;
+
+  const actMarkup = acts.map((act, i) => `<section class="dsop-act" data-act="${i}" data-plate="${esc(act.background || '')}" data-rail="${esc(act.rail || '')}">
+        <div class="dsop-act__in">
+          <p class="dsop-act__eyebrow">${esc(act.eyebrow)}:</p>
+          <h2${act.id ? ` id="${act.id}"` : ''}>${esc(act.heading)}</h2>
+          ${(act.body || []).map((t) => `<p>${esc(t)}</p>`).join('')}
+          ${act.enquiry ? `<p>${esc(act.enquiry)}${act.enquiryLink ? ` <a href="${esc(act.enquiryLink.url)}">${esc(act.enquiryLink.text)}</a>.` : ''}</p>` : ''}
+          ${act.link ? `<p><a class="dsop-act__link" href="${esc(act.link.url)}">${esc(act.link.text)}</a></p>` : ''}
+        </div>
+      </section>`).join('\n      ');
+
+  const narrative = acts.length ? `<div class="dsop">
+    ${stage}
+    ${chrome}
+    <div class="dsop-acts">
+      ${actMarkup}
     </div>
+  </div>` : '';
+
+  const body = `<section class="dsop-open">
+  ${copy && copy.art && copy.art.opening ? `<img class="dsop-open__bg" src="${esc(copy.art.opening)}" alt="" role="presentation" fetchpriority="high" decoding="async">` : ''}
+  <div class="dsop-open__in">
+    <p class="dsop-open__above">${copy && copy.art ? esc(copy.art.lockupAbove || '') : ''}</p>
+    <h1 class="dsop-open__title">
+      ${copy && copy.art && copy.art.lockup
+        ? `<img src="${esc(copy.art.lockup)}" alt="The Darker Side of Pink" width="700" height="330">`
+        : 'The Darker Side of Pink'}
+    </h1>
+    <p class="dsop-open__lede">A touring exhibition by METUPUK</p>
   </div>
 </section>
 
-${intro}
-${statements}
+${narrative}
 
 <section class="section section--sunken">
   <div class="wrap">
@@ -986,18 +1020,8 @@ ${statements}
   </div>
 </section>
 
-<section class="section">
+<section class="section" aria-labelledby="tour">
   <div class="wrap">
-    <div class="dsop-split">
-      <div class="dsop-split__lead">
-        <p class="eyebrow">${copy && copy.tour ? esc(copy.tour.eyebrow) : 'Spreading awareness throughout the UK'}</p>
-        <h2 id="tour">${copy && copy.tour ? esc(copy.tour.heading) : 'Where can I see the figures?'}</h2>
-      </div>
-      <div class="dsop-split__body prose">
-        ${copy && copy.tour ? (copy.tour.body || []).map((t) => `<p>${esc(t)}</p>`).join('') : ''}
-        ${copy && copy.tour && copy.tour.enquiry ? `<p>${esc(copy.tour.enquiry)}${copy.tour.enquiryLink ? ` <a href="${esc(copy.tour.enquiryLink.url)}">${esc(copy.tour.enquiryLink.text)}</a>.` : ''}</p>` : ''}
-      </div>
-    </div>
     <ul class="venues">
       ${venueCards}
     </ul>

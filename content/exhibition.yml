@@ -8,7 +8,22 @@
 # Two obvious spelling slips in the source are corrected: "awarentess" and
 # "Cental Library". Nothing else is reworded.
 
+# The exhibition's own artwork, taken from their microsite. The lockup and the
+# three photographs are what make this page read as the campaign rather than as
+# a page about the campaign.
+art:
+  opening: "/media/dsop/bg.jpg"
+  lockup: "/media/dsop/footer-logo.png"   # the campaign wordmark, 586x230
+  # The wordmark artwork already carries "Metastatic Breast Cancer" across its
+  # top, so nothing is set above it on the opening screen.
+  lockupAbove: ""
+  brand: "/media/dsop/logo.svg"           # the MET UP UK ribbon, 139x150
+  footnote: "Help us create change"
+  footnoteLink: "metupuk.org.uk"
+
 intro:
+  rail: "About The Darker Side of Pink"
+  background: "/media/dsop/bg.jpg"
   eyebrow: "Fact"
   heading: "Every day, 31 women lose their lives to metastatic breast cancer."
   body:
@@ -16,7 +31,9 @@ intro:
     - "It features 31 transparent figures – one for each woman who dies every day from Metastatic or secondary breast cancer – each with an individual QR code that plays a video from breast cancer patients who have lived and living with this death sentence."
 
 sections:
-  - eyebrow: "Our mission"
+  - rail: "About MET UP UK"
+    background: "/media/dsop/bg-mission.jpg"
+    eyebrow: "Our mission"
     heading: "Campaigning for awareness, and to push policy to change for the better."
     body:
       - "METUPUK is the ONLY patient advocacy group in the UK. It is a self funded charity focusing on Metastatic Breast Cancer. MBC is the somewhat invisible side of cancer, especially as it is the biggest killer of women under the age of fifty here in the UK."
@@ -26,7 +43,9 @@ sections:
       text: "Find out more"
       url: "/about-us/"
 
-  - eyebrow: "Raise awareness of MBC"
+  - rail: "About MET UP UK"
+    background: "/media/dsop/bg-awareness.jpg"
+    eyebrow: "Raise awareness of MBC"
     heading: "Campaigning for awareness, equal priority for funding, research and innovation."
     body:
       - "Give metastatic (secondary) breast cancer patients a chance to live and don’t write us off. We can be #BusyLivingWithMets, even those on The Darker Side of Pink."
@@ -36,6 +55,8 @@ sections:
       url: "/help-us/"
 
 tour:
+  rail: "Venues"
+  background: "/media/dsop/bg.jpg"
   eyebrow: "Spreading awareness throughout the UK"
   heading: "To help push policy to change for the better."
   body:
@@ -46,26 +67,28 @@ tour:
     url: "/help-us/"
 
 # status: current | coming | finished
+# image: the charity's own photograph of that venue, taken from their
+# microsite and matched venue by venue rather than guessed from the filename.
 venues:
-  - { status: current,  city: "Liverpool",       venue: "Liverpool Central Library",           dates: "17 Nov 2025 – 12 Dec 2025" }
-  - { status: coming,   city: "More locations coming 2026", venue: "Watch this space",         dates: "To be announced" }
-  - { status: finished, city: "Newcastle",       venue: "Newcastle City Library",              dates: "30 Sep 2025 – 16 Nov 2025" }
-  - { status: finished, city: "Oxford",          venue: "Westgate Library",                    dates: "3 Mar 2025 – 31 Mar 2025" }
-  - { status: finished, city: "Reading",         venue: "University of Reading Library",       dates: "14 Feb 2025 – 3 Mar 2025" }
-  - { status: finished, city: "Brighton",        venue: "Jubilee Library",                     dates: "9 Dec 2024 – 5 Jan 2025" }
-  - { status: finished, city: "Northallerton",   venue: "Centres for Digital Innovation",      dates: "17 May 2024 – 2 Aug 2024" }
-  - { status: finished, city: "London",          venue: "Business Design Centre",              dates: "19 Jul 2023 – 31 Aug 2023" }
-  - { status: finished, city: "Rochester",       venue: "Rochester Cathedral",                 dates: "4 May 2023 – 10 Jul 2023" }
-  - { status: finished, city: "London",          venue: "Palace of Westminster (UK Parliament)", dates: "24 Mar 2023 – 31 Mar 2023" }
-  - { status: finished, city: "Hull",            venue: "St Stephens & Hull Truck Theatre",    dates: "3 Mar 2023 – 23 Mar 2023" }
-  - { status: finished, city: "Halifax",         venue: "Central Library",                     dates: "6 Feb 2023 – 2 Mar 2023" }
-  - { status: finished, city: "Edinburgh",       venue: "Gyle Shopping Centre",                dates: "4 Jan 2023 – 5 Feb 2023" }
-  - { status: finished, city: "Glasgow",         venue: "Mitchell Library",                    dates: "26 Nov 2022 – 4 Jan 2023" }
-  - { status: finished, city: "Tunbridge Wells", venue: "The Amelia",                          dates: "21 Oct 2022 – 25 Nov 2022" }
-  - { status: finished, city: "Cambridge",       venue: "Grand Arcade",                        dates: "7 Oct 2022 – 21 Oct 2022" }
-  - { status: finished, city: "Peterborough",    venue: "Queensgate Centre",                   dates: "5 Sep 2022 – 6 Oct 2022" }
-  - { status: finished, city: "Doncaster",       venue: "Danum Art Gallery",                   dates: "1 Aug 2022 – 2 Sep 2022" }
-  - { status: finished, city: "Manchester",      venue: "Central Library",                     dates: "18 Jun 2022 – 1 Aug 2022" }
-  - { status: finished, city: "Sheffield",       venue: "Winter Gardens",                      dates: "8 Jun 2022 – 17 Jun 2022" }
-  - { status: finished, city: "Manchester",      venue: "The Corn Exchange",                   dates: "15 Oct 2021 – 19 May 2022" }
-  - { status: finished, city: "Manchester",      venue: "Bonded Warehouse",                    dates: "10 Oct 2021 – 15 Oct 2021" }
+  - { status: current,  city: "Liverpool",       venue: "Liverpool Central Library",           dates: "17 Nov 2025 – 12 Dec 2025", image: "/media/dsop/venue-liverpool.jpg" }
+  - { status: coming,   city: "More locations coming 2026", venue: "Watch this space",         dates: "To be announced", image: "/media/dsop/venue-2.jpg" }
+  - { status: finished, city: "Newcastle",       venue: "Newcastle City Library",              dates: "30 Sep 2025 – 16 Nov 2025", image: "/media/dsop/venue-newcastle.jpg" }
+  - { status: finished, city: "Oxford",          venue: "Westgate Library",                    dates: "3 Mar 2025 – 31 Mar 2025", image: "/media/dsop/venue-oxford.jpg" }
+  - { status: finished, city: "Reading",         venue: "University of Reading Library",       dates: "14 Feb 2025 – 3 Mar 2025", image: "/media/dsop/venue-reading.jpg" }
+  - { status: finished, city: "Brighton",        venue: "Jubilee Library",                     dates: "9 Dec 2024 – 5 Jan 2025", image: "/media/dsop/venue-brighton.jpg" }
+  - { status: finished, city: "Northallerton",   venue: "Centres for Digital Innovation",      dates: "17 May 2024 – 2 Aug 2024", image: "/media/dsop/venue-allerton.jpg" }
+  - { status: finished, city: "London",          venue: "Business Design Centre",              dates: "19 Jul 2023 – 31 Aug 2023", image: "/media/dsop/venue-bdc.jpg" }
+  - { status: finished, city: "Rochester",       venue: "Rochester Cathedral",                 dates: "4 May 2023 – 10 Jul 2023", image: "/media/dsop/venue-rochester.jpg" }
+  - { status: finished, city: "London",          venue: "Palace of Westminster (UK Parliament)", dates: "24 Mar 2023 – 31 Mar 2023", image: "/media/dsop/venue-hop.jpg" }
+  - { status: finished, city: "Hull",            venue: "St Stephens & Hull Truck Theatre",    dates: "3 Mar 2023 – 23 Mar 2023", image: "/media/dsop/venue-hull.jpg" }
+  - { status: finished, city: "Halifax",         venue: "Central Library",                     dates: "6 Feb 2023 – 2 Mar 2023", image: "/media/dsop/venue-halifax.jpg" }
+  - { status: finished, city: "Edinburgh",       venue: "Gyle Shopping Centre",                dates: "4 Jan 2023 – 5 Feb 2023", image: "/media/dsop/venue-edinburgh.jpg" }
+  - { status: finished, city: "Glasgow",         venue: "Mitchell Library",                    dates: "26 Nov 2022 – 4 Jan 2023", image: "/media/dsop/venue-7.jpg" }
+  - { status: finished, city: "Tunbridge Wells", venue: "The Amelia",                          dates: "21 Oct 2022 – 25 Nov 2022", image: "/media/dsop/venue-6a.jpg" }
+  - { status: finished, city: "Cambridge",       venue: "Grand Arcade",                        dates: "7 Oct 2022 – 21 Oct 2022", image: "/media/dsop/venue-6.jpg" }
+  - { status: finished, city: "Peterborough",    venue: "Queensgate Centre",                   dates: "5 Sep 2022 – 6 Oct 2022", image: "/media/dsop/venue-5.jpg" }
+  - { status: finished, city: "Doncaster",       venue: "Danum Art Gallery",                   dates: "1 Aug 2022 – 2 Sep 2022", image: "/media/dsop/venue-doncaster.jpg" }
+  - { status: finished, city: "Manchester",      venue: "Central Library",                     dates: "18 Jun 2022 – 1 Aug 2022", image: "/media/dsop/venue-4.jpg" }
+  - { status: finished, city: "Sheffield",       venue: "Winter Gardens",                      dates: "8 Jun 2022 – 17 Jun 2022", image: "/media/dsop/venue-3.jpg" }
+  - { status: finished, city: "Manchester",      venue: "The Corn Exchange",                   dates: "15 Oct 2021 – 19 May 2022", image: "/media/dsop/venue-2.jpg" }
+  - { status: finished, city: "Manchester",      venue: "Bonded Warehouse",                    dates: "10 Oct 2021 – 15 Oct 2021", image: "/media/dsop/venue-1.jpg" }

@@ -692,7 +692,12 @@
       // arrives. Discounting the bottom quarter of the viewport moves where
       // intersection begins, which is a real transition — it fires the
       // moment the reader actually reaches the number.
-      }, { threshold: 0.6, rootMargin: '0px 0px -25% 0px' }).observe(counter);
+      // Fires a little earlier than it did (0.6 / -25%). The card is hidden
+      // until this runs, so the old gate had it arriving when it was already
+      // most of the way up the screen — the motion finished somewhere the eye
+      // had stopped watching, which reads as the card appearing rather than
+      // travelling. Still far enough in that you have genuinely scrolled to it.
+      }, { threshold: 0.4, rootMargin: '0px 0px -18% 0px' }).observe(counter);
     }
   }
 
@@ -876,3 +881,52 @@
     pending = setTimeout(layout, 150);
   });
 })();
+
+/* --- The Darker Side of Pink -----------------------------------------------
+   Swaps the photograph behind the words, and the label down the edge, as each
+   act is reached. No scroll handler: an observer fires when an act is across
+   the middle of the screen, which is when somebody is reading it rather than
+   when its top edge has appeared. */
+(function () {
+  'use strict';
+  var dsop = document.querySelector('.dsop');
+  if (!dsop) return;
+  var acts = [].slice.call(dsop.querySelectorAll('.dsop-act'));
+  var plates = [].slice.call(dsop.querySelectorAll('.dsop-stage__plate'));
+  var rail = document.getElementById('dsopRail');
+  if (!acts.length) return;
+
+  function show(act) {
+    var want = act.getAttribute('data-plate');
+    if (want) {
+      plates.forEach(function (p) {
+        p.classList.toggle('is-on', p.getAttribute('data-plate') === want);
+      });
+    }
+    if (rail) {
+      var label = act.getAttribute('data-rail') || '';
+      if (label && rail.textContent !== label) rail.textContent = label;
+    }
+    act.classList.add('is-here');
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    acts.forEach(function (a) { a.classList.add('is-here'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) show(en.target); });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+  acts.forEach(function (a) { io.observe(a); });
+
+  /* Whatever is on screen at load has already arrived. */
+  requestAnimationFrame(function () {
+    acts.forEach(function (a) {
+      if (a.getBoundingClientRect().top < window.innerHeight * 0.9) a.classList.add('is-here');
+    });
+  });
+  /* Nothing stays hidden because an observer never fired. */
+  window.setTimeout(function () {
+    acts.forEach(function (a) { a.classList.add('is-here'); });
+  }, 5000);
+}());

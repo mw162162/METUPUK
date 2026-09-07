@@ -482,7 +482,15 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
    The gate is js-stat-reveal, added by site.js only when it is definitely
    going to run — no script, no IntersectionObserver, or reduced motion, and
    the card never hides in the first place. */
-.js-stat-reveal .hero__stat { opacity: 0; transform: translateY(18px); }
+.js-stat-reveal .hero__stat {
+  opacity: 0;
+  /* Further to travel, and a touch back in space, so the card approaches
+     rather than blinks. A small blur goes with it: the eye reads a soft edge
+     resolving as movement and a hard edge appearing as a cut, which is most of
+     the difference between this gliding and snapping. */
+  transform: translateY(34px) scale(0.985);
+  filter: blur(5px);
+}
 /* The transition lives on the revealed state, not the hidden one. On the
    hidden rule it also animates the hiding — the card fades *out* over half a
    second the moment the gate class lands, which is both a visible blink and,
@@ -490,9 +498,26 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
 .js-stat-reveal .hero__stat.is-revealed {
   opacity: 1;
   transform: none;
+  filter: none;
+  /* 900ms on an ease-out cubic, not 560 on --ease-out.
+     --ease-out is cubic-bezier(.23, 1, .32, 1): it covers most of the distance
+     in the first third and then crawls. That is right for a tooltip, where the
+     job is to feel instant, and wrong for a card the size of this one — the
+     eye sees the jump, not the settle, and reads it as abrupt however long the
+     duration says it is. A cubic spreads the travel evenly.
+     Longer than the 300ms ceiling for interface motion, deliberately: this is
+     seen once per visit and it is the page's one emotional beat. */
   transition:
-    opacity var(--dur-4) var(--ease-out),
-    transform var(--dur-4) var(--ease-out);
+    opacity 900ms cubic-bezier(0.33, 1, 0.68, 1),
+    transform 900ms cubic-bezier(0.33, 1, 0.68, 1),
+    filter 620ms cubic-bezier(0.33, 1, 0.68, 1);
+}
+/* The rule across the top draws with the card, not a quarter-second after the
+   page loads. It was doing both: the card waited to be scrolled to, its rule
+   did not, so what arrived was a finished object rather than one assembling. */
+.js-stat-reveal .hero__stat::before { animation: none; transform: scaleX(0); }
+.js-stat-reveal .hero__stat.is-revealed::before {
+  animation: rule-draw var(--dur-5) var(--ease) both 260ms;
 }
 
 .hero__stat.is-counting .hero__stat-label,
@@ -507,6 +532,11 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
    page has been open a while — the block simply sits in its settled state,
    which is the emphatic one and the one most visitors will see. */
 @media (prefers-reduced-motion: reduce) {
+  .js-stat-reveal .hero__stat,
+  .js-stat-reveal .hero__stat.is-revealed {
+    opacity: 1; transform: none; filter: none; transition: none;
+  }
+  .js-stat-reveal .hero__stat.is-revealed::before { animation: none; transform: none; }
   .hero__stat-number.is-counting,
   .hero__stat-number.is-landed,
   .hero__stat.is-counting .hero__stat-label,
@@ -1754,6 +1784,184 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: no-preference) {
   .venue { transition: opacity var(--dur-2) var(--ease); }
 }
+/* The opening screen: the photograph, the lockup, nothing else. It is the
+   first thing their own microsite shows, and it does the work the plum hero
+   was doing twice over — that hero set the title in type directly above a
+   lockup that says the same words in the campaign's own lettering. */
+.dsop-open {
+  position: relative; isolation: isolate;
+  min-height: 78vh; min-height: 78svh;
+  display: grid; place-items: center;
+  padding: clamp(5rem, 12vh, 8rem) clamp(1.25rem, 5vw, 3rem);
+  background: var(--plum-950, #1c0310);
+  overflow: hidden;
+  text-align: center; color: #fff;
+}
+/* Layered upward from zero, not down past it. `isolation: isolate` on the
+   section makes it a stacking context, and a child at a negative z-index inside
+   one paints behind that element's own background — so the photograph was
+   there, decoded and correct, hidden under the plum it was meant to replace. */
+.dsop-open__bg {
+  position: absolute; inset: 0; z-index: 0;
+  width: 100%; height: 100%; object-fit: cover;
+}
+.dsop-open::after {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  /* Enough to hold white lettering, not so much that the room behind it is
+     lost. The photograph is the exhibition; it should be legible as one. */
+  background: linear-gradient(180deg, rgb(28 3 16 / 0.44), rgb(28 3 16 / 0.24) 45%, rgb(28 3 16 / 0.6));
+}
+.dsop-open__in { position: relative; z-index: 2; max-width: 46rem; }
+.dsop-open__above {
+  margin: 0 0 clamp(0.75rem, 2vh, 1.25rem);
+  font-size: clamp(1rem, 0.9rem + 0.6vw, 1.5rem);
+  letter-spacing: 0.01em;
+}
+.dsop-open__title { margin: 0; }
+.dsop-open__title img {
+  display: block; width: min(100%, 34rem); height: auto; margin-inline: auto;
+}
+.dsop-open__lede {
+  margin: clamp(1.25rem, 3vh, 2rem) 0 0;
+  font-size: var(--step--1); letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgb(255 255 255 / 0.82);
+}
+
+/* --- The Darker Side of Pink, as the campaign presents it ----------------- */
+
+/* One photograph held still while the words pass over it, the section's name
+   set down the left edge, the lockup in the corner throughout.
+
+   position: sticky, not background-attachment: fixed. Fixed backgrounds are
+   ignored on iOS — the picture jumps a viewport at a time instead of holding —
+   and this is the one effect on the page that has to work on a phone. */
+.dsop { position: relative; }
+.dsop-stage {
+  position: sticky; top: 0; z-index: 0;
+  height: 100vh; height: 100svh;
+  overflow: hidden;
+  background: var(--plum-950, #1c0310);
+}
+.dsop-stage__plate {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--dur-5) var(--ease-soft);
+}
+.dsop-stage__plate.is-on { opacity: 1; }
+/* The words sit on a photograph, so the photograph gives way rather than the
+   type growing a shadow. Heavier at the left, where the column of text is. */
+.dsop-stage__scrim {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(100deg, rgb(28 3 16 / 0.86) 0%, rgb(28 3 16 / 0.66) 45%, rgb(28 3 16 / 0.42) 100%),
+    linear-gradient(180deg, rgb(28 3 16 / 0.5), rgb(28 3 16 / 0) 30%);
+}
+
+/* Chrome that belongs to the exhibition, not to the site around it. */
+.dsop-chrome {
+  position: sticky; top: 0; z-index: 2;
+  height: 0;
+  pointer-events: none;
+  color: #fff;
+}
+.dsop-chrome > * { pointer-events: auto; }
+.dsop-chrome__brand {
+  position: absolute; top: 0; left: clamp(0.75rem, 3vw, 2rem);
+  display: block; width: clamp(64px, 7vw, 104px);
+  background: #fff; padding: 0.35rem;
+}
+.dsop-chrome__brand img { display: block; width: 100%; height: auto; }
+/* The section's name, set down the edge. Rotated rather than wrapped: it is a
+   label on the page, not a line of reading. */
+.dsop-chrome__rail {
+  position: absolute; top: clamp(9rem, 20vh, 14rem); left: clamp(0.75rem, 3vw, 2rem);
+  margin: 0;
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  font-family: var(--font-display); font-weight: 800;
+  font-size: var(--step--1); letter-spacing: 0.16em; text-transform: uppercase;
+  white-space: nowrap;
+  text-shadow: 0 1px 12px rgb(28 3 16 / 0.7);
+}
+.dsop-chrome__lockup {
+  position: absolute; right: clamp(0.75rem, 3vw, 2rem); bottom: clamp(1rem, 4vh, 2.5rem);
+  width: clamp(160px, 26vw, 340px);
+  text-align: right;
+}
+.dsop-chrome__lockup p {
+  margin: 0 0 0.4rem;
+  font-size: var(--step--1); letter-spacing: 0.01em;
+  text-shadow: 0 1px 12px rgb(28 3 16 / 0.7);
+}
+.dsop-chrome__lockup img { display: block; width: 100%; height: auto; }
+
+/* The acts ride over the stage, one screen at a time. */
+.dsop-acts {
+  position: relative; z-index: 1;
+  margin-top: -100vh; margin-top: -100svh;
+}
+.dsop-act {
+  min-height: 100vh; min-height: 100svh;
+  display: grid; align-content: center;
+  padding: clamp(6rem, 14vh, 9rem) clamp(1.25rem, 5vw, 3rem) clamp(5rem, 12vh, 8rem);
+  padding-left: clamp(3.25rem, 9vw, 7rem);
+  color: #fff;
+}
+.dsop-act__in { max-width: 46rem; }
+.dsop-act__eyebrow {
+  margin: 0 0 var(--sp-3);
+  /* Gold, once, on the label only. It is the campaign's own accent and it earns
+     its place by never appearing anywhere else on the page. */
+  color: #f0b429;
+  font-family: var(--font-display); font-weight: 800;
+  font-size: var(--step-0); letter-spacing: 0.06em; text-transform: uppercase;
+}
+.dsop-act h2 {
+  margin: 0 0 var(--sp-5);
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(1.9rem, 1.1rem + 3.2vw, 3.4rem);
+  line-height: 1.06; letter-spacing: -0.015em; text-transform: uppercase;
+}
+.dsop-act p:not(.dsop-act__eyebrow) {
+  margin: 0 0 var(--sp-4);
+  font-size: clamp(1.05rem, 0.98rem + 0.4vw, 1.35rem);
+  line-height: 1.55;
+  max-width: 40ch;
+}
+.dsop-act a { color: #fff; }
+.dsop-act__link {
+  display: inline-block; margin-top: var(--sp-2);
+  padding: 0.7rem 1.4rem;
+  border: 1px solid rgb(255 255 255 / 0.55); border-radius: 999px;
+  font-weight: 700; text-decoration: none;
+  transition: background-color var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
+}
+.dsop-act__link:hover { background: rgb(255 255 255 / 0.14); border-color: #fff; }
+
+/* Each act arrives as it is reached. Opacity and transform only. */
+.js-reveal .dsop-act__in {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity var(--dur-4) var(--ease-out), transform var(--dur-4) var(--ease-out);
+}
+.js-reveal .dsop-act.is-here .dsop-act__in { opacity: 1; transform: none; }
+
+/* A venue is a place, so it gets its picture. */
+.venue__photo {
+  display: block; width: calc(100% + 2 * var(--sp-4));
+  margin: calc(-1 * var(--sp-4)) calc(-1 * var(--sp-4)) var(--sp-4);
+  aspect-ratio: 16 / 9; object-fit: cover;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dsop-stage__plate { transition: none; }
+  .js-reveal .dsop-act__in { opacity: 1; transform: none; transition: none; }
+  .dsop-act__link { transition: none; }
+}
+
+/* No script: every act is simply there, on the first photograph. */
+html:not(.js-reveal) .dsop-act__in { opacity: 1; transform: none; }
+
 /* --- Pagination + prev/next ---------------------------------------------- */
 .pagination { display: flex; flex-wrap: wrap; gap: var(--sp-2); justify-content: center; align-items: center; margin-top: var(--sp-7); }
 .pagination a, .pagination span {
