@@ -1673,6 +1673,48 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
 }
 .toc .is-sub a { padding-left: var(--sp-5); font-size: 0.85rem; }
 @media (max-width: 1023px) { .toc { display: none; } }
+/* --- The Darker Side of Pink -------------------------------------------- */
+
+/* A statement beside its explanation, rather than both stacked inside a
+   reading measure. The measure is right for an article and wrong for the
+   opening of an exhibition page: it left a third of the window empty on either
+   side of a heading that wants to be the largest thing on the screen. */
+.dsop-split { display: grid; gap: var(--sp-6); }
+@media (min-width: 60em) {
+  .dsop-split {
+    /* minmax(0, …) on both, so a long venue name or an unbroken URL cannot
+       push a column wider than its share. */
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: var(--sp-7);
+    align-items: start;
+  }
+  /* The statement stays with the reader while the explanation scrolls. */
+  .dsop-split__lead { position: sticky; top: calc(var(--header-h) + var(--sp-5)); }
+}
+.dsop-split__lead h2 {
+  font-size: var(--step-3); line-height: 1.08; letter-spacing: -0.02em;
+  margin-top: var(--sp-3);
+  max-width: 18ch;
+}
+.dsop-split__body > * + * { margin-top: var(--sp-4); }
+
+/* Thirty-one films, laid out as thirty-one films. As a single column at the
+   prose measure this ran to roughly eighteen thousand pixels of page with the
+   window two-thirds empty either side of it. */
+.film-grid {
+  list-style: none; padding: 0;
+  margin-top: var(--sp-6);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
+  gap: var(--sp-6) var(--sp-5);
+}
+.film { margin: 0; min-width: 0; }
+.film .c-embed { margin: 0; }
+.film__name {
+  font-size: var(--step-0); font-weight: 700;
+  margin: var(--sp-3) 0 0;
+}
+.film__story { margin: var(--sp-1) 0 0; font-size: var(--step--1); }
 /* --- Pagination + prev/next ---------------------------------------------- */
 .pagination { display: flex; flex-wrap: wrap; gap: var(--sp-2); justify-content: center; align-items: center; margin-top: var(--sp-7); }
 .pagination a, .pagination span {

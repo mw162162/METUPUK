@@ -897,13 +897,17 @@ function renderExhibition(exhibition, model) {
       </li>`;
   }).join('\n      ');
 
-  const films = exhibition.portraits.map((p) => `<section id="film-${p.slug}" style="margin-top:var(--sp-7)">
-      <h3>${esc(p.name)}</h3>
-      <div class="c-embed" style="margin-top:var(--sp-4)">
-        <iframe src="${esc(p.video)}" title="${esc(p.name)} — The Darker Side of Pink" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      ${storyByName.get(norm(p.name)) ? `<p style="margin-top:var(--sp-3)"><a href="${storyByName.get(norm(p.name)).url}">Read ${esc(p.name.split(' ')[0])}’s full story →</a></p>` : ''}
-    </section>`).join('\n    ');
+  // A grid, not a stack. Thirty-one embeds in a single reading-width column
+  // ran to eighteen thousand pixels with a third of the window empty either
+  // side. The films are the least text-like thing on the page, and they were
+  // the one block held to a measure meant for prose.
+  const films = exhibition.portraits.map((p) => `<li class="film" id="film-${p.slug}">
+        <div class="c-embed">
+          <iframe src="${esc(p.video)}" title="${esc(p.name)} — The Darker Side of Pink" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <h3 class="film__name">${esc(p.name)}</h3>
+        ${storyByName.get(norm(p.name)) ? `<p class="film__story"><a href="${storyByName.get(norm(p.name)).url}">Read ${esc(p.name.split(' ')[0])}’s full story →</a></p>` : ''}
+      </li>`).join('\n      ');
 
   const tourRows = exhibition.tour.map((t) => {
     const dates = (t.dates || '').split(/Click here/i)[0].replace(/\b(20\d\d\s*)+$/, '').trim();
@@ -930,12 +934,16 @@ function renderExhibition(exhibition, model) {
 </section>
 
 <section class="section">
-  <div class="wrap wrap--narrow prose">
-    <h2 id="about">About the exhibition</h2>
-    <p><strong>Every day, 31 women lose their lives to metastatic breast cancer.</strong></p>
-    <p>‘The Darker Side of Pink’ is a physical, interactive, mobile experience that creates awareness of metastatic breast cancer — the biggest cancer killer of women under the age of 50 in the UK.</p>
-    <p>It features 31 transparent figures – one for each woman who dies every day from metastatic or secondary breast cancer – each with an individual QR code that plays a video from breast cancer patients who have lived and are living with this diagnosis.</p>
-    <p>The figures are displayed in locations around the UK, from galleries to public libraries and shopping centres, to help promote the issues affecting those with secondary and/or metastatic breast cancer.</p>
+  <div class="wrap dsop-split">
+    <div class="dsop-split__lead">
+      <p class="eyebrow">Fact</p>
+      <h2 id="about">Every day, 31 women lose their lives to metastatic breast cancer.</h2>
+    </div>
+    <div class="dsop-split__body prose">
+      <p>‘The Darker Side of Pink’ is a physical, interactive, mobile experience that creates awareness of metastatic breast cancer — the biggest cancer killer of women under the age of 50 in the UK.</p>
+      <p>It features 31 transparent figures – one for each woman who dies every day from metastatic or secondary breast cancer – each with an individual QR code that plays a video from breast cancer patients who have lived and are living with this diagnosis.</p>
+      <p>The figures are displayed in locations around the UK, from galleries to public libraries and shopping centres, to help promote the issues affecting those with secondary and/or metastatic breast cancer.</p>
+    </div>
   </div>
 </section>
 
@@ -966,9 +974,11 @@ function renderExhibition(exhibition, model) {
 </section>
 
 <section class="section section--sunken">
-  <div class="wrap wrap--narrow">
+  <div class="wrap">
     <h2 id="films">All 31 films</h2>
-    ${films}
+    <ul class="film-grid">
+      ${films}
+    </ul>
   </div>
 </section>
 
