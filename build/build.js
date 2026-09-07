@@ -1195,6 +1195,11 @@ function run() {
     `User-agent: *\nAllow: /\n\nSitemap: ${T.SITE_URL}/sitemap.xml\n`);
 
   // Static assets
+  // Cleared first. The fingerprinted names accumulate: every build leaves the
+  // previous one's hashed stylesheet behind and nothing removes it, so the
+  // directory grows a copy per deploy and all of them get uploaded. Nothing
+  // links them, they just sit there — 2.6 MB of dead stylesheets at last count.
+  fs.rmSync(path.join(OUT, 'assets'), { recursive: true, force: true });
   const assetCount = copyDir(path.join(ROOT, 'src', 'assets'), path.join(OUT, 'assets'));
   // Host config (_redirects, _headers) copied to the root of the deploy.
   copyDir(path.join(ROOT, 'src', 'static'), OUT);
