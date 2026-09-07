@@ -968,7 +968,6 @@ function renderExhibition(exhibition, model) {
     </div>`;
 
   const chrome = `<div class="dsop-chrome">
-      ${copy && copy.art && copy.art.brand ? `<a class="dsop-chrome__brand" href="/"><img src="${esc(copy.art.brand)}" alt="MET UP UK — back to the main site" width="586" height="230"></a>` : ''}
       ${copy && copy.art && copy.art.lockup ? `<div class="dsop-chrome__lockup">
         <p>${esc(copy.art.lockupAbove || '')}</p>
         <img src="${esc(copy.art.lockup)}" alt="The Darker Side of Pink" width="420" height="200">

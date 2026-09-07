@@ -1882,12 +1882,10 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
   color: #fff;
 }
 .dsop-chrome > * { pointer-events: auto; }
-.dsop-chrome__brand {
-  position: absolute; top: 0; left: clamp(0.75rem, 3vw, 2rem);
-  display: block; width: clamp(64px, 7vw, 104px);
-  background: #fff; padding: 0.35rem;
-}
-.dsop-chrome__brand img { display: block; width: 100%; height: auto; }
+/* No ribbon in the corner. It sat at the top-left of the sticky chrome, so
+   any act whose text reached the top of the window ran underneath it — and it
+   was saying what the site header two inches above already says. The campaign
+   wordmark stays: that one is not a repeat of anything. */
 /* The section's name lives in the section, as a column of it.
    It used to be one label in the shared chrome, swapped by script as each act
    arrived, and both of its faults came from that: it was absolutely positioned
