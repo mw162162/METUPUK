@@ -31,7 +31,8 @@
     "webp": "node build/to-webp.js",
     "prune": "node build/prune-originals.js",
     "deploy:cf": "node build/build.js && node build/to-webp.js && node build/verify.js && npx tinacms build --skip-cloud-checks && node build/prune-originals.js && node build/check-layout.js && npx --yes wrangler pages deploy dist --project-name=metupuk --branch=main",
-    "check:layout": "node build/check-layout.js"
+    "check:layout": "node build/check-layout.js",
+    "brand": "node build/brand-from-url.js"
   },
   "dependencies": {
     "js-yaml": "^5.4.1",

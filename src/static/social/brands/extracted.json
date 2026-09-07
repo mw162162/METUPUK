@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "id": "extracted",
+  "name": "METUPUK",
+  "site": "metupuk.pages.dev",
+  "drafted": "2026-09-07",
+  "draftedFrom": "https://metupuk.pages.dev",
+  "type": {
+    "display": "\"Archivo\",Georgia,serif",
+    "body": "\"Inter\",-apple-system,\"Segoe UI\",sans-serif",
+    "preload": [
+      "900 100px Archivo",
+      "700 60px Archivo",
+      "600 30px Inter",
+      "400 40px Inter"
+    ],
+    "webfonts": "https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
+  },
+  "colour": {
+    "figure": "#ff6fb5",
+    "rule": "#b52b65",
+    "heading": "#ffffff",
+    "soft": "#fbf8f9",
+    "tag": "#ff6fb5",
+    "chip": "#b52b65",
+    "signature": "#ffffff"
+  },
+  "grounds": [
+    {
+      "key": "dark",
+      "label": "Dark",
+      "from": "#1c0310",
+      "to": "#2b0519"
+    },
+    {
+      "key": "accent",
+      "label": "Accent",
+      "from": "#b52b65",
+      "to": "#1c0310"
+    }
+  ],
+  "mark": {
+    "image": "https://metupuk.org.uk/brand/metupuk-logo.png",
+    "wordmark": "METUPUK"
+  },
+  "duotone": "grayscale(1) contrast(1.05) sepia(1) hue-rotate(320deg) saturate(1.4) brightness(0.95)",
+  "tags": [
+    "#DarkerPink",
+    "#BusyLivingWithMets",
+    "#TrodelvyNow",
+    "#donate"
+  ],
+  "libraries": {},
+  "templates": [
+    {
+      "key": "figure",
+      "label": "The figure",
+      "defaults": {
+        "number": "100",
+        "headline": "change this to the sentence that matters",
+        "note": ""
+      }
+    },
+    {
+      "key": "quote",
+      "label": "Quote",
+      "defaults": {
+        "quote": "Change this to something somebody said.",
+        "who": "METUPUK"
+      }
+    }
+  ]
+}
