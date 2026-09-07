@@ -92,7 +92,18 @@ async function main() {
       }
 
       try {
-        const buf = await sharp(file).webp({ quality: QUALITY }).toBuffer();
+        // Faces get more of the budget than scenery does.
+        //
+        // At 82 a 645x860 portrait came out at 19KB — about three hundredths
+        // of a bit per pixel, which is where skin and hair stop being detail
+        // and start being blotches. That is an acceptable trade for a photo of
+        // a room and a bad one for a photograph of a person, and on this site
+        // it is a specifically bad one: the argument the whole campaign makes
+        // is that every mark is somebody, and these are their faces.
+        const isFace = /dsop-portraits/.test(file);
+        const buf = await sharp(file)
+          .webp({ quality: isFace ? 92 : QUALITY, effort: isFace ? 6 : 4 })
+          .toBuffer();
 
         // A conversion that is not smaller is not an improvement. Some
         // already-tight JPEGs and small flat PNGs come out bigger; those keep

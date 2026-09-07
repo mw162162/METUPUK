@@ -1888,15 +1888,25 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
   background: #fff; padding: 0.35rem;
 }
 .dsop-chrome__brand img { display: block; width: 100%; height: auto; }
-/* The section's name, set down the edge. Rotated rather than wrapped: it is a
-   label on the page, not a line of reading. */
-.dsop-chrome__rail {
-  position: absolute; top: clamp(9rem, 20vh, 14rem); left: clamp(0.75rem, 3vw, 2rem);
+/* The section's name lives in the section, as a column of it.
+   It used to be one label in the shared chrome, swapped by script as each act
+   arrived, and both of its faults came from that: it was absolutely positioned
+   a fixed 180px below a zero-height sticky box, so it could not line up with
+   headings that sit at 176, 169, 172 and 237px into their own acts — and it
+   hung 514px below that box, where sticky clamps the box and not the children
+   overflowing it. So it ran on past the last act and over the heading of the
+   section beneath.
+   As a grid column of the act it names, it starts where the act's text starts,
+   ends where the act ends, and there is nothing left to leak. */
+.dsop-act__rail {
+  grid-column: 1;
+  align-self: start;
   margin: 0;
   writing-mode: vertical-rl; transform: rotate(180deg);
   font-family: var(--font-display); font-weight: 800;
   font-size: var(--step--1); letter-spacing: 0.16em; text-transform: uppercase;
   white-space: nowrap;
+  color: rgb(255 255 255 / 0.72);
   text-shadow: 0 1px 12px rgb(28 3 16 / 0.7);
 }
 .dsop-chrome__lockup {
@@ -1922,8 +1932,9 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
    them off a phone, and a paragraph is gained. */
 @media (max-width: 59.99em) {
   .dsop-chrome { display: none; }
-  /* The extra left padding existed only to clear the rail. */
-  .dsop-act { padding-inline: clamp(1.25rem, 5vw, 3rem); }
+  .dsop-act__rail { display: none; }
+  .dsop-act { grid-template-columns: minmax(0, 1fr); }
+  .dsop-act__in { grid-column: 1; }
 }
 
 /* The acts ride over the stage, one screen at a time. */
@@ -1933,11 +1944,17 @@ html:not(.js-reveal) .scrolly__panel > .wrap { opacity: 1; transform: none; }
 }
 .dsop-act {
   min-height: 100vh; min-height: 100svh;
-  display: grid; align-content: center;
+  /* Two columns: the label, then the words. The label was a floating overlay
+     and the left padding here existed to keep the words clear of it — a column
+     does that by existing, and guarantees they line up. */
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-content: center;
+  column-gap: clamp(1rem, 3vw, 2.25rem);
   padding: clamp(6rem, 14vh, 9rem) clamp(1.25rem, 5vw, 3rem) clamp(5rem, 12vh, 8rem);
-  padding-left: clamp(3.25rem, 9vw, 7rem);
   color: #fff;
 }
+.dsop-act__in { grid-column: 2; }
 .dsop-act__in { max-width: 46rem; }
 .dsop-act__eyebrow {
   margin: 0 0 var(--sp-3);

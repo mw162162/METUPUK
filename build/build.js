@@ -969,14 +969,14 @@ function renderExhibition(exhibition, model) {
 
   const chrome = `<div class="dsop-chrome">
       ${copy && copy.art && copy.art.brand ? `<a class="dsop-chrome__brand" href="/"><img src="${esc(copy.art.brand)}" alt="MET UP UK — back to the main site" width="586" height="230"></a>` : ''}
-      <p class="dsop-chrome__rail" id="dsopRail">${acts.length ? esc(acts[0].rail || '') : ''}</p>
       ${copy && copy.art && copy.art.lockup ? `<div class="dsop-chrome__lockup">
         <p>${esc(copy.art.lockupAbove || '')}</p>
         <img src="${esc(copy.art.lockup)}" alt="The Darker Side of Pink" width="420" height="200">
       </div>` : ''}
     </div>`;
 
-  const actMarkup = acts.map((act, i) => `<section class="dsop-act" data-act="${i}" data-plate="${esc(act.background || '')}" data-rail="${esc(act.rail || '')}">
+  const actMarkup = acts.map((act, i) => `<section class="dsop-act" data-act="${i}" data-plate="${esc(act.background || '')}">
+        ${act.rail ? `<p class="dsop-act__rail" aria-hidden="true">${esc(act.rail)}</p>` : ''}
         <div class="dsop-act__in">
           <p class="dsop-act__eyebrow">${esc(act.eyebrow)}:</p>
           <h2${act.id ? ` id="${act.id}"` : ''}>${esc(act.heading)}</h2>

@@ -893,7 +893,6 @@
   if (!dsop) return;
   var acts = [].slice.call(dsop.querySelectorAll('.dsop-act'));
   var plates = [].slice.call(dsop.querySelectorAll('.dsop-stage__plate'));
-  var rail = document.getElementById('dsopRail');
   if (!acts.length) return;
 
   function show(act) {
@@ -902,10 +901,6 @@
       plates.forEach(function (p) {
         p.classList.toggle('is-on', p.getAttribute('data-plate') === want);
       });
-    }
-    if (rail) {
-      var label = act.getAttribute('data-rail') || '';
-      if (label && rail.textContent !== label) rail.textContent = label;
     }
     act.classList.add('is-here');
   }
