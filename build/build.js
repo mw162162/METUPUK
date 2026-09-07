@@ -1270,6 +1270,54 @@ function run() {
   fs.writeFileSync(path.join(OUT, 'robots.txt'),
     `User-agent: *\nAllow: /\n\nSitemap: ${T.SITE_URL}/sitemap.xml\n`);
 
+  // What the social studio draws with.
+  //
+  // The tokens are read out of the stylesheet rather than written again here,
+  // which is the whole reason the studio cannot drift off-brand: change a
+  // brand colour in site.css and the next post a volunteer makes uses it. The
+  // same goes for the thirty-one and the venue list — they come from the
+  // content the site is built from, so a new portrait or a new venue appears
+  // in the studio without anyone editing it.
+  (function writeSocialData() {
+    const cssFile = path.join(ROOT, 'src', 'assets', 'css', 'site.css');
+    const tokens = {};
+    if (fs.existsSync(cssFile)) {
+      const css = fs.readFileSync(cssFile, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+      const root = css.match(/:root\s*\{([\s\S]*?)\}/);
+      if (root) {
+        for (const m of root[1].matchAll(/(--[a-z0-9-]+)\s*:\s*([^;]+);/gi)) {
+          tokens[m[1]] = m[2].trim();
+        }
+      }
+    }
+
+    let venues = [];
+    const exFile = path.join(ROOT, 'content', 'exhibition.yml');
+    if (fs.existsSync(exFile)) {
+      try {
+        const doc = require('js-yaml').load(fs.readFileSync(exFile, 'utf8'));
+        venues = (doc && doc.venues) || [];
+      } catch (err) { /* the page build already reports a bad file */ }
+    }
+
+    const people = exhibition.portraits.map((p) => ({
+      name: p.name,
+      slug: p.slug,
+      image: p.image,
+    }));
+
+    const dir = path.join(OUT, 'social');
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, 'data.json'), JSON.stringify({
+      built: new Date().toISOString().slice(0, 10),
+      tokens,
+      people,
+      venues,
+      site: T.SITE_URL.replace(/^https?:\/\//, ''),
+      tags: ['#BusyLivingWithMets', '#IAmThe31', '#DarkerPink', '#DyingForACure'],
+    }, null, 1));
+  }());
+
   // Static assets
   // Cleared first. The fingerprinted names accumulate: every build leaves the
   // previous one's hashed stylesheet behind and nothing removes it, so the

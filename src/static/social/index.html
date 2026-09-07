@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Social templates — METUPUK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  /* The studio's own chrome. The posts themselves are drawn on a canvas using
+     the tokens fetched from the site, so nothing here decides how they look. */
+  :root {
+    --plum-950:#1c0310; --plum-900:#2b0519; --plum-800:#440729;
+    --magenta-500:#d2246f; --pink-300:#ff6fb5; --pink-100:#ffdcec;
+    --line:#4a1730; --muted:#c3a2b1;
+    --display:"Archivo","Arial Narrow",system-ui,sans-serif;
+    --body:"Inter",-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--plum-950);color:#f6e9ef;font-family:var(--body);font-size:15px;line-height:1.5}
+  header{padding:1.25rem clamp(1rem,3vw,2rem);border-bottom:1px solid var(--line)}
+  h1{font-family:var(--display);font-weight:900;font-size:1.35rem;margin:0;letter-spacing:-0.01em}
+  header p{margin:.35rem 0 0;color:var(--muted);font-size:.9rem;max-width:60ch}
+  .wrap{display:grid;gap:clamp(1rem,3vw,2rem);padding:clamp(1rem,3vw,2rem);
+        grid-template-columns:minmax(0,22rem) minmax(0,1fr);align-items:start}
+  @media (max-width:60em){.wrap{grid-template-columns:minmax(0,1fr)}}
+  fieldset{border:1px solid var(--line);border-radius:10px;padding:1rem;margin:0 0 1rem}
+  legend{font-family:var(--display);font-weight:800;font-size:.72rem;letter-spacing:.14em;
+         text-transform:uppercase;color:var(--pink-300);padding:0 .4rem}
+  label{display:block;font-size:.8rem;color:var(--muted);margin:.75rem 0 .25rem}
+  label:first-of-type{margin-top:0}
+  input,select,textarea{width:100%;font:inherit;font-size:.9rem;color:#fff;
+    background:rgb(255 255 255/.06);border:1px solid var(--line);border-radius:8px;padding:.55rem .7rem}
+  textarea{resize:vertical;min-height:5.5rem;line-height:1.45}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--pink-300);outline-offset:1px}
+  .row{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
+  .chip{flex:1 1 auto;font:inherit;font-size:.8rem;font-weight:600;cursor:pointer;
+    background:rgb(255 255 255/.05);color:#f6e9ef;border:1px solid var(--line);
+    border-radius:999px;padding:.5rem .8rem;min-height:2.5rem}
+  .chip[aria-pressed="true"]{background:var(--magenta-500);border-color:var(--magenta-500);color:#fff}
+  .stage{display:grid;gap:.75rem;justify-items:start}
+  .frame{background:repeating-conic-gradient(#241318 0 25%,#2b0519 0 50%) 0 0/24px 24px;
+         border:1px solid var(--line);border-radius:10px;padding:1rem;max-width:100%;overflow:auto}
+  canvas{display:block;max-width:100%;height:auto;box-shadow:0 18px 48px rgb(0 0 0/.5)}
+  .actions{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+  .btn{font:inherit;font-weight:700;font-size:.9rem;cursor:pointer;border-radius:999px;
+       padding:.7rem 1.3rem;min-height:2.75rem;border:1px solid var(--magenta-500);
+       background:var(--magenta-500);color:#fff}
+  .btn--ghost{background:transparent;border-color:rgb(255 255 255/.4);color:#f6e9ef}
+  .note{color:var(--muted);font-size:.82rem;margin:.25rem 0 0}
+  .count{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<header>
+  <h1>Social templates</h1>
+  <p>Fill in the words, pick a picture, download the post. Colours, type and the
+     duotone are taken from the website itself, so anything made here matches it
+     without anyone having to know the hex codes.</p>
+</header>
+
+<div class="wrap">
+  <form id="controls" aria-label="Post settings">
+    <fieldset>
+      <legend>Post</legend>
+      <div class="row" id="templates" role="group" aria-label="Template"></div>
+      <div class="row" id="sizes" role="group" aria-label="Size"></div>
+    </fieldset>
+
+    <fieldset id="fields">
+      <legend>Words</legend>
+    </fieldset>
+
+    <fieldset>
+      <legend>Finish</legend>
+      <label for="tag">Hashtag</label>
+      <select id="tag"></select>
+      <label for="ground">Background</label>
+      <select id="ground">
+        <option value="plum">Plum</option>
+        <option value="deep">Deep plum</option>
+        <option value="magenta">Magenta</option>
+      </select>
+    </fieldset>
+  </form>
+
+  <div class="stage">
+    <div class="frame"><canvas id="art" width="1080" height="1080"></canvas></div>
+    <div class="actions">
+      <button class="btn" type="button" id="download">Download PNG</button>
+      <button class="btn btn--ghost" type="button" id="copy">Copy caption</button>
+      <span class="note" id="status">&nbsp;</span>
+    </div>
+    <p class="note" id="dims"></p>
+  </div>
+</div>
+
+<script src="/social/studio.js" defer></script>
+</body>
+</html>
