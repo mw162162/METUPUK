@@ -1492,24 +1492,38 @@ a.tag:hover { border-color: var(--accent); }
     opacity var(--dur-5) var(--ease-out),
     transform var(--dur-5) var(--ease-out);
 }
-/* Nothing at all while the campaign is being introduced — the first panel is a
-   title card and the left half belongs to the photograph. A single portrait
-   there read as a stray image rather than a beat, and because the other thirty
-   still hold their space it sat stranded in the top corner rather than centred.
-   Empty, then thirty-one on the number that names them, is the stronger move. */
-.scrolly[data-panel="2"] .scrolly__face,
-.scrolly[data-panel="3"] .scrolly__face { opacity: 1; transform: none; }
-/* Cascade by row. Per-item delays drew a diagonal wipe across the block; by row
-   it reads as the group arriving. Three steps of 80ms is 240ms, inside the 300ms cap. */
-.scrolly__face:nth-child(n+9)  { transition-delay: 80ms; }
-.scrolly__face:nth-child(n+17) { transition-delay: 160ms; }
-.scrolly__face:nth-child(n+25) { transition-delay: 240ms; }
-/* The last panel asks for a chance to live. The crowd recedes and one woman
-   stays — a statistic becoming a person, which is the campaign's whole argument. */
-.scrolly[data-panel="3"] .scrolly__face { opacity: 0.14; transition-delay: 0ms; }
-.scrolly[data-panel="3"] .scrolly__face.is-kept {
-  opacity: 1; filter: none; transform: scale(1.14);
-  outline: 2px solid var(--pink-300); outline-offset: 2px;
+/* Everything below is the pinned layout's choreography, and only its own.
+   It is driven by which panel is currently held on screen, which is a question
+   with an answer only while the section is pinned. On a phone the artwork is an
+   ordinary block a long way beneath the panels — so by the time anybody reaches
+   it, "the current panel" is the last one, and the faces were being drawn in
+   its state: the crowd receded to fourteen per cent with one woman ringed, in a
+   block nobody had scrolled through to earn.
+   Worse, it was invisible before that. The base state is opacity 0 and only a
+   panel rule lifts it, so on the way down the faces were simply not there,
+   which is why the block read as broken or half-loaded.
+   The phone gets what the comment further down already said it should: thirty-
+   one faces, present, not performing. */
+@media (min-width: 1100px) {
+  /* Nothing at all while the campaign is being introduced — the first panel is a
+     title card and the left half belongs to the photograph. A single portrait
+     there read as a stray image rather than a beat, and because the other thirty
+     still hold their space it sat stranded in the top corner rather than centred.
+     Empty, then thirty-one on the number that names them, is the stronger move. */
+  .scrolly[data-panel="2"] .scrolly__face,
+  .scrolly[data-panel="3"] .scrolly__face { opacity: 1; transform: none; }
+  /* Cascade by row. Per-item delays drew a diagonal wipe across the block; by row
+     it reads as the group arriving. Three steps of 80ms is 240ms, inside the cap. */
+  .scrolly__face:nth-child(n+9)  { transition-delay: 80ms; }
+  .scrolly__face:nth-child(n+17) { transition-delay: 160ms; }
+  .scrolly__face:nth-child(n+25) { transition-delay: 240ms; }
+  /* The last panel asks for a chance to live. The crowd recedes and one woman
+     stays — a statistic becoming a person, which is the campaign's argument. */
+  .scrolly[data-panel="3"] .scrolly__face { opacity: 0.14; transition-delay: 0ms; }
+  .scrolly[data-panel="3"] .scrolly__face.is-kept {
+    opacity: 1; filter: none; transform: scale(1.14);
+    outline: 2px solid var(--pink-300); outline-offset: 2px;
+  }
 }
 /* Anchored to the bottom rather than stacked under the portraits. In the flow
    it added its own height to the centred block, so the arithmetic that keeps
@@ -1530,7 +1544,9 @@ a.tag:hover { border-color: var(--accent); }
    ignores pointer events so it never sits between the reader and the copy —
    the one thing in it that is actually clickable has to opt back in. */
 .scrolly__kept .btn { margin-top: var(--sp-4); pointer-events: auto; }
-.scrolly[data-panel="3"] .scrolly__kept { opacity: 1; transform: none; }
+@media (min-width: 1100px) {
+  .scrolly[data-panel="3"] .scrolly__kept { opacity: 1; transform: none; }
+}
 /* No script, or reduced motion: the whole group simply sits there. */
 html:not(.js-reveal) .scrolly__face,
 .scrolly:not([data-panel]) .scrolly__face { opacity: 1; transform: none; }
