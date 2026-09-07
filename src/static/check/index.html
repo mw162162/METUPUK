@@ -43,6 +43,18 @@
     setTimeout(function () { snap('scrollY +500ms'); }, 500);
     setTimeout(function () { snap('scrollY +1500ms'); render(); }, 1500);
   });
+  /* The decisive one. A fresh navigation cannot restore a scroll position; a
+     back_forward or a reload can, and that is what a browser does when it
+     brings back a tab it had evicted from memory. */
+  function navType() {
+    try {
+      var e = performance.getEntriesByType('navigation')[0];
+      if (e && e.type) return e.type;
+      var t = performance.navigation && performance.navigation.type;
+      return t === 2 ? 'back_forward' : (t === 1 ? 'reload' : 'navigate');
+    } catch (err) { return 'unknown'; }
+  }
+
   function render() {
     var bar = document.querySelector('header.bar');
     var cs = getComputedStyle(bar);
@@ -56,6 +68,8 @@
       ['visualViewport height', vv ? Math.round(vv.height) : 'n/a'],
       ['visualViewport offsetTop', vv ? Math.round(vv.offsetTop) : 'n/a'],
       ['scrollRestoration', history.scrollRestoration],
+      ['how you arrived', navType()],
+      ['tab was restored?', navType() === 'back_forward' || navType() === 'reload' ? 'YES — likely the cause' : 'no'],
       ['devicePixelRatio', window.devicePixelRatio],
       ['screen width', screen.width],
       ['browser', navigator.userAgent.replace(/^Mozilla\/5\.0 \(/, '').slice(0, 60)]
@@ -64,6 +78,7 @@
       var cls = '';
       if (d[0].indexOf('scrollY') === 0) cls = d[1] === 0 ? 'ok' : 'bad';
       if (d[0] === 'sticky honoured?') cls = d[1] === 'sticky' ? 'ok' : 'bad';
+      if (d[0] === 'tab was restored?') cls = d[1] === 'no' ? 'ok' : 'bad';
       return '<tr><th>' + d[0] + '</th><td class="' + cls + '">' + d[1] + '</td></tr>';
     }).join('');
   }
