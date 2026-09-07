@@ -2300,18 +2300,32 @@ html:not(.js-reveal) .dsop-act__in { opacity: 1; transform: none; }
   padding: 0;
 }
 .social li { margin: 0; }
+/* .site-footer a in the phone tap-target block sets display: inline-block, and
+   `.site-footer a` and `.social a` are the same specificity — one class and one
+   element each — so the later of the two wins. It is later. The circles kept
+   their shape and the glyph inside dropped onto a text baseline, sitting high
+   and left of centre on phones and nowhere else, which is why it looked fine
+   every time it was checked on a desktop. */
+.site-footer .social a,
 .social a {
   --social-size: 2.5rem;
   position: relative;
   display: grid;
   place-items: center;
+  /* The same rule adds padding-block for a tap target. The circle is already
+     40px with a 44px hit area on ::after, so the padding only pushes the glyph. */
+  padding: 0;
   width: var(--social-size);
   height: var(--social-size);
   padding: 0;
   border-radius: 50%;
-  color: #f0dbe6;
-  background: rgb(255 255 255 / 0.05);
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16);
+  /* Lifted a step off the plum. The mark was #f0dbe6 on a 16% ring, which is
+     legible but sits back further than a link to the charity's own channels
+     should. A step, not a jump — pure white would make four social icons the
+     brightest thing in the footer. */
+  color: #fbeff5;
+  background: rgb(255 255 255 / 0.07);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.3);
   text-decoration: none;
   transition:
     color var(--dur-2) var(--ease),
@@ -2882,20 +2896,38 @@ html:not(.js-reveal) .dsop-act__in { opacity: 1; transform: none; }
     opacity: 1;
     transform: none;
     transition: none;
-    /* The same width as the faces above it, and centred the same way. The card
-       is about one of the women in that block, so it should read as belonging
-       to it rather than as the next full-width thing on the page.
+    /* Seven cells, not eight: thirty-one faces laid out eight to a row leaves a
+       last row of seven, and that short row is what the card sits directly
+       under. Matching the rows above would have it overhang the one edge the
+       eye is actually comparing it to.
        --cell is set on .scrolly__art and this is inside it, so the arithmetic
-       is the grid's own: eight cells and the seven gaps between them. */
-    max-width: calc(8 * var(--cell) + 7 * 5px);
-    margin-top: var(--sp-5);
+       is the grid's own: seven cells and the six gaps between them. */
+    max-width: calc(7 * var(--cell) + 6 * 5px);
+    margin-top: var(--sp-4);
     margin-inline: auto;
-    padding: var(--sp-5);
+    /* Tighter than a full section's padding. At sp-5 the card had more air
+       inside it than the block of faces has around it, which reads as a gap
+       rather than as a card. */
+    padding: var(--sp-4);
     border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: var(--radius-lg);
     background: rgba(28, 3, 16, 0.42);
   }
   .scrolly__kept .btn { margin-top: var(--sp-4); }
+  /* The card straddles the change of colour rather than stopping dead on it.
+     Its bottom edge landed exactly on the boundary — flush, which reads as the
+     section having been cut off rather than as a card sitting on a ground.
+     A negative bottom margin pulls the next section up under it; positioning
+     lifts it over that section's background, which a later sibling would
+     otherwise paint on top of. 5.5rem is about half the card at phone widths,
+     measured at 178px tall. */
+  .scrolly__art { position: relative; z-index: 1; }
+  .scrolly__kept { margin-bottom: -5.5rem; }
+  /* And the section it hangs into makes room for it. Its 64px of top padding
+     was written for a section that starts at its own edge; half a card now
+     arrives before its heading does, and without this the two met — measured
+     at minus 24px, the card sitting over "31 women, 31 films". */
+  .scrolly + .section { padding-top: calc(4rem + 5.5rem); }
   .js-reveal .scrolly__kept {
     opacity: 0; transform: translateY(8px);
     transition:
