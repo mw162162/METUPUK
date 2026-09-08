@@ -54,6 +54,12 @@
 /author/jotaylor/*                            /darker-pink/jo-taylor/                   301
 /author/*                                     /latest-news/                             301
 
+# The two nations that used to be a placeholder. The old URLs said
+# "coming soon" in the address bar, which is not a thing to leave in a link
+# someone shares.
+/metupuk-around-the-uk/mbc-scotland-coming-soon/   /metupuk-around-the-uk/mbc-scotland/           301
+/metupuk-around-the-uk/mbc-n-i-coming-soon/        /metupuk-around-the-uk/mbc-northern-ireland/   301
+
 # Serve the custom 404 for anything that does not resolve. Must stay last:
 # these files are read in order and this rule matches everything.
 /*  /404.html  404

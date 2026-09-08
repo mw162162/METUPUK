@@ -18,9 +18,29 @@ function walkFiles(dir, out = []) {
 }
 
 // Does this site-absolute URL resolve to something we actually built?
+// Paths the host answers with a 301 rather than a file. A URL from the old
+// site is not lost because nothing sits at it any more; it is lost when a
+// reader following an old link arrives nowhere. _redirects is how the two
+// pages that used to say "coming soon" keep their inbound links.
+const redirected = (() => {
+  const set = new Set();
+  const file = path.join(ROOT, 'src', 'static', '_redirects');
+  try {
+    for (const line of fs.readFileSync(file, 'utf8').split(/\r?\n/)) {
+      const t = line.trim();
+      if (!t || t.startsWith('#')) continue;
+      const from = t.split(/\s+/)[0];
+      if (!from || from.includes('*')) continue;   // the catch-all is not a redirect
+      set.add(from.replace(/\/?$/, '/'));
+    }
+  } catch { /* no redirects file */ }
+  return set;
+})();
+
 function resolves(url) {
   const clean = decodeURIComponent(url.split('#')[0].split('?')[0]);
   if (!clean || clean === '/') return fs.existsSync(path.join(OUT, 'index.html'));
+  if (redirected.has(clean.replace(/\/?$/, '/'))) return true;
   const base = path.join(OUT, clean.replace(/^\//, ''));
   if (fs.existsSync(base) && fs.statSync(base).isFile()) return true;
   if (fs.existsSync(path.join(base, 'index.html'))) return true;
@@ -50,6 +70,16 @@ const norm = (s) => (s || '').replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '')
 // the promise meaningful for the other 5,000 characters on the page and the
 // 375 pages beside it.
 const REMOVED_ON_PURPOSE = [
+  {
+    url: '/2020/11/a-sad-day-today-marks-10000-dead-in-2020-of-metastaticbreastcancer/',
+    text: 'http://metupuk.org.uk/wp-content/uploads/2020/11/2020-11-17-18.48.53.mp4',
+    times: 1,
+    why: 'WordPress printed the address of the video file as its fallback link text. '
+      + 'The address was the old site over http, so it was both mixed content and a '
+      + 'link that would 404 the moment the domain moved; the video itself was '
+      + 'migrated and is served from /media/. The visible text is now "Watch the '
+      + 'video", which is what the link does.',
+  },
   {
     url: '/about-metupuk/',
     text: 'Click here',
