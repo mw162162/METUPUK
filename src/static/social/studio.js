@@ -313,6 +313,7 @@
 
   /* Draw the post the page is showing. */
   function render() {
+    remember();
     var S = SIZES[state.size];
     canvas.width = S.w; canvas.height = S.h;
     paint(ctx, S);
@@ -465,6 +466,85 @@
 
   /* Opening values come from the brand: every template says what it starts
      with, so the first thing anybody sees is a usable post rather than a form. */
+  /* --- Remembering what was typed ---------------------------------------------
+     A volunteer half way through a post who reloads, or whose phone drops the
+     tab out of memory, should not start again. Kept per brand, because two
+     brands do not share a headline, and kept in this browser only — the same
+     answer as everywhere else in here: nothing of anybody's on our disk.
+
+     localStorage throws rather than returning null in a few real situations —
+     private windows, browsers set to block site data, an iframe with storage
+     partitioned off — so every touch of it is guarded. A tool that will not
+     start because it could not save a draft is worse than one that forgets. */
+  function memoryKey() {
+    return 'social-studio:' + ((brand && (brand.id || brand.name)) || 'brand');
+  }
+
+  var writeSoon = null;
+  function remember() {
+    if (!brand) return;
+    window.clearTimeout(writeSoon);
+    /* Typing is not a save. Written a moment after the last keystroke rather
+       than on every one. */
+    writeSoon = window.setTimeout(function () {
+      try {
+        window.localStorage.setItem(memoryKey(), JSON.stringify({
+          at: Date.now(),
+          template: state.template,
+          size: state.size,
+          ground: state.ground,
+          tag: state.tag,
+          fields: state.fields,
+        }));
+      } catch (err) { /* nothing to be done, and nothing worth saying */ }
+    }, 400);
+  }
+
+  function recall() {
+    try {
+      var raw = window.localStorage.getItem(memoryKey());
+      return raw ? JSON.parse(raw) : null;
+    } catch (err) { return null; }
+  }
+
+  function forget() {
+    try { window.localStorage.removeItem(memoryKey()); } catch (err) { /* fine */ }
+  }
+
+  /* What was remembered is laid over the brand's defaults, not swapped for
+     them — so a brand that has gained a template or renamed a field still
+     opens, with the parts that still exist filled in. */
+  function restore() {
+    var saved = recall();
+    if (!saved) return false;
+
+    var known = {};
+    templates().forEach(function (t) {
+      (t.fields || []).forEach(function (spec) { known[spec.name] = true; });
+      if (t.imageField) known[t.imageField] = true;
+    });
+
+    Object.keys(saved.fields || {}).forEach(function (k) {
+      if (!known[k]) return;
+      var v = saved.fields[k];
+      /* A picture the reader chose off their own machine was a blob: URL, and
+         those die with the page that made them. Restoring one points the
+         canvas at nothing. */
+      if (typeof v === 'string' && v.indexOf('blob:') === 0) return;
+      state.fields[k] = v;
+    });
+
+    if (templates().some(function (t) { return t.key === saved.template; })) {
+      state.template = saved.template;
+    }
+    if (SIZES[saved.size]) state.size = saved.size;
+    if ((brand.grounds || []).some(function (g) { return g.key === saved.ground; })) {
+      state.ground = saved.ground;
+    }
+    if ((brand.tags || []).indexOf(saved.tag) > -1) state.tag = saved.tag;
+    return true;
+  }
+
   function defaults() {
     var fields = {};
     templates().forEach(function (t) {
@@ -696,6 +776,21 @@
               ? 'That address would not allow a read from here. Download the file and drop it in instead.'
               : err.message);
           });
+      });
+    }
+
+    var fresh = document.getElementById('start-again');
+    if (fresh) {
+      fresh.addEventListener('click', function () {
+        forget();
+        defaults();
+        buildFields();
+        var want = [];
+        templates().forEach(function (t) {
+          if (t.imageField && state.fields[t.imageField]) want.push(state.fields[t.imageField]);
+        });
+        Promise.all(want.map(load)).then(render);
+        say('Back to the opening words');
       });
     }
 
@@ -933,6 +1028,7 @@
       document.head.appendChild(link);
     }
     defaults();
+    var resumed = restore();
     /* The brand's typefaces must be in memory before anything is drawn: canvas
        does not wait for a webfont, it draws in whatever it has, and the export
        is quietly in the wrong face while the page around it looks right. */
@@ -941,7 +1037,7 @@
       ? Promise.all(need.map(function (n) {
           return document.fonts.load(n).catch(function () { /* fall back */ });
         }))
-      : Promise.resolve());
+      : Promise.resolve()).then(function () { return resumed; });
   }
 
   function openSource(src) {
@@ -1000,7 +1096,13 @@
   });
 
   openSource(source())
-    .then(start)
+    .then(function (resumed) {
+      start();
+      /* Said out loud, because silently restoring somebody's half-written post
+         is indistinguishable from the tool having ignored the brand's own
+         opening words — and they would have no idea which they were looking at. */
+      if (resumed) say('Picked up where you left off');
+    })
     .catch(function (err) {
       /* Loudly. A brand that fails to open leaves a page with no templates and
          no canvas, and the one thing worse than that is not saying why. */
