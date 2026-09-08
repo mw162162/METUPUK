@@ -19,8 +19,8 @@ const sharp = require('sharp');
 const ROOT = path.join(__dirname, '..');
 const argv = process.argv.slice(2);
 const argOf = (n, d) => { const i = argv.indexOf('--' + n); return i > -1 && argv[i + 1] ? argv[i + 1] : d; };
-const BRAND = argOf('brand', 'metupuk');
-const OUT = path.join(ROOT, argOf('out', path.join('dist', 'social', 'canva')), BRAND);
+const BRAND = argOf('brand', null);
+const KITS = path.join(ROOT, argOf('out', path.join('dist', 'social', 'canva')));
 
 // The same three the studio makes, and the same geometry.
 const SIZES = [
@@ -241,10 +241,28 @@ function spec(brand) {
   return lines.join('\n');
 }
 
+/* Every brand, unless one is named. The build clears dist of everything it did
+   not make, so this has to run as part of the pipeline rather than beside it —
+   and a kit that only ever covers the brand somebody remembered to type is a
+   kit that goes stale the moment a second one is added. */
 async function run() {
-  const brandFile = path.join(ROOT, 'dist', 'social', 'brands', BRAND + '.json');
+  const dir = path.join(ROOT, 'dist', 'social', 'brands');
+  if (!fs.existsSync(dir)) {
+    console.error('  no brands — build the site first');
+    process.exit(1);
+  }
+  const ids = BRAND
+    ? [BRAND]
+    : fs.readdirSync(dir).filter((f) => f.endsWith('.json')).map((f) => f.replace(/\.json$/, ''));
+  if (!ids.length) { console.error('  no brand files found'); process.exit(1); }
+  for (const id of ids) await one(id);
+}
+
+async function one(id) {
+  const OUT = path.join(KITS, id);
+  const brandFile = path.join(ROOT, 'dist', 'social', 'brands', id + '.json');
   if (!fs.existsSync(brandFile)) {
-    console.error('  no brand called "' + BRAND + '" — build the site first, or check social/brands/');
+    console.error('  no brand called "' + id + '"');
     process.exit(1);
   }
   const brand = JSON.parse(fs.readFileSync(brandFile, 'utf8'));
@@ -284,13 +302,9 @@ async function run() {
     .concat((brand.grounds || []).map((g) => g.to + '  background ' + g.label + ' to'));
   fs.writeFileSync(path.join(OUT, 'palette.txt'), plain.join('\n') + '\n');
 
-  console.log('  brand         ' + brand.name);
-  console.log('  backgrounds   ' + made + ' (' + (brand.grounds || []).length + ' grounds × ' + SIZES.length + ' sizes)');
-  console.log('  guides        ' + SIZES.length);
-  console.log('  marks         ' + marks);
-  console.log('  palette       palette.png, palette.txt');
-  console.log('  spec          SPEC.md');
-  console.log('  out           ' + path.relative(ROOT, OUT));
+  console.log('  ' + brand.name.padEnd(16)
+    + made + ' backgrounds, ' + SIZES.length + ' guides, ' + marks + ' marks, a palette and a spec'
+    + '  → ' + path.relative(ROOT, OUT).split(path.sep).join('/'));
 }
 
 run().catch((err) => { console.error('  ' + err.message); process.exit(1); });
