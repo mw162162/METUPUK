@@ -529,9 +529,97 @@
       + '-' + state.size + '.png';
   }
 
+  /* The brand's own row of controls, built once the brand is known. */
+  function paintBrandControls() {
+    var host = document.getElementById('brand-name');
+    if (host) host.textContent = brand.name + (brand.site ? ' · ' + brand.site : '');
+  }
+
+  function readBrandFile(file) {
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      var parsed;
+      try { parsed = JSON.parse(reader.result); }
+      catch (err) { say('That file is not valid JSON'); return; }
+      reopen(parsed);
+    };
+    reader.onerror = function () { say('That file could not be read'); };
+    reader.readAsText(file);
+  }
+
+  /* Dropping a brand anywhere on the page. Nothing is uploaded: the file is
+     read in the browser and never leaves the machine it is on, which is the
+     only honest answer to "where is our brand kept" for somebody who has not
+     signed up to anything. */
+  function acceptDrops() {
+    ['dragenter', 'dragover'].forEach(function (ev) {
+      document.addEventListener(ev, function (e) {
+        if (!e.dataTransfer || [].indexOf.call(e.dataTransfer.types, 'Files') < 0) return;
+        e.preventDefault();
+        document.body.classList.add('is-dropping');
+      });
+    });
+    ['dragleave', 'drop'].forEach(function (ev) {
+      document.addEventListener(ev, function () { document.body.classList.remove('is-dropping'); });
+    });
+    document.addEventListener('drop', function (e) {
+      var file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      if (!file) return;
+      e.preventDefault();
+      if (/\.json$/i.test(file.name)) readBrandFile(file);
+      else say('Drop a brand file — a .json');
+    });
+  }
+
   function start() {
     paintTemplates();
     paintSizes();
+    paintBrandControls();
+    acceptDrops();
+
+    var brandFile = document.getElementById('brand-file');
+    if (brandFile) {
+      brandFile.addEventListener('change', function () { readBrandFile(brandFile.files[0]); });
+    }
+
+    var brandUrl = document.getElementById('brand-url');
+    var brandGo = document.getElementById('brand-url-go');
+    if (brandGo && brandUrl) {
+      brandGo.addEventListener('click', function () {
+        var u = brandUrl.value.trim();
+        if (!u) return;
+        say('Fetching…');
+        fetch(u)
+          .then(function (r) { if (!r.ok) throw new Error('that address returned ' + r.status); return r.json(); })
+          .then(reopen)
+          .catch(function (err) {
+            /* A site that has not allowed cross-origin reads will refuse, and
+               the browser reports it as a generic failure. Say what to do
+               about it rather than repeating the browser's shrug. */
+            say(err.message === 'Failed to fetch'
+              ? 'That address would not allow a read from here. Download the file and drop it in instead.'
+              : err.message);
+          });
+      });
+    }
+
+    var save = document.getElementById('brand-save');
+    if (save) save.addEventListener('click', function () { saveBrandFile(); say('Saved the brand file'); });
+
+    var share = document.getElementById('brand-share');
+    if (share) {
+      share.addEventListener('click', function () {
+        if (!navigator.clipboard) { say('Copy is not available in this browser'); return; }
+        shareLink().then(function (link) {
+          return navigator.clipboard.writeText(link.url).then(function () {
+            say(link.long
+              ? 'Link copied, but it is ' + link.length + ' characters and some apps will cut it'
+              : 'Link copied — it carries the whole brand');
+          });
+        }).catch(function () { say('That brand could not be put into a link'); });
+      });
+    }
 
     var tagSel = document.getElementById('tag');
     tagSel.innerHTML = '';
@@ -627,47 +715,190 @@
     Promise.all(want.map(load)).then(render);
   }
 
-  /* Which brand to draw. One studio, any number of these. */
-  function brandId() {
-    var q = new URLSearchParams(location.search).get('brand');
-    return (q || 'metupuk').replace(/[^a-z0-9-]/gi, '');
+  /* --- Where a brand comes from ---------------------------------------------
+     Four ways in, and only the first needs this repository:
+
+       ?brand=metupuk    one kept alongside the studio
+       ?from=<url>       one the customer hosts themselves
+       #b=<encoded>      one carried in the link, so a whole brand can be
+                         handed over by sending an address
+       a dropped file    one on their own machine, which never leaves it
+
+     That matters more than it looks. Until now the studio could only draw a
+     brand that lived in this build, which meant adding a customer meant
+     editing this repository and redeploying it — and put their brand on a
+     public URL beside everybody else's. Any of the last three can be used by
+     somebody with no account, no login and nothing of theirs on our disk. */
+
+  /* A brand in a link has to survive being pasted into a message, and the
+     things that pass links around start truncating somewhere near two thousand
+     characters. Plain base64 of a real brand file is five thousand: too long,
+     and a link that arrives cut in half is worse than no link.
+     Deflating first takes the same brand to under nineteen hundred. The
+     comment block goes too — it is there to explain the file to whoever opens
+     it, and nobody opens a URL. */
+  /* base64url, not base64. Ordinary base64 contains + and /, and a fragment
+     read with URLSearchParams turns every + into a space — so the link was
+     corrupted before anything tried to decode it, and the page came up empty
+     with a valid-looking address in the bar. The hyphen-and-underscore
+     alphabet survives a URL intact. */
+  function toB64u(bin) {
+    return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+  function fromB64u(text) {
+    var t = String(text).replace(/-/g, '+').replace(/_/g, '/');
+    while (t.length % 4) t += '=';
+    return atob(t);
+  }
+  function bytesToBase64(bytes) {
+    var bin = '';
+    for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    return toB64u(bin);
+  }
+  function base64ToBytes(text) {
+    var bin = fromB64u(text);
+    var out = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
   }
 
-  function openBrand(id) {
-    return fetch('/social/brands/' + id + '.json')
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .then(function (b) {
-        brand = b;
-        DISPLAY = (b.type && b.type.display) || DISPLAY;
-        BODY = (b.type && b.type.body) || BODY;
-        DUOTONE = b.duotone || DUOTONE;
-        state.template = (b.templates && b.templates[0] && b.templates[0].key) || 'figure';
-        state.ground = (b.grounds && b.grounds[0] && b.grounds[0].key) || '';
-        state.tag = (b.tags && b.tags[0]) || '';
-        document.title = 'Social templates — ' + b.name;
-        /* A brand brings its own typefaces with it. */
-        if (b.type && b.type.webfonts) {
-          var link = document.createElement('link');
-          link.rel = 'stylesheet'; link.href = b.type.webfonts;
-          document.head.appendChild(link);
-        }
-        defaults();
-        /* The brand's typefaces must be in memory before anything is drawn:
-           canvas does not wait for a webfont, it draws in whatever it has, and
-           the export is quietly in the wrong face while the page looks right. */
-        var need = (b.type && b.type.preload) || [];
-        return (document.fonts
-          ? Promise.all(need.map(function (n) {
-              return document.fonts.load(n).catch(function () { /* fall back */ });
-            }))
-          : Promise.resolve());
+  function encodeBrand(b) {
+    var lean = JSON.parse(JSON.stringify(b));
+    delete lean._comment;
+    var json = JSON.stringify(lean);
+    if (typeof CompressionStream === 'undefined') {
+      // encodeURIComponent first, so anything outside Latin-1 survives btoa.
+      return Promise.resolve(toB64u(unescape(encodeURIComponent(json))));
+    }
+    var cs = new CompressionStream('deflate-raw');
+    var w = cs.writable.getWriter();
+    w.write(new TextEncoder().encode(json));
+    w.close();
+    return new Response(cs.readable).arrayBuffer().then(function (buf) {
+      return 'z' + bytesToBase64(new Uint8Array(buf));
+    });
+  }
+
+  function decodeBrand(text) {
+    if (text.charAt(0) !== 'z') {
+      return Promise.resolve(JSON.parse(decodeURIComponent(escape(fromB64u(text)))));
+    }
+    var ds = new DecompressionStream('deflate-raw');
+    var w = ds.writable.getWriter();
+    w.write(base64ToBytes(text.slice(1)));
+    w.close();
+    return new Response(ds.readable).text().then(JSON.parse);
+  }
+
+  function source() {
+    /* Read by hand rather than with URLSearchParams, which would decode the
+       payload and undo the point of encoding it. */
+    var carried = location.hash.match(/(?:^#|&)b=([^&]+)/);
+    if (carried) return { kind: 'link', value: carried[1] };
+    var q = new URLSearchParams(location.search);
+    if (q.get('from')) return { kind: 'url', value: q.get('from') };
+    return { kind: 'kept', value: (q.get('brand') || 'metupuk').replace(/[^a-z0-9-]/gi, '') };
+  }
+
+  /* A brand file arrives from places we do not control, so it is checked
+     before it is trusted with anything. A file that is merely wrong should say
+     so; it should not leave a blank canvas and no explanation. */
+  function validate(b) {
+    if (!b || typeof b !== 'object') return 'that file is not a brand';
+    var missing = ['name', 'colour', 'grounds', 'templates'].filter(function (k) { return !b[k]; });
+    if (missing.length) return 'that brand file has no ' + missing.join(', no ');
+    if (!b.grounds.length) return 'that brand declares no backgrounds';
+    if (!b.templates.length) return 'that brand declares no templates';
+    var noBlocks = b.templates.filter(function (t) { return !t.blocks || !t.blocks.length; });
+    if (noBlocks.length) {
+      return 'template “' + (noBlocks[0].label || noBlocks[0].key) + '” has no blocks, so it would draw nothing';
+    }
+    return null;
+  }
+
+  function adopt(b) {
+    var wrong = validate(b);
+    if (wrong) return Promise.reject(new Error(wrong));
+    brand = b;
+    DISPLAY = (b.type && b.type.display) || DISPLAY;
+    BODY = (b.type && b.type.body) || BODY;
+    DUOTONE = b.duotone || DUOTONE;
+    state.template = b.templates[0].key;
+    state.ground = (b.grounds[0] && b.grounds[0].key) || '';
+    state.tag = (b.tags && b.tags[0]) || '';
+    document.title = 'Social templates — ' + b.name;
+    if (b.type && b.type.webfonts) {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet'; link.href = b.type.webfonts;
+      document.head.appendChild(link);
+    }
+    defaults();
+    /* The brand's typefaces must be in memory before anything is drawn: canvas
+       does not wait for a webfont, it draws in whatever it has, and the export
+       is quietly in the wrong face while the page around it looks right. */
+    var need = (b.type && b.type.preload) || [];
+    return (document.fonts
+      ? Promise.all(need.map(function (n) {
+          return document.fonts.load(n).catch(function () { /* fall back */ });
+        }))
+      : Promise.resolve());
+  }
+
+  function openSource(src) {
+    if (src.kind === 'link') {
+      return decodeBrand(src.value).then(adopt);
+    }
+    var url = src.kind === 'url' ? src.value : '/social/brands/' + src.value + '.json';
+    return fetch(url)
+      .then(function (r) { if (!r.ok) throw new Error('that address returned ' + r.status); return r.json(); })
+      .then(adopt);
+  }
+
+  /* --- Handing a brand on ----------------------------------------------------- */
+
+  function shareLink() {
+    return encodeBrand(brand).then(function (encoded) {
+      var url = location.origin + location.pathname + '#b=' + encoded;
+      /* Still says so if it is long. Deflate makes a normal brand fit; a brand
+         with a dozen templates and long defaults might not, and that is worth
+         knowing before the link is sent rather than after. */
+      return { url: url, long: url.length > 2000, length: url.length };
+    });
+  }
+
+  function saveBrandFile() {
+    var blob = new Blob([JSON.stringify(brand, null, 2)], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = (brand.id || 'brand') + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    window.setTimeout(function () { URL.revokeObjectURL(url); }, 500);
+  }
+
+  function reopen(b) {
+    images = {};
+    adopt(b).then(function () {
+      paintTemplates(); paintSizes(); paintBrandControls();
+      buildFields();
+      var want = [];
+      if (brand.mark && brand.mark.image) want.push(brand.mark.image);
+      templates().forEach(function (t) {
+        if (t.imageField && state.fields[t.imageField]) want.push(state.fields[t.imageField]);
       });
+      Promise.all(want.map(load)).then(render);
+      say('Now using ' + brand.name);
+    }).catch(function (err) { say(err.message); });
   }
 
-  openBrand(brandId())
+  openSource(source())
     .then(start)
-    .catch(function () {
-      statusEl.textContent = 'Could not open the brand file for “' + brandId()
-        + '”. Run the build, or check /social/brands/.';
+    .catch(function (err) {
+      /* Loudly. A brand that fails to open leaves a page with no templates and
+         no canvas, and the one thing worse than that is not saying why. */
+      statusEl.textContent = (err && err.message)
+        || 'Could not open that brand. Check the address, or drop a brand file onto this page.';
+      statusEl.className = 'note warn';
+      var name = document.getElementById('brand-name');
+      if (name) name.textContent = 'No brand loaded';
     });
 }());

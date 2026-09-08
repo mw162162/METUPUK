@@ -52,6 +52,14 @@
   .btn--ghost{background:transparent;border-color:rgb(255 255 255/.4);color:#f6e9ef}
   .note{color:var(--muted);font-size:.82rem;margin:.25rem 0 0}
   .note.warn{color:var(--pink-300)}
+  .brand-name{margin:0 0 .6rem;font-family:var(--display);font-weight:800;
+    font-size:.9rem;letter-spacing:.01em;color:#fff}
+  /* A page you can drop a brand onto should say so the moment you try. */
+  body.is-dropping::after{content:"Drop the brand file";position:fixed;inset:0;
+    z-index:50;display:grid;place-items:center;pointer-events:none;
+    background:rgb(28 3 16 / .82);color:#fff;font-family:var(--display);
+    font-weight:900;font-size:1.4rem;letter-spacing:.02em;
+    outline:3px dashed var(--pink-300);outline-offset:-1.5rem}
   input[type=file]{padding:.45rem;font-size:.82rem}
   input[type=file]::file-selector-button{font:inherit;font-size:.8rem;font-weight:600;
     margin-right:.6rem;padding:.4rem .8rem;border-radius:999px;cursor:pointer;
@@ -70,6 +78,25 @@
 
 <div class="wrap">
   <form id="controls" aria-label="Post settings">
+    <fieldset>
+      <legend>Brand</legend>
+      <p class="brand-name" id="brand-name">&nbsp;</p>
+      <label for="brand-file">Open a brand file</label>
+      <input type="file" id="brand-file" accept="application/json,.json">
+      <label for="brand-url">Or one you host yourself</label>
+      <div class="row">
+        <input type="url" id="brand-url" placeholder="https://yoursite.org/brand.json" style="flex:1 1 10rem">
+        <button class="chip" type="button" id="brand-url-go">Open</button>
+      </div>
+      <div class="row">
+        <button class="chip" type="button" id="brand-save">Save brand file</button>
+        <button class="chip" type="button" id="brand-share">Copy a link to it</button>
+      </div>
+      <p class="note">A brand file can live on your own site, on your machine, or
+         inside a link. Nothing is uploaded — a file you open here is read in
+         this browser and never leaves it.</p>
+    </fieldset>
+
     <fieldset>
       <legend>Post</legend>
       <div class="row" id="templates" role="group" aria-label="Template"></div>
