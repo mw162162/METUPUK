@@ -116,6 +116,33 @@ check(
 );
 
 check(
+  'the media record and the posts pointing at it are the same set',
+  'the record consolidates 21 scattered press notices, and only works if each of those posts links back to it. Driving the link off the press category instead put "Part of our media record" on four posts announcing drug approvals. Whatever decides one must decide the other.',
+  () => {
+    const hub = path.join(OUT, 'metupuk-in-the-news', 'index.html');
+    if (!fs.existsSync(hub)) return true;
+    const main = fs.readFileSync(hub, 'utf8').split('<main')[1] || '';
+    const listed = new Set([...main.matchAll(/href="(\/\d{4}\/\d{2}\/[^"]+)"/g)].map((m) => m[1]));
+
+    const back = new Set();
+    walk(OUT, (file) => {
+      if (!/index\.html$/i.test(file)) return;
+      if (!fs.readFileSync(file, 'utf8').includes('post-hubline')) return;
+      back.add('/' + path.relative(OUT, path.dirname(file)).split(path.sep).join('/') + '/');
+    });
+
+    const stray = [...back].filter((u) => !listed.has(u));
+    const missing = [...listed].filter((u) => !back.has(u));
+    const bad = [
+      ...stray.map((u) => 'links back but is not in the record: ' + u),
+      ...missing.map((u) => 'in the record but does not link back: ' + u),
+    ];
+    return bad.length ? bad.slice(0, 6) : true;
+  },
+  ({ css }) => css.includes('.post-hubline')
+);
+
+check(
   'every linked stylesheet and script is content-hashed',
   'an asset under a name that never changes sits in a seven-day cache, so a correct fix reaches the server and never reaches the reader. A week of variant work went out that way.',
   ({ linked }) => {

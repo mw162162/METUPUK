@@ -732,7 +732,7 @@ ${kids}`;
   });
 }
 
-function renderPost(doc, prev, next) {
+function renderPost(doc, prev, next, inRecord = false) {
   let html = addHeadingIds(doc.html);
   const toc = doc.words > 900 ? tableOfContents(html) : '';
   if (!toc) html = articleLayout.acts(html);
@@ -771,6 +771,8 @@ function renderPost(doc, prev, next) {
         })}</figure>`;
       })() : ''}
       ${html}
+      ${inRecord ? `
+      <p class="post-hubline"><a href="/metupuk-in-the-news/">Part of our media record →</a></p>` : ''}
       <nav class="prevnext" aria-label="More articles">
         ${prev ? `<a href="${prev.url}"><span>← Previous</span>${esc(prev.title)}</a>` : '<span></span>'}
         ${next ? `<a class="is-next" href="${next.url}"><span>Next →</span>${esc(next.title)}</a>` : '<span></span>'}
@@ -1223,8 +1225,18 @@ function run() {
   // Posts, newest first, with prev/next.
   model.posts.forEach((p, i) => {
     const newer = model.posts[i - 1] || null;
+  // Which posts the media record actually lists. Built from the page rather
+  // than from the press category: four posts carry that category but announce
+  // drug approvals rather than coverage, and the charity's tagging is theirs
+  // to keep. This way the record and the links back to it cannot disagree.
+  const mediaRecordPage = model.pages.find((p) => p.url === '/metupuk-in-the-news/');
+  const mediaRecord = new Set(
+    [...((mediaRecordPage && mediaRecordPage.html) || '').matchAll(/href="(\/\d{4}\/\d{2}\/[^"]+)"/g)]
+      .map((m) => m[1])
+  );
+
     const older = model.posts[i + 1] || null;
-    record(p.url, renderPost(p, older, newer));
+    record(p.url, renderPost(p, older, newer, mediaRecord.has(p.url)));
   });
 
   // News index + pagination. /latest-news/ is a real page, so it is overwritten

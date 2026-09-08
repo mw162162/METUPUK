@@ -3042,3 +3042,13 @@ html:not(.js-reveal) .dsop-act__in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .toc > summary::after { transition: none; }
 }
+
+/* A press post and the media record are two halves of one thing: the record
+   lists the coverage, the post says what was said. The post carries the link
+   back so a reader who lands on one appearance can see the other thirty. */
+.post-hubline {
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--border);
+  font-weight: 600;
+}

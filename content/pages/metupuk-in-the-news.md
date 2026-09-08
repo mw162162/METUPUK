@@ -93,4 +93,51 @@ sections:
       - The South West
 
       Please email [metupuk@gmail.com](mailto:metupuk@gmail.com) for more infomation about each of our respresentives.
+  - _template: "prose"
+    body: |-
+      ## The full record
+
+      Every time a member has spoken to the press, with a link to what we wrote about it at the time. The films above are the broadcast work; this is everything, in order.
+
+      If you are a journalist looking for background, this is the fastest way to see who has spoken about what.
+  - _template: "prose"
+    body: |-
+      ### 2021
+
+      - **The New York Times** — 15 October. Emma Fisher, with other women living with breast cancer, on how October feels when you are metastatic. [Read the article](https://www.nytimes.com/2021/10/15/well/live/breast-cancer-awareness-month-anxiety.html)
+      - **The Good Enough Project podcast** — 26 January. Bex Lewis on what it means to be a "good enough" cancer patient. [Our post](/2021/01/metup-uk-member-drbexl-talks-about-being-a-good-enough-cancer-patient-on-iamwillonline-podcast/)
+      - **This is MedTech** — 19 January. Founder Jo Taylor on relying on continuous treatment to stay alive. [Our post](/2021/01/metupuk-founder-abcdiagnosis-features-in-thisismedtech/)
+
+      ### 2020
+
+      - **Hopeful Activists podcast** — 5 December. Bex Lewis on hope and grief. [Our post](/2020/12/metupuk-member-drbexl-talks-hope-and-grief-with-hopefulactivism-podcast/)
+      - **The Guardian** — 15 November. Sarah Hughes on living with stage IV cancer through COVID, citing the #IAmThe31 campaign. [Our post](/2020/11/the-iamthe31-campaign-by-metupukorg-mentioned-by-sarahjphughes-in-guardian/)
+      - **The Institute of Cancer Research** — 12 November. Emma Robertson on cancer drug pricing, and how approval could be made faster. [Our post](/2020/11/metupuk-advocate-little_emmabird-speaks-with-icr_london-re-drug-pricing/)
+      - **Tech for Good Live** — 9 November. Bex Lewis, in their newsletter. [Our post](/2020/11/featured-in-techforgoodlive-newsletter/)
+      - **Future Dreams magazine** — 5 November. Mary Huckle, across four pages. [Our post](/2020/11/article-by-mary_huckle-in-futuredreamss/)
+      - **MailOnline** — 2 November. The #IAmThe31 campaign and the tyranny of pink positivity, with Jo Taylor, Bex Lewis, Tassia Haines and Em. [Our post](/2020/11/the-tyranny-of-pink-positivity-metupukorg-iamthe31-campaign-features-in-mailonline-abcdiagnosis-drbexl-tassiahaines-ohgoshem/)
+      - **Beauty Despite Cancer** — 20 October. Jennifer Young featured the #IAmThe31 campaign and ABC Diagnosis. [Our post](/2020/10/campaign-iamthe31-and-abcdiagnosis-feature-in-jenniferskin-blog/)
+      - **Total Health** — 17 October. Jo Taylor and Madeleine Meynell on what every woman who has had breast cancer should know. [Our post](/2020/10/totalhealth-co-uk-remaining433speed1x-what-every-woman-whos-had-breast-cancer-should-know/)
+      - **MailOnline** — 8 October. Mary Huckle, the day after Lorraine. [Our post](/2020/10/member-mary_huckle-features-in-mailonline-for-bcam/)
+      - **ITV, Lorraine** — 7 October. Mary Huckle and Jen Cronje on the impact of COVID-19 on secondary cancer treatment. [Our post](/2020/10/members-mary_huckle-and-beingjencronje-on-lorraine-for-breastcancerawarenessmonth/)
+      - **BBC** — 7 September. Bex Lewis on cancer and COVID-19. [Our post](/2020/09/member-drbexl-talks-cancer-and-covid-19-with-the-bbc/)
+      - **Total Health** — 28 August. On what the media got wrong in its coverage of Sarah Harding's diagnosis. [Our post](/2020/08/totalhealth-co-uk-what-the-media-has-got-so-wrong-about-sarah-harding/)
+      - **The Telegraph** — 7 July. Jo Taylor calling for an end to end-of-treatment bells. [Our post](/2020/07/founder-abcdiagnosis-calls-for-end-to-end-of-treatment-bells-in-telegraph/)
+      - **BBC News** — 14 May. Kit, on how the coronavirus outbreak disrupted cancer screening, treatment and trials. [Our post](/2020/05/member-diamondtrees11-appears-with-oebs1-on-bbcnews-discussing-the-impact-of-covid-on-cancer-treatment/)
+      - **Premier Christian Radio** — 26 March. Bex Lewis on dealing with cancer, high risk, and being stranded in New Zealand. [Our post](/2020/03/member-drbexl-talks-cancer-and-covid-with-premierradio-whilst-stranded-in-new-zealand/)
+      - **Breast Cancer Now** — 18 March. Kit's patient story: living young with de novo metastatic cancer. [Our post](/2020/03/i-am-more-than-my-cancer-says-diamondtrees11/)
+      - **Total Health** — 22 January. Madeleine Meynell on the signs and symptoms of metastatic breast cancer. [Our post](/2020/01/totalhealth-co-uk-when-breast-cancer-is-incurable-by-madmeynell/)
+
+      ### 2019
+
+      - **ITV, This Morning** — 29 October. Jo Taylor in the debate on banning end-of-treatment bell ceremonies. [Our post](/2019/10/founder-abcdiagnosis-appears-on-thismorning-discussing-endoftreatmentbells/)
+
+      ### 2018
+
+      - **At an oncology conference** — 19 July. Beth Roberts explains what METUPUK is for, and why the red flag infographics matter. [Our post](/2018/07/member-beth-roberts-explains-metupuk-aims-and-infographics/)
+  - _template: "prose"
+    body: |-
+      Also on film, above: **Sky News**, **BBC Radio Tees**, **BBC 5 Live**, **BBC Look North** and **BBC Radio Wales**, with Jo Taylor, Laura Ashurst, Emma Hillier and Emma Fisher.
+
+      Something missing from this record? If a member has spoken to the press and it is not here, tell us at [metupuk@gmail.com](mailto:metupuk@gmail.com) and we will add it.
 ---
