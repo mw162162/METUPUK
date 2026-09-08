@@ -33,13 +33,17 @@
   label{display:block;font-size:.8rem;color:var(--muted);margin:.75rem 0 .25rem}
   label:first-of-type{margin-top:0}
   input,select,textarea{width:100%;font:inherit;font-size:.9rem;color:#fff;
-    background:rgb(255 255 255/.06);border:1px solid var(--line);border-radius:8px;padding:.55rem .7rem}
+    background:rgb(255 255 255/.06);border:1px solid var(--line);border-radius:8px;
+    /* 44px, because a finger is not a mouse. The file input and one select were
+       coming out at 38 and 36. */
+    padding:.6rem .7rem;min-height:2.75rem}
+  textarea{min-height:5.5rem}
   textarea{resize:vertical;min-height:5.5rem;line-height:1.45}
   input:focus,select:focus,textarea:focus{outline:2px solid var(--pink-300);outline-offset:1px}
   .row{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
   .chip{flex:1 1 auto;font:inherit;font-size:.8rem;font-weight:600;cursor:pointer;
     background:rgb(255 255 255/.05);color:#f6e9ef;border:1px solid var(--line);
-    border-radius:999px;padding:.5rem .8rem;min-height:2.5rem}
+    border-radius:999px;padding:.5rem .8rem;min-height:2.75rem}
   .chip[aria-pressed="true"]{background:var(--magenta-500);border-color:var(--magenta-500);color:#fff}
   .stage{display:grid;gap:.75rem;justify-items:start}
   .frame{background:repeating-conic-gradient(#241318 0 25%,#2b0519 0 50%) 0 0/24px 24px;
@@ -52,8 +56,26 @@
   .btn--ghost{background:transparent;border-color:rgb(255 255 255/.4);color:#f6e9ef}
   .note{color:var(--muted);font-size:.82rem;margin:.25rem 0 0}
   .note.warn{color:var(--pink-300)}
-  .brand-name{margin:0 0 .6rem;font-family:var(--display);font-weight:800;
-    font-size:.9rem;letter-spacing:.01em;color:#fff}
+  .brand-name{margin:0 0 .2rem;font-family:var(--display);font-weight:800;
+    font-size:.95rem;letter-spacing:.01em;color:#fff}
+  /* The brand is set once and the posts are made every day, so the brand goes
+     last and shut. It was above the templates, which meant scrolling past
+     "open a brand file" every time to reach the thing you came for. */
+  .brand-panel{border:1px solid var(--line);border-radius:10px;margin-top:1rem}
+  .brand-panel>summary{cursor:pointer;list-style:none;padding:.85rem 1rem;
+    min-height:2.75rem;display:flex;align-items:center;justify-content:space-between;
+    font-family:var(--display);font-weight:800;font-size:.72rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--pink-300)}
+  .brand-panel>summary::-webkit-details-marker{display:none}
+  .brand-panel>summary::after{content:"+";font-size:1.2rem;color:var(--muted)}
+  .brand-panel[open]>summary::after{content:"2"}
+  .brand-panel__in{padding:0 1rem 1rem}
+  .swatch{display:grid;grid-template-columns:1fr auto 5.5rem;gap:.4rem;align-items:center;
+    margin-top:.5rem}
+  .swatch__label{margin:0;font-size:.8rem;color:var(--muted)}
+  .swatch input[type=color]{width:2.75rem;min-height:2.75rem;padding:2px;cursor:pointer}
+  .swatch__hex{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.8rem}
+  .swatch__hint{grid-column:1/-1;font-size:.74rem;color:var(--muted);margin-top:-.15rem}
   /* A page you can drop a brand onto should say so the moment you try. */
   body.is-dropping::after{content:"Drop the brand file";position:fixed;inset:0;
     z-index:50;display:grid;place-items:center;pointer-events:none;
@@ -78,24 +100,8 @@
 
 <div class="wrap">
   <form id="controls" aria-label="Post settings">
-    <fieldset>
-      <legend>Brand</legend>
-      <p class="brand-name" id="brand-name">&nbsp;</p>
-      <label for="brand-file">Open a brand file</label>
-      <input type="file" id="brand-file" accept="application/json,.json">
-      <label for="brand-url">Or one you host yourself</label>
-      <div class="row">
-        <input type="url" id="brand-url" placeholder="https://yoursite.org/brand.json" style="flex:1 1 10rem">
-        <button class="chip" type="button" id="brand-url-go">Open</button>
-      </div>
-      <div class="row">
-        <button class="chip" type="button" id="brand-save">Save brand file</button>
-        <button class="chip" type="button" id="brand-share">Copy a link to it</button>
-      </div>
-      <p class="note">A brand file can live on your own site, on your machine, or
-         inside a link. Nothing is uploaded — a file you open here is read in
-         this browser and never leaves it.</p>
-    </fieldset>
+    <p class="brand-name" id="brand-name">&nbsp;</p>
+    <p class="note warn" id="brand-edited"></p>
 
     <fieldset>
       <legend>Post</legend>
@@ -118,6 +124,26 @@
       <p class="note">Optional. Replaces the portrait or venue photograph on the
          templates that use one — it is still cropped and tinted to match.</p>
     </fieldset>
+    <details class="brand-panel">
+      <summary>Change the brand</summary>
+      <div class="brand-panel__in">
+        <div id="brand-edit"></div>
+        <div class="row">
+          <button class="chip" type="button" id="brand-save">Save brand file</button>
+          <button class="chip" type="button" id="brand-share">Copy a link to it</button>
+        </div>
+        <label for="brand-file">Open a different brand</label>
+        <input type="file" id="brand-file" accept="application/json,.json">
+        <label for="brand-url">Or one you host yourself</label>
+        <div class="row">
+          <input type="url" id="brand-url" placeholder="https://yoursite.org/brand.json" style="flex:1 1 9rem">
+          <button class="chip" type="button" id="brand-url-go">Open</button>
+        </div>
+        <p class="note">Nothing is uploaded — a file you open here is read in this
+           browser and never leaves it. Changes live only here until you save the
+           file or copy a link.</p>
+      </div>
+    </details>
   </form>
 
   <div class="stage">

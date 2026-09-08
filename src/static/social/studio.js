@@ -533,6 +533,101 @@
   function paintBrandControls() {
     var host = document.getElementById('brand-name');
     if (host) host.textContent = brand.name + (brand.site ? ' · ' + brand.site : '');
+    paintBrandEditor();
+  }
+
+  var COLOUR_ROLES = [
+    ['figure', 'The figure', 'the number, and anything set largest'],
+    ['rule', 'Rule', 'the short bar, and the quote mark'],
+    ['heading', 'Heading', 'the words set in the display face'],
+    ['soft', 'Second line', 'supporting text under a heading'],
+    ['chip', 'Label', 'the filled pill'],
+    ['tag', 'Hashtag', 'the signature line, right'],
+  ];
+
+  /* Correcting a brand, in the tool.
+     The extractor produces a draft that gets the family and the faces right
+     and the exact shades wrong. Until now the only way to fix that was opening
+     the JSON in a text editor — which is precisely the thing that made this a
+     job for a developer rather than a product. Every colour the templates use
+     is editable here, and the change is on the canvas before the picker
+     closes. */
+  var edited = false;
+  function paintBrandEditor() {
+    var host = document.getElementById('brand-edit');
+    if (!host || !brand) return;
+    host.innerHTML = '';
+
+    var text = function (label, get, set, hint) {
+      var l = document.createElement('label'); l.textContent = label;
+      var i = document.createElement('input'); i.type = 'text'; i.value = get() || '';
+      i.addEventListener('input', function () { set(i.value); touched(); });
+      host.appendChild(l); host.appendChild(i);
+      if (hint) { var h = document.createElement('p'); h.className = 'note'; h.textContent = hint; host.appendChild(h); }
+    };
+
+    var swatch = function (label, hint, get, set) {
+      var row = document.createElement('div'); row.className = 'swatch';
+      var l = document.createElement('label'); l.textContent = label; l.className = 'swatch__label';
+      var pick = document.createElement('input'); pick.type = 'color'; pick.value = get() || '#000000';
+      var hex = document.createElement('input'); hex.type = 'text'; hex.value = get() || '';
+      hex.className = 'swatch__hex'; hex.spellcheck = false;
+      pick.addEventListener('input', function () { hex.value = pick.value; set(pick.value); touched(); });
+      hex.addEventListener('input', function () {
+        if (!/^#[0-9a-f]{6}$/i.test(hex.value.trim())) return;
+        pick.value = hex.value.trim(); set(hex.value.trim()); touched();
+      });
+      var note = document.createElement('span'); note.className = 'swatch__hint'; note.textContent = hint;
+      row.appendChild(l); row.appendChild(pick); row.appendChild(hex); row.appendChild(note);
+      host.appendChild(row);
+    };
+
+    text('Name', function () { return brand.name; }, function (v) { brand.name = v; paintName(); });
+    text('Website', function () { return brand.site; }, function (v) { brand.site = v; paintName(); });
+    text('Wordmark', function () { return brand.mark && brand.mark.wordmark; },
+      function (v) { brand.mark = brand.mark || {}; brand.mark.wordmark = v; },
+      'What every post signs itself with.');
+    text('Hashtags', function () { return (brand.tags || []).join(' '); }, function (v) {
+      brand.tags = v.split(/[\s,]+/).filter(Boolean);
+      var sel = document.getElementById('tag');
+      sel.innerHTML = '';
+      brand.tags.forEach(function (t) {
+        var o = document.createElement('option'); o.value = t; o.textContent = t; sel.appendChild(o);
+      });
+      if (brand.tags.indexOf(state.tag) < 0) state.tag = brand.tags[0] || '';
+      sel.value = state.tag;
+    }, 'Separated by spaces.');
+
+    COLOUR_ROLES.forEach(function (role) {
+      swatch(role[1], role[2],
+        function () { return brand.colour[role[0]]; },
+        function (v) { brand.colour[role[0]] = v; });
+    });
+
+    (brand.grounds || []).forEach(function (g, i) {
+      swatch('Background: ' + g.label, 'from',
+        function () { return brand.grounds[i].from; },
+        function (v) { brand.grounds[i].from = v; });
+      swatch(' ', 'to',
+        function () { return brand.grounds[i].to; },
+        function (v) { brand.grounds[i].to = v; });
+    });
+  }
+
+  function paintName() {
+    var host = document.getElementById('brand-name');
+    if (host) host.textContent = brand.name + (brand.site ? ' · ' + brand.site : '');
+    document.title = 'Social templates — ' + brand.name;
+  }
+
+  /* A brand changed here exists only in this browser until it is saved or
+     linked, so the page has to say so rather than let somebody close the tab
+     believing the work was kept. */
+  function touched() {
+    edited = true;
+    var flag = document.getElementById('brand-edited');
+    if (flag) flag.textContent = 'Changed here — save the file or copy a link to keep it';
+    render();
   }
 
   function readBrandFile(file) {
@@ -605,7 +700,12 @@
     }
 
     var save = document.getElementById('brand-save');
-    if (save) save.addEventListener('click', function () { saveBrandFile(); say('Saved the brand file'); });
+    if (save) save.addEventListener('click', function () {
+      saveBrandFile(); edited = false;
+      var flag = document.getElementById('brand-edited');
+      if (flag) flag.textContent = '';
+      say('Saved the brand file');
+    });
 
     var share = document.getElementById('brand-share');
     if (share) {
@@ -877,6 +977,9 @@
 
   function reopen(b) {
     images = {};
+    edited = false;
+    var flag = document.getElementById('brand-edited');
+    if (flag) flag.textContent = '';
     adopt(b).then(function () {
       paintTemplates(); paintSizes(); paintBrandControls();
       buildFields();
@@ -889,6 +992,12 @@
       say('Now using ' + brand.name);
     }).catch(function (err) { say(err.message); });
   }
+
+  window.addEventListener('beforeunload', function (e) {
+    if (!edited) return;
+    e.preventDefault();
+    e.returnValue = '';
+  });
 
   openSource(source())
     .then(start)
