@@ -310,7 +310,7 @@ const searchDialog = `<div class="search-dialog" id="search-dialog" hidden role=
 function layout(opts) {
   const {
     title, description, url = '/', body, image, jsonLd = [],
-    bodyClass = '', noindex = false, titleSuffix = null,
+    bodyClass = '', noindex = false, titleSuffix = null, canonical = null,
   } = opts;
   const fullTitle = url === '/'
     ? `${SITE_NAME} — ${SITE_TAGLINE}`
@@ -325,7 +325,7 @@ function layout(opts) {
 <title>${esc(fullTitle)}</title>
 <meta name="description" content="${esc(description || '')}">
 ${noindex ? '<meta name="robots" content="noindex,follow">' : ''}
-<link rel="canonical" href="${SITE_URL}${url}">
+<link rel="canonical" href="${SITE_URL}${canonical || url}">
 <meta property="og:type" content="${opts.ogType || 'website'}">
 <meta property="og:site_name" content="${SITE_NAME}">
 <meta property="og:title" content="${esc(fullTitle)}">

@@ -717,6 +717,8 @@ ${kids}`;
     url: doc.url,
     description: doc.description && doc.description.length > 40 ? doc.description : fallbackDescription,
     image: doc.image,
+    noindex: doc.noindex,
+    canonical: doc.canonical,
     body,
     ogType: 'article',
     jsonLd: [{
@@ -785,6 +787,8 @@ function renderPost(doc, prev, next) {
       ? doc.description
       : `${doc.title}. From the MET UP UK blog, the UK's metastatic breast cancer patient advocacy charity.`,
     image: doc.image,
+    noindex: doc.noindex,
+    canonical: doc.canonical,
     body,
     ogType: 'article',
     jsonLd: [{
@@ -1249,7 +1253,7 @@ function run() {
   write('/404.html', render404());
 
   // Search index — title, url, kind and a trimmed body for snippets.
-  const index = [...model.pages.filter((p) => p.url !== '/'), ...model.posts]
+  const index = [...model.pages.filter((p) => p.url !== '/' && !p.noindex), ...model.posts]
     .filter((d) => d.words > 5)
     .map((d) => ({ t: d.title, u: d.url, k: d.kind === 'post' ? 'Article' : 'Page', b: d.text.slice(0, 1800) }));
   index.push({ t: 'The Darker Side of Pink', u: '/darker-side-of-pink/', k: 'Exhibition', b: '31 transparent figures, one for every woman who dies each day in the UK from metastatic breast cancer. ' + exhibition.portraits.map((p) => p.name).join(', ') });
@@ -1258,7 +1262,9 @@ function run() {
   // XML sitemap
   const sitemapUrls = [
     { loc: '/', priority: '1.0' },
-    ...model.pages.filter((p) => p.url !== '/').map((p) => ({ loc: p.url, lastmod: p.modified, priority: '0.8' })),
+    // A page kept out of search does not belong in the sitemap either;
+    // listing it there asks Google to index what the page asks it not to.
+    ...model.pages.filter((p) => p.url !== '/' && !p.noindex).map((p) => ({ loc: p.url, lastmod: p.modified, priority: '0.8' })),
     { loc: '/darker-side-of-pink/', priority: '0.9' },
     { loc: '/latest-news/', priority: '0.7' },
     ...model.posts.map((p) => ({ loc: p.url, lastmod: p.modified, priority: '0.6' })),
@@ -1267,7 +1273,8 @@ function run() {
   fs.writeFileSync(path.join(OUT, 'feed.xml'), renderFeed(model.posts));
   fs.writeFileSync(path.join(OUT, 'favicon.svg'), FAVICON);
   fs.writeFileSync(path.join(OUT, 'robots.txt'),
-    `User-agent: *\nAllow: /\n\nSitemap: ${T.SITE_URL}/sitemap.xml\n`);
+    // /admin/ is the CMS, not a page of the site.
+    `User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: ${T.SITE_URL}/sitemap.xml\n`);
 
   // What the social studio draws with.
   //

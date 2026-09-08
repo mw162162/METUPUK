@@ -120,6 +120,12 @@ function build(base) {
             : summarise(summaryText, 165),
           image,
           imageAlt: front.imageAlt || '',
+          // Set on a page that should stay reachable but out of search: a
+          // stub with nothing on it yet, or a build artefact.
+          noindex: front.noindex === true,
+          // Set on the second publication of a piece that already exists
+          // elsewhere, so the two stop competing with each other.
+          canonical: front.canonical || null,
           // Always measured from the file: content/ stores which image, not how big
           // it is, and a stale number in frontmatter would outlive the crop.
           ...measured(null, image),

@@ -1,6 +1,7 @@
 ---
 title: "Data Collection for metastatic breast cancer…"
 url: "/2024/10/data-collection-for-metastatic-breast-cancer/"
+canonical: "/2024/05/data-collection-for-metastatic-breast-cancer-we-are-only-counted-when-we-are-dead-kat-southwell/"
 date: "2024-10-22T22:59:07"
 modified: "2024-10-25T11:10:46"
 image: "/media/2023/11/kat-southwell-scaled-e1698867859659-952x1024.jpg"
