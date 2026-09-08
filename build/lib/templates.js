@@ -75,6 +75,7 @@ const NAV = [
       { title: 'MBC Scotland', url: '/metupuk-around-the-uk/mbc-scotland-coming-soon/', child: true },
       { title: 'MBC Northern Ireland', url: '/metupuk-around-the-uk/mbc-n-i-coming-soon/', child: true },
       { title: 'METUPUK in the news', url: '/metupuk-in-the-news/' },
+      { title: 'Where we represent patients', url: '/where-we-represent-patients/' },
     ],
   },
   {

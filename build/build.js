@@ -732,7 +732,7 @@ ${kids}`;
   });
 }
 
-function renderPost(doc, prev, next, inRecord = false) {
+function renderPost(doc, prev, next, hub = null) {
   let html = addHeadingIds(doc.html);
   const toc = doc.words > 900 ? tableOfContents(html) : '';
   if (!toc) html = articleLayout.acts(html);
@@ -771,8 +771,8 @@ function renderPost(doc, prev, next, inRecord = false) {
         })}</figure>`;
       })() : ''}
       ${html}
-      ${inRecord ? `
-      <p class="post-hubline"><a href="/metupuk-in-the-news/">Part of our media record →</a></p>` : ''}
+      ${hub ? `
+      <p class="post-hubline"><a href="${hub.url}">${esc(hub.label)} →</a></p>` : ''}
       <nav class="prevnext" aria-label="More articles">
         ${prev ? `<a href="${prev.url}"><span>← Previous</span>${esc(prev.title)}</a>` : '<span></span>'}
         ${next ? `<a class="is-next" href="${next.url}"><span>Next →</span>${esc(next.title)}</a>` : '<span></span>'}
@@ -1225,18 +1225,28 @@ function run() {
   // Posts, newest first, with prev/next.
   model.posts.forEach((p, i) => {
     const newer = model.posts[i - 1] || null;
-  // Which posts the media record actually lists. Built from the page rather
-  // than from the press category: four posts carry that category but announce
-  // drug approvals rather than coverage, and the charity's tagging is theirs
-  // to keep. This way the record and the links back to it cannot disagree.
-  const mediaRecordPage = model.pages.find((p) => p.url === '/metupuk-in-the-news/');
-  const mediaRecord = new Set(
-    [...((mediaRecordPage && mediaRecordPage.html) || '').matchAll(/href="(\/\d{4}\/\d{2}\/[^"]+)"/g)]
-      .map((m) => m[1])
-  );
+  // Which posts each record actually lists. Built from the pages rather than
+  // from a category: four posts carry the press category but announce drug
+  // approvals rather than coverage, and several tagged 'conferences' are
+  // articles, so a category would put the wrong line on the wrong post. The
+  // charity's tagging is theirs to keep. This way a record and the links back
+  // to it cannot disagree.
+  const RECORDS = [
+    { url: '/metupuk-in-the-news/', label: 'Part of our media record' },
+    { url: '/where-we-represent-patients/', label: 'Part of where we represent patients' },
+  ];
+  const hubOf = new Map();
+  for (const rec of RECORDS) {
+    const page = model.pages.find((p) => p.url === rec.url);
+    if (!page) continue;
+    for (const m of (page.html || '').matchAll(/href="(\/\d{4}\/\d{2}\/[^"]+)"/g)) {
+      // A post listed by both records keeps the first, so the line stays single.
+      if (!hubOf.has(m[1])) hubOf.set(m[1], rec);
+    }
+  }
 
     const older = model.posts[i + 1] || null;
-    record(p.url, renderPost(p, older, newer, mediaRecord.has(p.url)));
+    record(p.url, renderPost(p, older, newer, hubOf.get(p.url) || null));
   });
 
   // News index + pagination. /latest-news/ is a real page, so it is overwritten

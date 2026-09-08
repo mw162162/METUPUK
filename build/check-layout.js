@@ -116,13 +116,18 @@ check(
 );
 
 check(
-  'the media record and the posts pointing at it are the same set',
-  'the record consolidates 21 scattered press notices, and only works if each of those posts links back to it. Driving the link off the press category instead put "Part of our media record" on four posts announcing drug approvals. Whatever decides one must decide the other.',
+  'every record and the posts pointing at it are the same set',
+  'the records consolidate scattered notices, and only work if each listed post links back. Driving the link off a category instead put "Part of our media record" on four posts announcing drug approvals, and the conferences category holds articles that were never conferences. Whatever decides one must decide the other.',
   () => {
-    const hub = path.join(OUT, 'metupuk-in-the-news', 'index.html');
-    if (!fs.existsSync(hub)) return true;
-    const main = fs.readFileSync(hub, 'utf8').split('<main')[1] || '';
-    const listed = new Set([...main.matchAll(/href="(\/\d{4}\/\d{2}\/[^"]+)"/g)].map((m) => m[1]));
+    const HUBS = ['/metupuk-in-the-news/', '/where-we-represent-patients/'];
+    const listed = new Set();
+    for (const hub of HUBS) {
+      const file = path.join(OUT, hub.replace(/^\/|\/$/g, ''), 'index.html');
+      if (!fs.existsSync(file)) continue;
+      const main = fs.readFileSync(file, 'utf8').split('<main')[1] || '';
+      for (const m of main.matchAll(/href="(\/\d{4}\/\d{2}\/[^"]+)"/g)) listed.add(m[1]);
+    }
+    if (!listed.size) return true;
 
     const back = new Set();
     walk(OUT, (file) => {
@@ -131,11 +136,9 @@ check(
       back.add('/' + path.relative(OUT, path.dirname(file)).split(path.sep).join('/') + '/');
     });
 
-    const stray = [...back].filter((u) => !listed.has(u));
-    const missing = [...listed].filter((u) => !back.has(u));
     const bad = [
-      ...stray.map((u) => 'links back but is not in the record: ' + u),
-      ...missing.map((u) => 'in the record but does not link back: ' + u),
+      ...[...back].filter((u) => !listed.has(u)).map((u) => 'links back but is in no record: ' + u),
+      ...[...listed].filter((u) => !back.has(u)).map((u) => 'in a record but does not link back: ' + u),
     ];
     return bad.length ? bad.slice(0, 6) : true;
   },
