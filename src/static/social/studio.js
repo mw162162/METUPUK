@@ -614,6 +614,7 @@
     var host = document.getElementById('brand-name');
     if (host) host.textContent = brand.name + (brand.site ? ' · ' + brand.site : '');
     paintBrandEditor();
+    paintKitLink();
   }
 
   var COLOUR_ROLES = [
@@ -692,6 +693,24 @@
         function () { return brand.grounds[i].to; },
         function (v) { brand.grounds[i].to = v; });
     });
+  }
+
+  /* The kit is exported per brand, so the link only exists for a brand that has
+     one. A dead link to a folder that was never generated is worse than no
+     mention of it at all. */
+  function paintKitLink() {
+    var host = document.getElementById('canva-kit');
+    if (!host || !brand || !brand.id) return;
+    var base = '/social/canva/' + brand.id + '/';
+    fetch(base + 'SPEC.md', { method: 'HEAD' }).then(function (r) {
+      if (!r.ok) { host.hidden = true; return; }
+      host.hidden = false;
+      var a = document.createElement('a');
+      a.href = base + 'SPEC.md';
+      a.textContent = 'Open the Canva kit for ' + brand.name;
+      host.appendChild(document.createTextNode(' '));
+      host.appendChild(a);
+    }).catch(function () { host.hidden = true; });
   }
 
   function paintName() {
