@@ -73,24 +73,42 @@ check(
 );
 
 check(
-  'every page references a file that exists',
-  'running build.js without the WebP pass leaves 28 portraits pointing at JPEGs that were pruned. Nothing errors; the pictures are simply gone, and only on the pages nobody reloaded.',
+  'every page references a file that exists, spelled the way it exists',
+  'running build.js without the WebP pass leaves 28 portraits pointing at JPEGs that were pruned. Nothing errors; the pictures are simply gone, and only on the pages nobody reloaded. Casing counts too: NTFS answers yes to Foo.PNG when the file is foo.png, so a check that trusts fs.existsSync passes on this machine and 404s on Cloudflare. That shipped 86 pages with a broken share image.',
   () => {
+    const listed = new Map();
+    const present = (rel) => {
+      const full = path.join(OUT, rel);
+      const dir = path.dirname(full);
+      if (!listed.has(dir)) {
+        let names = [];
+        try { names = fs.readdirSync(dir); } catch { /* nothing there */ }
+        listed.set(dir, new Set(names));
+      }
+      return listed.get(dir).has(path.basename(full));
+    };
+
     const missing = new Set();
+    const consider = (url) => {
+      if (!url) return;
+      // Only our own absolute URLs become local paths. Macmillan hosts a PDF
+      // at /assets/... too, and it is not ours to have on disk.
+      const ours = url.replace(/^https?:\/\/(www\.)?metupuk\.org\.uk/, '');
+      if (/^https?:\/\//.test(ours)) return;
+      const rel = decodeURIComponent(ours).split('?')[0];
+      if (!/^\/(media|assets|brand)\//.test(rel)) return;
+      if (!present(rel)) missing.add(rel);
+    };
+
     walk(OUT, (file) => {
       if (!/\.html$/i.test(file)) return;
       const html = fs.readFileSync(file, 'utf8');
-      for (const m of html.matchAll(/(?:src|href)="(\/(?:media|assets|brand)\/[^"]+)"/g)) {
-        const rel = decodeURIComponent(m[1]).split('?')[0];
-        if (!fs.existsSync(path.join(OUT, rel))) missing.add(rel);
-      }
+      for (const m of html.matchAll(/(?:src|href)="([^"]+)"/g)) consider(m[1]);
+      // og:image and twitter:image live in content=, and are the reason this
+      // check grew a casing rule.
+      for (const m of html.matchAll(/content="([^"]+)"/g)) consider(m[1]);
       for (const m of html.matchAll(/srcset="([^"]+)"/g)) {
-        for (const part of m[1].split(',')) {
-          const url = part.trim().split(/\s+/)[0];
-          if (!url.startsWith('/')) continue;
-          const rel = decodeURIComponent(url).split('?')[0];
-          if (!fs.existsSync(path.join(OUT, rel))) missing.add(rel);
-        }
+        for (const part of m[1].split(',')) consider(part.trim().split(/\s+/)[0]);
       }
     });
     return missing.size ? [...missing].slice(0, 8) : true;

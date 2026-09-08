@@ -255,7 +255,37 @@ function links(site, add) {
 
 /* --- Accessibility -------------------------------------------------------- */
 
+/* Classes the stylesheet takes out of flow and sizes itself.
+ *
+ * img-no-dimensions exists because an image with no width/height reserves no
+ * space, so the page jumps when it loads. That reasoning does not apply to an
+ * image the CSS has already pulled out of the flow and given a size: a plate
+ * at position:absolute; inset:0; width:100%; height:100% occupies exactly the
+ * box it was given, before and after it decodes, and adding attributes changes
+ * nothing. Reporting it sends someone to fix code that is already right, which
+ * is the most expensive thing an audit can do. */
+function selfSizedClasses(site) {
+  const out = new Set();
+  if (!site.root || !site.assets) return out;
+  const fs = require('fs');
+  for (const file of site.assets.keys()) {
+    if (!/\.css$/i.test(file)) continue;
+    let css = '';
+    try { css = fs.readFileSync(path.join(site.root, file.replace(/^\//, '')), 'utf8'); } catch { continue; }
+    for (const m of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+      const body = m[2];
+      if (!/position:\s*(absolute|fixed)/.test(body)) continue;
+      const sized = /inset:\s*0/.test(body) ||
+        (/(^|[;\s])width:/.test(body) && /(^|[;\s])height:/.test(body));
+      if (!sized) continue;
+      for (const cls of m[1].matchAll(/\.([A-Za-z0-9_-]+)/g)) out.add(cls[1]);
+    }
+  }
+  return out;
+}
+
 function accessibility(site, add) {
+  const selfSized = selfSizedClasses(site);
   for (const page of site.pages) {
     const { dom, url } = page;
 
@@ -273,7 +303,10 @@ function accessibility(site, add) {
       const alt = img.getAttribute('alt');
       if (alt === null || alt === undefined) missingAlt++;
       else if (!alt.trim()) emptyAlt++;
-      if (!img.getAttribute('width') || !img.getAttribute('height')) noDims++;
+      if (!img.getAttribute('width') || !img.getAttribute('height')) {
+        const classes = (img.getAttribute('class') || '').split(/\s+/).filter(Boolean);
+        if (!classes.some((c) => selfSized.has(c))) noDims++;
+      }
       if (!img.getAttribute('loading') && !img.getAttribute('fetchpriority')) noLazy++;
     }
     if (missingAlt) add({ id: 'img-alt-absent', severity: SEV.error, page: url, detail: `${missingAlt} image(s) with no alt attribute at all.`, fix: 'Every img needs alt. Use alt="" only for decorative images.' });
@@ -345,25 +378,48 @@ function accessibility(site, add) {
 // which is how a report loses the reader.
 function requestedAssets(site) {
   const used = new Set();
-  const add = (url) => {
-    if (!url) return;
-    const clean = decodeURIComponent(String(url).trim().split('#')[0].split('?')[0]);
-    if (clean.startsWith('/')) used.add(clean);
+  // A file listed in a srcset is offered, not fetched. Only one candidate is
+  // ever downloaded, and on the screens that matter it is a small one, so
+  // judging page weight by the largest file on disk sends someone to
+  // re-compress an image nobody was being sent. What every visitor pays for is
+  // the narrower set: a src with no srcset, the smallest candidate of a
+  // srcset, and anything a stylesheet or preload names.
+  const unavoidable = new Set();
+  const clean = (url) => {
+    if (!url) return null;
+    const c = decodeURIComponent(String(url).trim().split('#')[0].split('?')[0]);
+    return c.startsWith('/') ? c : null;
   };
-  const fromSrcset = (v) => {
-    if (!v) return;
-    for (const part of v.split(',')) add(part.trim().split(/\s+/)[0]);
+  const add = (url, always) => {
+    const c = clean(url);
+    if (!c) return;
+    used.add(c);
+    if (always) unavoidable.add(c);
   };
+  const candidates = (v) => (v || '').split(',')
+    .map((part) => {
+      const [url, d] = part.trim().split(/\s+/);
+      const w = d && d.endsWith('w') ? parseInt(d, 10) : Infinity;
+      return { url: clean(url), w };
+    })
+    .filter((c) => c.url);
 
   for (const page of site.pages) {
     for (const el of page.dom.querySelectorAll('[src], [srcset], [href], [style]')) {
-      add(el.getAttribute('src'));
-      fromSrcset(el.getAttribute('srcset'));
+      const set = candidates(el.getAttribute('srcset'));
+      for (const c of set) add(c.url, false);
+      if (set.length) {
+        const smallest = set.slice().sort((a, b) => a.w - b.w)[0];
+        add(smallest.url, true);
+        add(el.getAttribute('src'), false);
+      } else {
+        add(el.getAttribute('src'), true);
+      }
       // Stylesheets and preloads are fetched; ordinary links are navigation.
       const rel = (el.getAttribute('rel') || '').toLowerCase();
-      if (rel.includes('stylesheet') || rel.includes('preload') || rel.includes('icon')) add(el.getAttribute('href'));
+      if (rel.includes('stylesheet') || rel.includes('preload') || rel.includes('icon')) add(el.getAttribute('href'), true);
       const style = el.getAttribute('style');
-      if (style) for (const m of style.matchAll(/url\(\s*['"]?([^'")]+)/g)) add(m[1]);
+      if (style) for (const m of style.matchAll(/url\(\s*['"]?([^'")]+)/g)) add(m[1], true);
     }
   }
 
@@ -375,10 +431,11 @@ function requestedAssets(site) {
       if (!/\.css$/i.test(file)) continue;
       try {
         const css = fs.readFileSync(path.join(site.root, file.replace(/^\//, '')), 'utf8');
-        for (const m of css.matchAll(/url\(\s*['"]?([^'")]+)/g)) add(m[1]);
+        for (const m of css.matchAll(/url\(\s*['"]?([^'")]+)/g)) add(m[1], true);
       } catch { /* unreadable */ }
     }
   }
+  used.unavoidable = unavoidable;
   return used;
 }
 
@@ -409,8 +466,14 @@ function performance(site, add, opts = {}) {
   if (site.assets && site.assets.size) {
     const heavy = [...site.assets.entries()]
       .filter(([f, size]) => /\.(jpe?g|png|gif|webp|avif)$/i.test(f) && size > heavyImageKb * 1024)
-      .filter(([f]) => requested.has(f))
+      .filter(([f]) => requested.unavoidable.has(f))
       .sort((a, b) => b[1] - a[1]);
+    const offeredOnly = [...site.assets.entries()]
+      .filter(([f, size]) => /\.(jpe?g|png|gif|webp|avif)$/i.test(f) && size > heavyImageKb * 1024)
+      .filter(([f]) => requested.has(f) && !requested.unavoidable.has(f));
+    if (offeredOnly.length) {
+      add({ id: 'image-heavy-offered', severity: SEV.notice, page: '(site)', detail: `${offeredOnly.length} large image(s) are offered only as the top of a srcset.`, fix: 'No fix needed for page weight: a browser picks one candidate, and on a phone it picks a small one. These are the sharp versions for large, high-density screens.' });
+    }
     for (const [file, size] of heavy.slice(0, 25)) {
       add({ id: 'image-heavy', severity: SEV.warning, page: file, detail: `Image is ${(size / 1024 / 1024).toFixed(2)} MB.`, fix: `Resize and re-compress; anything over ${heavyImageKb} KB on a web page is usually avoidable. Convert to WebP/AVIF for roughly 30–50% smaller files.` });
     }

@@ -137,6 +137,24 @@ async function main() {
   // costs nothing, and the alternative is a filesystem probe per candidate.
   const toWebp = new Map();
   const toOriginal = new Map();
+
+  // fs.existsSync cannot answer "does a file with exactly this name exist" on
+  // Windows, where NTFS is case-insensitive: it says yes to Foo.PNG when the
+  // file is foo.png. The social tags are built from that answer and have to
+  // name a file that is actually deployed, and Cloudflare is case-sensitive,
+  // so believing Windows here shipped 86 pages with a 404 share image. Read
+  // the directory once and match the real spelling instead.
+  const listed = new Map();
+  const existsExactly = (candidate) => {
+    const dir = path.dirname(candidate);
+    if (!listed.has(dir)) {
+      let names = [];
+      try { names = fs.readdirSync(dir); } catch { /* nothing there */ }
+      listed.set(dir, new Set(names));
+    }
+    return listed.get(dir).has(path.basename(candidate));
+  };
+
   for (const target of walk(MEDIA)) {
     if (!/\.webp$/i.test(target)) continue;
     const webpUrl = siteUrl(target);
@@ -145,7 +163,7 @@ async function main() {
       toWebp.set(siteUrl(candidate), webpUrl);
       // The reverse map is only for the social tags, which have to name a file
       // that is actually deployed.
-      if (fs.existsSync(candidate)) toOriginal.set(webpUrl, siteUrl(candidate));
+      if (existsExactly(candidate)) toOriginal.set(webpUrl, siteUrl(candidate));
     }
   }
 
