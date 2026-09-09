@@ -1,0 +1,87 @@
+# Check every change, and publish it when publishing is switched on.
+#
+# Until this existed, saving a page in the editor at /admin/ wrote the change
+# to GitHub and stopped there: the live site did not move until someone ran
+# the deploy from their own laptop. That makes the charity unable to publish
+# without a developer, which is not a CMS, it is a request queue.
+#
+# Every gate the local pipeline runs, this runs too, and a failure means
+# nothing is published. verify.js proves no wording was lost and no internal
+# link is dead; check-layout.js holds the twelve structural invariants. A bad
+# edit stops here and the site people are reading stays as it was.
+#
+# The repository builds from `media/` alone, so no scrape directory is needed.
+#
+# Publishing stays off until CLOUDFLARE_API_TOKEN is set in the repository's
+# Settings → Secrets and variables → Actions. Until then this still builds and
+# checks every change, which is useful on its own and quiet: no failed run
+# lands in anyone's inbox because a secret has not been added yet.
+
+name: Publish
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**/*.md'
+      - '.github/**'
+  workflow_dispatch:        # a "publish now" button on the Actions tab
+
+# A volunteer who saves three times in a minute should get one deploy, of the
+# last version, not three racing each other.
+concurrency:
+  group: publish
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Job level, so a step can ask whether publishing is switched on before it
+    # runs. A secret that was never added arrives here as an empty string.
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_TINA_CLIENT_ID }}
+      TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build and check
+        run: npm run pipeline
+
+      - name: Publish to Cloudflare
+        if: env.CLOUDFLARE_API_TOKEN != ''
+        run: npx --yes wrangler pages deploy dist --project-name=metupuk --branch=main
+
+      - name: Say what happened
+        if: always()
+        run: |
+          if [ "${{ job.status }}" != "success" ]; then
+            echo "### The site was not published" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "A check failed, so the live site has been left exactly as it was." >> $GITHUB_STEP_SUMMARY
+            echo "Nothing is broken for anyone reading the site." >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Open the log above and find the first red line. It usually names the" >> $GITHUB_STEP_SUMMARY
+            echo "page and the problem — most often a link pointing at a page that does" >> $GITHUB_STEP_SUMMARY
+            echo "not exist, or wording removed from a page that had it." >> $GITHUB_STEP_SUMMARY
+          elif [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "### Checked, not published" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Every check passed. Publishing is switched off because" >> $GITHUB_STEP_SUMMARY
+            echo "CLOUDFLARE_API_TOKEN has not been added under" >> $GITHUB_STEP_SUMMARY
+            echo "Settings → Secrets and variables → Actions." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### Published" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Every check passed and the site is live. Give it a minute, then" >> $GITHUB_STEP_SUMMARY
+            echo "reload the page you changed." >> $GITHUB_STEP_SUMMARY
+          fi

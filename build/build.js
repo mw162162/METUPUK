@@ -182,7 +182,9 @@ function copyReferencedMedia() {
   // --no-scrape proves the repository is self-sufficient: it is what a hosted
   // build sees, because _scrape is 1.1 GB and is not committed. If the site
   // builds clean without it, it will build anywhere.
-  const useScrape = !process.argv.includes('--no-scrape');
+  // Absent on any machine but this one: a hosted build checks out the
+  // repository and nothing else, so treat a missing _scrape as the flag.
+  const useScrape = !process.argv.includes('--no-scrape') && fs.existsSync(SCRAPE);
   const sources = useScrape
     ? [path.join(ROOT, 'media'), path.join(SCRAPE, 'assets')]
     : [path.join(ROOT, 'media')];
