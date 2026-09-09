@@ -12,7 +12,7 @@
 #
 # The repository builds from `media/` alone, so no scrape directory is needed.
 #
-# Publishing stays off until CLOUDFLARE_API_TOKEN is set in the repository's
+# Publishing stays off until all four secrets are set in the repository's
 # Settings → Secrets and variables → Actions. Until then this still builds and
 # checks every change, which is useful on its own and quiet: no failed run
 # lands in anyone's inbox because a secret has not been added yet.
@@ -57,8 +57,11 @@ jobs:
       - name: Build and check
         run: npm run pipeline
 
+      # Both, deliberately. Publishing without the Cloudflare token cannot
+      # work; publishing without the Tina token would upload a site whose
+      # editor is missing, so whoever edits it would find /admin/ gone.
       - name: Publish to Cloudflare
-        if: env.CLOUDFLARE_API_TOKEN != ''
+        if: env.CLOUDFLARE_API_TOKEN != '' && env.TINA_TOKEN != ''
         run: npx --yes wrangler pages deploy dist --project-name=metupuk --branch=main
 
       - name: Say what happened
@@ -73,12 +76,16 @@ jobs:
             echo "Open the log above and find the first red line. It usually names the" >> $GITHUB_STEP_SUMMARY
             echo "page and the problem — most often a link pointing at a page that does" >> $GITHUB_STEP_SUMMARY
             echo "not exist, or wording removed from a page that had it." >> $GITHUB_STEP_SUMMARY
-          elif [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+          elif [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$TINA_TOKEN" ]; then
             echo "### Checked, not published" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "Every check passed. Publishing is switched off because" >> $GITHUB_STEP_SUMMARY
-            echo "CLOUDFLARE_API_TOKEN has not been added under" >> $GITHUB_STEP_SUMMARY
-            echo "Settings → Secrets and variables → Actions." >> $GITHUB_STEP_SUMMARY
+            echo "Every check passed. Publishing is switched off until all four" >> $GITHUB_STEP_SUMMARY
+            echo "secrets are added under Settings → Secrets and variables → Actions:" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "- CLOUDFLARE_API_TOKEN" >> $GITHUB_STEP_SUMMARY
+            echo "- CLOUDFLARE_ACCOUNT_ID" >> $GITHUB_STEP_SUMMARY
+            echo "- NEXT_PUBLIC_TINA_CLIENT_ID" >> $GITHUB_STEP_SUMMARY
+            echo "- TINA_TOKEN" >> $GITHUB_STEP_SUMMARY
           else
             echo "### Published" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
